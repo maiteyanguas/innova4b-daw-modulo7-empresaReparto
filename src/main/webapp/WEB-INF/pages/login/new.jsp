@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <html>
 <head>
@@ -29,6 +30,17 @@
 	div.login input[type="submit"]{
 		width: 100px;		
 	}
+	.error {
+	color: #ff0000;
+}
+ 
+.errorblock {
+	color: #000;
+	background-color: #ffEEEE;
+	border: 3px solid #ff0000;
+	padding: 8px;
+	margin: 16px;
+}
 </style>
 <title>Login</title>
 
@@ -38,17 +50,22 @@
 ${error}
 	<div class="login">
 		<h1>Login</h1>
-		<form method="POST" action="/empresaReparto/login/add">
+		<form:form modelAttribute="usuario" method="POST" action="/empresaReparto/login/add">
+		<form:errors path="*" cssClass="errorblock" element="div" />
 			<p>
-				<input type="text" placeholder="Usuario" name="usuario"/>
+				<form:label path="usuario"/>
+				<form:input path="usuario" />
+				<form:errors path="usuario" cssClass="error" />
 			</p>
 			<p>
-				<input type="password" placeholder="Password" name="password"/>
+				<form:label path="password"/>
+				<form:input path="password"/>
+				<form:errors path="password" cssClass="error" />
 			</p>
 			<p class="submit">	
 				<input type="submit" value="Entrar"/>
 			</p>
-		</form>
+		</form:form>
 	</div>
 </body>
 </html>

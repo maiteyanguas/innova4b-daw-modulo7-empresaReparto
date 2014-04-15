@@ -1,19 +1,23 @@
-package innova4b.empresaReparto.empleado.domain;
+package innova4b.empresaReparto.login.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 
 @Entity
 @Table(name="empleado")
-public class Empleado {
+public class Usuario {
 	
 	@Id
 	@GeneratedValue
 	private int id;
+	@NotEmpty
 	private String usuario;
+	@NotEmpty
 	private String password;
 	private String rol;
 	
@@ -49,18 +53,10 @@ public class Empleado {
 		this.rol = rol;
 	}
 	
-	private enum Rol{
-		USUARIO("u"), ADMINISTRADOR("a");
-		
-		private String rol;
-		
-		private Rol(String r){
-			rol = r;
-		}
-		
-		private String getRol(){
-			return rol;
-		}
+	public boolean isAdministrador(){
+		return rol.equals("a");
 	}
+	
+	
 
 }

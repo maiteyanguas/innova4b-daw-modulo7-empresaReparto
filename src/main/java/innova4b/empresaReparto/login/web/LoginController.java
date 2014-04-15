@@ -1,45 +1,54 @@
 package innova4b.empresaReparto.login.web;
 
-import innova4b.empresaReparto.empleado.domain.Empleado;
-import innova4b.empresaReparto.empleado.repository.EmpleadoDao;
-import innova4b.empresaReparto.empleado.service.EmpleadoService;
 import innova4b.empresaReparto.exceptions.IncorrectPasswordException;
 import innova4b.empresaReparto.exceptions.UserNotFoundException;
+import innova4b.empresaReparto.login.domain.Usuario;
+import innova4b.empresaReparto.login.service.UsuarioService;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @RequestMapping("/login")
 @Controller
 public class LoginController {
 	
 	@Autowired
-	EmpleadoService empleadoService;
+	UsuarioService usuarioService;
+	
+	@Autowired
+	HashMap<String,String> menuUsuario;
+	@Autowired
+	HashMap<String,String> menuAdministrador;
 	
 	@RequestMapping(value = "/new", method= RequestMethod.GET)
-	public void newLogin(){}
+	public void newLogin(ModelMap model){
+		model.addAttribute("usuario",new Usuario());
+	}
 	
 	@RequestMapping(value = "/add", method= RequestMethod.POST)
-	public String addLogin(HttpSession session, @RequestParam String usuario, @RequestParam String password){
+	public String addLogin(HttpSession session, @Valid Usuario usuario, BindingResult result){
 		session.removeAttribute("error");
+		if (result.hasErrors()){
+			System.out.println("yuhu");
+			return "login/new";
+		}
 		try {
-			Empleado empleado = empleadoService.getUsuario(usuario,password);
-			session.setAttribute("usuario", usuario);
-			List<String> menu = new ArrayList<String>();
-			menu.add("chuchu");
-			menu.add("lala");
-			menu.add("lolo");
-			session.setAttribute("menu", menu);
+			Usuario user = usuarioService.getUsuario(usuario.getUsuario(),usuario.getPassword());
+			session.setAttribute("usuario", user);
+			if (user.isAdministrador())
+				session.setAttribute("menu", menuAdministrador);
+			else
+				session.setAttribute("menu", menuUsuario);
+			
 			return "redirect:/empresaReparto/empresa/list";
 		} catch (IncorrectPasswordException ipe) {
 			session.setAttribute("error", ipe.getMessage());

@@ -14,7 +14,8 @@
 
 	<!-- TODO: mejorar esto -->
 	<context:component-scan base-package="innova4b.empresaReparto" />
-
+	<mvc:annotation-driven/>
+	
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/pages/" />
@@ -30,6 +31,30 @@
 			</list>
 		</property>
 	</bean>
+	
+	<bean id="menuUsuario" class="java.util.HashMap">
+		<constructor-arg index="0" type="java.util.Map">
+	        <map key-type="java.lang.String" value-type="java.lang.String">
+	        	<entry key="Mis Datos" value="/empresaReparto/empresa/list"/>
+	            <entry key="Reservar Coche" value="/empresaReparto/empresa/list"/>
+	            <entry key="Devolver Coche" value="/empresaReparto/empresa/list"/> 
+	        </map>
+    	</constructor-arg>
+	</bean>
+	
+	<bean id="menuAdministrador" class="java.util.HashMap">
+		<constructor-arg index="0" type="java.util.Map">
+	        <map key-type="java.lang.String" value-type="java.lang.String">
+	        	<entry key="Mis Datos" value="/empresaReparto/empresa/list"/>
+	            <entry key="Reservar Coche" value="/empresaReparto/empresa/list"/>
+	            <entry key="Devolver Coche" value="/empresaReparto/empresa/list"/>  
+	        	<entry key="Empleados" value="/empresaReparto/empresa/list"/>
+	            <entry key="Empresas" value="/empresaReparto/empresa/list"/>
+	            <entry key="Coches" value="/empresaReparto/empresa/list"/>
+	        </map>
+    	</constructor-arg>
+	</bean>
+	
 
 	<bean id="dataSource"
 	class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -60,5 +85,8 @@
 	</bean>
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
+	<bean class="org.springframework.context.support.ResourceBundleMessageSource" id="messageSource">
+        <property name="basename" value="messages" />
+	</bean>
 
 </beans>

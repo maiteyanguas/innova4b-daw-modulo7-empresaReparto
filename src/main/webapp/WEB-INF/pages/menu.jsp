@@ -2,7 +2,7 @@
 <div id="navigation">
 	<ul>
 	<c:forEach items="${menu}" var="opcion">
-		<li>${opcion}</li>	
+		<li><a href="${opcion.value}">${opcion.key}</a></li>	
 	</c:forEach>			
 	</ul>
 </div>
