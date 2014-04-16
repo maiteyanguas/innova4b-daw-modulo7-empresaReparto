@@ -48,8 +48,10 @@
 </head>
 <body>
 ${error}
+
 	<div class="login">
 		<h1>Login</h1>
+		
 		<form:form modelAttribute="usuario" method="POST" action="/empresaReparto/login/add">
 		<form:errors path="*" cssClass="errorblock" element="div" />
 			<p>
