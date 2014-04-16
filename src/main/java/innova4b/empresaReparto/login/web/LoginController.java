@@ -38,7 +38,6 @@ public class LoginController {
 	public String addLogin(HttpSession session, @Valid Usuario usuario, BindingResult result){
 		session.removeAttribute("error");
 		if (result.hasErrors()){
-			System.out.println("yuhu");
 			return "login/new";
 		}
 		try {
