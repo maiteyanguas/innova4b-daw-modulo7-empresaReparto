@@ -99,6 +99,12 @@
 			<version>4.11</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.9.5</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>empresaReparto</finalName>
@@ -107,6 +113,7 @@
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
 				<configuration>
+					<jvmArgs>-Xmx2048m -Xms1536m -XX:PermSize=256M -XX:MaxPermSize=512M</jvmArgs>
 					<scanIntervalSeconds>10</scanIntervalSeconds>
 				</configuration>
 			</plugin>

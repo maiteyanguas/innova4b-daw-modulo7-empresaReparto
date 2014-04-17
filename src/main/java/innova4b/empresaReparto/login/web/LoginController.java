@@ -3,7 +3,7 @@ package innova4b.empresaReparto.login.web;
 import innova4b.empresaReparto.exceptions.IncorrectPasswordException;
 import innova4b.empresaReparto.exceptions.UserNotFoundException;
 import innova4b.empresaReparto.login.domain.Usuario;
-import innova4b.empresaReparto.login.service.UsuarioService;
+import innova4b.empresaReparto.login.service.LoginService;
 
 import java.util.HashMap;
 
@@ -22,8 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class LoginController {
 	
 	@Autowired
-	UsuarioService usuarioService;
-	
+	LoginService loginService;
 	@Autowired
 	HashMap<String,String> menuUsuario;
 	@Autowired
@@ -41,7 +40,7 @@ public class LoginController {
 			return "login/new";
 		}
 		try {
-			Usuario user = usuarioService.getUsuario(usuario.getUsuario(),usuario.getPassword());
+			Usuario user = loginService.getUsuario(usuario.getUsuario(),usuario.getPassword());
 			session.setAttribute("usuario", user);
 			if (user.isAdministrador())
 				session.setAttribute("menu", menuAdministrador);

@@ -1,0 +1,812 @@
+11:34:14,504  INFO DispatcherServlet:479 - FrameworkServlet 'dispatcher': initialization started
+11:34:14,517  INFO XmlWebApplicationContext:513 - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Wed Apr 16 11:34:14 CEST 2014]; root of context hierarchy
+11:34:14,540  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/dispatcher-servlet.xml]
+11:34:14,666  INFO AutowiredAnnotationBeanPostProcessor:141 - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+11:34:14,694 ERROR DispatcherServlet:492 - Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'usuarioService': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: innova4b.empresaReparto.empleado.repository.EmpleadoDao innova4b.empresaReparto.login.service.UsuarioService.empleadoDao; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'empleadoDao': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.hibernate.SessionFactory innova4b.empresaReparto.empleado.repository.EmpleadoDao.sessionFactory; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.hibernate.SessionFactory] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:292)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1185)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:304)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:300)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:195)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:700)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:760)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:482)
+	at org.springframework.web.servlet.FrameworkServlet.configureAndRefreshWebApplicationContext(FrameworkServlet.java:658)
+	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:624)
+	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:672)
+	at org.springframework.web.servlet.FrameworkServlet.initWebApplicationContext(FrameworkServlet.java:543)
+	at org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:484)
+	at org.springframework.web.servlet.HttpServletBean.init(HttpServletBean.java:136)
+	at javax.servlet.GenericServlet.init(GenericServlet.java:244)
+	at org.eclipse.jetty.servlet.ServletHolder.initServlet(ServletHolder.java:555)
+	at org.eclipse.jetty.servlet.ServletHolder.initialize(ServletHolder.java:345)
+	at org.eclipse.jetty.servlet.ServletHandler.initialize(ServletHandler.java:840)
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:300)
+	at org.eclipse.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1347)
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:745)
+	at org.eclipse.jetty.webapp.WebAppContext.doStart(WebAppContext.java:492)
+	at org.eclipse.jetty.maven.plugin.JettyWebAppContext.doStart(JettyWebAppContext.java:282)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.eclipse.jetty.maven.plugin.JettyRunMojo.restartWebApp(JettyRunMojo.java:532)
+	at org.eclipse.jetty.maven.plugin.JettyRunMojo$1.filesChanged(JettyRunMojo.java:485)
+	at org.eclipse.jetty.util.Scanner.reportBulkChanges(Scanner.java:681)
+	at org.eclipse.jetty.util.Scanner.reportDifferences(Scanner.java:539)
+	at org.eclipse.jetty.util.Scanner.scan(Scanner.java:391)
+	at org.eclipse.jetty.util.Scanner$1.run(Scanner.java:329)
+	at java.util.TimerThread.mainLoop(Timer.java:555)
+	at java.util.TimerThread.run(Timer.java:505)
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: innova4b.empresaReparto.empleado.repository.EmpleadoDao innova4b.empresaReparto.login.service.UsuarioService.empleadoDao; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'empleadoDao': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.hibernate.SessionFactory innova4b.empresaReparto.empleado.repository.EmpleadoDao.sessionFactory; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.hibernate.SessionFactory] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:508)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:289)
+	... 34 more
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'empleadoDao': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.hibernate.SessionFactory innova4b.empresaReparto.empleado.repository.EmpleadoDao.sessionFactory; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.hibernate.SessionFactory] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:292)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1185)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:304)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:300)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:195)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1014)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:957)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:855)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:480)
+	... 36 more
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.hibernate.SessionFactory innova4b.empresaReparto.empleado.repository.EmpleadoDao.sessionFactory; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.hibernate.SessionFactory] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:508)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:289)
+	... 47 more
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.hibernate.SessionFactory] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:1100)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:960)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:855)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:480)
+	... 49 more
+11:34:33,552  INFO DispatcherServlet:479 - FrameworkServlet 'dispatcher': initialization started
+11:34:33,565  INFO XmlWebApplicationContext:513 - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Wed Apr 16 11:34:33 CEST 2014]; root of context hierarchy
+11:34:33,588  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/dispatcher-servlet.xml]
+11:34:33,728  INFO AutowiredAnnotationBeanPostProcessor:141 - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+11:34:33,765 ERROR DispatcherServlet:492 - Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'usuarioService': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: innova4b.empresaReparto.empleado.repository.EmpleadoDao innova4b.empresaReparto.login.service.UsuarioService.empleadoDao; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'empleadoDao': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.hibernate.SessionFactory innova4b.empresaReparto.empleado.repository.EmpleadoDao.sessionFactory; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.hibernate.SessionFactory] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:292)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1185)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:304)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:300)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:195)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:700)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:760)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:482)
+	at org.springframework.web.servlet.FrameworkServlet.configureAndRefreshWebApplicationContext(FrameworkServlet.java:658)
+	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:624)
+	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:672)
+	at org.springframework.web.servlet.FrameworkServlet.initWebApplicationContext(FrameworkServlet.java:543)
+	at org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:484)
+	at org.springframework.web.servlet.HttpServletBean.init(HttpServletBean.java:136)
+	at javax.servlet.GenericServlet.init(GenericServlet.java:244)
+	at org.eclipse.jetty.servlet.ServletHolder.initServlet(ServletHolder.java:555)
+	at org.eclipse.jetty.servlet.ServletHolder.initialize(ServletHolder.java:345)
+	at org.eclipse.jetty.servlet.ServletHandler.initialize(ServletHandler.java:840)
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:300)
+	at org.eclipse.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1347)
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:745)
+	at org.eclipse.jetty.webapp.WebAppContext.doStart(WebAppContext.java:492)
+	at org.eclipse.jetty.maven.plugin.JettyWebAppContext.doStart(JettyWebAppContext.java:282)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.eclipse.jetty.maven.plugin.JettyRunMojo.restartWebApp(JettyRunMojo.java:532)
+	at org.eclipse.jetty.maven.plugin.JettyRunMojo$1.filesChanged(JettyRunMojo.java:485)
+	at org.eclipse.jetty.util.Scanner.reportBulkChanges(Scanner.java:681)
+	at org.eclipse.jetty.util.Scanner.reportDifferences(Scanner.java:539)
+	at org.eclipse.jetty.util.Scanner.scan(Scanner.java:391)
+	at org.eclipse.jetty.util.Scanner$1.run(Scanner.java:329)
+	at java.util.TimerThread.mainLoop(Timer.java:555)
+	at java.util.TimerThread.run(Timer.java:505)
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: innova4b.empresaReparto.empleado.repository.EmpleadoDao innova4b.empresaReparto.login.service.UsuarioService.empleadoDao; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'empleadoDao': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.hibernate.SessionFactory innova4b.empresaReparto.empleado.repository.EmpleadoDao.sessionFactory; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.hibernate.SessionFactory] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:508)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:289)
+	... 34 more
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'empleadoDao': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.hibernate.SessionFactory innova4b.empresaReparto.empleado.repository.EmpleadoDao.sessionFactory; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.hibernate.SessionFactory] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:292)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1185)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:304)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:300)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:195)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1014)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:957)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:855)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:480)
+	... 36 more
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.hibernate.SessionFactory innova4b.empresaReparto.empleado.repository.EmpleadoDao.sessionFactory; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.hibernate.SessionFactory] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:508)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:289)
+	... 47 more
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.hibernate.SessionFactory] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:1100)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:960)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:855)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:480)
+	... 49 more
+08:13:34,325  INFO DispatcherServlet:479 - FrameworkServlet 'dispatcher': initialization started
+08:13:34,355  INFO XmlWebApplicationContext:513 - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 08:13:34 CEST 2014]; root of context hierarchy
+08:13:34,383  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/dispatcher-servlet.xml]
+08:13:34,835  INFO AutowiredAnnotationBeanPostProcessor:141 - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+08:13:35,002  INFO DriverManagerDataSource:133 - Loaded JDBC driver: com.mysql.jdbc.Driver
+08:13:35,106  INFO Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+08:13:35,114  INFO Version:54 - HHH000412: Hibernate Core {4.3.4.Final}
+08:13:35,117  INFO Environment:239 - HHH000206: hibernate.properties not found
+08:13:35,119  INFO Environment:346 - HHH000021: Bytecode provider name : javassist
+08:13:35,491  INFO Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+08:13:35,499  INFO LobCreatorBuilder:97 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+08:13:35,627  INFO TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+08:13:35,632  INFO ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+08:13:35,682  INFO Version:27 - HV000001: Hibernate Validator 5.1.0.Final
+08:13:36,305  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/new],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.login.web.LoginController.newLogin(org.springframework.ui.ModelMap)
+08:13:36,306  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/add],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LoginController.addLogin(javax.servlet.http.HttpSession,innova4b.empresaReparto.login.domain.Usuario,org.springframework.validation.BindingResult)
+08:13:36,308  INFO RequestMappingHandlerMapping:182 - Mapped "{[/logout],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LogoutController.logout(javax.servlet.http.HttpSession)
+08:13:36,313  INFO RequestMappingHandlerMapping:182 - Mapped "{[/empresa/list],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.empresa.web.EmpresaController.list(org.springframework.ui.ModelMap)
+08:13:37,007  INFO HibernateTransactionManager:339 - Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@176cd5a2] of Hibernate SessionFactory for HibernateTransactionManager
+08:13:37,053  INFO DispatcherServlet:498 - FrameworkServlet 'dispatcher': initialization completed in 2715 ms
+08:14:57,179  WARN HqlSqlWalker:995 - [DEPRECATION] Encountered positional parameter near line 1, column 65.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+08:14:57,244  INFO UsuarioService:25 - Intento de logueo con usuario incorrecto.
+08:14:57,244  INFO UsuarioService:26 - Usuario: sds
+08:16:41,266  INFO UsuarioService:25 - Intento de logueo con usuario incorrecto.
+08:16:41,266  INFO UsuarioService:26 - Usuario: asdas
+08:29:55,863  INFO UsuarioService:30 - Intento de logueo con password incorrecta.
+08:29:55,863  INFO UsuarioService:31 - Usuario: mmartin
+08:29:55,863  INFO UsuarioService:32 - Password: asdas
+08:33:48,765  INFO UsuarioService:30 - Intento de logueo con password incorrecta.
+08:33:48,766  INFO UsuarioService:31 - Usuario: mmartin
+08:33:48,766  INFO UsuarioService:32 - Password: asdasada
+08:56:45,466  INFO UsuarioService:25 - Intento de logueo con usuario incorrecto.
+08:56:45,466  INFO UsuarioService:26 - Usuario: werwee
+09:00:32,774  INFO XmlWebApplicationContext:873 - Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 08:13:34 CEST 2014]; root of context hierarchy
+09:19:55,500  INFO LoginService:29 - Intento de logueo con usuario incorrecto.
+09:19:55,506  INFO LoginService:30 - Usuario: usuario
+09:20:57,595  INFO LoginService:34 - Intento de logueo con password incorrecta.
+09:20:57,598  INFO LoginService:35 - Usuario: usuario
+09:20:57,598  INFO LoginService:36 - Password: password
+09:20:57,613  INFO LoginService:29 - Intento de logueo con usuario incorrecto.
+09:20:57,613  INFO LoginService:30 - Usuario: usuario
+09:22:49,389  INFO LoginService:34 - Intento de logueo con password incorrecta.
+09:22:49,392  INFO LoginService:35 - Usuario: usuario
+09:22:49,392  INFO LoginService:36 - Password: password
+09:22:49,398  INFO LoginService:29 - Intento de logueo con usuario incorrecto.
+09:22:49,398  INFO LoginService:30 - Usuario: usuario
+09:23:08,572  INFO LoginService:29 - Intento de logueo con usuario incorrecto.
+09:23:08,574  INFO LoginService:30 - Usuario: usuario
+09:23:18,344  INFO LoginService:34 - Intento de logueo con password incorrecta.
+09:23:18,347  INFO LoginService:35 - Usuario: usuario
+09:23:18,347  INFO LoginService:36 - Password: password
+09:23:18,355  INFO LoginService:29 - Intento de logueo con usuario incorrecto.
+09:23:18,355  INFO LoginService:30 - Usuario: usuario
+09:34:07,301  INFO DispatcherServlet:479 - FrameworkServlet 'dispatcher': initialization started
+09:34:07,322  INFO XmlWebApplicationContext:513 - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 09:34:07 CEST 2014]; root of context hierarchy
+09:34:07,352  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/dispatcher-servlet.xml]
+09:34:07,804  INFO AutowiredAnnotationBeanPostProcessor:141 - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+09:34:07,984  INFO DriverManagerDataSource:133 - Loaded JDBC driver: com.mysql.jdbc.Driver
+09:34:08,100  INFO Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+09:34:08,110  INFO Version:54 - HHH000412: Hibernate Core {4.3.4.Final}
+09:34:08,113  INFO Environment:239 - HHH000206: hibernate.properties not found
+09:34:08,115  INFO Environment:346 - HHH000021: Bytecode provider name : javassist
+09:34:08,380  INFO Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+09:34:08,387  INFO LobCreatorBuilder:97 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+09:34:08,511  INFO TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+09:34:08,515  INFO ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+09:34:08,564  INFO Version:27 - HV000001: Hibernate Validator 5.1.0.Final
+09:34:09,277  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/new],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.login.web.LoginController.newLogin(org.springframework.ui.ModelMap)
+09:34:09,278  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/add],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LoginController.addLogin(javax.servlet.http.HttpSession,innova4b.empresaReparto.login.domain.Usuario,org.springframework.validation.BindingResult)
+09:34:09,280  INFO RequestMappingHandlerMapping:182 - Mapped "{[/logout],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LogoutController.logout(javax.servlet.http.HttpSession)
+09:34:09,282  INFO RequestMappingHandlerMapping:182 - Mapped "{[/empresa/list],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.empresa.web.EmpresaController.list(org.springframework.ui.ModelMap)
+09:34:10,148  INFO HibernateTransactionManager:339 - Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@4d7a6f41] of Hibernate SessionFactory for HibernateTransactionManager
+09:34:10,203  INFO DispatcherServlet:498 - FrameworkServlet 'dispatcher': initialization completed in 2899 ms
+09:34:27,583  WARN HqlSqlWalker:995 - [DEPRECATION] Encountered positional parameter near line 1, column 65.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+09:37:02,511  INFO XmlWebApplicationContext:873 - Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 09:34:07 CEST 2014]; root of context hierarchy
+09:37:04,993  INFO DispatcherServlet:479 - FrameworkServlet 'dispatcher': initialization started
+09:37:05,007  INFO XmlWebApplicationContext:513 - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 09:37:05 CEST 2014]; root of context hierarchy
+09:37:05,030  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/dispatcher-servlet.xml]
+09:37:05,295  INFO AutowiredAnnotationBeanPostProcessor:141 - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+09:37:05,430  INFO DriverManagerDataSource:133 - Loaded JDBC driver: com.mysql.jdbc.Driver
+09:37:05,541  INFO Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+09:37:05,548  INFO Version:54 - HHH000412: Hibernate Core {4.3.4.Final}
+09:37:05,552  INFO Environment:239 - HHH000206: hibernate.properties not found
+09:37:05,554  INFO Environment:346 - HHH000021: Bytecode provider name : javassist
+09:37:05,832  INFO Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+09:37:05,839  INFO LobCreatorBuilder:97 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+09:37:05,943  INFO TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+09:37:05,947  INFO ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+09:37:05,986  INFO Version:27 - HV000001: Hibernate Validator 5.1.0.Final
+09:37:06,478  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/new],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.login.web.LoginController.newLogin(org.springframework.ui.ModelMap)
+09:37:06,479  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/add],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LoginController.addLogin(javax.servlet.http.HttpSession,innova4b.empresaReparto.login.domain.Usuario,org.springframework.validation.BindingResult)
+09:37:06,479  INFO RequestMappingHandlerMapping:182 - Mapped "{[/logout],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LogoutController.logout(javax.servlet.http.HttpSession)
+09:37:06,481  INFO RequestMappingHandlerMapping:182 - Mapped "{[/empresa/list],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.empresa.web.EmpresaController.list(org.springframework.ui.ModelMap)
+09:37:06,865  INFO HibernateTransactionManager:339 - Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@6603887e] of Hibernate SessionFactory for HibernateTransactionManager
+09:37:06,897  INFO DispatcherServlet:498 - FrameworkServlet 'dispatcher': initialization completed in 1902 ms
+09:37:29,204  WARN HqlSqlWalker:995 - [DEPRECATION] Encountered positional parameter near line 1, column 65.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+09:38:23,310  INFO XmlWebApplicationContext:873 - Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 09:37:05 CEST 2014]; root of context hierarchy
+09:38:24,432  INFO DispatcherServlet:479 - FrameworkServlet 'dispatcher': initialization started
+09:38:24,447  INFO XmlWebApplicationContext:513 - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 09:38:24 CEST 2014]; root of context hierarchy
+09:38:24,469  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/dispatcher-servlet.xml]
+09:38:24,775  INFO AutowiredAnnotationBeanPostProcessor:141 - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+09:38:24,939  INFO DriverManagerDataSource:133 - Loaded JDBC driver: com.mysql.jdbc.Driver
+09:38:25,096  INFO Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+09:38:25,107  INFO Version:54 - HHH000412: Hibernate Core {4.3.4.Final}
+09:38:25,112  INFO Environment:239 - HHH000206: hibernate.properties not found
+09:38:25,114  INFO Environment:346 - HHH000021: Bytecode provider name : javassist
+09:38:25,450  INFO Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+09:38:25,458  INFO LobCreatorBuilder:97 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+09:38:25,576  INFO TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+09:38:25,580  INFO ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+09:38:25,622  INFO Version:27 - HV000001: Hibernate Validator 5.1.0.Final
+09:38:26,181  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/new],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.login.web.LoginController.newLogin(org.springframework.ui.ModelMap)
+09:38:26,182  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/add],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LoginController.addLogin(javax.servlet.http.HttpSession,innova4b.empresaReparto.login.domain.Usuario,org.springframework.validation.BindingResult)
+09:38:26,183  INFO RequestMappingHandlerMapping:182 - Mapped "{[/logout],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LogoutController.logout(javax.servlet.http.HttpSession)
+09:38:26,185  INFO RequestMappingHandlerMapping:182 - Mapped "{[/empresa/list],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.empresa.web.EmpresaController.list(org.springframework.ui.ModelMap)
+09:38:27,856  INFO HibernateTransactionManager:339 - Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@79810803] of Hibernate SessionFactory for HibernateTransactionManager
+09:38:27,903  INFO DispatcherServlet:498 - FrameworkServlet 'dispatcher': initialization completed in 3468 ms
+09:39:23,911  INFO XmlWebApplicationContext:873 - Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 09:38:24 CEST 2014]; root of context hierarchy
+09:39:24,943  INFO DispatcherServlet:479 - FrameworkServlet 'dispatcher': initialization started
+09:39:24,958  INFO XmlWebApplicationContext:513 - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 09:39:24 CEST 2014]; root of context hierarchy
+09:39:24,979  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/dispatcher-servlet.xml]
+09:43:24,916  INFO DispatcherServlet:479 - FrameworkServlet 'dispatcher': initialization started
+09:43:24,944  INFO XmlWebApplicationContext:513 - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 09:43:24 CEST 2014]; root of context hierarchy
+09:43:24,981  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/dispatcher-servlet.xml]
+09:43:25,320  INFO AutowiredAnnotationBeanPostProcessor:141 - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+09:43:25,467  INFO DriverManagerDataSource:133 - Loaded JDBC driver: com.mysql.jdbc.Driver
+09:43:25,600  INFO Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+09:43:25,611  INFO Version:54 - HHH000412: Hibernate Core {4.3.4.Final}
+09:43:25,614  INFO Environment:239 - HHH000206: hibernate.properties not found
+09:43:25,616  INFO Environment:346 - HHH000021: Bytecode provider name : javassist
+09:43:25,920  INFO Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+09:43:25,928  INFO LobCreatorBuilder:97 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+09:43:26,050  INFO TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+09:43:26,054  INFO ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+09:43:26,097  INFO Version:27 - HV000001: Hibernate Validator 5.1.0.Final
+09:43:26,761  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/new],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.login.web.LoginController.newLogin(org.springframework.ui.ModelMap)
+09:43:26,762  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/add],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LoginController.addLogin(javax.servlet.http.HttpSession,innova4b.empresaReparto.login.domain.Usuario,org.springframework.validation.BindingResult)
+09:43:26,764  INFO RequestMappingHandlerMapping:182 - Mapped "{[/logout],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LogoutController.logout(javax.servlet.http.HttpSession)
+09:43:26,767  INFO RequestMappingHandlerMapping:182 - Mapped "{[/empresa/list],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.empresa.web.EmpresaController.list(org.springframework.ui.ModelMap)
+09:43:27,347  INFO HibernateTransactionManager:339 - Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@3c215695] of Hibernate SessionFactory for HibernateTransactionManager
+09:43:27,384  INFO DispatcherServlet:498 - FrameworkServlet 'dispatcher': initialization completed in 2463 ms
+09:43:59,604  WARN HqlSqlWalker:995 - [DEPRECATION] Encountered positional parameter near line 1, column 65.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+09:43:59,674  INFO LoginService:29 - Intento de logueo con usuario incorrecto.
+09:43:59,674  INFO LoginService:30 - Usuario: mmmasda
+09:46:39,818  INFO XmlWebApplicationContext:873 - Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 09:43:24 CEST 2014]; root of context hierarchy
+09:46:42,232  INFO DispatcherServlet:479 - FrameworkServlet 'dispatcher': initialization started
+09:46:42,256  INFO XmlWebApplicationContext:513 - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 09:46:42 CEST 2014]; root of context hierarchy
+09:46:42,296  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/dispatcher-servlet.xml]
+09:46:42,508  INFO AutowiredAnnotationBeanPostProcessor:141 - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+09:46:42,625  INFO DriverManagerDataSource:133 - Loaded JDBC driver: com.mysql.jdbc.Driver
+09:46:42,739  INFO Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+09:46:42,746  INFO Version:54 - HHH000412: Hibernate Core {4.3.4.Final}
+09:46:42,749  INFO Environment:239 - HHH000206: hibernate.properties not found
+09:46:42,750  INFO Environment:346 - HHH000021: Bytecode provider name : javassist
+09:46:43,012  INFO Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+09:46:43,019  INFO LobCreatorBuilder:97 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+09:46:43,122  INFO TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+09:46:43,126  INFO ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+09:46:43,167  INFO Version:27 - HV000001: Hibernate Validator 5.1.0.Final
+09:46:43,635  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/new],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.login.web.LoginController.newLogin(org.springframework.ui.ModelMap)
+09:46:43,636  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/add],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LoginController.addLogin(javax.servlet.http.HttpSession,innova4b.empresaReparto.login.domain.Usuario,org.springframework.validation.BindingResult)
+09:46:43,639  INFO RequestMappingHandlerMapping:182 - Mapped "{[/logout],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LogoutController.logout(javax.servlet.http.HttpSession)
+09:46:43,643  INFO RequestMappingHandlerMapping:182 - Mapped "{[/empresa/list],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.empresa.web.EmpresaController.list(org.springframework.ui.ModelMap)
+09:46:43,902  INFO HibernateTransactionManager:339 - Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@106df3dc] of Hibernate SessionFactory for HibernateTransactionManager
+09:46:43,929  INFO DispatcherServlet:498 - FrameworkServlet 'dispatcher': initialization completed in 1694 ms
+09:46:49,914  INFO XmlWebApplicationContext:873 - Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 09:46:42 CEST 2014]; root of context hierarchy
+09:46:51,144  INFO DispatcherServlet:479 - FrameworkServlet 'dispatcher': initialization started
+09:46:51,167  INFO XmlWebApplicationContext:513 - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 09:46:51 CEST 2014]; root of context hierarchy
+09:46:51,209  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/dispatcher-servlet.xml]
+09:46:51,572  INFO AutowiredAnnotationBeanPostProcessor:141 - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+09:46:51,727  INFO DriverManagerDataSource:133 - Loaded JDBC driver: com.mysql.jdbc.Driver
+09:46:51,865  INFO Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+09:46:51,872  INFO Version:54 - HHH000412: Hibernate Core {4.3.4.Final}
+09:46:51,875  INFO Environment:239 - HHH000206: hibernate.properties not found
+09:46:51,877  INFO Environment:346 - HHH000021: Bytecode provider name : javassist
+09:46:52,191  INFO Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+09:46:52,201  INFO LobCreatorBuilder:97 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+09:46:52,302  INFO TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+09:46:52,306  INFO ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+09:46:52,342  INFO Version:27 - HV000001: Hibernate Validator 5.1.0.Final
+09:46:52,875  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/new],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.login.web.LoginController.newLogin(org.springframework.ui.ModelMap)
+09:46:52,876  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/add],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LoginController.addLogin(javax.servlet.http.HttpSession,innova4b.empresaReparto.login.domain.Usuario,org.springframework.validation.BindingResult)
+09:46:52,877  INFO RequestMappingHandlerMapping:182 - Mapped "{[/logout],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LogoutController.logout(javax.servlet.http.HttpSession)
+09:46:52,879  INFO RequestMappingHandlerMapping:182 - Mapped "{[/empresa/list],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.empresa.web.EmpresaController.list(org.springframework.ui.ModelMap)
+09:46:53,365  INFO HibernateTransactionManager:339 - Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@6618055f] of Hibernate SessionFactory for HibernateTransactionManager
+09:46:53,414  INFO DispatcherServlet:498 - FrameworkServlet 'dispatcher': initialization completed in 2266 ms
+09:47:07,466  WARN HqlSqlWalker:995 - [DEPRECATION] Encountered positional parameter near line 1, column 65.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+09:47:10,113  INFO XmlWebApplicationContext:873 - Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 09:46:51 CEST 2014]; root of context hierarchy
+09:48:45,240  INFO DispatcherServlet:479 - FrameworkServlet 'dispatcher': initialization started
+09:48:45,256  INFO XmlWebApplicationContext:513 - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 09:48:45 CEST 2014]; root of context hierarchy
+09:48:45,280  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/dispatcher-servlet.xml]
+09:48:45,621  INFO AutowiredAnnotationBeanPostProcessor:141 - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+09:48:45,758  INFO DriverManagerDataSource:133 - Loaded JDBC driver: com.mysql.jdbc.Driver
+09:48:45,889  INFO Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+09:48:45,901  INFO Version:54 - HHH000412: Hibernate Core {4.3.4.Final}
+09:48:45,906  INFO Environment:239 - HHH000206: hibernate.properties not found
+09:48:45,908  INFO Environment:346 - HHH000021: Bytecode provider name : javassist
+09:48:46,201  INFO Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+09:48:46,209  INFO LobCreatorBuilder:97 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+09:48:46,335  INFO TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+09:48:46,339  INFO ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+09:48:46,382  INFO Version:27 - HV000001: Hibernate Validator 5.1.0.Final
+09:48:46,970  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/new],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.login.web.LoginController.newLogin(org.springframework.ui.ModelMap)
+09:48:46,971  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/add],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LoginController.addLogin(javax.servlet.http.HttpSession,innova4b.empresaReparto.login.domain.Usuario,org.springframework.validation.BindingResult)
+09:48:46,973  INFO RequestMappingHandlerMapping:182 - Mapped "{[/logout],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LogoutController.logout(javax.servlet.http.HttpSession)
+09:48:46,975  INFO RequestMappingHandlerMapping:182 - Mapped "{[/empresa/list],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.empresa.web.EmpresaController.list(org.springframework.ui.ModelMap)
+09:48:47,522  INFO HibernateTransactionManager:339 - Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@65cefbee] of Hibernate SessionFactory for HibernateTransactionManager
+09:48:47,581  INFO DispatcherServlet:498 - FrameworkServlet 'dispatcher': initialization completed in 2339 ms
+09:49:02,999  WARN HqlSqlWalker:995 - [DEPRECATION] Encountered positional parameter near line 1, column 65.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+09:49:27,434  INFO XmlWebApplicationContext:873 - Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 09:48:45 CEST 2014]; root of context hierarchy
+10:17:05,007  INFO DispatcherServlet:479 - FrameworkServlet 'dispatcher': initialization started
+10:17:05,029  INFO XmlWebApplicationContext:513 - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 10:17:05 CEST 2014]; root of context hierarchy
+10:17:05,060  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/dispatcher-servlet.xml]
+10:17:05,409  INFO AutowiredAnnotationBeanPostProcessor:141 - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+10:17:05,565  INFO DriverManagerDataSource:133 - Loaded JDBC driver: com.mysql.jdbc.Driver
+10:17:05,684  INFO Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+10:17:05,693  INFO Version:54 - HHH000412: Hibernate Core {4.3.4.Final}
+10:17:05,695  INFO Environment:239 - HHH000206: hibernate.properties not found
+10:17:05,697  INFO Environment:346 - HHH000021: Bytecode provider name : javassist
+10:17:05,960  INFO Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+10:17:05,968  INFO LobCreatorBuilder:97 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+10:17:06,118  INFO TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+10:17:06,123  INFO ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+10:17:06,168  INFO Version:27 - HV000001: Hibernate Validator 5.1.0.Final
+10:17:06,780  INFO RequestMappingHandlerMapping:182 - Mapped "{[/empresa/list],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.empresa.web.EmpresaController.list(org.springframework.ui.ModelMap)
+10:17:06,781  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/new],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.login.web.LoginController.newLogin(org.springframework.ui.ModelMap)
+10:17:06,783  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/add],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LoginController.addLogin(javax.servlet.http.HttpSession,innova4b.empresaReparto.login.domain.Usuario,org.springframework.validation.BindingResult)
+10:17:06,783  INFO RequestMappingHandlerMapping:182 - Mapped "{[/logout],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LogoutController.logout(javax.servlet.http.HttpSession)
+10:17:07,312  INFO HibernateTransactionManager:339 - Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@1b9bd2c9] of Hibernate SessionFactory for HibernateTransactionManager
+10:17:07,365  INFO DispatcherServlet:498 - FrameworkServlet 'dispatcher': initialization completed in 2355 ms
+10:17:40,103  WARN HqlSqlWalker:995 - [DEPRECATION] Encountered positional parameter near line 1, column 65.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+10:17:40,230  WARN SqlExceptionHelper:144 - SQL Error: 1054, SQLState: 42S22
+10:17:40,231 ERROR SqlExceptionHelper:146 - Unknown column 'empresa0_.fechaInicio' in 'field list'
+10:19:29,317  INFO XmlWebApplicationContext:873 - Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 10:17:05 CEST 2014]; root of context hierarchy
+10:19:31,488  INFO DispatcherServlet:479 - FrameworkServlet 'dispatcher': initialization started
+10:19:31,501  INFO XmlWebApplicationContext:513 - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 10:19:31 CEST 2014]; root of context hierarchy
+10:19:31,523  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/dispatcher-servlet.xml]
+10:19:32,117  INFO AutowiredAnnotationBeanPostProcessor:141 - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+10:19:32,231  INFO DriverManagerDataSource:133 - Loaded JDBC driver: com.mysql.jdbc.Driver
+10:19:32,337  INFO Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+10:19:32,344  INFO Version:54 - HHH000412: Hibernate Core {4.3.4.Final}
+10:19:32,347  INFO Environment:239 - HHH000206: hibernate.properties not found
+10:19:32,349  INFO Environment:346 - HHH000021: Bytecode provider name : javassist
+10:19:32,586  INFO Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+10:19:32,592  INFO LobCreatorBuilder:97 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+10:19:32,714  INFO TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+10:19:32,717  INFO ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+10:19:32,754  INFO Version:27 - HV000001: Hibernate Validator 5.1.0.Final
+10:19:32,981 ERROR DispatcherServlet:492 - Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'empresaDao': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.hibernate.SessionFactory innova4b.empresaReparto.empresa.repository.EmpresaDao.sessionFactory; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'mySessionFactory' defined in ServletContext resource [/WEB-INF/dispatcher-servlet.xml]: Invocation of init method failed; nested exception is org.hibernate.MappingException: Could not get constructor for org.hibernate.persister.entity.SingleTableEntityPersister
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:292)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1185)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:304)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:300)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:195)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:700)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:760)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:482)
+	at org.springframework.web.servlet.FrameworkServlet.configureAndRefreshWebApplicationContext(FrameworkServlet.java:658)
+	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:624)
+	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:672)
+	at org.springframework.web.servlet.FrameworkServlet.initWebApplicationContext(FrameworkServlet.java:543)
+	at org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:484)
+	at org.springframework.web.servlet.HttpServletBean.init(HttpServletBean.java:136)
+	at javax.servlet.GenericServlet.init(GenericServlet.java:244)
+	at org.eclipse.jetty.servlet.ServletHolder.initServlet(ServletHolder.java:555)
+	at org.eclipse.jetty.servlet.ServletHolder.initialize(ServletHolder.java:345)
+	at org.eclipse.jetty.servlet.ServletHandler.initialize(ServletHandler.java:840)
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:300)
+	at org.eclipse.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1347)
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:745)
+	at org.eclipse.jetty.webapp.WebAppContext.doStart(WebAppContext.java:492)
+	at org.eclipse.jetty.maven.plugin.JettyWebAppContext.doStart(JettyWebAppContext.java:282)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.eclipse.jetty.maven.plugin.JettyRunMojo.restartWebApp(JettyRunMojo.java:532)
+	at org.eclipse.jetty.maven.plugin.JettyRunMojo$1.filesChanged(JettyRunMojo.java:485)
+	at org.eclipse.jetty.util.Scanner.reportBulkChanges(Scanner.java:681)
+	at org.eclipse.jetty.util.Scanner.reportDifferences(Scanner.java:539)
+	at org.eclipse.jetty.util.Scanner.scan(Scanner.java:391)
+	at org.eclipse.jetty.util.Scanner$1.run(Scanner.java:329)
+	at java.util.TimerThread.mainLoop(Timer.java:555)
+	at java.util.TimerThread.run(Timer.java:505)
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.hibernate.SessionFactory innova4b.empresaReparto.empresa.repository.EmpresaDao.sessionFactory; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'mySessionFactory' defined in ServletContext resource [/WEB-INF/dispatcher-servlet.xml]: Invocation of init method failed; nested exception is org.hibernate.MappingException: Could not get constructor for org.hibernate.persister.entity.SingleTableEntityPersister
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:508)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:289)
+	... 34 more
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'mySessionFactory' defined in ServletContext resource [/WEB-INF/dispatcher-servlet.xml]: Invocation of init method failed; nested exception is org.hibernate.MappingException: Could not get constructor for org.hibernate.persister.entity.SingleTableEntityPersister
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1553)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:539)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:304)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:300)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:195)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1014)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:957)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:855)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:480)
+	... 36 more
+Caused by: org.hibernate.MappingException: Could not get constructor for org.hibernate.persister.entity.SingleTableEntityPersister
+	at org.hibernate.persister.internal.PersisterFactoryImpl.create(PersisterFactoryImpl.java:185)
+	at org.hibernate.persister.internal.PersisterFactoryImpl.createEntityPersister(PersisterFactoryImpl.java:135)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:401)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1857)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1928)
+	at org.springframework.orm.hibernate4.LocalSessionFactoryBuilder.buildSessionFactory(LocalSessionFactoryBuilder.java:343)
+	at org.springframework.orm.hibernate4.LocalSessionFactoryBean.buildSessionFactory(LocalSessionFactoryBean.java:431)
+	at org.springframework.orm.hibernate4.LocalSessionFactoryBean.afterPropertiesSet(LocalSessionFactoryBean.java:416)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1612)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1549)
+	... 46 more
+Caused by: org.hibernate.InstantiationException: could not instantiate test object : innova4b.empresaReparto.empresa.domain.Empresa
+	at org.hibernate.engine.internal.UnsavedValueFactory.instantiate(UnsavedValueFactory.java:60)
+	at org.hibernate.engine.internal.UnsavedValueFactory.getUnsavedIdentifierValue(UnsavedValueFactory.java:85)
+	at org.hibernate.tuple.PropertyFactory.buildIdentifierAttribute(PropertyFactory.java:87)
+	at org.hibernate.tuple.entity.EntityMetamodel.<init>(EntityMetamodel.java:163)
+	at org.hibernate.persister.entity.AbstractEntityPersister.<init>(AbstractEntityPersister.java:520)
+	at org.hibernate.persister.entity.SingleTableEntityPersister.<init>(SingleTableEntityPersister.java:148)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at org.hibernate.persister.internal.PersisterFactoryImpl.create(PersisterFactoryImpl.java:163)
+	... 55 more
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at org.hibernate.engine.internal.UnsavedValueFactory.instantiate(UnsavedValueFactory.java:57)
+	... 65 more
+Caused by: java.lang.Error: Unresolved compilation problems: 
+	Column cannot be resolved to a type
+	The attribute name is undefined for the annotation type Column
+
+	at innova4b.empresaReparto.empresa.domain.Empresa.<init>(Empresa.java:30)
+	... 70 more
+10:20:20,409  INFO DispatcherServlet:479 - FrameworkServlet 'dispatcher': initialization started
+10:20:20,440  INFO XmlWebApplicationContext:513 - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 10:20:20 CEST 2014]; root of context hierarchy
+10:20:20,483  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/dispatcher-servlet.xml]
+10:20:20,923  INFO AutowiredAnnotationBeanPostProcessor:141 - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+10:20:21,066  INFO DriverManagerDataSource:133 - Loaded JDBC driver: com.mysql.jdbc.Driver
+10:20:21,185  INFO Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+10:20:21,194  INFO Version:54 - HHH000412: Hibernate Core {4.3.4.Final}
+10:20:21,198  INFO Environment:239 - HHH000206: hibernate.properties not found
+10:20:21,200  INFO Environment:346 - HHH000021: Bytecode provider name : javassist
+10:20:21,466  INFO Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+10:20:21,473  INFO LobCreatorBuilder:97 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+10:20:21,617  INFO TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+10:20:21,622  INFO ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+10:20:21,667  INFO Version:27 - HV000001: Hibernate Validator 5.1.0.Final
+10:20:22,296  INFO RequestMappingHandlerMapping:182 - Mapped "{[/empresa/list],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.empresa.web.EmpresaController.list(org.springframework.ui.ModelMap)
+10:20:22,297  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/new],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.login.web.LoginController.newLogin(org.springframework.ui.ModelMap)
+10:20:22,299  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/add],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LoginController.addLogin(javax.servlet.http.HttpSession,innova4b.empresaReparto.login.domain.Usuario,org.springframework.validation.BindingResult)
+10:20:22,300  INFO RequestMappingHandlerMapping:182 - Mapped "{[/logout],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LogoutController.logout(javax.servlet.http.HttpSession)
+10:20:22,768  INFO HibernateTransactionManager:339 - Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@6437c127] of Hibernate SessionFactory for HibernateTransactionManager
+10:20:22,804  INFO DispatcherServlet:498 - FrameworkServlet 'dispatcher': initialization completed in 2391 ms
+10:20:37,319  WARN HqlSqlWalker:995 - [DEPRECATION] Encountered positional parameter near line 1, column 65.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+10:23:45,339  INFO XmlWebApplicationContext:873 - Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 10:20:20 CEST 2014]; root of context hierarchy
+10:23:47,978  INFO DispatcherServlet:479 - FrameworkServlet 'dispatcher': initialization started
+10:23:47,994  INFO XmlWebApplicationContext:513 - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 10:23:47 CEST 2014]; root of context hierarchy
+10:23:48,025  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/dispatcher-servlet.xml]
+10:23:48,271  INFO AutowiredAnnotationBeanPostProcessor:141 - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+10:23:48,386  INFO DriverManagerDataSource:133 - Loaded JDBC driver: com.mysql.jdbc.Driver
+10:23:48,512  INFO Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+10:23:48,519  INFO Version:54 - HHH000412: Hibernate Core {4.3.4.Final}
+10:23:48,526  INFO Environment:239 - HHH000206: hibernate.properties not found
+10:23:48,528  INFO Environment:346 - HHH000021: Bytecode provider name : javassist
+10:23:48,784  INFO Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+10:23:48,791  INFO LobCreatorBuilder:97 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+10:23:48,915  INFO TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+10:23:48,920  INFO ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+10:23:48,968  INFO Version:27 - HV000001: Hibernate Validator 5.1.0.Final
+10:23:49,510  INFO RequestMappingHandlerMapping:182 - Mapped "{[/empresa/list],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.empresa.web.EmpresaController.list(org.springframework.ui.ModelMap)
+10:23:49,511  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/new],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.login.web.LoginController.newLogin(org.springframework.ui.ModelMap)
+10:23:49,511  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/add],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LoginController.addLogin(javax.servlet.http.HttpSession,innova4b.empresaReparto.login.domain.Usuario,org.springframework.validation.BindingResult)
+10:23:49,512  INFO RequestMappingHandlerMapping:182 - Mapped "{[/logout],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LogoutController.logout(javax.servlet.http.HttpSession)
+10:23:49,808  INFO HibernateTransactionManager:339 - Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@48129807] of Hibernate SessionFactory for HibernateTransactionManager
+10:23:49,858  INFO DispatcherServlet:498 - FrameworkServlet 'dispatcher': initialization completed in 1877 ms
+10:24:25,746  INFO XmlWebApplicationContext:873 - Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 10:23:47 CEST 2014]; root of context hierarchy
+10:24:26,829  INFO DispatcherServlet:479 - FrameworkServlet 'dispatcher': initialization started
+10:24:26,844  INFO XmlWebApplicationContext:513 - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 10:24:26 CEST 2014]; root of context hierarchy
+10:24:26,879  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/dispatcher-servlet.xml]
+10:24:27,102  INFO AutowiredAnnotationBeanPostProcessor:141 - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+10:24:27,212  INFO DriverManagerDataSource:133 - Loaded JDBC driver: com.mysql.jdbc.Driver
+10:24:27,327  INFO Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+10:24:27,334  INFO Version:54 - HHH000412: Hibernate Core {4.3.4.Final}
+10:24:27,338  INFO Environment:239 - HHH000206: hibernate.properties not found
+10:24:27,339  INFO Environment:346 - HHH000021: Bytecode provider name : javassist
+10:24:27,685  INFO Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+10:24:27,693  INFO LobCreatorBuilder:97 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+10:24:27,849  INFO TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+10:24:27,857  INFO ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+10:24:27,908  INFO Version:27 - HV000001: Hibernate Validator 5.1.0.Final
+10:24:28,420  INFO RequestMappingHandlerMapping:182 - Mapped "{[/empresa/list],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.empresa.web.EmpresaController.list(org.springframework.ui.ModelMap)
+10:24:28,422  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/new],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.login.web.LoginController.newLogin(org.springframework.ui.ModelMap)
+10:24:28,422  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/add],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LoginController.addLogin(javax.servlet.http.HttpSession,innova4b.empresaReparto.login.domain.Usuario,org.springframework.validation.BindingResult)
+10:24:28,423  INFO RequestMappingHandlerMapping:182 - Mapped "{[/logout],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LogoutController.logout(javax.servlet.http.HttpSession)
+10:24:28,766  INFO HibernateTransactionManager:339 - Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@553be208] of Hibernate SessionFactory for HibernateTransactionManager
+10:24:28,803  INFO DispatcherServlet:498 - FrameworkServlet 'dispatcher': initialization completed in 1972 ms
+10:35:52,550  INFO XmlWebApplicationContext:873 - Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 10:24:26 CEST 2014]; root of context hierarchy
+11:06:52,537  INFO DispatcherServlet:479 - FrameworkServlet 'dispatcher': initialization started
+11:06:52,567  INFO XmlWebApplicationContext:513 - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 11:06:52 CEST 2014]; root of context hierarchy
+11:06:52,610  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/dispatcher-servlet.xml]
+11:06:52,939  INFO AutowiredAnnotationBeanPostProcessor:141 - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+11:06:53,095  INFO DriverManagerDataSource:133 - Loaded JDBC driver: com.mysql.jdbc.Driver
+11:06:53,222  INFO Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+11:06:53,232  INFO Version:54 - HHH000412: Hibernate Core {4.3.4.Final}
+11:06:53,235  INFO Environment:239 - HHH000206: hibernate.properties not found
+11:06:53,237  INFO Environment:346 - HHH000021: Bytecode provider name : javassist
+11:06:53,511  INFO Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+11:06:53,519  INFO LobCreatorBuilder:97 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+11:06:53,668  INFO TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+11:06:53,673  INFO ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+11:06:53,717  INFO Version:27 - HV000001: Hibernate Validator 5.1.0.Final
+11:06:54,324  INFO RequestMappingHandlerMapping:182 - Mapped "{[/empresa/new],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.empresa.web.EmpresaController.newEmpresa(org.springframework.ui.ModelMap)
+11:06:54,337 ERROR DispatcherServlet:492 - Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping#0': Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping found. Cannot map 'empresaController' bean method 
+public java.lang.String innova4b.empresaReparto.empresa.web.EmpresaController.add(innova4b.empresaReparto.empresa.domain.Empresa)
+to {[/empresa/new],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}: There is already 'empresaController' bean method
+public void innova4b.empresaReparto.empresa.web.EmpresaController.newEmpresa(org.springframework.ui.ModelMap) mapped.
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1553)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:539)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:304)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:300)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:195)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:700)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:760)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:482)
+	at org.springframework.web.servlet.FrameworkServlet.configureAndRefreshWebApplicationContext(FrameworkServlet.java:658)
+	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:624)
+	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:672)
+	at org.springframework.web.servlet.FrameworkServlet.initWebApplicationContext(FrameworkServlet.java:543)
+	at org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:484)
+	at org.springframework.web.servlet.HttpServletBean.init(HttpServletBean.java:136)
+	at javax.servlet.GenericServlet.init(GenericServlet.java:244)
+	at org.eclipse.jetty.servlet.ServletHolder.initServlet(ServletHolder.java:555)
+	at org.eclipse.jetty.servlet.ServletHolder.initialize(ServletHolder.java:345)
+	at org.eclipse.jetty.servlet.ServletHandler.initialize(ServletHandler.java:840)
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:300)
+	at org.eclipse.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1347)
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:745)
+	at org.eclipse.jetty.webapp.WebAppContext.doStart(WebAppContext.java:492)
+	at org.eclipse.jetty.maven.plugin.JettyWebAppContext.doStart(JettyWebAppContext.java:282)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.start(ContainerLifeCycle.java:117)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.doStart(ContainerLifeCycle.java:99)
+	at org.eclipse.jetty.server.handler.AbstractHandler.doStart(AbstractHandler.java:60)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.doStart(ContextHandlerCollection.java:154)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.start(ContainerLifeCycle.java:117)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.doStart(ContainerLifeCycle.java:99)
+	at org.eclipse.jetty.server.handler.AbstractHandler.doStart(AbstractHandler.java:60)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.start(ContainerLifeCycle.java:117)
+	at org.eclipse.jetty.server.Server.start(Server.java:358)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.doStart(ContainerLifeCycle.java:99)
+	at org.eclipse.jetty.server.handler.AbstractHandler.doStart(AbstractHandler.java:60)
+	at org.eclipse.jetty.server.Server.doStart(Server.java:325)
+	at org.eclipse.jetty.maven.plugin.JettyServer.doStart(JettyServer.java:68)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.eclipse.jetty.maven.plugin.AbstractJettyMojo.startJetty(AbstractJettyMojo.java:564)
+	at org.eclipse.jetty.maven.plugin.AbstractJettyMojo.execute(AbstractJettyMojo.java:360)
+	at org.eclipse.jetty.maven.plugin.JettyRunMojo.execute(JettyRunMojo.java:168)
+	at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo(DefaultBuildPluginManager.java:101)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:209)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:153)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:145)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:84)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:59)
+	at org.apache.maven.lifecycle.internal.LifecycleStarter.singleThreadedBuild(LifecycleStarter.java:183)
+	at org.apache.maven.lifecycle.internal.LifecycleStarter.execute(LifecycleStarter.java:161)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:320)
+	at org.apache.maven.DefaultMaven.execute(DefaultMaven.java:156)
+	at org.apache.maven.cli.MavenCli.execute(MavenCli.java:537)
+	at org.apache.maven.cli.MavenCli.doMain(MavenCli.java:196)
+	at org.apache.maven.cli.MavenCli.main(MavenCli.java:141)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced(Launcher.java:290)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launch(Launcher.java:230)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode(Launcher.java:409)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.main(Launcher.java:352)
+Caused by: java.lang.IllegalStateException: Ambiguous mapping found. Cannot map 'empresaController' bean method 
+public java.lang.String innova4b.empresaReparto.empresa.web.EmpresaController.add(innova4b.empresaReparto.empresa.domain.Empresa)
+to {[/empresa/new],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}: There is already 'empresaController' bean method
+public void innova4b.empresaReparto.empresa.web.EmpresaController.newEmpresa(org.springframework.ui.ModelMap) mapped.
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.registerHandlerMethod(AbstractHandlerMethodMapping.java:177)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.detectHandlerMethods(AbstractHandlerMethodMapping.java:149)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.initHandlerMethods(AbstractHandlerMethodMapping.java:109)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.afterPropertiesSet(AbstractHandlerMethodMapping.java:89)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.afterPropertiesSet(RequestMappingHandlerMapping.java:126)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1612)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1549)
+	... 65 more
+11:07:24,622  INFO DispatcherServlet:479 - FrameworkServlet 'dispatcher': initialization started
+11:07:24,647  INFO XmlWebApplicationContext:513 - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 11:07:24 CEST 2014]; root of context hierarchy
+11:07:24,681  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/dispatcher-servlet.xml]
+11:07:25,025  INFO AutowiredAnnotationBeanPostProcessor:141 - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+11:07:25,165  INFO DriverManagerDataSource:133 - Loaded JDBC driver: com.mysql.jdbc.Driver
+11:07:25,327  INFO Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+11:07:25,339  INFO Version:54 - HHH000412: Hibernate Core {4.3.4.Final}
+11:07:25,345  INFO Environment:239 - HHH000206: hibernate.properties not found
+11:07:25,348  INFO Environment:346 - HHH000021: Bytecode provider name : javassist
+11:07:25,685  INFO Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+11:07:25,700  INFO LobCreatorBuilder:97 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+11:07:25,848  INFO TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+11:07:25,854  INFO ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+11:07:25,901  INFO Version:27 - HV000001: Hibernate Validator 5.1.0.Final
+11:07:26,529  INFO RequestMappingHandlerMapping:182 - Mapped "{[/empresa/add],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.empresa.web.EmpresaController.add(innova4b.empresaReparto.empresa.domain.Empresa)
+11:07:26,530  INFO RequestMappingHandlerMapping:182 - Mapped "{[/empresa/list],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.empresa.web.EmpresaController.list(org.springframework.ui.ModelMap)
+11:07:26,532  INFO RequestMappingHandlerMapping:182 - Mapped "{[/empresa/new],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.empresa.web.EmpresaController.newEmpresa(org.springframework.ui.ModelMap)
+11:07:26,534  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/new],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.login.web.LoginController.newLogin(org.springframework.ui.ModelMap)
+11:07:26,535  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/add],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LoginController.addLogin(javax.servlet.http.HttpSession,innova4b.empresaReparto.login.domain.Usuario,org.springframework.validation.BindingResult)
+11:07:26,536  INFO RequestMappingHandlerMapping:182 - Mapped "{[/logout],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LogoutController.logout(javax.servlet.http.HttpSession)
+11:07:27,065  INFO HibernateTransactionManager:339 - Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@1f410757] of Hibernate SessionFactory for HibernateTransactionManager
+11:07:27,119  INFO DispatcherServlet:498 - FrameworkServlet 'dispatcher': initialization completed in 2492 ms
+11:07:40,551  WARN HqlSqlWalker:995 - [DEPRECATION] Encountered positional parameter near line 1, column 65.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+11:09:00,110  WARN PageNotFound:198 - Request method 'POST' not supported
+11:09:28,871  INFO XmlWebApplicationContext:873 - Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 11:07:24 CEST 2014]; root of context hierarchy
+11:09:31,234  INFO DispatcherServlet:479 - FrameworkServlet 'dispatcher': initialization started
+11:09:31,247  INFO XmlWebApplicationContext:513 - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 11:09:31 CEST 2014]; root of context hierarchy
+11:09:31,270  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/dispatcher-servlet.xml]
+11:09:31,490  INFO AutowiredAnnotationBeanPostProcessor:141 - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+11:09:31,601  INFO DriverManagerDataSource:133 - Loaded JDBC driver: com.mysql.jdbc.Driver
+11:09:31,708  INFO Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+11:09:31,715  INFO Version:54 - HHH000412: Hibernate Core {4.3.4.Final}
+11:09:31,718  INFO Environment:239 - HHH000206: hibernate.properties not found
+11:09:31,720  INFO Environment:346 - HHH000021: Bytecode provider name : javassist
+11:09:31,987  INFO Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+11:09:31,994  INFO LobCreatorBuilder:97 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+11:09:32,117  INFO TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+11:09:32,121  INFO ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+11:09:32,159  INFO Version:27 - HV000001: Hibernate Validator 5.1.0.Final
+11:09:32,637  INFO RequestMappingHandlerMapping:182 - Mapped "{[/empresa/add],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.empresa.web.EmpresaController.add(innova4b.empresaReparto.empresa.domain.Empresa)
+11:09:32,637  INFO RequestMappingHandlerMapping:182 - Mapped "{[/empresa/list],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.empresa.web.EmpresaController.list(org.springframework.ui.ModelMap)
+11:09:32,637  INFO RequestMappingHandlerMapping:182 - Mapped "{[/empresa/new],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.empresa.web.EmpresaController.newEmpresa(org.springframework.ui.ModelMap)
+11:09:32,639  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/new],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.login.web.LoginController.newLogin(org.springframework.ui.ModelMap)
+11:09:32,640  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/add],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LoginController.addLogin(javax.servlet.http.HttpSession,innova4b.empresaReparto.login.domain.Usuario,org.springframework.validation.BindingResult)
+11:09:32,640  INFO RequestMappingHandlerMapping:182 - Mapped "{[/logout],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LogoutController.logout(javax.servlet.http.HttpSession)
+11:09:32,964  INFO HibernateTransactionManager:339 - Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@606cceed] of Hibernate SessionFactory for HibernateTransactionManager
+11:09:32,997  INFO DispatcherServlet:498 - FrameworkServlet 'dispatcher': initialization completed in 1761 ms
+11:10:01,555  WARN HqlSqlWalker:995 - [DEPRECATION] Encountered positional parameter near line 1, column 65.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+11:16:33,068  INFO XmlWebApplicationContext:873 - Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 11:09:31 CEST 2014]; root of context hierarchy
+11:16:34,152  INFO DispatcherServlet:479 - FrameworkServlet 'dispatcher': initialization started
+11:16:34,166  INFO XmlWebApplicationContext:513 - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 11:16:34 CEST 2014]; root of context hierarchy
+11:16:34,191  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/dispatcher-servlet.xml]
+11:16:34,487  INFO AutowiredAnnotationBeanPostProcessor:141 - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+11:16:34,644  INFO DriverManagerDataSource:133 - Loaded JDBC driver: com.mysql.jdbc.Driver
+11:16:34,807  INFO Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+11:16:34,816  INFO Version:54 - HHH000412: Hibernate Core {4.3.4.Final}
+11:16:34,821  INFO Environment:239 - HHH000206: hibernate.properties not found
+11:16:34,824  INFO Environment:346 - HHH000021: Bytecode provider name : javassist
+11:16:35,159  INFO Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+11:16:35,165  INFO LobCreatorBuilder:97 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+11:16:35,289  INFO TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+11:16:35,292  INFO ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+11:16:35,331  INFO Version:27 - HV000001: Hibernate Validator 5.1.0.Final
+11:16:36,825  INFO RequestMappingHandlerMapping:182 - Mapped "{[/empresa/add],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.empresa.web.EmpresaController.add(innova4b.empresaReparto.empresa.domain.Empresa)
+11:16:36,826  INFO RequestMappingHandlerMapping:182 - Mapped "{[/empresa/list],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.empresa.web.EmpresaController.list(org.springframework.ui.ModelMap)
+11:16:36,826  INFO RequestMappingHandlerMapping:182 - Mapped "{[/empresa/new],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.empresa.web.EmpresaController.newEmpresa(org.springframework.ui.ModelMap)
+11:16:36,827  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/new],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.login.web.LoginController.newLogin(org.springframework.ui.ModelMap)
+11:16:36,827  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/add],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LoginController.addLogin(javax.servlet.http.HttpSession,innova4b.empresaReparto.login.domain.Usuario,org.springframework.validation.BindingResult)
+11:16:36,828  INFO RequestMappingHandlerMapping:182 - Mapped "{[/logout],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LogoutController.logout(javax.servlet.http.HttpSession)
+11:16:37,125  INFO HibernateTransactionManager:339 - Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@5e6fef2b] of Hibernate SessionFactory for HibernateTransactionManager
+11:16:37,150  INFO DispatcherServlet:498 - FrameworkServlet 'dispatcher': initialization completed in 2997 ms
+11:18:34,269  INFO XmlWebApplicationContext:873 - Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 11:16:34 CEST 2014]; root of context hierarchy
+11:19:25,840  INFO DispatcherServlet:479 - FrameworkServlet 'dispatcher': initialization started
+11:19:25,871  INFO XmlWebApplicationContext:513 - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 11:19:25 CEST 2014]; root of context hierarchy
+11:19:25,917  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/dispatcher-servlet.xml]
+11:19:26,301  INFO AutowiredAnnotationBeanPostProcessor:141 - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+11:19:26,434  INFO DriverManagerDataSource:133 - Loaded JDBC driver: com.mysql.jdbc.Driver
+11:19:26,563  INFO Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+11:19:26,574  INFO Version:54 - HHH000412: Hibernate Core {4.3.4.Final}
+11:19:26,578  INFO Environment:239 - HHH000206: hibernate.properties not found
+11:19:26,579  INFO Environment:346 - HHH000021: Bytecode provider name : javassist
+11:19:26,861  INFO Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+11:19:26,869  INFO LobCreatorBuilder:97 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+11:19:27,018  INFO TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+11:19:27,024  INFO ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+11:19:27,068  INFO Version:27 - HV000001: Hibernate Validator 5.1.0.Final
+11:19:27,680  INFO RequestMappingHandlerMapping:182 - Mapped "{[/empresa/new],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.empresa.web.EmpresaController.newEmpresa(org.springframework.ui.ModelMap)
+11:19:27,681  INFO RequestMappingHandlerMapping:182 - Mapped "{[/empresa/add],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.empresa.web.EmpresaController.add(innova4b.empresaReparto.empresa.domain.Empresa)
+11:19:27,683  INFO RequestMappingHandlerMapping:182 - Mapped "{[/empresa/list],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.empresa.web.EmpresaController.list(org.springframework.ui.ModelMap)
+11:19:27,685  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/new],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.login.web.LoginController.newLogin(org.springframework.ui.ModelMap)
+11:19:27,685  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/add],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LoginController.addLogin(javax.servlet.http.HttpSession,innova4b.empresaReparto.login.domain.Usuario,org.springframework.validation.BindingResult)
+11:19:27,686  INFO RequestMappingHandlerMapping:182 - Mapped "{[/logout],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LogoutController.logout(javax.servlet.http.HttpSession)
+11:19:28,284  INFO HibernateTransactionManager:339 - Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@41816c30] of Hibernate SessionFactory for HibernateTransactionManager
+11:19:28,319  INFO DispatcherServlet:498 - FrameworkServlet 'dispatcher': initialization completed in 2475 ms
+11:19:52,730  WARN HqlSqlWalker:995 - [DEPRECATION] Encountered positional parameter near line 1, column 65.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+11:56:30,881  INFO XmlWebApplicationContext:873 - Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 11:19:25 CEST 2014]; root of context hierarchy
+11:56:33,321  INFO DispatcherServlet:479 - FrameworkServlet 'dispatcher': initialization started
+11:56:33,336  INFO XmlWebApplicationContext:513 - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 11:56:33 CEST 2014]; root of context hierarchy
+11:56:33,360  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/dispatcher-servlet.xml]
+11:56:33,571  INFO AutowiredAnnotationBeanPostProcessor:141 - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+11:56:33,682  INFO DriverManagerDataSource:133 - Loaded JDBC driver: com.mysql.jdbc.Driver
+11:56:33,795  INFO Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+11:56:33,805  INFO Version:54 - HHH000412: Hibernate Core {4.3.4.Final}
+11:56:33,810  INFO Environment:239 - HHH000206: hibernate.properties not found
+11:56:33,812  INFO Environment:346 - HHH000021: Bytecode provider name : javassist
+11:56:34,071  INFO Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+11:56:34,077  INFO LobCreatorBuilder:97 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+11:56:34,204  INFO TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+11:56:34,207  INFO ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+11:56:34,245  INFO Version:27 - HV000001: Hibernate Validator 5.1.0.Final
+11:56:34,804  INFO RequestMappingHandlerMapping:182 - Mapped "{[/empresa/new],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.empresa.web.EmpresaController.newEmpresa(org.springframework.ui.ModelMap)
+11:56:34,804  INFO RequestMappingHandlerMapping:182 - Mapped "{[/empresa/add],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.empresa.web.EmpresaController.add(innova4b.empresaReparto.empresa.domain.Empresa,org.springframework.validation.BindingResult)
+11:56:34,805  INFO RequestMappingHandlerMapping:182 - Mapped "{[/empresa/list],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.empresa.web.EmpresaController.list(org.springframework.ui.ModelMap)
+11:56:34,807  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/new],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.login.web.LoginController.newLogin(org.springframework.ui.ModelMap)
+11:56:34,807  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/add],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LoginController.addLogin(javax.servlet.http.HttpSession,innova4b.empresaReparto.login.domain.Usuario,org.springframework.validation.BindingResult)
+11:56:34,808  INFO RequestMappingHandlerMapping:182 - Mapped "{[/logout],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LogoutController.logout(javax.servlet.http.HttpSession)
+11:56:35,297  INFO HibernateTransactionManager:339 - Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@702dfb0a] of Hibernate SessionFactory for HibernateTransactionManager
+11:56:35,334  INFO DispatcherServlet:498 - FrameworkServlet 'dispatcher': initialization completed in 2010 ms
+11:57:46,906  WARN HqlSqlWalker:995 - [DEPRECATION] Encountered positional parameter near line 1, column 65.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+11:58:52,282  INFO XmlWebApplicationContext:873 - Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 11:56:33 CEST 2014]; root of context hierarchy
+11:58:53,406  INFO DispatcherServlet:479 - FrameworkServlet 'dispatcher': initialization started
+11:58:53,419  INFO XmlWebApplicationContext:513 - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 11:58:53 CEST 2014]; root of context hierarchy
+11:58:53,443  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/dispatcher-servlet.xml]
+11:58:53,669  INFO AutowiredAnnotationBeanPostProcessor:141 - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+11:58:53,783  INFO DriverManagerDataSource:133 - Loaded JDBC driver: com.mysql.jdbc.Driver
+11:58:53,894  INFO Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+11:58:53,900  INFO Version:54 - HHH000412: Hibernate Core {4.3.4.Final}
+11:58:53,903  INFO Environment:239 - HHH000206: hibernate.properties not found
+11:58:53,905  INFO Environment:346 - HHH000021: Bytecode provider name : javassist
+11:58:54,169  INFO Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+11:58:54,175  INFO LobCreatorBuilder:97 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+11:58:54,301  INFO TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+11:58:54,307  INFO ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+11:58:54,346  INFO Version:27 - HV000001: Hibernate Validator 5.1.0.Final
+11:58:55,802  INFO RequestMappingHandlerMapping:182 - Mapped "{[/empresa/new],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.empresa.web.EmpresaController.newEmpresa(org.springframework.ui.ModelMap)
+11:58:55,802  INFO RequestMappingHandlerMapping:182 - Mapped "{[/empresa/add],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.empresa.web.EmpresaController.add(innova4b.empresaReparto.empresa.domain.Empresa,org.springframework.validation.BindingResult)
+11:58:55,802  INFO RequestMappingHandlerMapping:182 - Mapped "{[/empresa/list],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.empresa.web.EmpresaController.list(org.springframework.ui.ModelMap)
+11:58:55,803  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/new],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.login.web.LoginController.newLogin(org.springframework.ui.ModelMap)
+11:58:55,804  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/add],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LoginController.addLogin(javax.servlet.http.HttpSession,innova4b.empresaReparto.login.domain.Usuario,org.springframework.validation.BindingResult)
+11:58:55,804  INFO RequestMappingHandlerMapping:182 - Mapped "{[/logout],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LogoutController.logout(javax.servlet.http.HttpSession)
+11:58:56,074  INFO HibernateTransactionManager:339 - Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@73cb9f4b] of Hibernate SessionFactory for HibernateTransactionManager
+11:58:56,117  INFO DispatcherServlet:498 - FrameworkServlet 'dispatcher': initialization completed in 2710 ms
+17:12:02,081  INFO DispatcherServlet:479 - FrameworkServlet 'dispatcher': initialization started
+17:12:02,133  INFO XmlWebApplicationContext:513 - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 17:12:02 CEST 2014]; root of context hierarchy
+17:12:02,181  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/dispatcher-servlet.xml]
+17:12:02,696  INFO AutowiredAnnotationBeanPostProcessor:141 - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+17:12:02,847  INFO DriverManagerDataSource:133 - Loaded JDBC driver: com.mysql.jdbc.Driver
+17:12:02,966  INFO Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+17:12:02,976  INFO Version:54 - HHH000412: Hibernate Core {4.3.4.Final}
+17:12:02,982  INFO Environment:239 - HHH000206: hibernate.properties not found
+17:12:02,985  INFO Environment:346 - HHH000021: Bytecode provider name : javassist
+17:12:03,378  INFO Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+17:12:03,386  INFO LobCreatorBuilder:97 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+17:12:03,532  INFO TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+17:12:03,537  INFO ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+17:12:03,581  INFO Version:27 - HV000001: Hibernate Validator 5.1.0.Final
+17:12:04,247  INFO RequestMappingHandlerMapping:182 - Mapped "{[/empresa/add],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.empresa.web.EmpresaController.add(innova4b.empresaReparto.empresa.domain.Empresa,org.springframework.validation.BindingResult)
+17:12:04,248  INFO RequestMappingHandlerMapping:182 - Mapped "{[/empresa/list],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.empresa.web.EmpresaController.list(org.springframework.ui.ModelMap)
+17:12:04,251  INFO RequestMappingHandlerMapping:182 - Mapped "{[/empresa/new],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.empresa.web.EmpresaController.newEmpresa(org.springframework.ui.ModelMap)
+17:12:04,252  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/new],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void innova4b.empresaReparto.login.web.LoginController.newLogin(org.springframework.ui.ModelMap)
+17:12:04,253  INFO RequestMappingHandlerMapping:182 - Mapped "{[/login/add],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LoginController.addLogin(javax.servlet.http.HttpSession,innova4b.empresaReparto.login.domain.Usuario,org.springframework.validation.BindingResult)
+17:12:04,254  INFO RequestMappingHandlerMapping:182 - Mapped "{[/logout],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String innova4b.empresaReparto.login.web.LogoutController.logout(javax.servlet.http.HttpSession)
+17:12:05,455  INFO HibernateTransactionManager:339 - Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@27a5aafd] of Hibernate SessionFactory for HibernateTransactionManager
+17:12:05,536  INFO DispatcherServlet:498 - FrameworkServlet 'dispatcher': initialization completed in 3431 ms
+17:13:16,818  INFO XmlWebApplicationContext:873 - Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 17:12:02 CEST 2014]; root of context hierarchy
+19:34:30,288  INFO LoginService:29 - Intento de logueo con usuario incorrecto.
+19:34:30,289  INFO LoginService:30 - Usuario: asdasda

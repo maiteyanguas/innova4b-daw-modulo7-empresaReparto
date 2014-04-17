@@ -10,29 +10,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UsuarioService {
+public class LoginService {
 	
-	private static final Logger logger = Logger.getLogger(UsuarioService.class);
+	private static final Logger logger = Logger.getLogger(LoginService.class);
 	
 	@Autowired
 	EmpleadoDao empleadoDao;
+	
+	public void setEmpladoDao(EmpleadoDao empleadoDao){
+		this.empleadoDao = empleadoDao;
+	}
 
 	public Usuario getUsuario(String usuario, String password) throws UserNotFoundException, IncorrectPasswordException {
-		Usuario empleado;
+		Usuario user;
 		try {
-			empleado = empleadoDao.getByUsuario(usuario);
+			user = empleadoDao.getByUsuario(usuario);
 		} catch(IndexOutOfBoundsException exception){
 			logger.info("Intento de logueo con usuario incorrecto.");
 			logger.info("Usuario: "+usuario);
 			throw new UserNotFoundException("usuario no encontrado");
 		}
-		if (!empleado.getPassword().equals(password)){
+		if (!user.getPassword().equals(password)){
 			logger.info("Intento de logueo con password incorrecta.");
 			logger.info("Usuario: "+usuario);
 			logger.info("Password: "+password);
 			throw new IncorrectPasswordException("password incorrecta");	
 		}
-		return empleado;
+		return user;
 	}
 
 }

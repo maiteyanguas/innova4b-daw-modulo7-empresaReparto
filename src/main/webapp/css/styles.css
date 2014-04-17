@@ -32,7 +32,13 @@ div#header {
 
 div#header .right {
 	float: right;
+	width: 350px;
 }
+div#header .left {
+	float: left;
+	width: 350x;
+}
+
 
 div#container {
 	text-align: left;
@@ -48,6 +54,14 @@ div#content {
 
 div#content p {
 	line-height: 1.4
+}
+
+#content table{
+	padding-left: 5px
+}
+
+#content h2{
+	padding-left: 5px
 }
 
 div#navigation {
@@ -82,15 +96,91 @@ div#footer {
 	width: 100%
 }
 
+div.login {
+	position: absolute;
+	left: 50%;
+	margin-top: 200px;
+	margin-left: -200px; width : 400px;
+	padding: 20px;
+	background: #F6F0E0;
+	border-radius: 10px;
+	line-height: 10px;
+	width: 400px
+}
+
+div.login h1 {
+	background: #BFBD93;
+	line-height: 40px;
+	font-size: 1.5em;
+	text-align: center;
+}
+
+div.login p {
+	margin: 20px 0px;
+}
+
+div.login input {
+	width: 400px;
+	margin-bottom: 10px;
+}
+
+div.login p.submit {
+	text-align: right;
+}
+
+div.login input[type="submit"] {
+	width: 100px;
+}
+
 .error {
 	color: #ff0000;
 }
 
-.errorblock {
+.login-errorblock {
+	position: absolute;
+	left: 50%;
+	margin-top: 100px;
+	margin-left: -200px;
+	width: 400px;
 	color: #000;
 	background-color: #ffEEEE;
 	border: 3px solid #ff0000;
 	padding: 8px;
-	margin: 16px;
+} 
+
+.errorblock {
+	margin-left: 5px;
+	width: 400px;
+	color: #000;
+	background-color: #ffEEEE;
+	border: 3px solid #ff0000;
+	padding: 8px;
+}
+
+.link {
+	font-size: 1.5em;
+	color: #BFBD93;
+}
+
+input[type="submit"] {
+	background: #BFBD93;
+	height: 30px;
+	border:1px solid #268a16;
+	font-size: 1.2em;	
+}
+input[type="submit"]:hover {
+	cursor: hand;
+}
+
+.button {
+	display: inline-block;
+  	width: 50px;
+  	height: 20px;
+	background: #BFBD93;
+	border:1px solid #268a16;
+	font-size: 1.2em;	
+}
+.button :hover {
+	cursor: hand;
 }
 
