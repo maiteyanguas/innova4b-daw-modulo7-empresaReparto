@@ -1,0 +1,63 @@
+div.login {
+	position: absolute;
+	left: 50%;
+	margin-top: 200px;
+	margin-left: -200px; width : 400px;
+	padding: 20px;
+	background: #F6F0E0;
+	border-radius: 10px;
+	line-height: 10px;
+	width: 400px
+}
+
+div.login h1 {
+	background: #BFBD93;
+	line-height: 40px;
+	font-size: 1.5em;
+	text-align: center;
+}
+
+div.login p {
+	margin: 20px 0px;
+}
+
+div.login input {
+	width: 400px;
+	margin-bottom: 10px;
+}
+
+div.login p.submit {
+	text-align: right;
+}
+
+div.login input[type="submit"] {
+	width: 100px;
+}
+
+.error {
+	color: #ff0000;
+}
+
+.errorblock {
+	position: absolute;
+	left: 50%;
+	margin-top: 100px;
+	margin-left: -200px;
+	width: 400px;
+	color: #000;
+	background-color: #ffEEEE;
+	border: 3px solid #ff0000;
+	padding: 8px;
+} 
+
+input[type="submit"] {
+	background: #BFBD93;
+	height: 30px;
+	border:1px solid #268a16;
+	font-size: 1.2em;	
+}
+input[type="submit"]:hover {
+	cursor: hand;
+}
+
+

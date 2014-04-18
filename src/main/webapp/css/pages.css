@@ -1,24 +1,8 @@
-@CHARSET "UTF-8";
-
-html,body {
-	margin: 0;
-	padding: 0
-}
-
-body {
-	font: 76% arial, sans-serif;
-	text-align: center
-}
 
 p {
-	margin: 0 10px 10px
+	margin: 10px 5px
 }
 
-a {
-	padding: 5px;
-	text-decoration: none;
-	color: #000000;
-}
 
 div#header {
 	background-color: #F3F2ED;
@@ -26,7 +10,7 @@ div#header {
 	line-height: 80px;
 	margin: 0;
 	padding-left: 10px;
-	font-size: 1.5em;
+	font-size: 1.2em;
 }
 
 
@@ -52,17 +36,10 @@ div#content {
 }
 
 
-div#content p {
-	line-height: 1.4
-}
-
 #content table{
 	padding-left: 5px
 }
 
-#content h2{
-	padding-left: 5px
-}
 
 div#navigation {
 	background: #F6F0E0;
@@ -74,12 +51,11 @@ div#navigation {
 div#navigation ul {
 	margin: 15px;
 	padding: 0;
-	list-style-type: none;
 }
 
 div#navigation li {
 	margin-bottom: 5px;
-	font-size: 1.5em;
+	font-size: 1.2em;
 }
 
 div#footer {
@@ -96,57 +72,9 @@ div#footer {
 	width: 100%
 }
 
-div.login {
-	position: absolute;
-	left: 50%;
-	margin-top: 200px;
-	margin-left: -200px; width : 400px;
-	padding: 20px;
-	background: #F6F0E0;
-	border-radius: 10px;
-	line-height: 10px;
-	width: 400px
-}
-
-div.login h1 {
-	background: #BFBD93;
-	line-height: 40px;
-	font-size: 1.5em;
-	text-align: center;
-}
-
-div.login p {
-	margin: 20px 0px;
-}
-
-div.login input {
-	width: 400px;
-	margin-bottom: 10px;
-}
-
-div.login p.submit {
-	text-align: right;
-}
-
-div.login input[type="submit"] {
-	width: 100px;
-}
-
 .error {
 	color: #ff0000;
 }
-
-.login-errorblock {
-	position: absolute;
-	left: 50%;
-	margin-top: 100px;
-	margin-left: -200px;
-	width: 400px;
-	color: #000;
-	background-color: #ffEEEE;
-	border: 3px solid #ff0000;
-	padding: 8px;
-} 
 
 .errorblock {
 	margin-left: 5px;
@@ -158,8 +86,9 @@ div.login input[type="submit"] {
 }
 
 .link {
-	font-size: 1.5em;
+	font-size: 1.2em;
 	color: #BFBD93;
+	margin-bottom: 10px;
 }
 
 input[type="submit"] {
@@ -168,17 +97,19 @@ input[type="submit"] {
 	border:1px solid #268a16;
 	font-size: 1.2em;	
 }
+
 input[type="submit"]:hover {
 	cursor: hand;
 }
 
 .button {
 	display: inline-block;
-  	width: 50px;
+  	width: 60px;
   	height: 20px;
 	background: #BFBD93;
 	border:1px solid #268a16;
-	font-size: 1.2em;	
+	font-size: 1.2em;
+	padding: 5px;	
 }
 .button :hover {
 	cursor: hand;

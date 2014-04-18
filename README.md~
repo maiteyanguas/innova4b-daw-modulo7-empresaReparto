@@ -3,8 +3,8 @@ innova4b-daw-modulo7-empresaReparto
 
 Proyecto: empresas de reparto
 
-Los tests unitarios están en la carpeta: src/test
-Los tests de integración están en la carpeta: src/integration-test
+Los tests unitarios están en la carpeta:
+src/test
 
 Ejecución de tests unitarios: mvn clean test
 Ejecución de tests de integración: mvn clean verify -P integration-test

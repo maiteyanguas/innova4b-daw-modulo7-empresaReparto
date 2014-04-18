@@ -35,8 +35,7 @@ public class EmpresaDao {
 	}
 
 	public boolean hasCoches(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		return sessionFactory.getCurrentSession().createQuery("from Coche where empresa_id="+id).list().size()>0;
 	}
 	
 

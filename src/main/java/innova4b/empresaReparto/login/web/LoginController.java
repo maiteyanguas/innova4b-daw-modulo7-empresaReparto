@@ -16,6 +16,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @RequestMapping("/login")
 @Controller
@@ -34,8 +35,7 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value = "/add", method= RequestMethod.POST)
-	public String addLogin(HttpSession session, @Valid Usuario usuario, BindingResult result){
-		session.removeAttribute("error");
+	public String addLogin(HttpSession session, @Valid Usuario usuario, BindingResult result, RedirectAttributes redirect){
 		if (result.hasErrors()){
 			return "login/new";
 		}
@@ -46,12 +46,11 @@ public class LoginController {
 				session.setAttribute("menu", menuAdministrador);
 			else
 				session.setAttribute("menu", menuUsuario);
-			
 			return "redirect:/empresaReparto/empresa/list";
 		} catch (IncorrectPasswordException ipe) {
-			session.setAttribute("error", ipe.getMessage());
+			redirect.addFlashAttribute("error", ipe.getMessage());
 		} catch (UserNotFoundException une) {
-			session.setAttribute("error", une.getMessage());
+			redirect.addFlashAttribute("error", une.getMessage());
 		}
 		return "redirect:/empresaReparto/login/new";
 	}

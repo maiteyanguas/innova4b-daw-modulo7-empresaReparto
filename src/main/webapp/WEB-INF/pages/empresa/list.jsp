@@ -6,18 +6,18 @@
 
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="/css/styles.css">
+<link rel="stylesheet" type="text/css" href="/css/reset.css">
+<link rel="stylesheet" type="text/css" href="/css/pages.css">
 <title><spring:message code="lista.empresas" text="Lista de empresas"/></title>
 </head>
 <body>
 	<div id="container">
 		<jsp:include page="../header.jsp" />		
 			<div id="content">
-			<a class="link" href="/empresaReparto/empresa/new"><spring:message code="nueva.empresa" text="Nueva"/></a>
+			<p><a class="link" href="/empresaReparto/empresa/new"><spring:message code="nueva.empresa" text="Nueva"/></a></p>
 			<c:if test="${error!=null}">
 				<div class="errorblock">${error}</div>
 			</c:if>
-			<h2><spring:message code="lista.empresas" text="Lista de empresas"/></h2>
 			<table>
 				<tr>
 					<th><spring:message code="empresa.nombre" text="Nombre"/></th>
@@ -33,7 +33,6 @@
 						<td>${empresa.cif}</td>
 						<td>${empresa.telefono}</td>
 						<td>${empresa.email}</td>
-						<td>${empresa.fechaInicioAsString}</td>
 						<td>${empresa.fechaInicioAsString}</td>
 						<td><a href="/empresaReparto/empresa/delete/${empresa.id}"><img alt="borrar" src="/images/delete.jpeg" width="20" height="20"></a></td>
 					</tr>

@@ -4,13 +4,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title><spring:message code="nueva.empresa" text="Nueva empresa"/></title>
-<link rel="stylesheet" type="text/css" href="/css/styles.css">
+<link rel="stylesheet" type="text/css" href="/css/reset.css">
+<link rel="stylesheet" type="text/css" href="/css/pages.css">
 </head>
 <body>
 	<div id="container">
 		<jsp:include page="../header.jsp" />
 		<div id="content">
-			<h2><spring:message code="nueva.empresa" text="Nueva empresa"/></h2>
+			<p><spring:message code="nueva.empresa" text="Nueva empresa"/></p>
+			
 			<form:form method="post" modelAttribute="empresa" action="/empresaReparto/empresa/add">
 			<table>
 				<tr>
@@ -43,14 +45,12 @@
 						<form:errors path="fechaInicio" cssClass="error"/>
 					</td>
 				</tr>
-				<tr>
-					<spring:message code="guardar" text="Guardar" var="guardar"/>
-					<td colspan="2">
-						<input type="submit" value="${guardar}"/>
-						<a class="button" href="/empresaReparto/empresa/list"><spring:message code="volver" text="Volver"/></a>	
-					</td>
-				</tr>	
 			</table>
+			<p>
+				<spring:message code="guardar" text="Guardar" var="guardar"/>
+				<input type="submit" value="${guardar}"/>
+				<a class="button" href="/empresaReparto/empresa/list"><spring:message code="volver" text="Volver"/></a>	
+			</p>
 			</form:form>
 		</div>
 		<jsp:include page="../menu.jsp" />

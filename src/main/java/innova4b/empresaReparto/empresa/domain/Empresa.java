@@ -1,15 +1,9 @@
 package innova4b.empresaReparto.empresa.domain;
 
-import innova4b.empresaReparto.empleado.domain.Empleado;
-
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Past;
@@ -41,8 +35,18 @@ public class Empresa {
     @Past
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
 	@Column(name="fecha_inicio")
-	private LocalDate fechaInicio;
+	private LocalDate fechaInicio;	
 	
+	public Empresa(String nombre, String cif, Integer telefono, String email, String fechaInicio) {
+		this.nombre = nombre;
+		this.cif = cif;
+		this.telefono = telefono;
+		this.email = email;
+		this.setFechaInicio(fechaInicio);
+	}
+	
+	public Empresa() {}
+
 	public int getId() {
 		return id;
 	}
@@ -80,6 +84,10 @@ public class Empresa {
 	
 	public String getFechaInicioAsString(){
 		return fechaInicio==null?"":fechaInicio.toString(org.joda.time.format.DateTimeFormat.forPattern("dd/MM/yyyy"));
+	}
+	
+	public void setFechaInicio(String fInicio) {
+		this.fechaInicio = LocalDate.parse(fInicio,org.joda.time.format.DateTimeFormat.forPattern("dd/MM/yyyy"));
 	}
 	
 	public void setFechaInicio(LocalDate fechaInicio) {

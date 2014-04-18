@@ -5,13 +5,14 @@
 
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="/css/styles.css">
+<link rel="stylesheet" type="text/css" href="/css/reset.css">
+<link rel="stylesheet" type="text/css" href="/css/login.css">
 <title><spring:message code="identificacion" text="Identificación"/></title>
 </head>
 
 <body>
 	<c:if test="${error!=null}">
-		<div class="login-errorblock">${error}</div>
+		<div class="errorblock">${error}</div>
 	</c:if>
 
 	<div class="login">

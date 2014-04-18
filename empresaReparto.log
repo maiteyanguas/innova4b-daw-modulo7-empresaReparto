@@ -810,3 +810,18 @@ public void innova4b.empresaReparto.empresa.web.EmpresaController.newEmpresa(org
 17:13:16,818  INFO XmlWebApplicationContext:873 - Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Apr 17 17:12:02 CEST 2014]; root of context hierarchy
 19:34:30,288  INFO LoginService:29 - Intento de logueo con usuario incorrecto.
 19:34:30,289  INFO LoginService:30 - Usuario: asdasda
+10:48:32,210  INFO LoginService:29 - Intento de logueo con usuario incorrecto.
+10:48:32,247  INFO LoginService:30 - Usuario: asdasa
+10:52:43,827  INFO LoginService:29 - Intento de logueo con usuario incorrecto.
+10:52:43,830  INFO LoginService:30 - Usuario: asdas
+10:55:42,935  INFO LoginService:29 - Intento de logueo con usuario incorrecto.
+10:55:42,938  INFO LoginService:30 - Usuario: asdasda
+10:55:52,410  INFO LoginService:34 - Intento de logueo con password incorrecta.
+10:55:52,411  INFO LoginService:35 - Usuario: admin
+10:55:52,411  INFO LoginService:36 - Password: asdaadsa
+10:58:25,919  INFO LoginService:29 - Intento de logueo con usuario incorrecto.
+10:58:25,924  INFO LoginService:30 - Usuario: asdasda
+12:08:00,559  INFO LoginService:29 - Intento de logueo con usuario incorrecto.
+12:08:00,563  INFO LoginService:30 - Usuario: sdfsd
+12:08:06,819  INFO LoginService:29 - Intento de logueo con usuario incorrecto.
+12:08:06,827  INFO LoginService:30 - Usuario: admin
