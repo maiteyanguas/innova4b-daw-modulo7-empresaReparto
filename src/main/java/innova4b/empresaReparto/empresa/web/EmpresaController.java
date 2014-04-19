@@ -39,11 +39,29 @@ public class EmpresaController {
 		model.addAttribute("empresa",new Empresa());
 	}
 	
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+	public String editEmpresa(ModelMap model, @PathVariable("id") int id) {
+		if (!model.containsKey("empresa"))
+			model.addAttribute("empresa", empresaDao.get(id));
+		return "empresa/edit";
+	}
+	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String add(@Valid Empresa empresa, BindingResult result) {
 		if (result.hasErrors())
 			return "empresa/new";
 		empresaDao.insert(empresa);
+		return "redirect:/empresaReparto/empresa/list";
+	}
+	
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String update(@Valid Empresa empresa, BindingResult result, RedirectAttributes redirect) {
+		if (result.hasErrors()){
+			redirect.addFlashAttribute("org.springframework.validation.BindingResult.empresa", result);
+			redirect.addFlashAttribute("empresa",empresa);
+			return "redirect:/empresaReparto/empresa/edit/"+empresa.getId();
+		}
+		empresaDao.update(empresa);
 		return "redirect:/empresaReparto/empresa/list";
 	}
 	

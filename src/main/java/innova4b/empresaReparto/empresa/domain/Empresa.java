@@ -1,14 +1,21 @@
 package innova4b.empresaReparto.empresa.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -37,6 +44,14 @@ public class Empresa {
 	@Column(name="fecha_inicio")
 	private LocalDate fechaInicio;	
 	
+	//Cuando recupero empresas, recupero también direcciones
+	@OneToMany(mappedBy="empresa", fetch=FetchType.EAGER)
+	//Para borrar las direcciones de una empresa si la empresa se borra
+	//Para grabar las direcciones de una empresa cuando grabo una empresa
+	@Cascade({CascadeType.ALL})
+	private List<Direccion> direcciones;
+	
+
 	public Empresa(String nombre, String cif, Integer telefono, String email, String fechaInicio) {
 		this.nombre = nombre;
 		this.cif = cif;
@@ -92,6 +107,39 @@ public class Empresa {
 	
 	public void setFechaInicio(LocalDate fechaInicio) {
 		this.fechaInicio = fechaInicio;
-	}	
+	}
+	
+	public List<Direccion> getDirecciones() {
+		return direcciones;
+	}
 
+	public void setDirecciones(List<Direccion> direcciones) {
+		this.direcciones = direcciones;
+	}
+	
+	public Direccion getDireccionPrincipal(){
+		Direccion direccionPrincipal = null;
+		if (null!=direcciones && direcciones.size()>0){
+			direccionPrincipal = direcciones.get(0);
+			for (Direccion direccion : direcciones){
+				if (direccion.isPrincipal())
+					direccionPrincipal = direccion;
+			}
+		}
+		return direccionPrincipal;
+	}
+	
+	public String getDireccionPrincipalAsString(){
+		String direccionAsString = "";
+		Direccion direccion = getDireccionPrincipal();
+		if (direccion!=null)
+			direccionAsString =  direccion.getCalle()+" "+direccion.getPortal()+", "+direccion.getMunicipio();
+		return direccionAsString;
+	}
+	
+	public void addDireccion(Direccion direccion){
+		if (null==direcciones || direcciones.size()==0)
+			direcciones = new ArrayList<Direccion>();
+		direcciones.add(direccion);
+	}
 }

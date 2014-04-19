@@ -825,3 +825,23 @@ public void innova4b.empresaReparto.empresa.web.EmpresaController.newEmpresa(org
 12:08:00,563  INFO LoginService:30 - Usuario: sdfsd
 12:08:06,819  INFO LoginService:29 - Intento de logueo con usuario incorrecto.
 12:08:06,827  INFO LoginService:30 - Usuario: admin
+18:17:55,520  INFO LoginService:34 - Intento de logueo con password incorrecta.
+18:17:55,548  INFO LoginService:35 - Usuario: usuario
+18:17:55,549  INFO LoginService:36 - Password: password
+18:17:55,557  INFO LoginService:29 - Intento de logueo con usuario incorrecto.
+18:17:55,558  INFO LoginService:30 - Usuario: usuario
+18:31:48,412  INFO LoginService:34 - Intento de logueo con password incorrecta.
+18:31:48,413  INFO LoginService:35 - Usuario: usuario
+18:31:48,413  INFO LoginService:36 - Password: password
+18:31:48,420  INFO LoginService:29 - Intento de logueo con usuario incorrecto.
+18:31:48,420  INFO LoginService:30 - Usuario: usuario
+18:33:09,555  INFO LoginService:34 - Intento de logueo con password incorrecta.
+18:33:09,555  INFO LoginService:35 - Usuario: usuario
+18:33:09,555  INFO LoginService:36 - Password: password
+18:33:09,562  INFO LoginService:29 - Intento de logueo con usuario incorrecto.
+18:33:09,563  INFO LoginService:30 - Usuario: usuario
+18:51:26,161  INFO LoginService:34 - Intento de logueo con password incorrecta.
+18:51:26,161  INFO LoginService:35 - Usuario: usuario
+18:51:26,161  INFO LoginService:36 - Password: password
+18:51:26,168  INFO LoginService:29 - Intento de logueo con usuario incorrecto.
+18:51:26,168  INFO LoginService:30 - Usuario: usuario

@@ -21,8 +21,8 @@ public class EmpresaDao {
 		return (List<Empresa>)sessionFactory.getCurrentSession().createQuery("from Empresa").list();
 	} 
 	
-	public void insert (Empresa empresa) {
-		sessionFactory.getCurrentSession().save(empresa);
+	public int insert (Empresa empresa) {
+		return (Integer) sessionFactory.getCurrentSession().save(empresa);
 	}
 
 	public void delete(int id) {
@@ -36,6 +36,14 @@ public class EmpresaDao {
 
 	public boolean hasCoches(int id) {
 		return sessionFactory.getCurrentSession().createQuery("from Coche where empresa_id="+id).list().size()>0;
+	}
+
+	public Empresa get(int id) {
+		return (Empresa) sessionFactory.getCurrentSession().get(Empresa.class, id);
+	}
+
+	public void update(Empresa empresa) {
+		sessionFactory.getCurrentSession().update(empresa);
 	}
 	
 

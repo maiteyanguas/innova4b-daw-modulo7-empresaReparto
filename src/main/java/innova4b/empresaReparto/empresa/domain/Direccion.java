@@ -1,5 +1,7 @@
 package innova4b.empresaReparto.empresa.domain;
 
+
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,12 +10,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
+
 @Entity
 @Table(name="direccion")
 public class Direccion {
 	@Id
 	@GeneratedValue
-	private long id;
+	private int id;
 	private String calle;
 	private Integer portal;
 	private Integer piso;
@@ -25,11 +31,27 @@ public class Direccion {
 	@ManyToOne
 	@JoinColumn(name = "empresa_id", referencedColumnName = "id")
 	private Empresa empresa;
+	private Boolean principal;
+		
+	public Direccion(String calle, Integer portal, Integer piso,
+			String letra, String otros, Integer codigoPostal, String municipio,
+			Empresa empresa) {
+		this.calle = calle;
+		this.portal = portal;
+		this.piso = piso;
+		this.letra = letra;
+		this.otros = otros;
+		this.codigoPostal = codigoPostal;
+		this.municipio = municipio;
+		this.empresa = empresa;
+	}
+	
+	public Direccion(){}
 	
 	public long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getCalle() {
@@ -77,12 +99,14 @@ public class Direccion {
 	public Empresa getEmpresa() {
 		return empresa;
 	}
-	public void setPersona(Empresa empresa) {
+	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
 	}
-	
-	public String getDireccionSimple(){
-		return this.calle+" "+this.portal+", "+this.municipio;
+	public Boolean isPrincipal() {
+		return principal!=null?principal:false;
+	}
+	public void setPrincipal(Boolean principal) {
+		this.principal = principal;
 	}
 	
 	

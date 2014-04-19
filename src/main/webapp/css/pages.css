@@ -96,10 +96,7 @@ input[type="submit"] {
 	height: 30px;
 	border:1px solid #268a16;
 	font-size: 1.2em;	
-}
-
-input[type="submit"]:hover {
-	cursor: hand;
+	cursor: pointer;
 }
 
 .button {
@@ -111,7 +108,5 @@ input[type="submit"]:hover {
 	font-size: 1.2em;
 	padding: 5px;	
 }
-.button :hover {
-	cursor: hand;
-}
+
 

@@ -13,6 +13,7 @@
         http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<context:component-scan base-package="innova4b.empresaReparto" />
+	<context:property-placeholder location="classpath:/database.properties"/>
 	<mvc:annotation-driven/>
 	
 	<bean
@@ -47,9 +48,9 @@
 	<bean id="dataSource"
 	class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 	   <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-	   <property name="url" value="jdbc:mysql://localhost:3306/empresaReparto"/>
-	   <property name="username" value="root"/>
-	   <property name="password" value="root"/>
+	   <property name="url" value="${database.url}"/>
+	   <property name="username" value="${database.username}"/>
+	   <property name="password" value="${database.password}"/>
 	</bean> 
 
 	<bean id="mySessionFactory"
