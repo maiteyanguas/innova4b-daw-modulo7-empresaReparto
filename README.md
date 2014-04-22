@@ -30,5 +30,7 @@ Nivel de logueo: error
 Uso de plugin de maven de jetty como contenedor de servlets:
 Configuración de Reload: manual
 Arrancar la aplicación en perfil desarrollo: mvn jetty:run
-Arrancar la aplicación en perfil prod: mvn jetty:run -P prod 
+Arrancar la aplicación en perfil prod: mvn jetty:run -P prod
+
+Hace falta crear la carpeta ~/logs en el home del usuario 
 
