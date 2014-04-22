@@ -106,8 +106,7 @@ public class Empleado {
 	}
 	
 	public boolean is_Jefe(){
-		return false;
-		
+		return  this.jefe == null;
 	}
 
 }
