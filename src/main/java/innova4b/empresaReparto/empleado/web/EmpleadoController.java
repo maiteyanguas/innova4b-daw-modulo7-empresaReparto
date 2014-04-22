@@ -19,7 +19,7 @@ public class EmpleadoController {
 
 	///@Autowired
 	//EmpleadoService empleadoService;
-	//
+	///
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void list(ModelMap model) {
 		model.addAttribute("empleado", empleadoDao.list());	
