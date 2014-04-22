@@ -17,7 +17,7 @@ public class EmpleadoController {
 	@Autowired
 	EmpleadoDao empleadoDao;
 
-	//@Autowired
+	///@Autowired
 	//EmpleadoService empleadoService;
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
