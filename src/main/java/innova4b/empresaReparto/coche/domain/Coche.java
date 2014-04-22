@@ -25,7 +25,6 @@ public class Coche {
 	private String marca;
 	private String matricula;
 	private String modelo;
-	private Boolean disponible;
 
 	public int getId() {
 		return id;
@@ -81,14 +80,6 @@ public class Coche {
 
 	public void setModelo(String modelo) {
 		this.modelo = modelo;
-	}
-
-	public boolean isDisponible() {
-		return disponible;
-	}
-
-	public void setDisponible(boolean disponible) {
-		this.disponible = disponible;
 	}
 
 }

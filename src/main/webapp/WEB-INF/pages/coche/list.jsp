@@ -23,9 +23,6 @@
 					<th><spring:message code="coche.matricula" text="Matrícula"/></th>
 					<th><spring:message code="coche.kms" text="Kms"/></th>
 					<th><spring:message code="coche.combustible" text="Combustible"/></th>
-					<th><spring:message code="coche.disponible" text="Disponible"/></th>
-					<th><spring:message code="coche.fechaPrevistaInicio" text="Fecha Prev. Inicio"/></th>
-					<th><spring:message code="coche.fechaPrevistaDevolucion" text="Fecha Prev. Devolución"/></th>
 					<th/>
 					<th/>
 				</tr>
