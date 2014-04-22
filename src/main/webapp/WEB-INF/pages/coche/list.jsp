@@ -7,7 +7,7 @@
 <head>
 <link rel="stylesheet" type="text/css" href="/css/reset.css">
 <link rel="stylesheet" type="text/css" href="/css/pages.css">
-<title><spring:message code="lista.empresas" text="Lista de coches"/></title>
+<title><spring:message code="lista.coches" text="Lista de coches"/></title>
 </head>
 <body>
 	<div id="container">
