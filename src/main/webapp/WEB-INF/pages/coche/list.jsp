@@ -33,9 +33,6 @@
 						<td>${coche.matricula}</td>
 						<td>${coche.kms}</td>
 						<td>${coche.combustible}</td>
-						<td>${coche.disponible}</td>
-						<td>${coche.fechaPrevistaInicio}</td>
-						<td>${coche.fechaPrevistaDevolucion}</td>
 						<td><a href="/empresaReparto/coche/select/${coche.id}"><img alt="seleccionar" src="/images/edit.png" width="20" height="20"></a></td>
 					</tr>
 				</c:forEach>
