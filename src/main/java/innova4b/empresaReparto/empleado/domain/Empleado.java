@@ -17,12 +17,12 @@ import innova4b.empresaReparto.empresa.domain.Empresa;
 public class Empleado {
 	@Id
 	@GeneratedValue
-	private int id;
+	private Integer id;
 	@ManyToOne
 	@JoinColumn(name="empresa_id", referencedColumnName="id")
 	private Empresa empresa;
 	
-	private int activo;
+	private Integer activo;
 	private String dni;
 	private String nombre;
 	private String apellido1;
@@ -31,7 +31,7 @@ public class Empleado {
 	private String telefono;
 	private String email;
 	
-	private int jefe;
+	private Integer jefe;
 	public int getId() {
 		return id;
 	}
@@ -98,7 +98,16 @@ public class Empleado {
 	public void setJefe(int jefe) {
 		this.jefe = jefe;
 	}
+	public void setActivo(Integer activo) {
+		this.activo = activo;
+	}
+	public void setJefe(Integer jefe) {
+		this.jefe = jefe;
+	}
 	
-	
+	public boolean is_Jefe(){
+		return false;
+		
+	}
 
 }
