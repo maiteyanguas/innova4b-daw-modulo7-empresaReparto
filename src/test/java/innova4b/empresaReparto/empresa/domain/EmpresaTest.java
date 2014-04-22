@@ -32,7 +32,7 @@ public class EmpresaTest {
 	}
 	
 	@Test
-	public void getDireccionPrincipal_devuelve_una_direccion_cualquiera_en_caso_de_que_haya_definada_más_de_una(){
+	public void getDireccionPrincipal_devuelve_una_direccion_cualquiera_en_caso_de_que_haya_definida_mas_de_una(){
 		direccion1.setPrincipal(true);
 		direccion2.setPrincipal(true);
 		empresa.addDireccion(direccion1);
