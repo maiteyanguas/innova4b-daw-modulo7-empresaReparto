@@ -1,5 +1,8 @@
 package innova4b.empresaReparto.empleado.repository;
 
+import java.util.List;
+
+import innova4b.empresaReparto.empleado.domain.Empleado;
 import innova4b.empresaReparto.login.domain.Usuario;
 
 import org.hibernate.SessionFactory;
@@ -16,6 +19,10 @@ public class EmpleadoDao {
 	
 	public Usuario getByUsuario(String usuario) throws IndexOutOfBoundsException {
 		return (Usuario)sessionFactory.getCurrentSession().createQuery("from Usuario where usuario=?").setString(0, usuario).list().get(0);
+	} 
+	
+	public List<Empleado>list() {
+		return sessionFactory.getCurrentSession().createQuery("from Empleado").list();
 	} 
 
 }
