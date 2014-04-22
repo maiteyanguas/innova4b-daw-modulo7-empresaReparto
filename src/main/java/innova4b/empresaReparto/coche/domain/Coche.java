@@ -20,12 +20,12 @@ public class Coche {
 	@JoinColumn(name = "empresa_id", referencedColumnName = "id")
 	private Empresa empresa;
 
-	private int kilometros;
+	private Integer kms;
 	private String combustible;
 	private String marca;
 	private String matricula;
 	private String modelo;
-	private boolean disponible;
+	private Boolean disponible;
 
 	public int getId() {
 		return id;
@@ -43,12 +43,12 @@ public class Coche {
 		this.empresa = empresa;
 	}
 
-	public int getKilometros() {
-		return kilometros;
+	public Integer getKms() {
+		return kms;
 	}
 
-	public void setKilometros(int kilometros) {
-		this.kilometros = kilometros;
+	public void setKms(Integer kms) {
+		this.kms = kms;
 	}
 
 	public String getCombustible() {
