@@ -9,28 +9,77 @@ import javax.persistence.Table;
 
 import innova4b.empresaReparto.empresa.domain.Empresa;
 
-
 @Entity
-@Table(name="coche")
+@Table(name = "coche")
 public class Coche {
-	
+
 	@Id
 	@GeneratedValue
 	private int id;
 	@ManyToOne
-	@JoinColumn(name="empresa_id", referencedColumnName="id")
+	@JoinColumn(name = "empresa_id", referencedColumnName = "id")
 	private Empresa empresa;
+
+	private Integer kms;
+	private String combustible;
+	private String marca;
+	private String matricula;
+	private String modelo;
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public Empresa getEmpresa() {
 		return empresa;
 	}
+
 	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
+	}
+
+	public Integer getKms() {
+		return kms;
+	}
+
+	public void setKms(Integer kms) {
+		this.kms = kms;
+	}
+
+	public String getCombustible() {
+		return combustible;
+	}
+
+	public void setCombustible(String combustible) {
+		this.combustible = combustible;
+	}
+
+	public String getMarca() {
+		return marca;
+	}
+
+	public void setMarca(String marca) {
+		this.marca = marca;
+	}
+
+	public String getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
+	}
+
+	public String getModelo() {
+		return modelo;
+	}
+
+	public void setModelo(String modelo) {
+		this.modelo = modelo;
 	}
 
 }
