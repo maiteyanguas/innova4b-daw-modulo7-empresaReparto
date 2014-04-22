@@ -22,7 +22,7 @@ public class EmpleadoController {
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void list(ModelMap model) {
-		//model.addAttribute("empleado", empleadoDao.list());	
+		model.addAttribute("empleado", empleadoDao.list());	
 	}
 
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
