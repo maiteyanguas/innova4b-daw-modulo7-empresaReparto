@@ -24,7 +24,7 @@ public class ReservaDao {
 	} 
 	
 	public List<Reserva> listBetweenDates(LocalDate dateFirst, LocalDate dateLast) {
-		return (List<Reserva>) sessionFactory.getCurrentSession().createQuery("from Reserva where fecha_inicio >= "+dateFirst+" and fecha_devolucion_prevista <= "+dateLast+"" ).list();
+		return (List<Reserva>) sessionFactory.getCurrentSession().createQuery("from Reserva where fechaInicio >= "+dateFirst+" and fechaDevolucionPrevista <= "+dateLast+"" ).list();
 	}
 	
 	public int insert (Reserva reserva) {
@@ -37,7 +37,7 @@ public class ReservaDao {
 	}
 
 	public boolean isCarFreeBetweenDates(Reserva reserva, LocalDate dateFirst, LocalDate dateLast) {
-		return sessionFactory.getCurrentSession().createQuery("from Reserva where coche = "+reserva.getCoche()+" fecha_inicio >= "+dateFirst+" and fecha_devolucion_prevista <= "+dateLast+"" ).list().size()>0;
+		return sessionFactory.getCurrentSession().createQuery("from Reserva where coche = "+reserva.getCoche()+" fechaInicio >= "+dateFirst+" and fechaDevolucionPrevista <= "+dateLast+"" ).list().size()>0;
 	}
 	
 	public Reserva get(int id) {
