@@ -13,6 +13,10 @@
 		<div id="content">
 			<p><spring:message code="nueva.reserva" text="Nueva reserva"/></p>
 			
+			<c:if test="${error!=null}">
+				<div class="errorblock">${error}</div>
+			</c:if>
+
 			<form:form method="post" modelAttribute="reserva" action="/empresaReparto/reserva/add">
 			<table>
 				<tr>
