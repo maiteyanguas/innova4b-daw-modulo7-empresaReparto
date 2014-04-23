@@ -25,13 +25,11 @@ public class Reserva {
 	@GeneratedValue
 	private int id;
 
-	@NotEmpty
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
 	@Column(name="fecha_inicio")
 	private Date fechaInicio;
 
-	@NotEmpty
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
 	@Column(name="fecha_devolucion")
