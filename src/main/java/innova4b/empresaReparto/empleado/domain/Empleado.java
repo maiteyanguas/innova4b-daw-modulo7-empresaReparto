@@ -2,12 +2,15 @@ package innova4b.empresaReparto.empleado.domain;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 import innova4b.empresaReparto.empresa.domain.Empresa;
 
@@ -22,6 +25,12 @@ public class Empleado {
 	@JoinColumn(name="empresa_id", referencedColumnName="id")
 	private Empresa empresa;
 	
+	@NotEmpty
+	private String usuario;
+	@NotEmpty
+	private String password;
+	private String rol;
+	
 	private Integer activo;
 	private String dni;
 	private String nombre;
@@ -31,13 +40,21 @@ public class Empleado {
 	private String telefono;
 	private String email;
 	
-	private Integer jefe;
-	
-	public int getId() {
+	@ManyToOne(cascade={CascadeType.ALL})
+	@JoinColumn(name="jefe")
+	private Empleado jefe;
+
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
+	}
+	public Empleado getJefe() {
+		return jefe;
+	}
+	public void setJefe(Empleado jefe) {
+		this.jefe = jefe;
 	}
 	public Empresa getEmpresa() {
 		return empresa;
@@ -93,21 +110,31 @@ public class Empleado {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getJefe() {
-		return jefe;
-	}
-	public void setJefe(int jefe) {
-		this.jefe = jefe;
-	}
+
 	public void setActivo(Integer activo) {
 		this.activo = activo;
 	}
-	public void setJefe(Integer jefe) {
-		this.jefe = jefe;
-	}
 	
-	public boolean isJefe(){
-		return jefe == null;		
+	public boolean is_Jefe(){
+		return  this.jefe == null;
 	}
-
+	public String getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getRol() {
+		return rol;
+	}
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
+ 
 }
