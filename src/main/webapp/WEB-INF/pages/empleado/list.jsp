@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -16,7 +15,7 @@
 	<div id="container">
 		<jsp:include page="../header.jsp" />		
 			<div id="content">
-			<p><a class="link" href="/empresaReparto/empleado/new"><spring:message code="nueva.empleado" text="Nueva"/></a></p>
+			<p><a class="link" href="/empresaReparto/empleado/new"><spring:message code="nuevo.empleado" text="Nuevo Empleado"/></a></p>
 			<c:if test="${error!=null}">
 				<div class="errorblock">${error}</div>
 			</c:if> 
@@ -32,16 +31,16 @@
 					<th/>
 					<th/>
 				</tr>
-				<c:forEach items="${empleados}" var="empleado">
-					<tr>
+				 
+				<c:forEach items="${empleado}" var="empleado">
+					<tr> 
 						<td>${empleado.nombre}</td>
 						<td>${empleado.apellido1}</td>
-						<td>${empleado.apellido2}</td>
-						<td>${empleado.empresa}</td>
+						<td>${empleado.apellido2}</td> 
+					 	<td>${empleado.empresa.nombre}</td> 
 						<td>${empleado.fechaNacimiento}</td>
 						<td>${empleado.email}</td>
-						<td>${empleado.telefono}</td>
-		  				
+						<td>${empleado.telefono}</td> 		
 						<td><a href="/empresaReparto/empleado/edit/${empleado.id}"><img alt="editar" src="/images/edit.png" width="20" height="20"></a></td>
 						<td><a href="/empresaReparto/empleado/delete/${empleado.id}"><img alt="borrar" src="/images/delete.jpeg" width="20" height="20"></a></td>
 					

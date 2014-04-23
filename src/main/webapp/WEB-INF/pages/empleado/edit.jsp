@@ -15,6 +15,24 @@
 			<form:form method="post" modelAttribute="empleado" action="/empresaReparto/empleado/update">
 			<form:hidden path="id"/>
 			<table>
+				<tr> 
+					<td><spring:message code="nuevo.datosUsuario" text="Datos de Usuario"/></td>
+				</tr>
+				<tr>
+					<td><form:label path="usuario"><spring:message code="empleado.usuario" text="Usuario"/>:</form:label></td>
+					<td><form:input path="usuario"></form:input>
+						<form:errors path="usuario" cssClass="error"/>
+					</td>
+				</tr>
+				<tr>
+					<td><form:label path="pass"><spring:message code="empleado.pass" text="Contraseña"/>:</form:label></td>
+					<td><form:input path="pass"></form:input>
+						<form:errors path="pass" cssClass="error"/>
+					</td>
+				</tr>
+				<tr> 
+					<td><spring:message code="nuevo.datosPersonales" text="Datos personales"/></td>
+				</tr>	
 				<tr>
 					<td><form:label path="nombre"><spring:message code="empleado.nombre" text="Nombre"/>:</form:label></td>
 					<td><form:input path="nombre"></form:input>
