@@ -16,8 +16,11 @@ public class CocheDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	public List<Coche> listWithOutIncidencia() {
+		return (List<Coche>)sessionFactory.getCurrentSession().createQuery("from Coche as c where size(c.incidencias)=0").list();
+	} 
+
 	public List<Coche> list() {
 		return (List<Coche>)sessionFactory.getCurrentSession().createQuery("from Coche").list();
 	} 
-
 }

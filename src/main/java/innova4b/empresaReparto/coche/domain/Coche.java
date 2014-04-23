@@ -14,6 +14,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
+import innova4b.empresaReparto.empleado.domain.Empleado;
 import innova4b.empresaReparto.empresa.domain.Empresa;
 import innova4b.empresaReparto.incidencia.domain.Incidencia;
 import innova4b.empresaReparto.reserva.domain.Reserva;
@@ -51,6 +52,7 @@ public class Coche {
 		this.incidencias = incidencias;
 	}
 
+	
 	public int getId() {
 		return id;
 	}

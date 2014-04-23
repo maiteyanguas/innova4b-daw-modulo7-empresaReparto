@@ -43,9 +43,9 @@ insert into reserva (id, fecha_devolucion, fecha_devolucion_prevista, fecha_inic
 insert into reserva (id, fecha_devolucion, fecha_devolucion_prevista, fecha_inicio, fecha_inicio_prevista, coche_id, empleado_id) values (2, "2014/2/2", "2014/2/6", "2014/2/2", "2014/2/6", 1, 2);
 insert into reserva (id, fecha_devolucion, fecha_devolucion_prevista, fecha_inicio, fecha_inicio_prevista, coche_id, empleado_id) values (3, "2014/4/20", "2014/4/30", null, null, 2, 2);
 
-insert into incidencia (id, descripcion, fechaCreacion, fechaResolucion, resuelta, idUsuarioCreacion, idUsuarioResolucion, resolucion) values (1, 'Se ha pinchado la rueda', '2014-04-09', '2014-04-10', 1, 1, 13, 'Se ha cambiado la rueda');
-insert into incidencia (id, descripcion, fechaCreacion, fechaResolucion, resuelta, idUsuarioCreacion, idUsuarioResolucion, resolucion) values (2, 'Fallo del embrague', '2009-06-07', null, 0, 1, 16, null);
-insert into incidencia (id, descripcion, fechaCreacion, fechaResolucion, resuelta, idUsuarioCreacion, idUsuarioResolucion, resolucion) values (3, 'Rotura de lunas', '2004-04-09', '2005-04-10', 1, 1, 7, 'Hemos ido a Carglass');
-insert into incidencia (id, descripcion, fechaCreacion, fechaResolucion, resuelta, idUsuarioCreacion, idUsuarioResolucion, resolucion) values (4, 'Fallo de arranque', '2007-09-09', '2007-10-10', 1, 1, 9, 'Cambio de bateria/bujias/aceite');
+insert into incidencia (id, descripcion, fechaCreacion, fechaResolucion, resuelta, coche_id, idUsuarioCreacion, idUsuarioResolucion, resolucion) values (1, 'Se ha pinchado la rueda', '2014-04-09', '2014-04-10', 1, 1, 1, 13, 'Se ha cambiado la rueda');
+insert into incidencia (id, descripcion, fechaCreacion, fechaResolucion, resuelta, coche_id, idUsuarioCreacion, idUsuarioResolucion, resolucion) values (2, 'Fallo del embrague', '2009-06-07', null, 0, 2, 1, 16, null);
+insert into incidencia (id, descripcion, fechaCreacion, fechaResolucion, resuelta, coche_id, idUsuarioCreacion, idUsuarioResolucion, resolucion) values (3, 'Rotura de lunas', '2004-04-09', '2005-04-10', 1, 2, 1, 7, 'Hemos ido a Carglass');
+insert into incidencia (id, descripcion, fechaCreacion, fechaResolucion, resuelta, coche_id, idUsuarioCreacion, idUsuarioResolucion, resolucion) values (4, 'Fallo de arranque', '2007-09-09', '2007-10-10', 1, 3, 1, 9, 'Cambio de bateria/bujias/aceite');
 
 
