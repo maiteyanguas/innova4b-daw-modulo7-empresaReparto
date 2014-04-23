@@ -1,4 +1,4 @@
-package innova4b.empresaReparto.reserva.domain;
+package innova4b.empresaReparto.reserva.repository;
 
 import innova4b.empresaReparto.coche.domain.Coche;
 import innova4b.empresaReparto.reserva.domain.Reserva;

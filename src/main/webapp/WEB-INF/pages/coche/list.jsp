@@ -18,6 +18,7 @@
 			</c:if>
 			<table>
 				<tr>
+					<jsp:include page="filtro.jsp" />
 					<th><spring:message code="coche.modelo" text="Modelo"/></th>
 					<th><spring:message code="coche.marca" text="Marca"/></th>
 					<th><spring:message code="coche.matricula" text="Matrícula"/></th>
@@ -33,7 +34,7 @@
 						<td>${coche.matricula}</td>
 						<td>${coche.kms}</td>
 						<td>${coche.combustible}</td>
-						<td><a href="/empresaReparto/coche/select/${coche.id}"><img alt="seleccionar" src="/images/edit.png" width="20" height="20"></a></td>
+						<td><a href="/empresaReparto/reserva/new/${coche.id}"><img alt="seleccionar" src="/images/select.png" width="32" height="32"></a></td>
 					</tr>
 				</c:forEach>
 			</table>
