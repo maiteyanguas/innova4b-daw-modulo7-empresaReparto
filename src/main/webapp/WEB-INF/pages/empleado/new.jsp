@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title><spring:message code="nuevo.empleado" text="Nuevo empleado"/></title>
@@ -11,9 +12,8 @@
 	<div id="container">
 		<jsp:include page="../header.jsp" />
 		<div id="content">
-			<form:form method="post" modelAttribute="empleado" action="/empresaReparto/empleado/add">
 			<p><spring:message code="nuevo.empleado" text="Nuevo empleado"/></p>
-			
+			<form:form method="post" modelAttribute="empleado" action="/empresaReparto/empleado/add">
 			<table>
 				<tr> 
 					<td><spring:message code="nuevo.datosUsuario" text="Datos Usuario"/></td>
@@ -25,9 +25,9 @@
 					</td>
 				</tr>
 				<tr>
-					<td><form:label path="pass"><spring:message code="empleado.pass" text="Contraseña"/>:</form:label></td>
-					<td><form:input path="pass"></form:input>
-						<form:errors path="pass" cssClass="error"/>
+					<td><form:label path="password"><spring:message code="empleado.password" text="Contraseña"/>:</form:label></td>
+					<td><form:input path="password"></form:input>
+						<form:errors path="password" cssClass="error"/>
 					</td>
 				</tr>
 			
@@ -54,8 +54,15 @@
 				</tr>
 				<tr>
 					<td><form:label path="empresa"><spring:message code="empleado.empresa" text="Empresa"/>:</form:label></td>
-					<td><form:input path="empresa"></form:input>
-						<form:errors path="empresa" cssClass="error"/>
+					<td><!--<form:input path="empresa"></form:input>
+						<form:errors path="empresa" cssClass="error"/> -->
+					
+					<form:select path="empresa">
+						<c:forEach items="${empresa}" var="empresa">
+							<form:options items="${empresa.nombre}" />
+						</c:forEach> 
+					</form:select>
+				 	<form:errors path="empresa" cssClass="error"/> 	
 					</td>
 				</tr>
 					<tr>
