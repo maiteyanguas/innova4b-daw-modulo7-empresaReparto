@@ -16,15 +16,15 @@
 			<form:form method="post" modelAttribute="reserva" action="/empresaReparto/reserva/add">
 			<table>
 				<tr>
-					<td><form:label path="fechaPrevistaInicio"><spring:message code="reserva.fechaPrevistaInicio" text="Fecha Prevista Inicio"/>:</form:label></td>
-					<td><form:input path="fechaPrevistaInicio"></form:input>
-						<form:errors path="fechaPrevistaInicio" cssClass="error"/>
+					<td><form:label path="fechaInicioPrevista"><spring:message code="reserva.fechaInicioPrevista" text="Fecha Prevista Inicio"/>:</form:label></td>
+					<td><form:input path="fechaInicioPrevista"></form:input>
+						<form:errors path="fechaInicioPrevista" cssClass="error"/>
 					</td>
 				</tr>
 				<tr>
-					<td><form:label path="fechaPrevistaDevolucion"><spring:message code="reserva.fechaPrevistaDevolucion" text="Fecha Prevista Devolución"/>:</form:label></td>
-					<td><form:input path="fechaPrevistaDevolucion"></form:input>
-						<form:errors path="fechaPrevistaDevolucion" cssClass="error"/>
+					<td><form:label path="fechaDevolucionPrevista"><spring:message code="reserva.fechaDevolucionPrevista" text="Fecha Prevista Devolución"/>:</form:label></td>
+					<td><form:input path="fechaDevolucionPrevista"></form:input>
+						<form:errors path="fechaDevolucionPrevista" cssClass="error"/>
 					</td>
 				</tr>
 			</table>
