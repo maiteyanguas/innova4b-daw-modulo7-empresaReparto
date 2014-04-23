@@ -1,5 +1,7 @@
 package innova4b.empresaReparto.empleado.web;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import innova4b.empresaReparto.empleado.domain.Empleado;
@@ -36,12 +38,13 @@ public class EmpleadoController {
 	public void newEmpleado(ModelMap model) {
 		model.addAttribute("empresa",empresaDao.list());
 		model.addAttribute("empleado",new Empleado());
+		model.addAttribute("empresas", empresaDao.list());
 	}
 
-	@RequestMapping(value = "/edit/{nombreUsuario}", method = RequestMethod.GET)
-	public String editEmpleado(ModelMap model, @PathVariable("nombreUsuario") String nombreUsuario) {
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+	public String editEmpleado(ModelMap model, @PathVariable("id") String id) {
 		if (!model.containsKey("empleado"))
-			model.addAttribute("empleado", empleadoDao.getByUsuario(nombreUsuario));
+			model.addAttribute("empleado", empleadoDao.getByUsuario(id));
 		return "empleado/edit";
 	}
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
