@@ -9,11 +9,11 @@ INSERT INTO `empresa` (`id`,`nombre`,`cif`,`telefono`,`email`,`fecha_inicio`) VA
 INSERT INTO `empresa` (`id`,`nombre`,`cif`,`telefono`,`email`,`fecha_inicio`) VALUES (4,'Azkar','Z2356824K',943554426,'soporte@azkar.com','2009-11-11');
 INSERT INTO `empresa` (`id`,`nombre`,`cif`,`telefono`,`email`,`fecha_inicio`) VALUES (5,'Rayo','M2351156H',943441416,'soporte@rayo.com','2009-10-01');
 
-INSERT INTO `direccion` (`id`,`calle`,`portal`,`piso`,`letra`,`otros`,`codigo_postal`,`municipio`,`empresa_id`,`principal`) VALUES (1,'San Francisco Javier',15,NULL,NULL,'Arga Eraikina',36301,'IruÃ±ea',1,true);
-INSERT INTO `direccion` (`id`,`calle`,`portal`,`piso`,`letra`,`otros`,`codigo_postal`,`municipio`,`empresa_id`,`principal`) VALUES (2,'Paseo ButrÃ³n',42,2,'D',NULL,20401,'Hondarribia',1,false);
-INSERT INTO `direccion` (`id`,`calle`,`portal`,`piso`,`letra`,`otros`,`codigo_postal`,`municipio`,`empresa_id`,`principal`) VALUES (3,'Paseo ButrÃ³n',42,2,'D',NULL,20401,'Hondarribia',2,true);
+INSERT INTO `direccion` (`id`,`calle`,`portal`,`piso`,`letra`,`otros`,`codigo_postal`,`municipio`,`empresa_id`,`principal`) VALUES (1,'San Francisco Javier',15,NULL,NULL,'Arga Eraikina',36301,'Iruñea',1,true);
+INSERT INTO `direccion` (`id`,`calle`,`portal`,`piso`,`letra`,`otros`,`codigo_postal`,`municipio`,`empresa_id`,`principal`) VALUES (2,'Paseo Butrón',42,2,'D',NULL,20401,'Hondarribia',1,false);
+INSERT INTO `direccion` (`id`,`calle`,`portal`,`piso`,`letra`,`otros`,`codigo_postal`,`municipio`,`empresa_id`,`principal`) VALUES (3,'Paseo Butrón',42,2,'D',NULL,20401,'Hondarribia',2,true);
 INSERT INTO `direccion` (`id`,`calle`,`portal`,`piso`,`letra`,`otros`,`codigo_postal`,`municipio`,`empresa_id`,`principal`) VALUES (4,'Lezo',5,3,'','',20301,'Leitza',2,false);
-INSERT INTO `direccion` (`id`,`calle`,`portal`,`piso`,`letra`,`otros`,`codigo_postal`,`municipio`,`empresa_id`,`principal`) VALUES (5,'Bustitzuri',5,5,'C','',36301,'IruÃ±ea',5,true);
+INSERT INTO `direccion` (`id`,`calle`,`portal`,`piso`,`letra`,`otros`,`codigo_postal`,`municipio`,`empresa_id`,`principal`) VALUES (5,'Bustitzuri',5,5,'C','',36301,'Iruñea',5,true);
 
 insert into empleado(id,usuario,password,rol,empresa_id) values (1,'admin','123456','a',null);
 insert into empleado(id,usuario,password,rol,empresa_id) values (2,'aarandia','123456','u',1);
@@ -38,6 +38,6 @@ insert into coche(id, combustible, kms, marca, matricula, modelo, empresa_id) va
 insert into coche(id, combustible, kms, marca, matricula, modelo, empresa_id) values (4, 'gasoil', 12345, 'ford', '1234www', 'kuga',4);
 insert into coche(id, combustible, kms, marca, matricula, modelo, empresa_id) values (5, 'gasoil', 12345, 'ford', '1234www', 'kuga',4);
 
-insert into reserva (id, fecha_devolucion, fecha_devolucion_prevista, fecha_inicio, fecha_inicio_prevista, coche_id, empleado_id) values (1, "2014/2/1", "2014/2/5", "2014/2/1", "2014/2/5", 1, 3);
-insert into reserva (id, fecha_devolucion, fecha_devolucion_prevista, fecha_inicio, fecha_inicio_prevista, coche_id, empleado_id) values (2, "2014/2/2", "2014/2/6", "2014/2/2", "2014/2/6", 1, 2);
-insert into reserva (id, fecha_devolucion, fecha_devolucion_prevista, fecha_inicio, fecha_inicio_prevista, coche_id, empleado_id) values (3, "2014/4/20", "2014/4/30", null, null, 2, 2);
+insert into reserva (id, fecha_devolucion, fecha_devolucion_prevista, fecha_inicio, fecha_inicio_prevista, coche_id, empleado_id) values (1, "01/02/2014", "02/02/2014", "01/02/2014", "05/02/2014", 1, 3);
+insert into reserva (id, fecha_devolucion, fecha_devolucion_prevista, fecha_inicio, fecha_inicio_prevista, coche_id, empleado_id) values (2, "01/02/2014", "01/02/2014", "01/02/2014", "01/02/2014", 1, 2);
+insert into reserva (id, fecha_devolucion, fecha_devolucion_prevista, fecha_inicio, fecha_inicio_prevista, coche_id, empleado_id) values (3, "01/02/2014", "01/02/2014", null, null, 2, 2);
