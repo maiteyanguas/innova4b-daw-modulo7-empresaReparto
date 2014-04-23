@@ -32,6 +32,7 @@ public class Empleado {
 	private String email;
 	
 	private Integer jefe;
+	
 	public int getId() {
 		return id;
 	}
@@ -105,9 +106,8 @@ public class Empleado {
 		this.jefe = jefe;
 	}
 	
-	public boolean is_Jefe(){
-		return false;
-		
+	public boolean isJefe(){
+		return jefe == null;		
 	}
 
 }

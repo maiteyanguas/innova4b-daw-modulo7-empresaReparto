@@ -6,6 +6,7 @@ import innova4b.empresaReparto.empleado.domain.Empleado;
 import innova4b.empresaReparto.empresa.domain.Empresa;
 import innova4b.empresaReparto.login.domain.Usuario;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -32,6 +33,11 @@ public class EmpleadoDao {
 	
 	public void update(Empleado empleado) {
 		sessionFactory.getCurrentSession().update(empleado);
+	}
+	
+	public void delete(int id) {
+		Session session = sessionFactory.getCurrentSession();
+		sessionFactory.getCurrentSession().delete(session.get(Empleado.class,id));
 	}
 
 }
