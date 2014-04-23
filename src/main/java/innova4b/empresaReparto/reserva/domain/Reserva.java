@@ -13,6 +13,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Type;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name = "reserva")
 public class Reserva {
@@ -21,24 +25,36 @@ public class Reserva {
 	@GeneratedValue
 	private int id;
 
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
 	@Column(name="fecha_inicio")
 	private Date fechaInicio;
 
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
 	@Column(name="fecha_devolucion")
 	private Date fechaDevolucion;
 
+	@NotEmpty
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
 	@Column(name="fecha_inicio_prevista")
 	private Date fechaInicioPrevista;
 
+	@NotEmpty
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
 	@Column(name="fecha_devolucion_prevista")
 	private Date fechaDevolucionPrevista;
 	
 	@ManyToOne
 	@JoinColumn(name="empleado_id", referencedColumnName="id")
+	@NotEmpty
 	private Empleado empleado;
 	
 	@ManyToOne
 	@JoinColumn(name="coche_id", referencedColumnName="id")
+	@NotEmpty
 	private Coche coche;
 	
 	public int getId() {
