@@ -15,9 +15,15 @@ public class CocheController {
 	@Autowired
 	CocheDao cocheDao;
 	
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	//Lista los coches sin incidencias
+	@RequestMapping(value = "/listWithOutIncidencias", method = RequestMethod.GET)
 	public void list(ModelMap model) {
-		model.addAttribute("coches", cocheDao.list());	
+		model.addAttribute("coches", cocheDao.listWithOutIncidencia());	
 	}
 
+	//Lista todos los coches
+	@RequestMapping(value = "/listAll", method = RequestMethod.GET)
+	public void listAll(ModelMap model) {
+		model.addAttribute("coches", cocheDao.listAll());	
+	}
 }
