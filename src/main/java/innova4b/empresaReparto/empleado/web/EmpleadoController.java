@@ -31,7 +31,7 @@ public class EmpleadoController {
 
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public void newEmpresa(ModelMap model) {
-		model.addAttribute("empleado",new Empresa());
+		model.addAttribute("empleado",new Empleado());
 	}
 
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
