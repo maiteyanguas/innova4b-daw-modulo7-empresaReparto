@@ -15,6 +15,7 @@ import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
 import innova4b.empresaReparto.empresa.domain.Empresa;
+import innova4b.empresaReparto.incidencia.domain.Incidencia;
 import innova4b.empresaReparto.reserva.domain.Reserva;
 
 @Entity
@@ -37,6 +38,18 @@ public class Coche {
 	@OneToMany(mappedBy="coche", fetch=FetchType.EAGER)
 	@Cascade({CascadeType.ALL})
 	private List<Reserva> reservas;
+	
+	@OneToMany(mappedBy="coche", fetch=FetchType.EAGER)
+	@Cascade({CascadeType.ALL})
+	private List<Incidencia> incidencias;
+
+	public List<Incidencia> getIncidencias() {
+		return incidencias;
+	}
+
+	public void setIncidencias(List<Incidencia> incidencias) {
+		this.incidencias = incidencias;
+	}
 
 	public int getId() {
 		return id;
