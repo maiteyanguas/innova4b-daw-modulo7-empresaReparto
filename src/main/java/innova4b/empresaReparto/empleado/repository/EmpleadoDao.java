@@ -26,7 +26,7 @@ public class EmpleadoDao {
 	public Empleado get(int id){
 		return (Empleado) sessionFactory.getCurrentSession().get(Empleado.class, id);
 	}
-	
+	 
 	public List<Empleado> list() {
 		return (List<Empleado>) sessionFactory.getCurrentSession().createQuery("from Empleado").list();
 	}
