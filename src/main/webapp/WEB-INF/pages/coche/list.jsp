@@ -34,7 +34,7 @@
 						<td>${coche.matricula}</td>
 						<td>${coche.kms}</td>
 						<td>${coche.combustible}</td>
-						<td><a href="/empresaReparto/coche/select/${coche.id}"><img alt="seleccionar" src="/images/select.png" width="32" height="32"></a></td>
+						<td><a href="/empresaReparto/reserva/new/${coche.id}"><img alt="seleccionar" src="/images/select.png" width="32" height="32"></a></td>
 					</tr>
 				</c:forEach>
 			</table>
