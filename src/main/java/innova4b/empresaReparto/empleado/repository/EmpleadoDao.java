@@ -31,7 +31,6 @@ public class EmpleadoDao {
 	}
 	
 	public int insert(Empleado empleado) {
-		//TODO - Obtener empresa con id = empleado.empresa
 		return (Integer) sessionFactory.getCurrentSession().save(empleado);
 	}
 	
