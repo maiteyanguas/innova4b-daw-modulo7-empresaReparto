@@ -3,6 +3,7 @@ package innova4b.empresaReparto.empleado.repository;
 import java.util.List;
 
 import innova4b.empresaReparto.empleado.domain.Empleado;
+import innova4b.empresaReparto.empresa.domain.Empresa;
 import innova4b.empresaReparto.login.domain.Usuario;
 
 import org.hibernate.Session;
@@ -22,11 +23,16 @@ public class EmpleadoDao {
 		return (Usuario)sessionFactory.getCurrentSession().createQuery("from Usuario where usuario=?").setString(0, usuario).list().get(0);
 	}
 	
+	public Empleado get(int id){
+		return (Empleado) sessionFactory.getCurrentSession().get(Empleado.class, id);
+	}
+	
 	public List<Empleado> list() {
 		return (List<Empleado>) sessionFactory.getCurrentSession().createQuery("from Empleado").list();
 	}
 	
 	public int insert(Empleado empleado) {
+		//TODO - Obtener empresa con id = empleado.empresa
 		return (Integer) sessionFactory.getCurrentSession().save(empleado);
 	}
 	
