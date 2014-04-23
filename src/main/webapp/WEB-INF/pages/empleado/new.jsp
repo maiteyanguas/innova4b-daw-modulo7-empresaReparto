@@ -62,9 +62,10 @@
 				<tr>
 					<td><form:label path="empresa"><spring:message code="empleado.empresa" text="Empresa"/>:</form:label></td>
 					<td><form:select path="empresa">
-					<c:forEach var="emp" items="${empresas}">
-					  <form:option value="${emp.id}" label="${emp.nombre}" />
-					</c:forEach>
+					<form:options items="${empresas}" itemValue="id" itemLabel="nombre"/>
+<%-- 					<c:forEach var="emp" items="${empresas}"> --%>
+<%-- 					  <form:option value="${emp}" label="${emp.nombre}" /> --%>
+<%-- 					</c:forEach> --%>
 				      </form:select>
 					  <form:errors path="empresa" cssClass="error"/>
 					</td>
