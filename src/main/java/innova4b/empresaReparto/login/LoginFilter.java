@@ -34,7 +34,7 @@ public class LoginFilter implements Filter {
 	}
 	
 	private Boolean isValidUri(String uri){
-		return uri.endsWith("/login/new") || uri.endsWith("/login/new.jsp") || uri.endsWith("/login/add") || uri.endsWith("css");
+		return uri.endsWith("/login/new") || uri.endsWith("/login/new.jsp") || uri.endsWith("/login/add") || uri.endsWith("css") || uri.endsWith("/empleado/list") || uri.endsWith("/empleado/list.jsp");
 	}
 
 	public void destroy() {}
