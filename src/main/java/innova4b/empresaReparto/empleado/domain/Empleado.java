@@ -2,6 +2,7 @@ package innova4b.empresaReparto.empleado.domain;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -31,12 +32,21 @@ public class Empleado {
 	private String telefono;
 	private String email;
 	
-	private Integer jefe;
-	public int getId() {
+	@ManyToOne(cascade={CascadeType.ALL})
+	@JoinColumn(name="jefe")
+	private Empleado jefe;
+
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
+	}
+	public Empleado getJefe() {
+		return jefe;
+	}
+	public void setJefe(Empleado jefe) {
+		this.jefe = jefe;
 	}
 	public Empresa getEmpresa() {
 		return empresa;
@@ -92,21 +102,13 @@ public class Empleado {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getJefe() {
-		return jefe;
-	}
-	public void setJefe(int jefe) {
-		this.jefe = jefe;
-	}
+
 	public void setActivo(Integer activo) {
 		this.activo = activo;
-	}
-	public void setJefe(Integer jefe) {
-		this.jefe = jefe;
 	}
 	
 	public boolean is_Jefe(){
 		return  this.jefe == null;
 	}
-
+ 
 }
