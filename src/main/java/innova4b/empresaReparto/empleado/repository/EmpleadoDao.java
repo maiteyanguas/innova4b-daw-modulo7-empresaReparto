@@ -46,14 +46,6 @@ public class EmpleadoDao {
 	}
 
 	public void actualizarSubalternos(int id) {
-		/*
-		Transaction tx = sessionFactory.getCurrentSession().beginTransaction();
-		String hqlUpdateJefeNull = "update empleado set jefe = NULL where id = :idUsuario";
-		int updatedEntities = sessionFactory.getCurrentSession().createQuery( hqlUpdateJefeNull )
-				.setInteger( "idUsuario", id )
-		        .executeUpdate();
-		tx.commit();
-		*/
-		sessionFactory.getCurrentSession().createQuery("update empleado set jefe = NULL where id ="+id).executeUpdate();
+		sessionFactory.getCurrentSession().createQuery("update Empleado set jefe = NULL where jefe ="+id).executeUpdate();
 	}
 }
