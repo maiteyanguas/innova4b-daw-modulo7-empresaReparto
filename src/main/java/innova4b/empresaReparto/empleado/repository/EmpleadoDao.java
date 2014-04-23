@@ -6,6 +6,7 @@ import innova4b.empresaReparto.empleado.domain.Empleado;
 import innova4b.empresaReparto.empresa.domain.Empresa;
 import innova4b.empresaReparto.login.domain.Usuario;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,16 +39,13 @@ public class EmpleadoDao {
 	public void update(Empleado empleado) {
 		sessionFactory.getCurrentSession().update(empleado);
 	}
+	
+	public void delete(int id) {
+		Session session = sessionFactory.getCurrentSession();
+		sessionFactory.getCurrentSession().delete(session.get(Empleado.class,id));
+	}
 
 	public void actualizarSubalternos(int id) {
-		/*
-		Transaction tx = sessionFactory.getCurrentSession().beginTransaction();
-		String hqlUpdateJefeNull = "update empleado set jefe = NULL where id = :idUsuario";
-		int updatedEntities = sessionFactory.getCurrentSession().createQuery( hqlUpdateJefeNull )
-				.setInteger( "idUsuario", id )
-		        .executeUpdate();
-		tx.commit();
-		*/
-		sessionFactory.getCurrentSession().createQuery("update empleado set jefe = NULL where id ="+id).executeUpdate();
+		sessionFactory.getCurrentSession().createQuery("update Empleado set jefe = NULL where jefe ="+id).executeUpdate();
 	}
 }
