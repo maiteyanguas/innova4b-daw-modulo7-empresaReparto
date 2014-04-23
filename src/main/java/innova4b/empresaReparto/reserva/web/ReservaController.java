@@ -6,7 +6,7 @@ import innova4b.empresaReparto.coche.repository.CocheDao;
 import innova4b.empresaReparto.empleado.repository.EmpleadoDao;
 import innova4b.empresaReparto.login.domain.Usuario;
 import innova4b.empresaReparto.reserva.domain.Reserva;
-import innova4b.empresaReparto.reserva.domain.ReservaDao;
+import innova4b.empresaReparto.reserva.repository.ReservaDao;
 import innova4b.empresaReparto.reserva.service.ReservaService;
 
 import org.springframework.beans.factory.annotation.Autowired;
