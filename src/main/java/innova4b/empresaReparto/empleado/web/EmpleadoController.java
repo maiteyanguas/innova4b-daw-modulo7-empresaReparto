@@ -1,5 +1,7 @@
 package innova4b.empresaReparto.empleado.web;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import innova4b.empresaReparto.empleado.domain.Empleado;
@@ -21,9 +23,10 @@ public class EmpleadoController {
 	
 	@Autowired
 	EmpleadoDao empleadoDao;
-
+	
 	@Autowired
 	EmpresaDao empresaDao;
+
 	///@Autowired
 	//EmpleadoService empleadoService;
 	///
@@ -33,9 +36,9 @@ public class EmpleadoController {
 	}
 
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
-	public void newEmpresa(ModelMap model) {
-		model.addAttribute("empresa",empresaDao.list());
+	public void newEmpleado(ModelMap model) {
 		model.addAttribute("empleado",new Empleado());
+		model.addAttribute("empresas", empresaDao.list());
 	}
 
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
