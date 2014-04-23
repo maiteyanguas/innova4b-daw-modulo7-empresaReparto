@@ -28,6 +28,8 @@ public class EmpleadoController {
 	@Autowired
 	EmpleadoDao empleadoDao;
 	@Autowired
+	EmpresaDao empresaDao;
+	@Autowired
 	EmpleadoService empleadoService;
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
