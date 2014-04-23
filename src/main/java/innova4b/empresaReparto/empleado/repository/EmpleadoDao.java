@@ -7,6 +7,7 @@ import innova4b.empresaReparto.empresa.domain.Empresa;
 import innova4b.empresaReparto.login.domain.Usuario;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,7 +26,7 @@ public class EmpleadoDao {
 	public Empleado get(int id){
 		return (Empleado) sessionFactory.getCurrentSession().get(Empleado.class, id);
 	}
-	
+	 
 	public List<Empleado> list() {
 		return (List<Empleado>) sessionFactory.getCurrentSession().createQuery("from Empleado").list();
 	}
@@ -38,4 +39,15 @@ public class EmpleadoDao {
 		sessionFactory.getCurrentSession().update(empleado);
 	}
 
+	public void actualizarSubalternos(int id) {
+		/*
+		Transaction tx = sessionFactory.getCurrentSession().beginTransaction();
+		String hqlUpdateJefeNull = "update empleado set jefe = NULL where id = :idUsuario";
+		int updatedEntities = sessionFactory.getCurrentSession().createQuery( hqlUpdateJefeNull )
+				.setInteger( "idUsuario", id )
+		        .executeUpdate();
+		tx.commit();
+		*/
+		sessionFactory.getCurrentSession().createQuery("update empleado set jefe = NULL where id ="+id).executeUpdate();
+	}
 }
