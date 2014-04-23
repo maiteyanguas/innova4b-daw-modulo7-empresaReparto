@@ -5,6 +5,7 @@ import innova4b.empresaReparto.empleado.domain.Empleado;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -20,10 +21,17 @@ public class Reserva {
 	@GeneratedValue
 	private int id;
 
-	private Date fecha_inicio;
-	private Date fecha_devolucion;
-	private Date fecha_inicio_prevista;
-	private Date fecha_devolucion_prevista;
+	@Column(name="fecha_inicio")
+	private Date fechaInicio;
+
+	@Column(name="fecha_devolucion")
+	private Date fechaDevolucion;
+
+	@Column(name="fecha_inicio_prevista")
+	private Date fechaInicioPrevista;
+
+	@Column(name="fecha_devolucion_prevista")
+	private Date fechaDevolucionPrevista;
 	
 	@ManyToOne
 	@JoinColumn(name="empleado_id", referencedColumnName="id")
@@ -36,33 +44,41 @@ public class Reserva {
 	public int getId() {
 		return id;
 	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}
 	
-	public Date getFecha_inicio() {
-		return fecha_inicio;
+	public Date getFechaInicio() {
+		return fechaInicio;
 	}
-	public void setFecha_inicio(Date fecha_inicio) {
-		this.fecha_inicio = fecha_inicio;
+	
+	public void setFechaInicio(Date fechaInicio) {
+		this.fechaInicio = fechaInicio;
 	}
-	public Date getFecha_devolucion() {
-		return fecha_devolucion;
+	
+	public Date getFechaDevolucion() {
+		return fechaDevolucion;
 	}
-	public void setFecha_devolucion(Date fecha_devolucion) {
-		this.fecha_devolucion = fecha_devolucion;
+	
+	public void setFechaDevolucion(Date fechaDevolucion) {
+		this.fechaDevolucion = fechaDevolucion;
 	}
-	public Date getFecha_inicio_prevista() {
-		return fecha_inicio_prevista;
+	
+	public Date getFechaInicioPrevista() {
+		return fechaInicioPrevista;
 	}
-	public void setFecha_inicio_prevista(Date fecha_inicio_prevista) {
-		this.fecha_inicio_prevista = fecha_inicio_prevista;
+	
+	public void setFechaInicioPrevista(Date fechaInicioPrevista) {
+		this.fechaInicioPrevista = fechaInicioPrevista;
 	}
-	public Date getFecha_devolucion_prevista() {
-		return fecha_devolucion_prevista;
+	
+	public Date getFechaDevolucionPrevista() {
+		return fechaDevolucionPrevista;
 	}
-	public void setFecha_devolucion_prevista(Date fecha_devolucio_prevista) {
-		this.fecha_devolucion_prevista = fecha_devolucio_prevista;
+	
+	public void setFechaDevolucionPrevista(Date fechaDevolucioPrevista) {
+		this.fechaDevolucionPrevista = fechaDevolucioPrevista;
 	}
 	
 	public Empleado getEmpleado() {
