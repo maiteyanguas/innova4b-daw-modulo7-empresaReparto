@@ -36,7 +36,6 @@ public class EmpleadoController {
 
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public void newEmpleado(ModelMap model) {
-		model.addAttribute("empresa",empresaDao.list());
 		model.addAttribute("empleado",new Empleado());
 		model.addAttribute("empresas", empresaDao.list());
 	}
