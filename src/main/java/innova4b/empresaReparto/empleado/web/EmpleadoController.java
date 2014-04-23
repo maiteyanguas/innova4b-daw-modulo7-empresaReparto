@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import innova4b.empresaReparto.empleado.domain.Empleado;
 import innova4b.empresaReparto.empleado.repository.EmpleadoDao;
 import innova4b.empresaReparto.empresa.domain.Empresa;
+import innova4b.empresaReparto.empresa.repository.EmpresaDao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,8 @@ public class EmpleadoController {
 	@Autowired
 	EmpleadoDao empleadoDao;
 
+	@Autowired
+	EmpresaDao empresaDao;
 	///@Autowired
 	//EmpleadoService empleadoService;
 	///
@@ -31,6 +34,7 @@ public class EmpleadoController {
 
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public void newEmpresa(ModelMap model) {
+		model.addAttribute("empresa",empresaDao.list());
 		model.addAttribute("empleado",new Empleado());
 	}
 
