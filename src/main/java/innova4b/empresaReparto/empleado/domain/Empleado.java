@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import innova4b.empresaReparto.empresa.domain.Empresa;
 
 
@@ -22,6 +24,12 @@ public class Empleado {
 	@ManyToOne
 	@JoinColumn(name="empresa_id", referencedColumnName="id")
 	private Empresa empresa;
+	
+	@NotEmpty
+	private String usuario;
+	@NotEmpty
+	private String password;
+	private String rol;
 	
 	private Integer activo;
 	private String dni;
@@ -109,6 +117,24 @@ public class Empleado {
 	
 	public boolean is_Jefe(){
 		return  this.jefe == null;
+	}
+	public String getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getRol() {
+		return rol;
+	}
+	public void setRol(String rol) {
+		this.rol = rol;
 	}
  
 }
