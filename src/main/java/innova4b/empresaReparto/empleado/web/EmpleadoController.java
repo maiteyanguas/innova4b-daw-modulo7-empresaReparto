@@ -33,15 +33,15 @@ public class EmpleadoController {
 	}
 
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
-	public void newEmpresa(ModelMap model) {
+	public void newEmpleado(ModelMap model) {
 		model.addAttribute("empresa",empresaDao.list());
 		model.addAttribute("empleado",new Empleado());
 	}
 
-	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-	public String editEmpleado(ModelMap model, @PathVariable("id") String id) {
+	@RequestMapping(value = "/edit/{nombreUsuario}", method = RequestMethod.GET)
+	public String editEmpleado(ModelMap model, @PathVariable("nombreUsuario") String nombreUsuario) {
 		if (!model.containsKey("empleado"))
-			model.addAttribute("empleado", empleadoDao.getByUsuario(id));
+			model.addAttribute("empleado", empleadoDao.getByUsuario(nombreUsuario));
 		return "empleado/edit";
 	}
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
