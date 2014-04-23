@@ -19,6 +19,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @RequestMapping("/empleado")
@@ -50,7 +51,9 @@ public class EmpleadoController {
 		return "empleado/edit";
 	}
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String add(@Valid Empleado empleado, BindingResult result) {
+	public String add(@Valid Empleado empleado, BindingResult result, @RequestParam int idEmpresa) {
+		Empresa emp = empresaDao.get(idEmpresa);
+		empleado.setEmpresa(emp);
 		if (result.hasErrors())
 			return "empleado/new";
 		empleadoDao.insert(empleado);
@@ -72,5 +75,5 @@ public class EmpleadoController {
 
 		return "redirect:/empresaReparto/empleado/list";
 	}
-		
+
 }
