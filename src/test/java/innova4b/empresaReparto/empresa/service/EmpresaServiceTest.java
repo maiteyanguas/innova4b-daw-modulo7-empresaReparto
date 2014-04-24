@@ -1,9 +1,7 @@
 package innova4b.empresaReparto.empresa.service;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import innova4b.empresaReparto.empresa.repository.EmpresaDao;
 import innova4b.empresaReparto.exceptions.EmpresaWithCochesException;
 import innova4b.empresaReparto.exceptions.EmpresaWithEmpleadosException;
@@ -27,6 +25,8 @@ public class EmpresaServiceTest {
 	public void setUp() throws Exception {
 		empresaService = new EmpresaService();
 		empresaService.setEmpresaDao(empresaDaoMock);
+		when(empresaDaoMock.hasEmpleados(EMPRESA_ID)).thenReturn(false);
+		when(empresaDaoMock.hasCoches(EMPRESA_ID)).thenReturn(false);
 	}
 	
 
@@ -55,5 +55,19 @@ public class EmpresaServiceTest {
 		} catch (EmpresaWithEmpleadosException e) {}	
 		fail();
 	}	
+	
+	@Test
+	public void delete_borra_la_empresa_si_no_tiene_coches_ni_empleados() {
+		try {
+			empresaService.delete(EMPRESA_ID);
+		} catch (EmpresaWithEmpleadosException e) {
+			fail();
+		} catch (EmpresaWithCochesException e) {
+			fail();
+		}
+		verify(empresaDaoMock).delete(EMPRESA_ID);
+	}
+	
+	
 
 }
