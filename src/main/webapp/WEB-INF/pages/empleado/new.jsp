@@ -89,6 +89,16 @@
 						<form:errors path="empresa" cssClass="error"/>
 					</td>
 				</tr>
+				<tr>
+					<td><form:label path="jefe"><spring:message code="empleado.jefe" text="Jefe"/>:</form:label></td>
+					<td><select name="idJefe">
+					<c:forEach var="boss" items="${jefes}">
+						<option value="${boss.id}" >${boss.nombre}</option>
+					</c:forEach>
+					    </select>
+						<form:errors path="jefe" cssClass="error"/>
+					</td>
+				</tr>
 			</table>
 			<p>
 				<spring:message code="guardar" text="Guardar" var="guardar"/>
