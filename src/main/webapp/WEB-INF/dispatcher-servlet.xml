@@ -38,7 +38,7 @@
 	        	<entry key="datos" value="/empresaReparto/empresa/list"/>
 	            <entry key="reservar.coche" value="/empresaReparto/coche/listWithOutIncidencias"/>
 	            <entry key="devolver.coche" value="/empresaReparto/empresa/list"/>  
-	        	<entry key="empleados" value="/empresaReparto/empleado/list"/>
+	        	<entry key="empleados" value="/empresaReparto/empresa/list"/>
 	            <entry key="empresas" value="/empresaReparto/empresa/list"/>
 	            <entry key="coches" value="/empresaReparto/empresa/list"/>
 	        </map>

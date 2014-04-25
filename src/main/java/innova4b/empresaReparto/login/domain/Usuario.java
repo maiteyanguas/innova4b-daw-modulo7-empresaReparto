@@ -55,6 +55,8 @@ public class Usuario {
 	
 	public boolean isAdministrador(){
 		return rol.equals("a");
-	}	
+	}
+	
+	
 
 }

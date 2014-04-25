@@ -1,14 +1,8 @@
 package innova4b.empresaReparto.empleado.repository;
 
-import java.util.List;
-
-import innova4b.empresaReparto.empleado.domain.Empleado;
-import innova4b.empresaReparto.empresa.domain.Empresa;
 import innova4b.empresaReparto.login.domain.Usuario;
 
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,30 +16,6 @@ public class EmpleadoDao {
 	
 	public Usuario getByUsuario(String usuario) throws IndexOutOfBoundsException {
 		return (Usuario)sessionFactory.getCurrentSession().createQuery("from Usuario where usuario=?").setString(0, usuario).list().get(0);
-	}
-	
-	public Empleado get(int id){
-		return (Empleado) sessionFactory.getCurrentSession().get(Empleado.class, id);
-	}
-	 
-	public List<Empleado> list() {
-		return (List<Empleado>) sessionFactory.getCurrentSession().createQuery("from Empleado").list();
-	}
-	
-	public int insert(Empleado empleado) {
-		return (Integer) sessionFactory.getCurrentSession().save(empleado);
-	}
-	
-	public void update(Empleado empleado) {
-		sessionFactory.getCurrentSession().update(empleado);
-	}
-	
-	public void delete(int id) {
-		Session session = sessionFactory.getCurrentSession();
-		sessionFactory.getCurrentSession().delete(session.get(Empleado.class,id));
-	}
+	} 
 
-	public void actualizarSubalternos(int id) {
-		sessionFactory.getCurrentSession().createQuery("update Empleado set jefe = NULL where jefe ="+id).executeUpdate();
-	}
 }
