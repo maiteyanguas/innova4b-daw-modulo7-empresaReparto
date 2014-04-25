@@ -11,28 +11,34 @@
 	<div id="container">
 		<jsp:include page="../header.jsp" />
 		<div id="content">
-			<p><spring:message code="editar.empleado" text="Editar empleado"/></p>			
+			<p id="titulo_pagina"><spring:message code="editar.empleado" text="Editar empleado"/></p>			
 			<form:form method="post" modelAttribute="empleado" action="/empresaReparto/empleado/update">
 			<form:hidden path="id"/>
 			<table>
 				<tr> 
-					<td><spring:message code="nuevo.datosUsuario" text="Datos de Usuario"/></td>
+					<td id="titulo_seccion" colspan= "2"><spring:message code="nuevo.datosUsuario" text="Datos Usuario"/></td>
 				</tr>
 				<tr>
-					<td><form:label path="usuario"><spring:message code="empleado.usuario" text="Usuario"/>:</form:label></td>
+					<td><form:label path="usuario"><spring:message code="usuario" text="Usuario"/>:</form:label></td>
 					<td><form:input path="usuario"></form:input>
 						<form:errors path="usuario" cssClass="error"/>
 					</td>
 				</tr>
 				<tr>
-					<td><form:label path="password"><spring:message code="empleado.password" text="Contraseña"/>:</form:label></td>
+					<td><form:label path="password"><spring:message code="password" text="Contraseña"/>:</form:label></td>
 					<td><form:input path="password"></form:input>
 						<form:errors path="password" cssClass="error"/>
 					</td>
 				</tr>
 				<tr> 
-					<td><spring:message code="nuevo.datosPersonales" text="Datos personales"/></td>
-				</tr>	
+					<td id="titulo_seccion" colspan= "2"><spring:message code="nuevo.datosPersonales" text="Datos Personales"/></td>
+				</tr>
+				<tr>
+					<td><form:label path="dni"><spring:message code="dni" text="DNI"/>:</form:label></td>
+					<td><form:input path="dni"></form:input>
+						<form:errors path="dni" cssClass="error"/>
+					</td>
+				</tr>		
 				<tr>
 					<td><form:label path="nombre"><spring:message code="empleado.nombre" text="Nombre"/>:</form:label></td>
 					<td><form:input path="nombre"></form:input>
@@ -49,16 +55,6 @@
 					<td><form:label path="apellido2"><spring:message code="empleado.apellido2" text="Segundo apellido"/>:</form:label></td>
 					<td><form:input path="apellido2"></form:input>
 						<form:errors path="apellido2" cssClass="error"/>
-					</td>
-				</tr>
-				<tr>
-					<td><form:label path="empresa"><spring:message code="empleado.empresa" text="Empresa"/>:</form:label></td>
-					<td><select name="idEmpresa">
-					<c:forEach var="emp" items="${empresas}">
-							<option value="${emp.id}" >${emp.nombre}</option>
-					</c:forEach>
-					    </select>
-						<form:errors path="empresa" cssClass="error"/>
 					</td>
 				</tr>
 					<tr>
@@ -79,8 +75,21 @@
 						<form:errors path="email" cssClass="error"/>
 					</td>
 				</tr>
+				<tr> 
+					<td id="titulo_seccion" colspan= "2"><spring:message code="nuevo.datosEmpresariales" text="Datos Empresariales"/></td>
+				</tr>
 				<tr>
-					<td><form:label path="jefe"><spring:message code="empleado.jefe" text="jefe"/>:</form:label></td>
+					<td><form:label path="empresa"><spring:message code="empleado.empresa" text="Empresa"/>:</form:label></td>
+					<td><select name="idEmpresa">
+					<c:forEach var="emp" items="${empresas}">
+							<option value="${emp.id}" >${emp.nombre}</option>
+					</c:forEach>
+					    </select>
+						<form:errors path="empresa" cssClass="error"/>
+					</td>
+				</tr>
+				<tr>
+					<td><form:label path="jefe"><spring:message code="empleado.jefe" text="Jefe"/>:</form:label></td>
 					<td><select name="jefe">
 					<c:forEach var="jefe" items="${jefes}">
 							<option value="${jefe.id}" >${jefe.nombre}</option>
