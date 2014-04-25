@@ -1,11 +1,15 @@
 package innova4b.empresaReparto.coche.web;
 
+import javax.validation.Valid;
+
 import innova4b.empresaReparto.coche.repository.CocheDao;
+import innova4b.empresaReparto.reserva.domain.Reserva;
 
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -24,11 +28,8 @@ public class CocheController {
 	
 	//Lista los coches sin incidencias
 	@RequestMapping(value = "/listWithOutIncidenciasFilter", method = RequestMethod.POST)
-	public void listWithOutIncidenciaFilter(ModelMap model) {
-		// @FIXME Arreglar tema fechas, que no funcionará
-		LocalDate dateFirst = (LocalDate) model.get("fechaInicioPrevista");
-		LocalDate dateLast = (LocalDate) model.get("fechaDevolucionPrevista");
-		model.addAttribute("coches", cocheDao.listWithOutIncidenciaFilter(dateFirst,dateLast));
+	public void listWithOutIncidenciaFilter(@Valid Reserva reserva, BindingResult result, ModelMap model) {
+		model.addAttribute("coches", cocheDao.listWithOutIncidenciaFilter(reserva.getFechaInicioPrevista(),reserva.getFechaDevolucionPrevista()));
 	}
 
 	//Lista todos los coches
