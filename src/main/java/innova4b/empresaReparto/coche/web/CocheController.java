@@ -1,10 +1,13 @@
 package innova4b.empresaReparto.coche.web;
 
-import javax.validation.Valid;
-
 import innova4b.empresaReparto.coche.domain.Coche;
 import innova4b.empresaReparto.coche.repository.CocheDao;
 import innova4b.empresaReparto.empresa.domain.Empresa;
+import innova4b.empresaReparto.empresa.repository.EmpresaDao;
+
+import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +22,9 @@ public class CocheController {
 
 	@Autowired
 	CocheDao cocheDao;
+	
+	@Autowired
+	EmpresaDao empresaDao;
 	
 	//Lista los coches sin incidencias
 	@RequestMapping(value = "/listWithOutIncidencias", method = RequestMethod.GET)
@@ -35,6 +41,7 @@ public class CocheController {
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public void newCoche(ModelMap model) {
 		model.addAttribute("coche",new Coche());
+		model.addAttribute("empresas", empresaDao.list());
 	}
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
