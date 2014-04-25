@@ -33,9 +33,12 @@
 				<tr> 
 					<td id="titulo_seccion" colspan= "2"><spring:message code="nuevo.datosPersonales" text="Datos Personales"/></td>
 				</tr>
-				<tr> 
-					<td><spring:message code="nuevo.datosPersonales" text="Datos personales"/></td>
-				</tr>	
+				<tr>
+					<td><form:label path="dni"><spring:message code="dni" text="DNI"/>:</form:label></td>
+					<td><form:input path="dni"></form:input>
+						<form:errors path="dni" cssClass="error"/>
+					</td>
+				</tr>		
 				<tr>
 					<td><form:label path="nombre"><spring:message code="empleado.nombre" text="Nombre"/>:</form:label></td>
 					<td><form:input path="nombre"></form:input>
