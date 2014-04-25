@@ -3,14 +3,21 @@ package innova4b.empresaReparto.empleado.domain;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
 
+import org.hibernate.annotations.Type;
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import innova4b.empresaReparto.empresa.domain.Empresa;
 
@@ -30,14 +37,25 @@ public class Empleado {
 	@NotEmpty
 	private String password;
 	private String rol;
-	
+
 	private Integer activo;
+	
+	//@NotEmpty
+	//@Pattern(regexp="^[0-9]{8}[a-zA-Z]{1}$")
 	private String dni;
+	//@NotEmpty
 	private String nombre;
+	//@NotEmpty
 	private String apellido1;
+	//@NotEmpty
 	private String apellido2;
+	//@DateTimeFormat(pattern = "dd/MM/yyyy")
+    //@Past
+    //@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
 	private Date fechaNacimiento;
+	//@Digits(integer=9, fraction = 0)
 	private String telefono;
+	//@Email
 	private String email;
 	
 	@ManyToOne(cascade={CascadeType.ALL})
