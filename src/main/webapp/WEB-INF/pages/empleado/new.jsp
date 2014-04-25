@@ -13,7 +13,7 @@
 		<jsp:include page="../header.jsp" />
 		<div id="content">
 			<p><spring:message code="nuevo.empleado" text="Nuevo empleado"/></p>
-			
+			<form:form method="post" modelAttribute="empleado" action="/empresaReparto/empleado/add">
 			<table>
 				<tr> 
 					<td><spring:message code="nuevo.datosUsuario" text="Datos Usuario"/></td>
