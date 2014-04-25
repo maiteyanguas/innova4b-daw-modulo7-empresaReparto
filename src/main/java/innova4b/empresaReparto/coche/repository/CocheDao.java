@@ -29,5 +29,9 @@ public class CocheDao {
 
 	public List<Coche> listAll() {
 		return (List<Coche>)sessionFactory.getCurrentSession().createQuery("from Coche").list();
-	} 
+	}
+	
+	public Coche getCocheById(int idCoche){
+		return (Coche)sessionFactory.getCurrentSession().createQuery("from Coche where id = " + idCoche + "");
+	}
 }
