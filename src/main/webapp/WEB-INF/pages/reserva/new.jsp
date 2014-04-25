@@ -79,15 +79,13 @@
 				<table>
 					<tr>
 						<td><form:label path="fechaInicioPrevista">
-								<spring:message code="reserva.fechaInicioPrevista"
-									text="Fecha Prevista Inicio" />:</form:label></td>
+								<spring:message code="reserva.fechaInicioPrevista" />:</form:label></td>
 						<td><form:input path="fechaInicioPrevista" id="fechaInicioPrevista"></form:input> <form:errors
 								path="fechaInicioPrevista" cssClass="error" /></td>
 					</tr>
 					<tr>
 						<td><form:label path="fechaDevolucionPrevista">
-								<spring:message code="reserva.fechaDevolucionPrevista"
-									text="Fecha Prevista Devolución" />:</form:label></td>
+								<spring:message code="reserva.fechaDevolucionPrevista" />:</form:label></td>
 						<td><form:input path="fechaDevolucionPrevista" id="fechaDevolucionPrevista"></form:input>
 							<form:errors path="fechaDevolucionPrevista" cssClass="error" /></td>
 					</tr>
