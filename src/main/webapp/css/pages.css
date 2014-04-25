@@ -108,5 +108,14 @@ input[type="submit"] {
 	font-size: 1.2em;
 	padding: 5px;	
 }
-
-
+#titulo_seccion {
+	font-size: 1.4em;
+	margin-bottom: 5px;
+	text-align: center;
+	padding: 10px;
+}
+#titulo_pagina {
+	font-size: 1.4em;
+	text-decoration: underline;
+	font-weight:bold;
+}
