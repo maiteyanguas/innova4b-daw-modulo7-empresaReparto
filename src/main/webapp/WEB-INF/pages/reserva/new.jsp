@@ -9,7 +9,6 @@
 	<link rel="stylesheet" type="text/css" href="/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="/css/pages.css">
 	<link rel="stylesheet" type="text/css" href="/css/jquery/jquery-ui-1.10.4.custom.css">
-	<link rel="stylesheet" type="text/css" href="/css/jquery/jquery-ui-1.10.4.custom.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="/css/pages.css">
 	
