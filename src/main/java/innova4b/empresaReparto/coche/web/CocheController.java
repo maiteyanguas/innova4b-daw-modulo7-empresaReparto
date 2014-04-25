@@ -2,6 +2,7 @@ package innova4b.empresaReparto.coche.web;
 
 import innova4b.empresaReparto.coche.repository.CocheDao;
 
+import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -19,6 +20,15 @@ public class CocheController {
 	@RequestMapping(value = "/listWithOutIncidencias", method = RequestMethod.GET)
 	public void list(ModelMap model) {
 		model.addAttribute("coches", cocheDao.listWithOutIncidencia());	
+	}
+	
+	//Lista los coches sin incidencias
+	@RequestMapping(value = "/listWithOutIncidenciasFilter", method = RequestMethod.POST)
+	public void listWithOutIncidenciaFilter(ModelMap model) {
+		// @FIXME Arreglar tema fechas, que no funcionará
+		LocalDate dateFirst = (LocalDate) model.get("fechaInicioPrevista");
+		LocalDate dateLast = (LocalDate) model.get("fechaDevolucionPrevista");
+		model.addAttribute("coches", cocheDao.listWithOutIncidenciaFilter(dateFirst,dateLast));
 	}
 
 	//Lista todos los coches

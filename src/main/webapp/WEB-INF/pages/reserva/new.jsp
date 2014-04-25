@@ -37,7 +37,7 @@
 			<p>
 				<spring:message code="guardar" text="Guardar" var="guardar"/>
 				<input type="submit" value="${guardar}"/>
-				<a class="button" href="/empresaReparto/coche/list"><spring:message code="volver" text="Volver"/></a>	
+				<a class="button" href="/empresaReparto/coche/listWithOutIncidencias"><spring:message code="volver" text="Volver"/></a>	
 			</p>
 			</form:form>
 		</div>

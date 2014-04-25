@@ -21,10 +21,6 @@ public class ReservaDao {
 	
 	public List<Reserva> list() {
 		return (List<Reserva>) sessionFactory.getCurrentSession().createQuery("FROM Reserva").list();
-	} 
-	
-	public List<Reserva> listBetweenDates(LocalDate dateFirst, LocalDate dateLast) {
-		return (List<Reserva>) sessionFactory.getCurrentSession().createQuery("FROM Reserva WHERE fechaInicioPrevista >= "+dateFirst+" AND fechaDevolucionPrevista <= "+dateLast+"" ).list();
 	}
 	
 	public int insert (Reserva reserva) {
