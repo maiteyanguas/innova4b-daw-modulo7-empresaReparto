@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.validation.Valid;
 
+import innova4b.empresaReparto.coche.domain.Coche;
 import innova4b.empresaReparto.coche.repository.CocheDao;
 import innova4b.empresaReparto.reserva.domain.Reserva;
 
@@ -31,7 +32,9 @@ public class CocheController {
 	
 	//Lista los coches sin incidencias
 	@RequestMapping(value = "/listWithOutIncidenciasFilter", method = RequestMethod.POST)
-	public void listWithOutIncidenciaFilter(@RequestParam Date fechaInicio, @RequestParam Date fechaDevolucion, ModelMap model) {
+	public void listWithOutIncidenciaFilter(@Valid Coche coche, BindingResult result,@RequestParam Date fechaInicio, @RequestParam Date fechaDevolucion, ModelMap model) {
+		System.out.println("fechaInicio"+fechaInicio);
+		System.out.println("fechaDevolucion"+fechaDevolucion);
 		model.addAttribute("coches", cocheDao.listWithOutIncidenciaFilter(fechaInicio,fechaDevolucion));
 	}
 
