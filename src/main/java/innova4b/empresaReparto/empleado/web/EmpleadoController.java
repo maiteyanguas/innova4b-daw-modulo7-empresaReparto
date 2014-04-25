@@ -40,7 +40,8 @@ public class EmpleadoController {
 
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public void newEmpleado(ModelMap model) {
-		model.addAttribute("empleado",new Empleado());
+		if (!model.containsKey("empleado"))
+			model.addAttribute("empleado",new Empleado());
 		Empleado emp = new Empleado();
 		emp.setId(-1);
 		emp.setNombre("Ninguno");
@@ -54,13 +55,13 @@ public class EmpleadoController {
 	public String editEmpleado(ModelMap model, @PathVariable("id") int id) {
 		if (!model.containsKey("empleado"))
 			model.addAttribute("empleado", empleadoDao.get(id));
-			Empleado emp = new Empleado();
-			emp.setId(-1);
-			emp.setNombre("Ninguno");
-			List<Empleado> jefes = empleadoDao.listJefe();
-			jefes.add(0, emp);
-			model.addAttribute("jefes",jefes);
-			model.addAttribute("empresas", empresaDao.list());
+		Empleado emp = new Empleado();
+		emp.setId(-1);
+		emp.setNombre("Ninguno");
+		List<Empleado> jefes = empleadoDao.listJefe();
+		jefes.add(0, emp);
+		model.addAttribute("jefes",jefes);
+		model.addAttribute("empresas", empresaDao.list());
 		return "empleado/edit";
 	}
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
@@ -72,7 +73,7 @@ public class EmpleadoController {
 			empleado.setJefe(jefe);
 		}
 		if (result.hasErrors())
-			return "empleado/new";
+			return "redirect:/empresaReparto/empleado/new";
 		empleadoDao.insert(empleado);
 		return "redirect:/empresaReparto/empleado/list";
 	}
