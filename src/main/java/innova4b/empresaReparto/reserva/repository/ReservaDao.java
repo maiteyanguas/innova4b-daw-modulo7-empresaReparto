@@ -1,13 +1,11 @@
 package innova4b.empresaReparto.reserva.repository;
 
-import innova4b.empresaReparto.coche.domain.Coche;
 import innova4b.empresaReparto.reserva.domain.Reserva;
 
 import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
