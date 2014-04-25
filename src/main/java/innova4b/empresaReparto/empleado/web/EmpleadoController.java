@@ -60,7 +60,7 @@ public class EmpleadoController {
 		emp.setId(-1);
 		emp.setNombre("Ninguno");
 		List<Empleado> jefes = empleadoDao.listJefe();
-		jefes.add(0, emp);
+		jefes.add(0, emp); 
 		model.addAttribute("jefes",jefes);
 		model.addAttribute("empresas", empresaDao.list());
 		return "empleado/edit";
