@@ -41,6 +41,12 @@ public class EmpleadoController {
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public void newEmpleado(ModelMap model) {
 		model.addAttribute("empleado",new Empleado());
+		Empleado emp = new Empleado();
+		emp.setId(-1);
+		emp.setNombre("Ninguno");
+		List<Empleado> jefes = empleadoDao.listJefe();
+		jefes.add(0, emp);
+		model.addAttribute("jefes",jefes);
 		model.addAttribute("empresas", empresaDao.list());
 	}
 
@@ -48,25 +54,29 @@ public class EmpleadoController {
 	public String editEmpleado(ModelMap model, @PathVariable("id") int id) {
 		if (!model.containsKey("empleado"))
 			model.addAttribute("empleado", empleadoDao.get(id));
+			Empleado emp = new Empleado();
+			emp.setId(-1);
+			emp.setNombre("Ninguno");
+			List<Empleado> jefes = empleadoDao.listJefe();
+			jefes.add(0, emp);
+			model.addAttribute("jefes",jefes);
+			model.addAttribute("empresas", empresaDao.list());
 		return "empleado/edit";
 	}
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String add(@Valid Empleado empleado, BindingResult result, @RequestParam int idEmpresa) {
+	public String add(@Valid Empleado empleado, BindingResult result, @RequestParam int idEmpresa, @RequestParam int idJefe) {
 		Empresa emp = empresaDao.get(idEmpresa);
 		empleado.setEmpresa(emp);
+		if (idJefe!=-1) {
+			Empleado jefe= empleadoDao.get(idJefe);
+			empleado.setJefe(jefe);
+		}
 		if (result.hasErrors())
 			return "empleado/new";
 		empleadoDao.insert(empleado);
 		return "redirect:/empresaReparto/empleado/list";
 	}
 
-	@RequestMapping(value = "/addJefe", method = RequestMethod.POST)
-	public String addJefe(@Valid Empleado empleado, BindingResult result) {
-		if (result.hasErrors())
-			return "empleado/new";
-		empleadoDao.insert(empleado);
-		return "redirect:/empresaReparto/empleado/list";
-	}
 	
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String delete(@PathVariable("id") int id, RedirectAttributes redirect) {		

@@ -3,7 +3,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title><spring:message code="editar.empleado" otext="Editar empleado"/></title>
+<title><spring:message code="editar.empleado" text="Editar empleado"/></title>
 <link rel="stylesheet" type="text/css" href="/css/reset.css">
 <link rel="stylesheet" type="text/css" href="/css/pages.css">
 </head>
@@ -25,9 +25,9 @@
 					</td>
 				</tr>
 				<tr>
-					<td><form:label path="pass"><spring:message code="empleado.pass" text="Contraseña"/>:</form:label></td>
-					<td><form:input path="pass"></form:input>
-						<form:errors path="pass" cssClass="error"/>
+					<td><form:label path="password"><spring:message code="empleado.password" text="Contraseña"/>:</form:label></td>
+					<td><form:input path="password"></form:input>
+						<form:errors path="password" cssClass="error"/>
 					</td>
 				</tr>
 				<tr> 
@@ -53,7 +53,11 @@
 				</tr>
 				<tr>
 					<td><form:label path="empresa"><spring:message code="empleado.empresa" text="Empresa"/>:</form:label></td>
-					<td><form:input path="empresa"></form:input>
+					<td><select name="idEmpresa">
+					<c:forEach var="emp" items="${empresas}">
+							<option value="${emp.id}" >${emp.nombre}</option>
+					</c:forEach>
+					    </select>
 						<form:errors path="empresa" cssClass="error"/>
 					</td>
 				</tr>
@@ -73,6 +77,16 @@
 					<td><form:label path="email"><spring:message code="empleado.email" text="Correo electrónico"/>:</form:label></td>
 					<td><form:input path="email"></form:input>
 						<form:errors path="email" cssClass="error"/>
+					</td>
+				</tr>
+				<tr>
+					<td><form:label path="jefe"><spring:message code="empleado.jefe" text="jefe"/>:</form:label></td>
+					<td><select name="jefe">
+					<c:forEach var="jefe" items="${jefes}">
+							<option value="${jefe.id}" >${jefe.nombre}</option>
+					</c:forEach>
+					    </select>
+						<form:errors path="jefe" cssClass="error"/>
 					</td>
 				</tr>
 			</table>
