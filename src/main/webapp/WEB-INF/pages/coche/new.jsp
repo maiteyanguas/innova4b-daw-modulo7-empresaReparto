@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title><spring:message code="nuevo.coche" text="Nuevo coche"/></title>
@@ -18,31 +19,29 @@
 				<tr>
 					<td><form:label path="empresa"><spring:message code="coche.empresa" text="Empresa"/>:</form:label></td>
 					<td>
-					<select name="idEmpresa">
-						<c:forEach items="${empresas}" var="empresa">
+					<select id="idEmpresa" name="idEmpresa">
+						<c:forEach items="${empresas}" var="emp">
 							
-								<option value="${empresa.id}">${empresa.nombre}"</option>
+								<option value="${emp.id}">${emp.nombre}</option>
 										
 						</c:forEach>
 					</select>
-										
-						<form:input path="empresa"></form:input>
-						<form:errors path="empresa" cssClass="error"/>
+
 					</td>
 				</tr>
 				<tr>
-					<td><form:label path="kilometros"><spring:message code="coche.kms" text="Kilometros"/>:</form:label></td>
-					<td><form:input path="kilometros"></form:input>
-						<form:errors path="kilometros" cssClass="error"/>
+					<td><form:label path="kms"><spring:message code="coche.kms" text="Kilometros"/>:</form:label></td>
+					<td><form:input path="kms"></form:input>
+						<form:errors path="kms" cssClass="error"/>
 					</td>
 				</tr>
 				<tr>
 					<td><form:label path="combustible"><spring:message code="coche.combustible" text="Combustible"/>:</form:label></td>
 					<td>
-					<select name="tipoCombustible">
-					  <option value="gasolina"><spring:message code="combustible.gasolina" text="Gasolina"/></option>
-					  <option value="Diesel"><spring:message code="combustible.diesel" text="Diesel"/></option>
-					</select> 
+					<form:select name="combustible" path="combustible">
+					  <form:option value="gasolina"><spring:message code="combustible.gasolina" text="Gasolina"/></form:option>
+					  <form:option value="Diesel"><spring:message code="combustible.diesel" text="Diesel"/></form:option>
+					</form:select> 
 					</td>
 				</tr>
 				<tr>

@@ -33,17 +33,17 @@ public class Coche {
 	@ManyToOne
 	@JoinColumn(name = "empresa_id", referencedColumnName = "id")
 	private Empresa empresa;
-	@NotEmpty
-	@NumberFormat(style = Style.NUMBER)
+//	@NotEmpty
+	//@NumberFormat(style = Style.NUMBER)
 	private Integer kms;
-	@NotEmpty
+//	@NotEmpty
 	private String combustible;
-	@NotEmpty
+//	@NotEmpty
 	private String marca;
-	@NotEmpty
-	@Pattern(regexp="\\d{4}[a-zA-Z]{3}$")
+//	@NotEmpty
+	//@Pattern(regexp="\\d{4}[a-zA-Z]{3}$")
 	private String matricula;
-	@NotEmpty
+//	@NotEmpty
 	private String modelo;
 	
 	@OneToMany(mappedBy="coche", fetch=FetchType.EAGER)
