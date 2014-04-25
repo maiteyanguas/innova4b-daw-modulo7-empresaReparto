@@ -19,13 +19,13 @@
 					<td id="titulo_seccion" colspan= "2"><spring:message code="nuevo.datosUsuario" text="Datos Usuario"/></td>
 				</tr>
 				<tr>
-					<td><form:label path="usuario"><spring:message code="empleado.usuario" text="Usuario"/>:</form:label></td>
+					<td><form:label path="usuario"><spring:message code="usuario" text="Usuario"/>:</form:label></td>
 					<td><form:input path="usuario"></form:input>
 						<form:errors path="usuario" cssClass="error"/>
 					</td>
 				</tr>
 				<tr>
-					<td><form:label path="password"><spring:message code="empleado.password" text="Contraseña"/>:</form:label></td>
+					<td><form:label path="password"><spring:message code="password" text="Contraseña"/>:</form:label></td>
 					<td><form:input path="password"></form:input>
 						<form:errors path="password" cssClass="error"/>
 					</td>
@@ -35,7 +35,7 @@
 					<td id="titulo_seccion" colspan= "2"><spring:message code="nuevo.datosPersonales" text="Datos personales"/></td>
 				</tr>	
 				<tr>
-					<td><form:label path="dni"><spring:message code="empleado.dni" text="DNI"/>:</form:label></td>
+					<td><form:label path="dni"><spring:message code="dni" text="DNI"/>:</form:label></td>
 					<td><form:input path="dni"></form:input>
 						<form:errors path="dni" cssClass="error"/>
 					</td>
