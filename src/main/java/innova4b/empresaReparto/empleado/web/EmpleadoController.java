@@ -40,6 +40,7 @@ public class EmpleadoController {
 
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public void newEmpleado(ModelMap model) {
+	
 		if (!model.containsKey("empleado"))
 			model.addAttribute("empleado",new Empleado());
 		Empleado emp = new Empleado();
@@ -65,15 +66,18 @@ public class EmpleadoController {
 		return "empleado/edit";
 	}
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String add(@Valid Empleado empleado, BindingResult result, @RequestParam int idEmpresa, @RequestParam int idJefe) {
+	public String add(@Valid Empleado empleado, BindingResult result,RedirectAttributes redirect,@RequestParam int idEmpresa, @RequestParam int idJefe) {
 		Empresa emp = empresaDao.get(idEmpresa);
 		empleado.setEmpresa(emp);
 		if (idJefe!=-1) {
 			Empleado jefe= empleadoDao.get(idJefe);
 			empleado.setJefe(jefe);
 		}
-		if (result.hasErrors())
+		if (result.hasErrors()){
+			redirect.addFlashAttribute("org.springframework.validation.BindingResult.empleado", result);
+			redirect.addFlashAttribute("empleado",empleado);
 			return "redirect:/empresaReparto/empleado/new";
+		}
 		empleadoDao.insert(empleado);
 		return "redirect:/empresaReparto/empleado/list";
 	}
