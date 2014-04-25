@@ -48,4 +48,7 @@ public class EmpleadoDao {
 	public void actualizarSubalternos(int id) {
 		sessionFactory.getCurrentSession().createQuery("update Empleado set jefe = NULL where jefe ="+id).executeUpdate();
 	}
+	public List<Empleado> listJefe() {
+		return (List<Empleado>) sessionFactory.getCurrentSession().createQuery("from Empleado where jefe = NULL").list();
+	}
 }
