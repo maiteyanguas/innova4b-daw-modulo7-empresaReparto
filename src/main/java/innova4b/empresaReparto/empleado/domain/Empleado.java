@@ -29,9 +29,9 @@ public class Empleado {
 	private String usuario;
 	@NotEmpty
 	private String password;
-	private String rol;
+	private String rol = "u";
 	
-	private Integer activo;
+	private Integer activo = 1;
 	private String dni;
 	private String nombre;
 	private String apellido1;
