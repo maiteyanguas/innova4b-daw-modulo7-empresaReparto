@@ -36,9 +36,9 @@ public class Empleado {
 	private String usuario;
 	@NotEmpty
 	private String password;
-	private String rol;
-
-	private Integer activo;
+	private String rol = "u";
+	
+	private Integer activo = 1;
 	
 	//@NotEmpty
 	//@Pattern(regexp="^[0-9]{8}[a-zA-Z]{1}$")
