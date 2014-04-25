@@ -68,7 +68,7 @@ public class EmpresaServiceWithStubsTest {
 	@Before
 	public void setUp() { 
 		empresaConEmpleados = buildEmpresa(EMPRESA_ID_CON_EMPLEADOS);
-		empresaConCoches = buildEmpresa(EMPRESA_ID_CON_EMPLEADOS);
+		empresaConCoches = buildEmpresa(EMPRESA_ID_CON_COCHES);
 		empresa = buildEmpresa(EMPRESA_ID_SIN_COCHES_NI_EMPLEADOS);
 		
 		empresas = new ArrayList<Empresa>();
