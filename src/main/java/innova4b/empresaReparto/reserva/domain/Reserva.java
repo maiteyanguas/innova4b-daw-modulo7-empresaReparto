@@ -26,11 +26,11 @@ public class Reserva {
 	private Date fecha_devolucion_prevista;
 	
 	@ManyToOne
-	@JoinColumn(name="empleado_id", referencedColumnName="id")
+	@JoinColumn(name = "empleado_id", referencedColumnName = "id")
 	private Empleado empleado;
 	
 	@ManyToOne
-	@JoinColumn(name="coche_id", referencedColumnName="id")
+	@JoinColumn(name = "coche_id", referencedColumnName = "id")
 	private Coche coche;
 	
 	public int getId() {
