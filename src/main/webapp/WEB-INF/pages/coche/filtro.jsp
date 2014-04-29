@@ -13,9 +13,9 @@
 
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
 
-<script src="/lib/jquery/jquery-1.10.2.js"></script>
-<script src="/lib/jquery/jquery-ui-1.10.4.custom.js"></script>
-<script src="/lib/jquery/jquery-ui-1.10.4.custom.min.js"></script>
+<script src="/js/jquery-1.10.2.js"></script>
+<script src="/js/jquery-ui-1.10.4.custom.js"></script>
+<script src="/js/jquery-ui-1.10.4.custom.min.js"></script>
 
 <script type="text/javascript">
 		$(function() {
