@@ -13,7 +13,7 @@
 	<div id="container">
 		<jsp:include page="../header.jsp" />		
 			<div id="content">
-			<p><a class="link" href="/empresaReparto/coche/new"><spring:message code="nuevo.coche" text="Nuevo"/></a></p>
+			<p><a class="link" href="/empresaReparto/coche/new"><spring:message code="nuevo.coche" text="Nuevo coche"/></a></p>
 			<c:if test="${error!=null}">
 				<div class="errorblock">${error}</div>
 			</c:if>
@@ -41,10 +41,10 @@
 						</c:forEach>
 						<c:choose>
 							<c:when test="${tieneIncidenciaSinResolver == true}">
-								<td align="center">SI</td>
+								<td align="center"><spring:message code="si" text="Sí"/></td>
 							</c:when>
 							<c:otherwise>
-								<td align="center">NO</td>
+								<td align="center"><spring:message code="no" text="No"/></td>
 							</c:otherwise>
 						</c:choose>						
 						<td><a href="/empresaReparto/incidencia/list/${coche.id}"><img alt="listar" src="/images/edit.png" width="20" height="20"></a></td>

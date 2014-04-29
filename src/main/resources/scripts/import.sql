@@ -10,34 +10,35 @@ INSERT INTO `empresa` (`id`,`nombre`,`cif`,`telefono`,`email`,`fecha_inicio`) VA
 INSERT INTO `empresa` (`id`,`nombre`,`cif`,`telefono`,`email`,`fecha_inicio`) VALUES (4,'Azkar','Z2356824K',943554426,'soporte@azkar.com','2009-11-11');
 INSERT INTO `empresa` (`id`,`nombre`,`cif`,`telefono`,`email`,`fecha_inicio`) VALUES (5,'Rayo','M2351156H',943441416,'soporte@rayo.com','2009-10-01');
 
-INSERT INTO `direccion` (`id`,`calle`,`portal`,`piso`,`letra`,`otros`,`codigo_postal`,`municipio`,`empresa_id`,`principal`) VALUES (1,'San Francisco Javier',15,NULL,NULL,'Arga Eraikina',36301,'IruÃ±ea',1,true);
-INSERT INTO `direccion` (`id`,`calle`,`portal`,`piso`,`letra`,`otros`,`codigo_postal`,`municipio`,`empresa_id`,`principal`) VALUES (2,'Paseo ButrÃ³n',42,2,'D',NULL,20401,'Hondarribia',1,false);
-INSERT INTO `direccion` (`id`,`calle`,`portal`,`piso`,`letra`,`otros`,`codigo_postal`,`municipio`,`empresa_id`,`principal`) VALUES (3,'Paseo ButrÃ³n',42,2,'D',NULL,20401,'Hondarribia',2,true);
+INSERT INTO `direccion` (`id`,`calle`,`portal`,`piso`,`letra`,`otros`,`codigo_postal`,`municipio`,`empresa_id`,`principal`) VALUES (1,'San Francisco Javier',15,NULL,NULL,'Arga Eraikina',36301,'Iruñea',1,true);
+INSERT INTO `direccion` (`id`,`calle`,`portal`,`piso`,`letra`,`otros`,`codigo_postal`,`municipio`,`empresa_id`,`principal`) VALUES (2,'Paseo Butrón',42,2,'D',NULL,20401,'Hondarribia',1,false);
+INSERT INTO `direccion` (`id`,`calle`,`portal`,`piso`,`letra`,`otros`,`codigo_postal`,`municipio`,`empresa_id`,`principal`) VALUES (3,'Paseo Butrón',42,2,'D',NULL,20401,'Hondarribia',2,true);
 INSERT INTO `direccion` (`id`,`calle`,`portal`,`piso`,`letra`,`otros`,`codigo_postal`,`municipio`,`empresa_id`,`principal`) VALUES (4,'Lezo',5,3,'','',20301,'Leitza',2,false);
-INSERT INTO `direccion` (`id`,`calle`,`portal`,`piso`,`letra`,`otros`,`codigo_postal`,`municipio`,`empresa_id`,`principal`) VALUES (5,'Bustitzuri',5,5,'C','',36301,'IruÃ±ea',5,true);
+INSERT INTO `direccion` (`id`,`calle`,`portal`,`piso`,`letra`,`otros`,`codigo_postal`,`municipio`,`empresa_id`,`principal`) VALUES (5,'Bustitzuri',5,5,'C','',36301,'Iruñea',5,true);
 
-insert into empleado(id,usuario,password,rol,empresa_id) values (1,'admin','123456','a',null);
-insert into empleado(id,usuario,password,rol,empresa_id) values (2,'aarandia','123456','u',1);
-insert into empleado(id,usuario,password,rol,empresa_id) values (3,'jayudarte','123456','u',1);
-insert into empleado(id,usuario,password,rol,empresa_id) values (4,'abilbao','123456','u',2);
-insert into empleado(id,usuario,password,rol,empresa_id) values (5,'mdejesus','123456','u',2);
-insert into empleado(id,usuario,password,rol,empresa_id) values (6,'eesteibar','123456','u',3);
-insert into empleado(id,usuario,password,rol,empresa_id) values (7,'dferrero','123456','u',3);
-insert into empleado(id,usuario,password,rol,empresa_id) values (8,'mfontao','123456','u',4);
-insert into empleado(id,usuario,password,rol,empresa_id) values (9,'jhidalgo','123456','u',4);
-insert into empleado(id,usuario,password,rol,empresa_id) values (10,'mmartin','123456','u',4);
-insert into empleado(id,usuario,password,rol,empresa_id) values (11,'xmartinez','123456','u',4);
-insert into empleado(id,usuario,password,rol,empresa_id) values (12,'iplaza','123456','u',1);
-insert into empleado(id,usuario,password,rol,empresa_id) values (13,'ssaenz','123456','u',2);
-insert into empleado(id,usuario,password,rol,empresa_id) values (14,'aviteri','123456','u',3);
-insert into empleado(id,usuario,password,rol,empresa_id) values (15,'izubia','123456','u',4);
-insert into empleado(id,usuario,password,rol,empresa_id) values (16,'mpalacios','123456','u',4);
+/*insert into empleado(`id`,usuario,password,rol, activo, dni, nombre, apellido1, apellido2, fechaNacimiento, telefono, email, jefe ,empresa_id) values (1,'admin','123456','a', 1, '999888998X', 'Master', 'And', 'lol', '2009-10-01', '943333333','huo@sadkf.com', null ,null);*/
+insert into empleado(id,usuario,password,rol, activo, dni, nombre, apellido1, apellido2, fechaNacimiento, telefono, email, jefe ,empresa_id) values (1,'admin','123456','a',  1, '99966699X', 'Master', 'And', 'Commander', '2009-10-01', '943333333','admin@sadkf.com', null ,null);
+insert into empleado(id,usuario,password,rol, activo, dni, nombre, apellido1, apellido2, fechaNacimiento, telefono, email, jefe ,empresa_id) values (2,'aarandia','123456','u', 1, '99988811X', 'Aritz', 'arandia', 'lol', '2009-10-01', '943333333','aarandia@sadkf.com', null ,1);
+insert into empleado(id,usuario,password,rol, activo, dni, nombre, apellido1, apellido2, fechaNacimiento, telefono, email, jefe ,empresa_id) values (3,'jayudarte','123456','u', 1, '99988822X', 'Jose', 'ayudarte', 'lol', '2009-10-01', '943333333','jayudarte@sadkf.com', null ,1);
+insert into empleado(id,usuario,password,rol, activo, dni, nombre, apellido1, apellido2, fechaNacimiento, telefono, email, jefe ,empresa_id) values (4,'abilbao','123456','u', 1, '99988833X', 'Aitor', 'bilbao', 'lol', '2009-10-01', '943333333','abilbao@sadkf.com', null ,2);
+insert into empleado(id,usuario,password,rol, activo, dni, nombre, apellido1, apellido2, fechaNacimiento, telefono, email, jefe ,empresa_id) values (5,'mdejesus','123456','u', 1, '99988844X', 'Maider', 'dejesus', 'lol', '2009-10-01', '943333333','mdejesus@sadkf.com', null ,2);
+insert into empleado(id,usuario,password,rol, activo, dni, nombre, apellido1, apellido2, fechaNacimiento, telefono, email, jefe ,empresa_id) values (6,'eesteibar','123456','u', 1, '99988855X', 'Endika', 'esteibar', 'lol', '2009-10-01', '943333333','eesteibar@sadkf.com', null ,3);
+insert into empleado(id,usuario,password,rol, activo, dni, nombre, apellido1, apellido2, fechaNacimiento, telefono, email, jefe ,empresa_id) values (7,'dferrero','123456','u', 1, '99988866X', 'David', 'ferrero', 'lol', '2009-10-01', '943333333','dferrero@sadkf.com', null ,3);
+insert into empleado(id,usuario,password,rol, activo, dni, nombre, apellido1, apellido2, fechaNacimiento, telefono, email, jefe ,empresa_id) values (8,'mfontao','123456','u', 1, '99988877X', 'Mikel', 'fontao', 'lol', '2009-10-01', '943333333','mfontao@sadkf.com', null ,4);
+insert into empleado(id,usuario,password,rol, activo, dni, nombre, apellido1, apellido2, fechaNacimiento, telefono, email, jefe ,empresa_id) values (9,'jhidalgo','123456','u', 1, '99988888X', 'Javier', 'hidalgo', 'lol', '2009-10-01', '943333333','jhidalgo@sadkf.com', null ,4);
+insert into empleado(id,usuario,password,rol, activo, dni, nombre, apellido1, apellido2, fechaNacimiento, telefono, email, jefe, empresa_id) values (10,'mmartin','123456','u', 1, '99988899X', 'Maite', 'martin', 'lol', '2009-10-01', '943333333','mmartin@sadkf.com', null ,4);
+insert into empleado(id,usuario,password,rol, activo, dni, nombre, apellido1, apellido2, fechaNacimiento, telefono, email, jefe, empresa_id) values (11,'xmartinez','123456','u', 1, '99988800X', 'Xabier', 'martinez', 'lol', '2009-10-01', '943333333','xmartinez@sadkf.com', null ,4);
+insert into empleado(id,usuario,password,rol, activo, dni, nombre, apellido1, apellido2, fechaNacimiento, telefono, email, jefe, empresa_id) values (12,'iplaza','123456','u', 1, '99988812X', 'Ivan', 'plaza', 'lol', '2009-10-01', '943333333','iplaza@sadkf.com', null ,1);
+insert into empleado(id,usuario,password,rol, activo, dni, nombre, apellido1, apellido2, fechaNacimiento, telefono, email, jefe, empresa_id) values (13,'ssaenz','123456','u', 1, '99988845X', 'Sergio', 'saenz', 'lol', '2009-10-01', '943333333','ssaenz@sadkf.com', null ,2);
+insert into empleado(id,usuario,password,rol, activo, dni, nombre, apellido1, apellido2, fechaNacimiento, telefono, email, jefe, empresa_id) values (14,'aviteri','123456','u', 1, '99988867X', 'Ane', 'viteri', 'lol', '2009-10-01', '943333333','aviteri@sadkf.com', null ,3);
+insert into empleado(id,usuario,password,rol, activo, dni, nombre, apellido1, apellido2, fechaNacimiento, telefono, email, jefe, empresa_id) values (15,'izubia','123456','u', 1, '99988878X', 'Iñigo', 'zubia', 'lol', '2009-10-01', '943333333','izubia@sadkf.com', null ,4);
+insert into empleado(id,usuario,password,rol, activo, dni, nombre, apellido1, apellido2, fechaNacimiento, telefono, email, jefe, empresa_id) values (16,'mpalacios','123456','u', 1, '99988889X', 'Maria', 'palacios', 'lol', '2009-10-01', '943333333','mpalacios@sadkf.com', null ,4);
 
 insert into coche(id, combustible, kms, marca, matricula, modelo, empresa_id) values (1, 'gasoil', 12345, 'ford', '1234www', 'kuga', 1);
-insert into coche(id, combustible, kms, marca, matricula, modelo, empresa_id) values (2, 'gasoil', 12345, 'ford', '1234www', 'kuga',2);
-insert into coche(id, combustible, kms, marca, matricula, modelo, empresa_id) values (3, 'gasoil', 12345, 'ford', '1234www', 'kuga',3);
-insert into coche(id, combustible, kms, marca, matricula, modelo, empresa_id) values (4, 'gasoil', 12345, 'ford', '1234www', 'kuga',4);
-insert into coche(id, combustible, kms, marca, matricula, modelo, empresa_id) values (5, 'gasoil', 12345, 'ford', '1234www', 'kuga',4);
+insert into coche(id, combustible, kms, marca, matricula, modelo, empresa_id) values (2, 'gasoil', 12345, 'ford', '6748ABC', 'kuga',2);
+insert into coche(id, combustible, kms, marca, matricula, modelo, empresa_id) values (3, 'gasoil', 12345, 'ford', '6683KJU', 'kuga',3);
+insert into coche(id, combustible, kms, marca, matricula, modelo, empresa_id) values (4, 'gasoil', 12345, 'ford', '7835IYT', 'kuga',4);
+insert into coche(id, combustible, kms, marca, matricula, modelo, empresa_id) values (5, 'gasoil', 12345, 'ford', '3468TTY', 'kuga',4);
 
 insert into reserva (id, fecha_devolucion, fecha_devolucion_prevista, fecha_inicio, fecha_inicio_prevista, coche_id, empleado_id) values (1, "01/02/2014", "02/02/2014", "01/02/2014", "05/02/2014", 1, 3);
 insert into reserva (id, fecha_devolucion, fecha_devolucion_prevista, fecha_inicio, fecha_inicio_prevista, coche_id, empleado_id) values (2, "01/02/2014", "01/02/2014", "01/02/2014", "01/02/2014", 1, 2);
