@@ -13,9 +13,10 @@
 
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
 
-	<script src="/js/jquery-1.10.2.js"></script>
-	<script src="/js/jquery-ui-1.10.4.custom.min.js"></script>
-	<script src="/js/jquery.i18n.properties-min-1.0.9.js"></script>
+	<script src="/jquery/jquery-1.10.2.js"></script>
+	<script src="/jquery/jquery-ui-1.10.4.custom.js"></script>
+	<script src="/jquery/jquery-ui-1.10.4.custom.min.js"></script>
+	<script src="/jquery/jquery.i18n.properties-min-1.0.9.js"></script>
 	<script src="/js/jquery.cookie.js"></script>
 
 	<script type="text/javascript">
@@ -62,10 +63,8 @@
 	    });
 		if (lang=='es'){
 			$.datepicker.setDefaults($.datepicker.regional['es']);
-			alert("es");
 		}else{
 			$.datepicker.setDefaults($.datepicker.regional['eu']);
-			alert("eu");
 		}
 		
 			$("#fechaInicio").datepicker(
