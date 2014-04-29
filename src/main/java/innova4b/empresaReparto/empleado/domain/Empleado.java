@@ -1,18 +1,25 @@
 package innova4b.empresaReparto.empleado.domain;
 
 import innova4b.empresaReparto.empresa.domain.Empresa;
+import innova4b.empresaReparto.reserva.domain.Reserva;
 
-import javax.persistence.CascadeType;
+import java.util.List;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -57,7 +64,12 @@ public class Empleado {
 	@Email
 	private String email;
 	
-	@ManyToOne(cascade={CascadeType.ALL})
+
+	@OneToMany(mappedBy="empleado", fetch=FetchType.EAGER)
+	@Cascade({CascadeType.ALL})
+	private List<Reserva> reservas;
+	
+	@ManyToOne(cascade={javax.persistence.CascadeType.ALL})
 	@JoinColumn(name="jefe")
 	private Empleado jefe;
 
@@ -159,5 +171,14 @@ public class Empleado {
 	public void setRol(String rol) {
 		this.rol = rol;
 	}
- 
+	@Override
+	public String toString() {
+		return "Empleado [id=" + id + ", empresa=" + empresa.getNombre() + ", usuario="
+				+ usuario + ", password=" + password + ", rol=" + rol
+				+ ", activo=" + activo + ", dni=" + dni + ", nombre=" + nombre
+				+ ", apellido1=" + apellido1 + ", apellido2=" + apellido2
+				+ ", fechaNacimiento=" + fechaNacimiento + ", telefono="
+				+ telefono + ", email=" + email + ", jefe=" + jefe + "]";
+	}
+	
 }
