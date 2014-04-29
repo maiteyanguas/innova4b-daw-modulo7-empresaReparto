@@ -38,6 +38,7 @@ public class CocheController {
 	@RequestMapping(value = "/listWithOutIncidenciasFilter", method = RequestMethod.POST)
 	public String listWithOutIncidenciaFilter(@Valid FiltroReserva filtro, BindingResult result, ModelMap model) {
 		model.addAttribute("coches", cocheDao.listWithOutIncidenciaFilter(filtro.getFechaInicioPrevista(),filtro.getFechaDevolucionPrevista()));
+		model.addAttribute("filtro", filtro);
 		
 		return "coche/listWithOutIncidencias";
 	}

@@ -22,7 +22,7 @@ public class CocheDao {
 		return (List<Coche>)sessionFactory.getCurrentSession().createQuery("from Coche as c where size(c.incidencias)=0").list();
 	} 
 	
-	public List<Coche> listWithOutIncidenciaFilter(LocalDate dateFirst, LocalDate dateLast) {	
+	public List<Coche> listWithOutIncidenciaFilter(LocalDate dateFirst, LocalDate dateLast) {
 		return (List<Coche>)sessionFactory.getCurrentSession()
 					.createQuery("FROM Coche as c LEFT JOIN c.reservas as r WHERE size(c.incidencias)=0 AND r.fechaInicioPrevista >= :dateFirst AND r.fechaDevolucionPrevista <= :dateLast ")
 					.setParameter("dateFirst", dateFirst)
