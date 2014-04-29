@@ -49,7 +49,7 @@
 				</tr>
 				<tr>
 					<td><form:label path="apellido1"><spring:message code="empleado.apellido1" text="Primer apellido"/>:</form:label></td>
-					<td><form:input path="apellido1"></form:input>
+					<td><form:input path="apellido1"></form:input> 
 						<form:errors path="apellido1" cssClass="error"/>
 					</td>
 				</tr>
