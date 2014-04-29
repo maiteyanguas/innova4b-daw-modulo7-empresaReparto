@@ -117,7 +117,8 @@
 	<script type="text/javascript">
 	
 	$(document).ready(function(){
-		lang = $.cookie("org.springframework.web.servlet.i18n.CookieLocaleResolver.LOCALE");
+		var cookie = $.cookie("org.springframework.web.servlet.i18n.CookieLocaleResolver.LOCALE");
+		var lang = cookie===undefined?'es':cookie;
 		jQuery.i18n.properties({
 	        name: 'messages', 
 	        path: '/messages/', 
