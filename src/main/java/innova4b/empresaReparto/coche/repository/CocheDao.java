@@ -2,10 +2,10 @@ package innova4b.empresaReparto.coche.repository;
 
 import innova4b.empresaReparto.coche.domain.Coche;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
-import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,7 +23,7 @@ public class CocheDao {
 	} 
 	
 	//Falta implementar bien la lista
-	public List<Coche> listWithOutIncidenciaFilter(LocalDate dateFirst, LocalDate dateLast) {
+	public List<Coche> listWithOutIncidenciaFilter(Date dateFirst, Date dateLast) {
 		return (List<Coche>)sessionFactory.getCurrentSession().createQuery("from Coche as c where size(c.incidencias)=0 fechaInicioPrevista >= "+dateFirst+" AND fechaDevolucionPrevista <= "+dateLast+" ").list();
 	}	
 
@@ -34,4 +34,5 @@ public class CocheDao {
 	public Coche getCocheById(int idCoche){
 		return (Coche)sessionFactory.getCurrentSession().createQuery("from Coche where id = " + idCoche + "");
 	}
+
 }

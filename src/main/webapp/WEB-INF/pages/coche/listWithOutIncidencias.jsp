@@ -17,9 +17,9 @@
 			<c:if test="${error!=null}">
 				<div class="errorblock">${error}</div>
 			</c:if>
+			<jsp:include page="filtro.jsp" />
 			<table>
 				<tr>
-					<jsp:include page="filtro.jsp" />
 					<th><spring:message code="coche.modelo" text="Modelo"/></th>
 					<th><spring:message code="coche.marca" text="Marca"/></th>
 					<th><spring:message code="coche.matricula" text="Matrícula"/></th>
