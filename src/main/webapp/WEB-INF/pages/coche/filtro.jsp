@@ -63,17 +63,18 @@
 	<c:if test="${error!=null}">
 		<div class="errorblock">${error}</div>
 	</c:if>
-
-	<form name="input" action="/empresaReparto/coche/listWithOutIncidenciasFilter" method="post">
+<form:form id="cocheFiltro" method="POST" modelAttribute="filtro" action="/empresaReparto/coche/listWithOutIncidenciasFilter">
 		<table>
 				<tr>
-					<td><label><spring:message code="reserva.fechaInicio" />:</label></td>
-					<td><input id="fechaInicio" ></input>
+					<td><form:label path="fechaInicioPrevista"><spring:message code="filtro.fechaInicioPrevista" />:</form:label></td>
+					<td><form:input path="fechaInicioPrevista" ></form:input>
+						<form:errors path="fechaInicioPrevista" cssClass="error"/>
 					</td>
 				</tr>
 				<tr>
-					<td><label><spring:message code="reserva.fechaDevolucion" />:</label></td>
-					<td><input id="fechaDevolucion"></input>
+					<td><form:label path="fechaDevolucionPrevista"><spring:message code="filtro.fechaDevolucionPrevista" />:</form:label></td>
+					<td><form:input path="fechaDevolucionPrevista" ></form:input>
+						<form:errors path="fechaDevolucionPrevista" cssClass="error"/>
 					</td>
 				</tr>
 			</table>
@@ -81,4 +82,4 @@
 				<spring:message code="guardar" text="Guardar" var="guardar"/>
 				<input type="submit" value="${guardar}"/>
 			</p>
-	</form>
+	</form:form>

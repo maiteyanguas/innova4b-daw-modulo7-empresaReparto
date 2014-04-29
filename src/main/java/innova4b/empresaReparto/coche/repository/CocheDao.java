@@ -5,6 +5,7 @@ import innova4b.empresaReparto.coche.domain.Coche;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -32,7 +33,8 @@ public class CocheDao {
 	}
 	
 	public Coche getCocheById(int idCoche){
-		return (Coche)sessionFactory.getCurrentSession().createQuery("from Coche where id = " + idCoche + "");
+		Coche c = (Coche)sessionFactory.getCurrentSession().createQuery("from Coche where id=" + idCoche).list().get(0);
+		return c;
 	}
 
 }
