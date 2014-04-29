@@ -75,7 +75,7 @@
 				<div class="errorblock">${error}</div>
 			</c:if>
 
-			<form:form method="post" modelAttribute="filtro" action="/empresaReparto/reserva/add">
+			<form:form method="post" modelAttribute="reserva" action="/empresaReparto/reserva/add">
 				<table>
 					<tr>
 						<td><form:label path="fechaInicioPrevista">
