@@ -52,7 +52,7 @@ public class Empleado {
 	@NotEmpty
 	private String apellido2;
 	@NotNull
-	@DateTimeFormat(pattern = "yyyy-mm-dd")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
     @Past
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
 	private LocalDate fechaNacimiento;
@@ -118,10 +118,10 @@ public class Empleado {
 		return fechaNacimiento;
 	}	
 	public String getFechaInicioAsString(){
-		return fechaNacimiento==null?"":fechaNacimiento.toString(org.joda.time.format.DateTimeFormat.forPattern("yyyy-mm-dd"));
+		return fechaNacimiento==null?"":fechaNacimiento.toString(org.joda.time.format.DateTimeFormat.forPattern("dd/MM/yyyy"));
 	}
 	public void setFechaInicio(String fechaNacimiento) {
-		this.fechaNacimiento = LocalDate.parse(fechaNacimiento,org.joda.time.format.DateTimeFormat.forPattern("yyyy-mm-dd"));
+		this.fechaNacimiento = LocalDate.parse(fechaNacimiento,org.joda.time.format.DateTimeFormat.forPattern("dd/MM/yyyy"));
 	}
 	public void setFechaNacimiento(LocalDate fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
