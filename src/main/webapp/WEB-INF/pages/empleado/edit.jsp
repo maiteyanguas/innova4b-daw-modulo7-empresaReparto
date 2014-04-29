@@ -27,6 +27,7 @@
 				<tr>
 					<td><form:label path="password"><spring:message code="password" text="Contraseña"/>:</form:label></td>
 					<td><form:input path="password"></form:input>
+					<!-- <td><form:password path="password"></form:password> -->
 						<form:errors path="password" cssClass="error"/>
 					</td>
 				</tr>

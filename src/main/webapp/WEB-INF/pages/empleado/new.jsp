@@ -26,7 +26,8 @@
 				</tr>
 				<tr>
 					<td><form:label path="password"><spring:message code="password" text="Contraseña"/>:</form:label></td>
-					<td><form:input path="password"></form:input>
+						
+					<td><form:password path="password"></form:password>
 						<form:errors path="password" cssClass="error"/>
 					</td>
 				</tr>
@@ -60,7 +61,7 @@
 				</tr>
 				<tr>
 					<td><form:label path="fechaNacimiento"><spring:message code="empleado.fechaNacimiento" text="Fecha Nacimiento"/>:</form:label></td>
-					<td><form:input path="fechaNacimiento"></form:input>
+					<td><form:input path="fechaNacimiento" type="date"></form:input> DD/MM/YYYY
 						<form:errors path="fechaNacimiento" cssClass="error"/>
 					</td>
 				</tr>
