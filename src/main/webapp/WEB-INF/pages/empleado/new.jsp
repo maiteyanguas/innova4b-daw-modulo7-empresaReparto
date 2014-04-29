@@ -61,7 +61,7 @@
 				</tr>
 				<tr>
 					<td><form:label path="fechaNacimiento"><spring:message code="empleado.fechaNacimiento" text="Fecha Nacimiento"/>:</form:label></td>
-					<td><form:input path="fechaNacimiento" type="date" name="FromDate" class="date"></form:input> DD/MM/YYYY
+					<td><form:input path="fechaNacimiento" type="date" name="FromDate" class="date" max="1997-12-31"></form:input> DD/MM/YYYY
 						<form:errors path="fechaNacimiento" cssClass="error"/>
 					</td>
 				</tr>
