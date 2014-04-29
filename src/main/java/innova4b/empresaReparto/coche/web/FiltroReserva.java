@@ -1,9 +1,15 @@
 package innova4b.empresaReparto.coche.web;
 
-import java.util.Date;
+import java.sql.Date;
+
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 public class FiltroReserva {
+	@NotNull
 	private Date fechaInicioPrevista;
+	@NotNull
 	private Date fechaDevolucionPrevista;
 	
 	public FiltroReserva() {}

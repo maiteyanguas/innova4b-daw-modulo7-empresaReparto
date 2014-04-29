@@ -24,7 +24,7 @@ public class CocheDao {
 	
 	//Falta implementar bien la lista
 	public List<Coche> listWithOutIncidenciaFilter(Date dateFirst, Date dateLast) {
-		return (List<Coche>)sessionFactory.getCurrentSession().createQuery("from Coche as c where size(c.incidencias)=0 fechaInicioPrevista >= "+dateFirst+" AND fechaDevolucionPrevista <= "+dateLast+" ").list();
+		return (List<Coche>)sessionFactory.getCurrentSession().createQuery("from Coche as c where size(c.incidencias)=0 AND fechaInicioPrevista >= "+dateFirst+" AND fechaDevolucionPrevista <= "+dateLast+" ").list();
 	}	
 
 	public List<Coche> listAll() {
