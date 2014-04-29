@@ -22,6 +22,9 @@ public class CocheController {
 	//Lista los coches sin incidencias
 	@RequestMapping(value = "/listWithOutIncidencias", method = RequestMethod.GET)
 	public void list(ModelMap model) {
+		FiltroReserva filtro = new FiltroReserva();
+		model.addAttribute("filtro", filtro);
+		
 		model.addAttribute("coches", cocheDao.listWithOutIncidencia());	
 	}
 	
