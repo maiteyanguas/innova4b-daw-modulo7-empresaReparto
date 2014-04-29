@@ -67,13 +67,13 @@
 		<table>
 				<tr>
 					<td><form:label path="fechaInicioPrevista"><spring:message code="filtro.fechaInicioPrevista" />:</form:label></td>
-					<td><form:input path="fechaInicioPrevista" ></form:input>
+					<td><form:input id="fechaInicio" path="fechaInicioPrevista" ></form:input>
 						<form:errors path="fechaInicioPrevista" cssClass="error"/>
 					</td>
 				</tr>
 				<tr>
 					<td><form:label path="fechaDevolucionPrevista"><spring:message code="filtro.fechaDevolucionPrevista" />:</form:label></td>
-					<td><form:input path="fechaDevolucionPrevista" ></form:input>
+					<td><form:input id="fechaDevolucion" path="fechaDevolucionPrevista" ></form:input>
 						<form:errors path="fechaDevolucionPrevista" cssClass="error"/>
 					</td>
 				</tr>
