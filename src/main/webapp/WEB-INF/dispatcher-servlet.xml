@@ -90,7 +90,7 @@
 	</mvc:interceptors> 
 
 	<bean class="org.springframework.context.support.ResourceBundleMessageSource" id="messageSource">
-        <property name="basename" value="messages" />
+        <property name="basename" value="messages/messages" />
 	</bean>
 
 </beans>

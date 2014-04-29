@@ -23,7 +23,7 @@
 					<th><spring:message code="empresa.nombre" text="Nombre"/></th>
 					<th><spring:message code="empresa.cif" text="CIF"/></th>
 					<th><spring:message code="empresa.telefono" text="Teléfono"/></th>
-					<th><spring:message code="empresa.direccion.principal" text="Dirección Principal"/></th>
+					<th><spring:message code="empresa.direccionPrincipal" text="Dirección Principal"/></th>
 					<th/>
 					<th/>
 				</tr>

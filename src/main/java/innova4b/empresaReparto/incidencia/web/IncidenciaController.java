@@ -5,6 +5,7 @@ import innova4b.empresaReparto.incidencia.repository.IncidenciaDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -15,11 +16,17 @@ public class IncidenciaController {
 	@Autowired
 	IncidenciaDao incidenciaDao;
 	
-	@RequestMapping(value = "/show", method = RequestMethod.GET)
-	public void show(ModelMap model) {
-		model.addAttribute("incidencia", incidenciaDao.getById(1));	
+	@RequestMapping(value = "/show/{id}", method = RequestMethod.GET)
+	public String show(ModelMap model,@PathVariable("id") int idIncidencia) {
+		model.addAttribute("incidencia", incidenciaDao.getById(idIncidencia));
+		return "incidencia/show";
 	}
-//	
+	
+	@RequestMapping(value = "/list/{id}", method = RequestMethod.GET)
+	public String list(ModelMap model,@PathVariable("id") int idCoche) {
+		model.addAttribute("incidencias", incidenciaDao.list(idCoche));
+		return "incidencia/list";
+	}
 //	@RequestMapping(value = "/new", method = RequestMethod.GET)
 //	public void newEmpresa(ModelMap model) {
 //		model.addAttribute("empresa",new Empresa());

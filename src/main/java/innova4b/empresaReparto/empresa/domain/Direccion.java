@@ -9,9 +9,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+import org.hibernate.validator.constraints.NotEmpty;
 
 
 @Entity
@@ -20,16 +23,20 @@ public class Direccion {
 	@Id
 	@GeneratedValue
 	private int id;
+	@NotEmpty
 	private String calle;
+	@NotNull
 	private Integer portal;
 	private Integer piso;
 	private String letra;
 	private String otros;
 	@Column(name="codigo_postal")
 	private Integer codigoPostal;
+	@NotEmpty
 	private String municipio;
 	@ManyToOne
 	@JoinColumn(name = "empresa_id", referencedColumnName = "id")
+	@JsonIgnore
 	private Empresa empresa;
 	private Boolean principal;
 		
@@ -107,6 +114,10 @@ public class Direccion {
 	}
 	public void setPrincipal(Boolean principal) {
 		this.principal = principal;
+	}
+	@JsonIgnore
+	public String getDireccionAsString(){
+		return this.calle+" "+this.portal+", "+this.municipio;
 	}
 	
 	

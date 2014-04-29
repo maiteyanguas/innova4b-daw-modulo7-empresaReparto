@@ -1,8 +1,6 @@
-
 p {
 	margin: 10px 5px
 }
-
 
 div#header {
 	background-color: #F3F2ED;
@@ -13,16 +11,15 @@ div#header {
 	font-size: 1.2em;
 }
 
-
 div#header .right {
 	float: right;
 	width: 350px;
 }
+
 div#header .left {
 	float: left;
 	width: 350x;
 }
-
 
 div#container {
 	text-align: left;
@@ -35,17 +32,14 @@ div#content {
 	width: 700px
 }
 
-
-#content table{
+#content table {
 	padding-left: 5px
 }
-
 
 div#navigation {
 	background: #F6F0E0;
 	float: left;
 	width: 200px
-	
 }
 
 div#navigation ul {
@@ -94,19 +88,26 @@ div#footer {
 input[type="submit"] {
 	background: #BFBD93;
 	height: 30px;
-	border:1px solid #268a16;
-	font-size: 1.2em;	
+	border: 1px solid #268a16;
+	font-size: 1.2em;
 	cursor: pointer;
 }
 
 .button {
 	display: inline-block;
-  	width: 60px;
-  	height: 20px;
+	width: 60px;
+	height: 20px;
 	background: #BFBD93;
-	border:1px solid #268a16;
+	border: 1px solid #268a16;
 	font-size: 1.2em;
-	padding: 5px;	
+	padding: 5px;
 }
 
+.ui-widget-header.dialog-class {
+	background: #BFBD93;
+	font-weight: normal;
+}
 
+.ui-button.ui-widget.dialog-class {
+background: #BFBD93;
+}
