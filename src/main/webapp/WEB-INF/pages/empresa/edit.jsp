@@ -40,7 +40,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td><form:label path="fechaInicio"><spring:message code="empresa.fecha.inicio" text="Fecha de inicio"/>:</form:label></td>
+					<td><form:label path="fechaInicio"><spring:message code="empresa.fechaInicio" text="Fecha de inicio"/>:</form:label></td>
 					<td><form:input path="fechaInicio"></form:input>
 						<form:errors path="fechaInicio" cssClass="error"/>
 					</td>

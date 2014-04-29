@@ -2,6 +2,7 @@ package innova4b.empresaReparto.empresa.service;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
+import innova4b.empresaReparto.empresa.domain.Empresa;
 import innova4b.empresaReparto.empresa.repository.EmpresaDao;
 import innova4b.empresaReparto.exceptions.EmpresaWithCochesException;
 import innova4b.empresaReparto.exceptions.EmpresaWithEmpleadosException;
@@ -54,8 +55,8 @@ public class EmpresaServiceTest {
 			return;
 		} catch (EmpresaWithEmpleadosException e) {}	
 		fail();
-	}	
-	
+	}
+
 	@Test
 	public void delete_borra_la_empresa_si_no_tiene_coches_ni_empleados() {
 		try {
@@ -68,6 +69,38 @@ public class EmpresaServiceTest {
 		verify(empresaDaoMock).delete(EMPRESA_ID);
 	}
 	
+	@Test
+	public void insert_inserta_una_empresa_con_sus_direcciones_a_partir_del_json_de_direcciones() throws Exception {
+		String direccionesJSON = "[{\"id\":0,\"calle\":\"Renteria\",\"portal\":24,\"piso\":null,\"letra\":\"\",\"otros\":\"\",\"codigoPostal\":null,\"municipio\":\"Irun\"},"
+								+ "{\"id\":0,\"calle\":\"Paseo Colon\",\"portal\":5,\"piso\":null,\"letra\":\"\",\"otros\":\"\",\"codigoPostal\":null,\"municipio\":\"Donostia\"}]";
+		Empresa empresa = new Empresa();
+		Empresa empresaNew = empresaService.insert(empresa, direccionesJSON);
+		assertNotNull(empresaNew);
+		assertEquals(2, empresaNew.getDirecciones().size());
+		assertEquals(empresa,empresaNew.getDirecciones().get(0).getEmpresa());
+		verify(empresaDaoMock).insert(empresa);
+	}
 	
+	@Test
+	public void insert_inserta_una_empresa_sin_direcciones_si_el_json_de_direcciones_es_vacio() throws Exception {
+		String direccionesJSON = "";
+		Empresa empresa = new Empresa();
+		Empresa empresaNew = empresaService.insert(empresa, direccionesJSON);
+		assertNotNull(empresaNew);
+		assertNull(empresaNew.getDirecciones());
+		verify(empresaDaoMock).insert(empresa);
+	}
+	
+	@Test
+	public void insert_inserta_una_empresa_sin_direcciones_si_el_json_de_direcciones_esta_mal_formado() throws Exception {
+		String direccionesJSON = "[{\"id\"\"calle\":\"Renteria\",\"portal\":24,\"piso\":null,\"letra\":\"\",\"otros\":\"\",\"codigoPostal\":null,\"municipio\":\"Irun\"},"
+				+ "{\"id\":0,\"calle\":\"Paseo Colon\",\"portal\":5,\"piso\":null,\"letra\":\"\",\"otros\":\"\",\"codigoPostal\":null,\"municipio\":\"Donostia\"}]";
+
+		Empresa empresa = new Empresa();
+		Empresa empresaNew = empresaService.insert(empresa, direccionesJSON);
+		assertNotNull(empresaNew);
+		assertNull(empresaNew.getDirecciones());
+		verify(empresaDaoMock).insert(empresa);
+	}
 
 }
