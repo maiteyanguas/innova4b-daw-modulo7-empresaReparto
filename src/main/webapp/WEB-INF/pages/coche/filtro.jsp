@@ -64,7 +64,7 @@
 		<div class="errorblock">${error}</div>
 	</c:if>
 
-	<form name="input" action="/empresaReparto/coche/listWithOutIncidencias" method="post">
+	<form name="input" action="/empresaReparto/coche/listWithOutIncidenciasFilter" method="post">
 		<table>
 				<tr>
 					<td><label><spring:message code="reserva.fechaInicio" />:</label></td>

@@ -16,7 +16,6 @@
 	<title><spring:message code="nueva.reserva" text="Nueva reserva" /></title>
 
 	<script src="/lib/jquery/jquery-1.10.2.js"></script>
-	<script src="/lib/jquery/jquery-ui-1.10.4.custom.js"></script>
 	<script src="/lib/jquery/jquery-ui-1.10.4.custom.min.js"></script>
 	
 	<script type="text/javascript">
@@ -74,8 +73,7 @@
 				<div class="errorblock">${error}</div>
 			</c:if>
 
-			<form:form method="post" modelAttribute="reserva"
-				action="/empresaReparto/reserva/add">
+			<form:form method="post" modelAttribute="filtro" action="/empresaReparto/reserva/add">
 				<table>
 					<tr>
 						<td><form:label path="fechaInicioPrevista">

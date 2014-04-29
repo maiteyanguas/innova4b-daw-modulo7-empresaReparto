@@ -42,7 +42,8 @@ public class ReservaController {
 		reserva.setCoche(coche);
 		Usuario usuario = (Usuario) session.getAttribute("usuario");
 		Empleado empleado = empleadoDao.get(usuario.getId());
-		model.addAttribute("reserva", reserva);	
+		reserva.setEmpleado(empleado);
+		model.addAttribute("reserva", reserva);		
 		return "reserva/new";
 	}
 	
