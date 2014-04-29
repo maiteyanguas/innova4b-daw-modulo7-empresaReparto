@@ -33,7 +33,7 @@ Arrancar la aplicación en perfil desarrollo: mvn jetty:run
 Arrancar la aplicación en perfil prod: mvn jetty:run -P prod
 
 Si el jetty finaliza mal, hay que "matar el proceso": 
-	- En una terminal ejecutar: netstat -ap | grep java
+	- En una terminal ejecutar: netstat -ap | grep 9999
 	- matar el proceso que está en el puerto 9999
 
 Los logs se guardan en el directorio del proyecto. Hay 3 ficheros diferentes:

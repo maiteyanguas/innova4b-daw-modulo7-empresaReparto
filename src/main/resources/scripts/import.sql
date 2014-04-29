@@ -35,10 +35,10 @@ insert into empleado(id,usuario,password,rol, activo, dni, nombre, apellido1, ap
 insert into empleado(id,usuario,password,rol, activo, dni, nombre, apellido1, apellido2, fechaNacimiento, telefono, email, jefe, empresa_id) values (16,'mpalacios','123456','u', 1, '99988889X', 'Maria', 'palacios', 'lol', '2009-10-01', '943333333','mpalacios@sadkf.com', null ,4);
 
 insert into coche(id, combustible, kms, marca, matricula, modelo, empresa_id) values (1, 'gasoil', 12345, 'ford', '1234www', 'kuga', 1);
-insert into coche(id, combustible, kms, marca, matricula, modelo, empresa_id) values (2, 'gasoil', 12345, 'ford', '1234www', 'kuga',2);
-insert into coche(id, combustible, kms, marca, matricula, modelo, empresa_id) values (3, 'gasoil', 12345, 'ford', '1234www', 'kuga',3);
-insert into coche(id, combustible, kms, marca, matricula, modelo, empresa_id) values (4, 'gasoil', 12345, 'ford', '1234www', 'kuga',4);
-insert into coche(id, combustible, kms, marca, matricula, modelo, empresa_id) values (5, 'gasoil', 12345, 'ford', '1234www', 'kuga',4);
+insert into coche(id, combustible, kms, marca, matricula, modelo, empresa_id) values (2, 'gasoil', 12345, 'ford', '6748ABC', 'kuga',2);
+insert into coche(id, combustible, kms, marca, matricula, modelo, empresa_id) values (3, 'gasoil', 12345, 'ford', '6683KJU', 'kuga',3);
+insert into coche(id, combustible, kms, marca, matricula, modelo, empresa_id) values (4, 'gasoil', 12345, 'ford', '7835IYT', 'kuga',4);
+insert into coche(id, combustible, kms, marca, matricula, modelo, empresa_id) values (5, 'gasoil', 12345, 'ford', '3468TTY', 'kuga',4);
 
 insert into reserva (id, fecha_devolucion, fecha_devolucion_prevista, fecha_inicio, fecha_inicio_prevista, coche_id, empleado_id) values (1, "2014/2/1", "2014/2/5", "2014/2/1", "2014/2/5", 1, 3);
 insert into reserva (id, fecha_devolucion, fecha_devolucion_prevista, fecha_inicio, fecha_inicio_prevista, coche_id, empleado_id) values (2, "2014/2/2", "2014/2/6", "2014/2/2", "2014/2/6", 1, 2);
