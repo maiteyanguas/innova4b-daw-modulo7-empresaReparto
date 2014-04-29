@@ -1,29 +1,33 @@
 package innova4b.empresaReparto.coche.web;
 
-import java.sql.Date;
-
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.annotations.Type;
+import org.joda.time.LocalDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class FiltroReserva {
 	@NotNull
-	private Date fechaInicioPrevista;
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@Type(type = "org.jadira.usertype.dateandtime.joda.LocalDate")
+	private LocalDate fechaInicioPrevista;
 	@NotNull
-	private Date fechaDevolucionPrevista;
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@Type(type = "org.jadira.usertype.dateandtime.joda.LocalDate")
+	private LocalDate fechaDevolucionPrevista;
 	
 	public FiltroReserva() {}
-	
-	public Date getFechaInicioPrevista() {
+
+	public LocalDate getFechaInicioPrevista() {
 		return fechaInicioPrevista;
 	}
-	public void setFechaInicioPrevista(Date fechaInicioPrevista) {
+	public void setFechaInicioPrevista(LocalDate fechaInicioPrevista) {
 		this.fechaInicioPrevista = fechaInicioPrevista;
 	}
-	public Date getFechaDevolucionPrevista() {
+	public LocalDate getFechaDevolucionPrevista() {
 		return fechaDevolucionPrevista;
 	}
-	public void setFechaDevolucionPrevista(Date fechaDevolucionPrevista) {
+	public void setFechaDevolucionPrevista(LocalDate fechaDevolucionPrevista) {
 		this.fechaDevolucionPrevista = fechaDevolucionPrevista;
-	}	
+	}
 }

@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/coche")
 @Controller
 public class CocheController {
-
 	@Autowired
 	CocheDao cocheDao;
 	
@@ -23,15 +22,17 @@ public class CocheController {
 	@RequestMapping(value = "/listWithOutIncidencias", method = RequestMethod.GET)
 	public void list(ModelMap model) {
 		FiltroReserva filtro = new FiltroReserva();
-		model.addAttribute("filtro", filtro);
 		
+		model.addAttribute("filtro", filtro);
 		model.addAttribute("coches", cocheDao.listWithOutIncidencia());	
 	}
 	
 	//Lista los coches sin incidencias
 	@RequestMapping(value = "/listWithOutIncidenciasFilter", method = RequestMethod.POST)
-	public void listWithOutIncidenciaFilter(@Valid FiltroReserva filtro, BindingResult result, ModelMap model) {
+	public String listWithOutIncidenciaFilter(@Valid FiltroReserva filtro, BindingResult result, ModelMap model) {
 		model.addAttribute("coches", cocheDao.listWithOutIncidenciaFilter(filtro.getFechaInicioPrevista(),filtro.getFechaDevolucionPrevista()));
+		
+		return "coche/listWithOutIncidencias";
 	}
 
 	//Lista todos los coches
