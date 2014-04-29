@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -25,36 +26,36 @@ public class Reserva {
 	@GeneratedValue
 	private int id;
 
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
 	@Column(name="fecha_inicio")
 	private Date fechaInicio;
 
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
 	@Column(name="fecha_devolucion")
 	private Date fechaDevolucion;
 
-	@NotEmpty
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@NotNull
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
 	@Column(name="fecha_inicio_prevista")
 	private Date fechaInicioPrevista;
 
-	@NotEmpty
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@NotNull
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
 	@Column(name="fecha_devolucion_prevista")
 	private Date fechaDevolucionPrevista;
 	
 	@ManyToOne
 	@JoinColumn(name="empleado_id", referencedColumnName="id")
-	@NotEmpty
+	@NotNull
 	private Empleado empleado;
 	
 	@ManyToOne
 	@JoinColumn(name="coche_id", referencedColumnName="id")
-	@NotEmpty
+	@NotNull
 	private Coche coche;
 	
 	public int getId() {
@@ -112,5 +113,15 @@ public class Reserva {
 	public void setCoche(Coche coche) {
 		this.coche = coche;
 	}
+
+	@Override
+	public String toString() {
+		return "Reserva [id=" + id + ", fechaInicio=" + fechaInicio
+				+ ", fechaDevolucion=" + fechaDevolucion
+				+ ", fechaInicioPrevista=" + fechaInicioPrevista
+				+ ", fechaDevolucionPrevista=" + fechaDevolucionPrevista + "]";
+	}
+	
+	
 
 }

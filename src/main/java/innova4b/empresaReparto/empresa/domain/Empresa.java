@@ -160,4 +160,14 @@ public class Empresa {
 			direcciones = new ArrayList<Direccion>();
 		direcciones.add(direccion);
 	}
+
+	@Override
+	public String toString() {
+		return "Empresa [id=" + id + ", nombre=" + nombre + ", cif=" + cif
+				+ ", telefono=" + telefono + ", email=" + email
+				+ ", fechaInicio=" + fechaInicio + ", direcciones="
+				+ direcciones + "]";
+	}
+	
+	
 }
