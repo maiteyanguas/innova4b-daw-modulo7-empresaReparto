@@ -1,21 +1,16 @@
 package innova4b.empresaReparto.coche.web;
 
-import java.util.Date;
-
 import javax.validation.Valid;
 
-import innova4b.empresaReparto.coche.domain.Coche;
 import innova4b.empresaReparto.coche.repository.CocheDao;
-import innova4b.empresaReparto.reserva.domain.Reserva;
+import innova4b.empresaReparto.reserva.web.FiltroReserva;
 
-import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @RequestMapping("/coche")
 @Controller
@@ -32,10 +27,8 @@ public class CocheController {
 	
 	//Lista los coches sin incidencias
 	@RequestMapping(value = "/listWithOutIncidenciasFilter", method = RequestMethod.POST)
-	public void listWithOutIncidenciaFilter(@Valid Coche coche, BindingResult result,@RequestParam Date fechaInicio, @RequestParam Date fechaDevolucion, ModelMap model) {
-		System.out.println("fechaInicio"+fechaInicio);
-		System.out.println("fechaDevolucion"+fechaDevolucion);
-		model.addAttribute("coches", cocheDao.listWithOutIncidenciaFilter(fechaInicio,fechaDevolucion));
+	public void listWithOutIncidenciaFilter(@Valid FiltroReserva filtro, BindingResult result, ModelMap model) {
+		model.addAttribute("coches", cocheDao.listWithOutIncidenciaFilter(filtro.getFechaInicioPrevista(),filtro.getFechaDevolucionPrevista()));
 	}
 
 	//Lista todos los coches
