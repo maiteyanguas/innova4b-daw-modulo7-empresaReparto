@@ -43,7 +43,6 @@ public class Empleado {
 	
 	private Integer activo = 1;
 	
-	@NotEmpty
 	@Pattern(regexp="^[0-9]{8}[a-zA-Z]{1}$")
 	private String dni;
 	@NotEmpty
@@ -57,8 +56,7 @@ public class Empleado {
     @Past
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
 	private LocalDate fechaNacimiento;
-	@Digits(integer=9, fraction = 0)
-	@Min (9)
+	@Pattern(regexp="^[0-9]{9}[0-9]*$")
 	private String telefono;
 	@NotEmpty
 	@Email
