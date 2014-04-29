@@ -36,11 +36,11 @@ public class ReservaController {
 	@RequestMapping(value = "/new/{idCoche}", method = RequestMethod.GET)
 	public String newReserva(@PathVariable("idCoche") int idCoche, HttpSession session, ModelMap model) {		
 		//Coche coche = cocheDao.getCoche(idCoche);		@FIXME
-		Reserva reserva = new Reserva();
+		FiltroReserva filtro = new FiltroReserva();
 		//reserva.setCoche(coche); @FIXME
 		Usuario usuario = (Usuario) session.getAttribute("usuario");
 		//Empleado empleado = empleadoDao.getEmpleadoById(usuario.getId());  @FIXME
-		model.addAttribute("reserva", reserva);	
+		model.addAttribute("filtro", filtro);	
 		return "reserva/new";
 	}
 	
