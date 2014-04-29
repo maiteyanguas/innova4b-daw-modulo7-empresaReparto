@@ -25,4 +25,8 @@ public class CocheDao {
 	public List<Coche> listAll() {
 		return (List<Coche>)sessionFactory.getCurrentSession().createQuery("from Coche").list();
 	} 
+	
+	public int insert (Coche coche) {
+		return (Integer) sessionFactory.getCurrentSession().save(coche);
+	}
 }

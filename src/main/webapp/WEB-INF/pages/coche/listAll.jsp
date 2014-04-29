@@ -13,7 +13,7 @@
 	<div id="container">
 		<jsp:include page="../header.jsp" />		
 			<div id="content">
-			<p><a class="link" href="/empresaReparto/coche/new"><spring:message code="nuevo.coche" text="Nuevo"/></a></p>
+			<p><a class="link" href="/empresaReparto/coche/new"><spring:message code="nuevo.coche" text="Nuevo coche"/></a></p>
 			<c:if test="${error!=null}">
 				<div class="errorblock">${error}</div>
 			</c:if>
