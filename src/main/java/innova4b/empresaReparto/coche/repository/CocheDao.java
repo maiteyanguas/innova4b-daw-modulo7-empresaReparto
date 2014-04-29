@@ -23,11 +23,14 @@ public class CocheDao {
 	} 
 	
 	public List<Coche> listWithOutIncidenciaFilter(LocalDate dateFirst, LocalDate dateLast) {
-		return (List<Coche>)sessionFactory.getCurrentSession()
-					.createQuery("FROM Coche as c LEFT JOIN c.reservas as r WHERE size(c.incidencias)=0 AND r.fechaInicioPrevista >= :dateFirst AND r.fechaDevolucionPrevista <= :dateLast ")
-					.setParameter("dateFirst", dateFirst)
-					.setParameter("dateLast", dateLast)
-					.list();
+		String hql = " Select c FROM Coche as c LEFT JOIN c.reservas as r WHERE size(c.incidencias)=0 AND (size(c.reservas) = 0 OR (r.fechaInicioPrevista not between :dateFirst and :dateLast AND r.fechaDevolucionPrevista not between :dateFirst2 and :dateLast2))";		
+		
+		return (List<Coche>) sessionFactory.getCurrentSession().createQuery(hql)
+		.setParameter("dateFirst", dateFirst)
+		.setParameter("dateLast", dateLast)
+		.setParameter("dateFirst2", dateFirst)
+		.setParameter("dateLast2", dateLast)
+		.list();	
 	}	
 
 	public List<Coche> listAll() {

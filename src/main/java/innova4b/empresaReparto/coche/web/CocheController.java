@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @RequestMapping("/coche")
 @Controller
@@ -28,15 +29,22 @@ public class CocheController {
 	//Lista los coches sin incidencias
 	@RequestMapping(value = "/listWithOutIncidencias", method = RequestMethod.GET)
 	public void list(ModelMap model) {
-		FiltroReserva filtro = new FiltroReserva();
+		if (!model.containsKey("filtro"))
+			model.addAttribute("filtro", new FiltroReserva());
 		
-		model.addAttribute("filtro", filtro);
 		model.addAttribute("coches", cocheDao.listWithOutIncidencia());	
 	}
 	
 	//Lista los coches sin incidencias
 	@RequestMapping(value = "/listWithOutIncidenciasFilter", method = RequestMethod.POST)
-	public String listWithOutIncidenciaFilter(@Valid FiltroReserva filtro, BindingResult result, ModelMap model) {
+	public String listWithOutIncidenciaFilter(@Valid FiltroReserva filtro, BindingResult result, RedirectAttributes redirect, ModelMap model) {
+		if(result.hasErrors()) {
+			redirect.addFlashAttribute("org.springframework.validation.BindingResult.filtro", result);
+			redirect.addFlashAttribute("filtro",filtro);
+			
+			return "redirect:/empresaReparto/coche/listWithOutIncidencias";
+		}
+		
 		model.addAttribute("coches", cocheDao.listWithOutIncidenciaFilter(filtro.getFechaInicioPrevista(),filtro.getFechaDevolucionPrevista()));
 		model.addAttribute("filtro", filtro);
 		
