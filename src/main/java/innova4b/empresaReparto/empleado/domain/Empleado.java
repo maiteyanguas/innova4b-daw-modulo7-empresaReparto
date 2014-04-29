@@ -60,6 +60,7 @@ public class Empleado {
 	@Digits(integer=9, fraction = 0)
 	@Min (9)
 	private String telefono;
+	@NotEmpty
 	@Email
 	private String email;
 	
