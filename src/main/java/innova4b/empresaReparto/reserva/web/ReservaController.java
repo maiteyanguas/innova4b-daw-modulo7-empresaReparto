@@ -49,9 +49,11 @@ public class ReservaController {
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addReserva(@Valid Reserva reserva, BindingResult result, RedirectAttributes redirect) {
+		System.out.println("TRACE:********************" + reserva.toString());
 		if (result.hasErrors())
 			return "reserva/new";
 		try{
+			System.out.println("TRACE:********************" + reserva.toString());
 			reservaService.insert(reserva);
 		} catch (CocheNotFreeForReservationException coNotFreeEx) {
 			redirect.addFlashAttribute("error", coNotFreeEx.getMessage());

@@ -17,38 +17,6 @@
 	<script src="/js/jquery.cookie.js"></script>
 
 	<script type="text/javascript">
-	jQuery.datepicker.regional['eu'] = {
-			 closeText: 'Egina',
-			 prevText: '<Aur',
-			 nextText: 'Hur>',
-			 currentText: 'Gaur',
-			 monthNames: ['Urtarrila','Otsaila','Martxoa','Apirila','Maiatza','Ekaina',
-			 'Uztaila','Abuztua','Iraila','Urria','Azaroa','Abendua'],
-			 monthNamesShort: ['Urt','Ots','Mar','Api','Mai','Eka',
-			 'Uzt','Abu','Ira','Urr','Aza','Abe'],
-			 dayNames: ['Igandea','Astelehena','Asteartea','Asteazkena','Osteguna','Ostirala','Larunbata'],
-			 dayNamesShort: ['Iga','Ast','Ast','Ast','Ost','Ost','Lar'],
-			 dayNamesMin: ['Ig','As','As','As','Os','Os','La'],
-			 dateFormat: 'yy/mm/dd', firstDay: 1,
-			 isRTL: false};
-			 $.datepicker.setDefaults($.datepicker.regional['eu']);
-		$.datepicker.regional['es'] = {
-					 closeText: 'Cerrar',
-					 prevText: '<Ant',
-					 nextText: 'Sig>',
-					 currentText: 'Hoy',
-					 monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-					 monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
-					 dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-					 dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
-					 dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
-					 weekHeader: 'Sm',
-					 dateFormat: 'dd/mm/yy',
-					 firstDay: 1,
-					 isRTL: false,
-					 showMonthAfterYear: false,
-					 yearSuffix: ''
-					 };
 					 $.datepicker.setDefaults($.datepicker.regional['es']);
 	$(document).ready(function(){	
 		var cookie = $.cookie("org.springframework.web.servlet.i18n.CookieLocaleResolver.LOCALE");
@@ -61,27 +29,63 @@
 	        language: lang
 	    });
 		
-		if (lang=='es'){
-			$.datepicker.setDefaults($.datepicker.regional['es']);
-		}else{
-			$.datepicker.setDefaults($.datepicker.regional['eu']);
-		}
-		
 			$("#fechaInicio").datepicker(
 					{
-						closeText: jQuery.i18n.prop('calendario.cerrar'),
-						prevText: jQuery.i18n.prop('calendario.<ant'),
-						nextText: jQuery.i18n.prop('calendario.sig>'),
-						currentText: jQuery.i18n.prop('calendario.hoy'),
+						closeText : jQuery.i18n.prop('calendario.cerrar'),
+						prevText : jQuery.i18n.prop('calendario.<ant'),
+						nextText : jQuery.i18n.prop('calendario.sig>'),
+						currentText : jQuery.i18n.prop('calendario.hoy'),
 						dateFormat : 'dd/mm/yy',
 						minDate : 0,
-						monthNames: [jQuery.i18n.prop('calendario.enero'), jQuery.i18n.prop('calendario.febrero'), jQuery.i18n.prop('calendario.marzo'), jQuery.i18n.prop('calendario.abril'), jQuery.i18n.prop('calendario.mayo'), jQuery.i18n.prop('calendario.junio'), jQuery.i18n.prop('calendario.julio'), jQuery.i18n.prop('calendario.agosto'), jQuery.i18n.prop('calendario.septiembre'),jQuery.i18n.prop('calendario.octubre'), jQuery.i18n.prop('calendario.noviembre'), jQuery.i18n.prop('calendario.diciembre')],
-						monthNamesShort: [jQuery.i18n.prop('calendario.ene'),jQuery.i18n.prop('calendario.feb'),jQuery.i18n.prop('calendario.mar'),jQuery.i18n.prop('calendario.abr'), jQuery.i18n.prop('calendario.may'),jQuery.i18n.prop('calendario.jun'),jQuery.i18n.prop('calendario.jul'),jQuery.i18n.prop('calendario.ago'),jQuery.i18n.prop('calendario.sep'), jQuery.i18n.prop('calendario.oct'),jQuery.i18n.prop('calendario.nov'),jQuery.i18n.prop('calendario.dic')],
-						dayNamesMin: [jQuery.i18n.prop('calendario.do'),jQuery.i18n.prop('calendario.lu'),jQuery.i18n.prop('calendario.ma'),jQuery.i18n.prop('calendario.mi'),jQuery.i18n.prop('calendario.ju'),jQuery.i18n.prop('calendario.vi'),jQuery.i18n.prop('calendario.sá')],
-						firstDay: 1,
-						isRTL: false,
-						showMonthAfterYear: false,
-						yearSuffix: '',
+						monthNames : [ jQuery.i18n.prop('calendario.enero'),
+								jQuery.i18n.prop('calendario.febrero'),
+								jQuery.i18n.prop('calendario.marzo'),
+								jQuery.i18n.prop('calendario.abril'),
+								jQuery.i18n.prop('calendario.mayo'),
+								jQuery.i18n.prop('calendario.junio'),
+								jQuery.i18n.prop('calendario.julio'),
+								jQuery.i18n.prop('calendario.agosto'),
+								jQuery.i18n.prop('calendario.septiembre'),
+								jQuery.i18n.prop('calendario.octubre'),
+								jQuery.i18n.prop('calendario.noviembre'),
+								jQuery.i18n.prop('calendario.diciembre') ],
+						monthNamesShort : [ jQuery.i18n.prop('calendario.ene'),
+								jQuery.i18n.prop('calendario.feb'),
+								jQuery.i18n.prop('calendario.mar'),
+								jQuery.i18n.prop('calendario.abr'),
+								jQuery.i18n.prop('calendario.may'),
+								jQuery.i18n.prop('calendario.jun'),
+								jQuery.i18n.prop('calendario.jul'),
+								jQuery.i18n.prop('calendario.ago'),
+								jQuery.i18n.prop('calendario.sep'),
+								jQuery.i18n.prop('calendario.oct'),
+								jQuery.i18n.prop('calendario.nov'),
+								jQuery.i18n.prop('calendario.dic') ],
+						dayNamesMin : [ jQuery.i18n.prop('calendario.do'),
+								jQuery.i18n.prop('calendario.lu'),
+								jQuery.i18n.prop('calendario.ma'),
+								jQuery.i18n.prop('calendario.mi'),
+								jQuery.i18n.prop('calendario.ju'),
+								jQuery.i18n.prop('calendario.vi'),
+								jQuery.i18n.prop('calendario.sa') ],
+						dayNames: [jQuery.i18n.prop('calendario.domingo'),
+						           jQuery.i18n.prop('calendario.lunes'),
+						           jQuery.i18n.prop('calendario.martes'),
+						           jQuery.i18n.prop('calendario.miercoles'),
+						           jQuery.i18n.prop('calendario.jueves'),
+						           jQuery.i18n.prop('calendario.viernes'),
+						           jQuery.i18n.prop('calendario.sabado')],
+						dayNamesShort: [jQuery.i18n.prop('calendario.dom'),
+								        jQuery.i18n.prop('calendario.lun'),
+								        jQuery.i18n.prop('calendario.mar'),
+								        jQuery.i18n.prop('calendario.mie'),
+								        jQuery.i18n.prop('calendario.jue'),
+								        jQuery.i18n.prop('calendario.vie'),
+								        jQuery.i18n.prop('calendario.sab')],
+						firstDay : 1,
+						isRTL : false,
+						showMonthAfterYear : false,
+						yearSuffix : '',
 						onSelect: function(){
 									 var dt2 = $('#fechaDevolucion');
 							            var startDate = $(this).datepicker('getDate');
@@ -99,28 +103,75 @@
 					});
 			
 			$("#fechaDevolucion").datepicker({
-				closeText: jQuery.i18n.prop('calendario.cerrar'),
-				prevText: jQuery.i18n.prop('calendario.<ant'),
-				nextText: jQuery.i18n.prop('calendario.sig>'),
-				currentText: jQuery.i18n.prop('calendario.hoy'),
+				closeText : jQuery.i18n.prop('calendario.cerrar'),
+				prevText : jQuery.i18n.prop('calendario.<ant'),
+				nextText : jQuery.i18n.prop('calendario.sig>'),
+				currentText : jQuery.i18n.prop('calendario.hoy'),
 				dateFormat : 'dd/mm/yy',
 				minDate : 0,
-				monthNames: [jQuery.i18n.prop('calendario.enero'), jQuery.i18n.prop('calendario.febrero'), jQuery.i18n.prop('calendario.marzo'), jQuery.i18n.prop('calendario.abril'), jQuery.i18n.prop('calendario.mayo'), jQuery.i18n.prop('calendario.junio'), jQuery.i18n.prop('calendario.julio'), jQuery.i18n.prop('calendario.agosto'), jQuery.i18n.prop('calendario.septiembre'),jQuery.i18n.prop('calendario.octubre'), jQuery.i18n.prop('calendario.noviembre'), jQuery.i18n.prop('calendario.diciembre')],
-				monthNamesShort: [jQuery.i18n.prop('calendario.ene'),jQuery.i18n.prop('calendario.feb'),jQuery.i18n.prop('calendario.mar'),jQuery.i18n.prop('calendario.abr'), jQuery.i18n.prop('calendario.may'),jQuery.i18n.prop('calendario.jun'),jQuery.i18n.prop('calendario.jul'),jQuery.i18n.prop('calendario.ago'),jQuery.i18n.prop('calendario.sep'), jQuery.i18n.prop('calendario.oct'),jQuery.i18n.prop('calendario.nov'),jQuery.i18n.prop('calendario.dic')],
-				dayNamesMin: [jQuery.i18n.prop('calendario.do'),jQuery.i18n.prop('calendario.lu'),jQuery.i18n.prop('calendario.ma'),jQuery.i18n.prop('calendario.mi'),jQuery.i18n.prop('calendario.ju'),jQuery.i18n.prop('calendario.vi'),jQuery.i18n.prop('calendario.sá')],
-				firstDay: 1,
-				isRTL: false,
-				showMonthAfterYear: false,
-				yearSuffix: '',
-				onSelect: function(){
-							 var startDate = $(this).datepicker('getDate');
-							//add 30 days to selected date
-					        startDate.setDate(startDate.getDate() + 30);
-					            var minDate = $(this).datepicker('getDate');
-						 }
-				
-			});
-	});
+				monthNames : [ jQuery.i18n.prop('calendario.enero'),
+						jQuery.i18n.prop('calendario.febrero'),
+						jQuery.i18n.prop('calendario.marzo'),
+						jQuery.i18n.prop('calendario.abril'),
+						jQuery.i18n.prop('calendario.mayo'),
+						jQuery.i18n.prop('calendario.junio'),
+						jQuery.i18n.prop('calendario.julio'),
+						jQuery.i18n.prop('calendario.agosto'),
+						jQuery.i18n.prop('calendario.septiembre'),
+						jQuery.i18n.prop('calendario.octubre'),
+						jQuery.i18n.prop('calendario.noviembre'),
+						jQuery.i18n.prop('calendario.diciembre') ],
+				monthNamesShort : [ jQuery.i18n.prop('calendario.ene'),
+						jQuery.i18n.prop('calendario.feb'),
+						jQuery.i18n.prop('calendario.mar'),
+						jQuery.i18n.prop('calendario.abr'),
+						jQuery.i18n.prop('calendario.may'),
+						jQuery.i18n.prop('calendario.jun'),
+						jQuery.i18n.prop('calendario.jul'),
+						jQuery.i18n.prop('calendario.ago'),
+						jQuery.i18n.prop('calendario.sep'),
+						jQuery.i18n.prop('calendario.oct'),
+						jQuery.i18n.prop('calendario.nov'),
+						jQuery.i18n.prop('calendario.dic') ],
+				dayNamesMin : [ jQuery.i18n.prop('calendario.do'),
+						jQuery.i18n.prop('calendario.lu'),
+						jQuery.i18n.prop('calendario.ma'),
+						jQuery.i18n.prop('calendario.mi'),
+						jQuery.i18n.prop('calendario.ju'),
+						jQuery.i18n.prop('calendario.vi'),
+						jQuery.i18n.prop('calendario.sa') ],
+				dayNames: [jQuery.i18n.prop('calendario.domingo'),
+				           jQuery.i18n.prop('calendario.lunes'),
+				           jQuery.i18n.prop('calendario.martes'),
+				           jQuery.i18n.prop('calendario.miercoles'),
+				           jQuery.i18n.prop('calendario.jueves'),
+				           jQuery.i18n.prop('calendario.viernes'),
+				           jQuery.i18n.prop('calendario.sabado')],
+				dayNamesShort: [jQuery.i18n.prop('calendario.dom'),
+						        jQuery.i18n.prop('calendario.lun'),
+						        jQuery.i18n.prop('calendario.mar'),
+						        jQuery.i18n.prop('calendario.mie'),
+						        jQuery.i18n.prop('calendario.jue'),
+						        jQuery.i18n.prop('calendario.vie'),
+						        jQuery.i18n.prop('calendario.sab')],
+				firstDay : 1,
+				isRTL : false,
+				showMonthAfterYear : false,
+				yearSuffix : '',
+												onSelect : function() {
+													var startDate = $(this)
+															.datepicker(
+																	'getDate');
+													//add 30 days to selected date
+													startDate.setDate(startDate
+															.getDate() + 30);
+													var minDate = $(this)
+															.datepicker(
+																	'getDate');
+												}
+
+											});
+						});
 	</script>
 	
 	<p><spring:message code="filtro.coches" /></p>
