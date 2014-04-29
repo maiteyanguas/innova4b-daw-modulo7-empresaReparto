@@ -17,6 +17,8 @@
 
 	<script src="/js/jquery-1.10.2.js"></script>
 	<script src="/js/jquery-ui-1.10.4.custom.min.js"></script>
+	<script src="/js/jquery.i18n.properties-min-1.0.9.js"></script>
+	<script src="/js/jquery.cookie.js"></script>
 	
 	<script type="text/javascript">
 		$(function() {
@@ -73,7 +75,7 @@
 				<div class="errorblock">${error}</div>
 			</c:if>
 
-			<form:form method="post" modelAttribute="filtro" action="/empresaReparto/reserva/add">
+			<form:form method="post" modelAttribute="reserva" action="/empresaReparto/reserva/add">
 				<table>
 					<tr>
 						<td><form:label path="fechaInicioPrevista">

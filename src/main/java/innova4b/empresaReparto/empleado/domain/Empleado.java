@@ -1,6 +1,6 @@
 package innova4b.empresaReparto.empleado.domain;
 
-import java.util.Date;
+import innova4b.empresaReparto.empresa.domain.Empresa;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -9,10 +9,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
 
+import org.hibernate.annotations.Type;
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
-
-import innova4b.empresaReparto.empresa.domain.Empresa;
+import org.joda.time.LocalDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
@@ -29,15 +34,27 @@ public class Empleado {
 	private String usuario;
 	@NotEmpty
 	private String password;
-	private String rol;
+	private String rol = "u";
 	
-	private Integer activo;
+	private Integer activo = 1;
+	
+	@Pattern(regexp="^[0-9]{8}[a-zA-Z]{1}$")
 	private String dni;
+	@NotEmpty
 	private String nombre;
+	@NotEmpty
 	private String apellido1;
+	@NotEmpty
 	private String apellido2;
-	private Date fechaNacimiento;
+	@NotNull
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+    @Past
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
+	private LocalDate fechaNacimiento;
+	@Pattern(regexp="^[0-9]{9}[0-9]*$")
 	private String telefono;
+	@NotEmpty
+	@Email
 	private String email;
 	
 	@ManyToOne(cascade={CascadeType.ALL})
@@ -92,10 +109,16 @@ public class Empleado {
 	public void setApellido2(String apellido2) {
 		this.apellido2 = apellido2;
 	}
-	public Date getFechaNacimiento() {
+	public LocalDate getFechaNacimiento() {
 		return fechaNacimiento;
+	}	
+	public String getFechaInicioAsString(){
+		return fechaNacimiento==null?"":fechaNacimiento.toString(org.joda.time.format.DateTimeFormat.forPattern("dd/MM/yyyy"));
 	}
-	public void setFechaNacimiento(Date fechaNacimiento) {
+	public void setFechaInicio(String fechaNacimiento) {
+		this.fechaNacimiento = LocalDate.parse(fechaNacimiento,org.joda.time.format.DateTimeFormat.forPattern("dd/MM/yyyy"));
+	}
+	public void setFechaNacimiento(LocalDate fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 	public String getTelefono() {

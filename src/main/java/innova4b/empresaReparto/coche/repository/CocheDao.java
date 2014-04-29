@@ -32,6 +32,7 @@ public class CocheDao {
 
 	public List<Coche> listAll() {
 		return (List<Coche>)sessionFactory.getCurrentSession().createQuery("from Coche").list();
+
 	}
 	
 	public Coche getCocheById(int idCoche){
@@ -39,4 +40,8 @@ public class CocheDao {
 		return c;
 	}
 
+	
+	public int insert (Coche coche) {
+		return (Integer) sessionFactory.getCurrentSession().save(coche);
+	}
 }

@@ -103,11 +103,24 @@ input[type="submit"] {
 	padding: 5px;
 }
 
+#titulo_seccion {
+	font-size: 1.4em;
+	margin-bottom: 5px;
+	text-align: center;
+	padding: 10px;
+}
+
+#titulo_pagina {
+	font-size: 1.4em;
+	text-decoration: underline;
+	font-weight:bold;
+}
+
 .ui-widget-header.dialog-class {
 	background: #BFBD93;
 	font-weight: normal;
 }
 
 .ui-button.ui-widget.dialog-class {
-background: #BFBD93;
+	background: #BFBD93;
 }
