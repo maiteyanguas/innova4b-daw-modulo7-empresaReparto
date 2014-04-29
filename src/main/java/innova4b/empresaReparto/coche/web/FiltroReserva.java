@@ -1,4 +1,4 @@
-package innova4b.empresaReparto.reserva.web;
+package innova4b.empresaReparto.coche.web;
 
 import java.util.Date;
 

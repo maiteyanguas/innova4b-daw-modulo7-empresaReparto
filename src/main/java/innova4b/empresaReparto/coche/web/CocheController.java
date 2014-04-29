@@ -3,7 +3,7 @@ package innova4b.empresaReparto.coche.web;
 import javax.validation.Valid;
 
 import innova4b.empresaReparto.coche.repository.CocheDao;
-import innova4b.empresaReparto.reserva.web.FiltroReserva;
+import innova4b.empresaReparto.coche.web.FiltroReserva;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
