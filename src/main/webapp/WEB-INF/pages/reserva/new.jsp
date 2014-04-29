@@ -15,8 +15,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title><spring:message code="nueva.reserva" text="Nueva reserva" /></title>
 
-	<script src="/lib/jquery/jquery-1.10.2.js"></script>
-	<script src="/lib/jquery/jquery-ui-1.10.4.custom.min.js"></script>
+	<script src="/js/jquery-1.10.2.js"></script>
+	<script src="/js/jquery-ui-1.10.4.custom.min.js"></script>
 	
 	<script type="text/javascript">
 		$(function() {
