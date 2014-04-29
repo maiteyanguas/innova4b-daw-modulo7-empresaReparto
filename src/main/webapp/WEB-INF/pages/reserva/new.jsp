@@ -22,6 +22,16 @@
 <script src="/js/jquery.cookie.js"></script>
 
 <script type="text/javascript">
+$(document).ready(function(){	
+	var cookie = $.cookie("org.springframework.web.servlet.i18n.CookieLocaleResolver.LOCALE");
+	var lang = cookie===undefined?'es':cookie;
+	
+	jQuery.i18n.properties({
+        name: 'messages',
+        mode: 'both',
+        path: '/messages/',
+        language: lang
+    });
 	$(function() {
 		$("#fechaInicioPrevista").datepicker(
 				{
@@ -62,6 +72,20 @@
 							jQuery.i18n.prop('calendario.ju'),
 							jQuery.i18n.prop('calendario.vi'),
 							jQuery.i18n.prop('calendario.sa') ],
+					dayNames: [jQuery.i18n.prop('calendario.domingo'),
+					           jQuery.i18n.prop('calendario.lunes'),
+					           jQuery.i18n.prop('calendario.martes'),
+					           jQuery.i18n.prop('calendario.miercoles'),
+					           jQuery.i18n.prop('calendario.jueves'),
+					           jQuery.i18n.prop('calendario.viernes'),
+					           jQuery.i18n.prop('calendario.sabado')],
+					dayNamesShort: [jQuery.i18n.prop('calendario.dom'),
+							        jQuery.i18n.prop('calendario.lun'),
+							        jQuery.i18n.prop('calendario.mar'),
+							        jQuery.i18n.prop('calendario.mie'),
+							        jQuery.i18n.prop('calendario.jue'),
+							        jQuery.i18n.prop('calendario.vie'),
+							        jQuery.i18n.prop('calendario.sab')],
 					firstDay : 1,
 					isRTL : false,
 					showMonthAfterYear : false,
@@ -121,6 +145,20 @@
 							jQuery.i18n.prop('calendario.ju'),
 							jQuery.i18n.prop('calendario.vi'),
 							jQuery.i18n.prop('calendario.sa') ],
+					dayNames: [jQuery.i18n.prop('calendario.domingo'),
+					           jQuery.i18n.prop('calendario.lunes'),
+					           jQuery.i18n.prop('calendario.martes'),
+					           jQuery.i18n.prop('calendario.miercoles'),
+					           jQuery.i18n.prop('calendario.jueves'),
+					           jQuery.i18n.prop('calendario.viernes'),
+					           jQuery.i18n.prop('calendario.sabado')],
+					dayNamesShort: [jQuery.i18n.prop('calendario.dom'),
+							        jQuery.i18n.prop('calendario.lun'),
+							        jQuery.i18n.prop('calendario.mar'),
+							        jQuery.i18n.prop('calendario.mie'),
+							        jQuery.i18n.prop('calendario.jue'),
+							        jQuery.i18n.prop('calendario.vie'),
+							        jQuery.i18n.prop('calendario.sab')],
 					firstDay : 1,
 					isRTL : false,
 					showMonthAfterYear : false,
@@ -134,6 +172,7 @@
 
 				});
 	});
+});
 </script>
 
 
