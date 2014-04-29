@@ -1,5 +1,9 @@
 package innova4b.empresaReparto.coche.domain;
 
+import innova4b.empresaReparto.empresa.domain.Empresa;
+import innova4b.empresaReparto.incidencia.domain.Incidencia;
+import innova4b.empresaReparto.reserva.domain.Reserva;
+
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -10,14 +14,19 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
-
-import innova4b.empresaReparto.empleado.domain.Empleado;
-import innova4b.empresaReparto.empresa.domain.Empresa;
-import innova4b.empresaReparto.incidencia.domain.Incidencia;
-import innova4b.empresaReparto.reserva.domain.Reserva;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.format.annotation.NumberFormat;
+import org.springframework.format.annotation.NumberFormat.Style;
+import org.springframework.ui.ModelMap;
 
 @Entity
 @Table(name = "coche")
@@ -29,11 +38,18 @@ public class Coche {
 	@ManyToOne
 	@JoinColumn(name = "empresa_id", referencedColumnName = "id")
 	private Empresa empresa;
-
+	@NotNull
+	@NumberFormat(style = Style.NUMBER)
+	@Max(999999)
 	private Integer kms;
+	@NotEmpty
 	private String combustible;
+	@NotEmpty
 	private String marca;
+	@NotEmpty
+	@Pattern(regexp="\\d{4}[a-zA-Z]{3}$")
 	private String matricula;
+	@NotEmpty
 	private String modelo;
 	
 	@OneToMany(mappedBy="coche", fetch=FetchType.EAGER)
