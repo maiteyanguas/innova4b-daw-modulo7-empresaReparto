@@ -31,7 +31,7 @@
 				</tr>
 				<tr>
 					<td><form:label path="kms"><spring:message code="coche.kms" text="Kilometros"/>:</form:label></td>
-					<td><form:input path="kms"></form:input>
+					<td><form:input path="kms" maxlength="9"></form:input>
 						<form:errors path="kms" cssClass="error"/>
 					</td>
 				</tr>

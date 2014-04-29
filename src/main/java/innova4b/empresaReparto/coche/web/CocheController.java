@@ -45,10 +45,11 @@ public class CocheController {
 	}
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String add(@Valid Coche coche, BindingResult result, @RequestParam int idEmpresa) {
+	public String add(ModelMap model,@Valid Coche coche, BindingResult result, @RequestParam int idEmpresa) {
 		Empresa empresa = empresaDao.get(idEmpresa);
-		if (result.hasErrors())
-			return "coche/new";
+		if (result.hasErrors()){
+			model.addAttribute("empresas", empresaDao.list());
+			return "coche/new";}
 		coche.setEmpresa(empresa);
 		cocheDao.insert(coche);
 		return "redirect:/empresaReparto/coche/listAll";

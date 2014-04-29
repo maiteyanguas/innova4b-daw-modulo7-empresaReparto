@@ -15,13 +15,18 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.format.annotation.NumberFormat;
 import org.springframework.format.annotation.NumberFormat.Style;
+import org.springframework.ui.ModelMap;
 
 @Entity
 @Table(name = "coche")
@@ -33,17 +38,18 @@ public class Coche {
 	@ManyToOne
 	@JoinColumn(name = "empresa_id", referencedColumnName = "id")
 	private Empresa empresa;
-//	@NotEmpty
-	//@NumberFormat(style = Style.NUMBER)
+	@NotNull
+	@NumberFormat(style = Style.NUMBER)
+	@Max(999999)
 	private Integer kms;
-//	@NotEmpty
+	@NotEmpty
 	private String combustible;
-//	@NotEmpty
+	@NotEmpty
 	private String marca;
-//	@NotEmpty
-	//@Pattern(regexp="\\d{4}[a-zA-Z]{3}$")
+	@NotEmpty
+	@Pattern(regexp="\\d{4}[a-zA-Z]{3}$")
 	private String matricula;
-//	@NotEmpty
+	@NotEmpty
 	private String modelo;
 	
 	@OneToMany(mappedBy="coche", fetch=FetchType.EAGER)
