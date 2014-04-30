@@ -16,6 +16,7 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.joda.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -29,24 +30,24 @@ public class Reserva {
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
 	@Column(name="fecha_inicio")
-	private Date fechaInicio;
+	private LocalDate fechaInicio;
 
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
 	@Column(name="fecha_devolucion")
-	private Date fechaDevolucion;
+	private LocalDate fechaDevolucion;
 
 	@NotNull
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
 	@Column(name="fecha_inicio_prevista")
-	private Date fechaInicioPrevista;
+	private LocalDate fechaInicioPrevista;
 
 	@NotNull
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
 	@Column(name="fecha_devolucion_prevista")
-	private Date fechaDevolucionPrevista;
+	private LocalDate fechaDevolucionPrevista;
 	
 	@ManyToOne
 	@JoinColumn(name="empleado_id", referencedColumnName="id")
@@ -66,38 +67,38 @@ public class Reserva {
 		this.id = id;
 	}
 	
-	public Date getFechaInicio() {
+	public LocalDate getFechaInicio() {
 		return fechaInicio;
 	}
-	
-	public void setFechaInicio(Date fechaInicio) {
+
+	public void setFechaInicio(LocalDate fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
-	
-	public Date getFechaDevolucion() {
+
+	public LocalDate getFechaDevolucion() {
 		return fechaDevolucion;
 	}
-	
-	public void setFechaDevolucion(Date fechaDevolucion) {
+
+	public void setFechaDevolucion(LocalDate fechaDevolucion) {
 		this.fechaDevolucion = fechaDevolucion;
 	}
-	
-	public Date getFechaInicioPrevista() {
+
+	public LocalDate getFechaInicioPrevista() {
 		return fechaInicioPrevista;
 	}
-	
-	public void setFechaInicioPrevista(Date fechaInicioPrevista) {
+
+	public void setFechaInicioPrevista(LocalDate fechaInicioPrevista) {
 		this.fechaInicioPrevista = fechaInicioPrevista;
 	}
-	
-	public Date getFechaDevolucionPrevista() {
+
+	public LocalDate getFechaDevolucionPrevista() {
 		return fechaDevolucionPrevista;
 	}
-	
-	public void setFechaDevolucionPrevista(Date fechaDevolucioPrevista) {
-		this.fechaDevolucionPrevista = fechaDevolucioPrevista;
+
+	public void setFechaDevolucionPrevista(LocalDate fechaDevolucionPrevista) {
+		this.fechaDevolucionPrevista = fechaDevolucionPrevista;
 	}
-	
+
 	public Empleado getEmpleado() {
 		return empleado;
 	}

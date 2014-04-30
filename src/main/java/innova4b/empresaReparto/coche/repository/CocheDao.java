@@ -23,13 +23,24 @@ public class CocheDao {
 	} 
 	
 	public List<Coche> listWithOutIncidenciaFilter(LocalDate dateFirst, LocalDate dateLast) {
-		String hql = " Select c FROM Coche as c LEFT JOIN c.reservas as r WHERE size(c.incidencias)=0 AND (size(c.reservas) = 0 OR (r.fechaInicioPrevista not between :dateFirst and :dateLast AND r.fechaDevolucionPrevista not between :dateFirst2 and :dateLast2))";		
+		String hql = 	" Select c " +
+						"FROM Coche as c " +
+						"LEFT JOIN c.reservas as r " + 
+						"WHERE size(c.incidencias)=0 " +
+						"AND ( " +
+							"size(c.reservas) = 0 " +
+							"OR " +
+							"( " +
+								"r.fechaInicioPrevista not between :dateFirst and :dateLast " +
+								"AND r.fechaDevolucionPrevista not between :dateFirst and :dateLast " +
+								"AND :dateFirst not between r.fechaInicioPrevista and r.fechaDevolucionPrevista " +
+								"AND :dateLast not between r.fechaInicioPrevista and r.fechaDevolucionPrevista " +
+							") " +
+						")";		
 		
 		return (List<Coche>) sessionFactory.getCurrentSession().createQuery(hql)
 		.setParameter("dateFirst", dateFirst)
 		.setParameter("dateLast", dateLast)
-		.setParameter("dateFirst2", dateFirst)
-		.setParameter("dateLast2", dateLast)
 		.list();	
 	}	
 
