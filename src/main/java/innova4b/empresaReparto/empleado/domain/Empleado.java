@@ -62,7 +62,7 @@ public class Empleado {
 	@Email
 	private String email;
 	
-	@ManyToOne(cascade={CascadeType.ALL})
+	@ManyToOne()
 	@JoinColumn(name="jefe")
 	private Empleado jefe;
 
