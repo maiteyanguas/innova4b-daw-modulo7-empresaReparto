@@ -1,5 +1,7 @@
 package innova4b.empresaReparto.reserva.web;
 
+import java.util.Iterator;
+
 import innova4b.empresaReparto.coche.domain.Coche;
 import innova4b.empresaReparto.coche.repository.CocheDao;
 import innova4b.empresaReparto.empleado.domain.Empleado;
@@ -18,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -50,10 +53,14 @@ public class ReservaController {
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addReserva(@Valid Reserva reserva, BindingResult result, RedirectAttributes redirect) {
 		System.out.println("TRACE:********************" + reserva.toString());
-		if (result.hasErrors())
+		if (result.hasErrors()) {
+			System.out.println("TRACE:ERROR");
+			for (ObjectError error : result.getAllErrors()) {
+				System.out.println("errorName: " + error.getObjectName() + "errorMessage: " + error.getDefaultMessage() + "errorToString: " + error.toString());
+			}
 			return "reserva/new";
-		try{
-			System.out.println("TRACE:********************" + reserva.toString());
+		} try{
+			System.out.println("TRACE:Not error" + reserva.toString());
 			reservaService.insert(reserva);
 		} catch (CocheNotFreeForReservationException coNotFreeEx) {
 			redirect.addFlashAttribute("error", coNotFreeEx.getMessage());

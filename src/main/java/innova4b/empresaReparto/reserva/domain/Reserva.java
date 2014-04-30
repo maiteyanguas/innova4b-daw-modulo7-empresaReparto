@@ -27,36 +27,36 @@ public class Reserva {
 	@GeneratedValue
 	private int id;
 
-	@DateTimeFormat(pattern = "yyyy/MM/dd")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
 	@Column(name="fecha_inicio")
 	private LocalDate fechaInicio;
 
-	@DateTimeFormat(pattern = "yyyy/MM/dd")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
 	@Column(name="fecha_devolucion")
 	private LocalDate fechaDevolucion;
 
 	@NotNull
-	@DateTimeFormat(pattern = "yyyy/MM/dd")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
 	@Column(name="fecha_inicio_prevista")
 	private LocalDate fechaInicioPrevista;
 
 	@NotNull
-	@DateTimeFormat(pattern = "yyyy/MM/dd")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
 	@Column(name="fecha_devolucion_prevista")
 	private LocalDate fechaDevolucionPrevista;
 	
 	@ManyToOne
 	@JoinColumn(name="empleado_id", referencedColumnName="id")
-	@NotNull
+//	@NotNull
 	private Empleado empleado;
 	
 	@ManyToOne
 	@JoinColumn(name="coche_id", referencedColumnName="id")
-	@NotNull
+//	@NotNull
 	private Coche coche;
 	
 	public int getId() {
@@ -120,7 +120,8 @@ public class Reserva {
 		return "Reserva [id=" + id + ", fechaInicio=" + fechaInicio
 				+ ", fechaDevolucion=" + fechaDevolucion
 				+ ", fechaInicioPrevista=" + fechaInicioPrevista
-				+ ", fechaDevolucionPrevista=" + fechaDevolucionPrevista + "]";
+				+ ", fechaDevolucionPrevista=" + fechaDevolucionPrevista
+				+ ", empleado=" + empleado + ", coche=" + coche + "]";
 	}
 	
 	
