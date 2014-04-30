@@ -35,7 +35,7 @@ public class ReservaService {
 		}
 		else 
 		{
-			int id = reservaDao.insert(reserva);
+//			int id = reservaDao.insert(reserva);
 		}
 		
 	}
