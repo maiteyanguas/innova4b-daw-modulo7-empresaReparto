@@ -146,15 +146,6 @@ public class Empresa {
 		return direccionPrincipal;
 	}
 
-	public String getDireccionPrincipalAsString() {
-		String direccionAsString = "";
-		Direccion direccion = getDireccionPrincipal();
-		if (direccion != null)
-			direccionAsString = direccion.getCalle() + " "
-					+ direccion.getPortal() + ", " + direccion.getMunicipio();
-		return direccionAsString;
-	}
-
 	public void addDireccion(Direccion direccion) {
 		if (null == direcciones || direcciones.size() == 0)
 			direcciones = new ArrayList<Direccion>();
