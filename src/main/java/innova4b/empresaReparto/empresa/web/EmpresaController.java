@@ -60,7 +60,9 @@ public class EmpresaController {
 			redirect.addFlashAttribute("empresa",empresa);
 			return "redirect:/empresaReparto/empresa/new";
 		}
-		empresaService.insert(empresa,direccionesJSON);
+		
+		Empresa builtEmpresa = empresaService.buildEmpresa(empresa,direccionesJSON);
+		empresaDao.insert(builtEmpresa);
 		return "redirect:/empresaReparto/empresa/list";
 	}
 	
