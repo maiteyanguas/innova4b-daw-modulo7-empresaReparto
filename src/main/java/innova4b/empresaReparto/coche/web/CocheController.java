@@ -3,7 +3,7 @@ package innova4b.empresaReparto.coche.web;
 import javax.validation.Valid;
 
 import innova4b.empresaReparto.coche.repository.CocheDao;
-import innova4b.empresaReparto.coche.web.FiltroReserva;
+import innova4b.empresaReparto.reserva.domain.FiltroReserva;
 import innova4b.empresaReparto.coche.domain.Coche;
 import innova4b.empresaReparto.empresa.domain.Empresa;
 import innova4b.empresaReparto.empresa.repository.EmpresaDao;
@@ -26,16 +26,14 @@ public class CocheController {
 	@Autowired
 	EmpresaDao empresaDao;
 	
-	//Lista los coches sin incidencias
 	@RequestMapping(value = "/listWithOutIncidencias", method = RequestMethod.GET)
-	public void list(ModelMap model) {
+	public void listWithOutIncidencias(ModelMap model) {
 		if (!model.containsKey("filtro"))
 			model.addAttribute("filtro", new FiltroReserva());
 		
 		model.addAttribute("coches", cocheDao.listWithOutIncidencia());	
 	}
 	
-	//Lista los coches sin incidencias
 	@RequestMapping(value = "/listWithOutIncidenciasFilter", method = RequestMethod.POST)
 	public String listWithOutIncidenciaFilter(@Valid FiltroReserva filtro, BindingResult result, RedirectAttributes redirect, ModelMap model) {
 		if(result.hasErrors()) {
@@ -51,7 +49,6 @@ public class CocheController {
 		return "coche/listWithOutIncidencias";
 	}
 
-	//Lista todos los coches
 	@RequestMapping(value = "/listAll", method = RequestMethod.GET)
 	public void listAll(ModelMap model) {
 		model.addAttribute("coches", cocheDao.listAll());	
