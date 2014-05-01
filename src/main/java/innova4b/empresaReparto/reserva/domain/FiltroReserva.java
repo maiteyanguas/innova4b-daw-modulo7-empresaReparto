@@ -1,4 +1,4 @@
-package innova4b.empresaReparto.coche.web;
+package innova4b.empresaReparto.reserva.domain;
 
 import javax.validation.constraints.NotNull;
 
