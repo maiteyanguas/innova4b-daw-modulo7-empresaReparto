@@ -2,6 +2,7 @@ package innova4b.empresaReparto.empresa.web;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import innova4b.empresaReparto.empresa.domain.Direccion;
@@ -35,23 +36,27 @@ public class DireccionController {
 	public Map<String, Object> add(HttpServletRequest request, @Valid Direccion direccion, BindingResult result) {
 		Map<String,Object> response = new HashMap<String, Object>();	
 		if (result.hasErrors()){
+			Locale locale = localResolver.resolveLocale(request);
 			response.put("respuesta", "ERROR");
-			Map<String ,String> errors=new HashMap<String, String>();
-			List<FieldError> fieldErrors = result.getFieldErrors();
-			for (FieldError fieldError : fieldErrors) {
-	            String[] resolveMessageCodes = result.resolveMessageCodes(fieldError.getCode());
-	            String string = resolveMessageCodes[0];
-	            String message = messageSource.getMessage(string+"."+fieldError.getField(), new Object[]{fieldError.getRejectedValue()}, localResolver.resolveLocale(request));
-	            errors.put(fieldError.getField(), message);
-	            response.put("errores", errors);
-			}
-		}
-		if (!response.containsKey("respuesta")){
+			response.put("errores", getErrorMessages(result,locale));
+		}else{
 			response.put("respuesta", "OK");
 			response.put("direccion",direccion);
 			response.put("direccionAsString", direccion.getDireccionAsString());
 		}
 		return response;
+	}
+
+	private Map<String ,String> getErrorMessages(BindingResult result, Locale locale) {
+		Map<String ,String> errors = new HashMap<String, String>();
+		List<FieldError> fieldErrors = result.getFieldErrors();
+		for (FieldError fieldError : fieldErrors) {
+		    String[] resolveMessageCodes = result.resolveMessageCodes(fieldError.getCode());
+		    String string = resolveMessageCodes[0];
+			String message = messageSource.getMessage(string+"."+fieldError.getField(), new Object[]{fieldError.getRejectedValue()}, locale);
+		    errors.put(fieldError.getField(), message);
+		}
+		return errors;
 	}
 
 }
