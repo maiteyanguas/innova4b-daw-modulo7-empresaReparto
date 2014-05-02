@@ -7,11 +7,13 @@
 <title><spring:message code="nueva.empresa" text="Nueva empresa"/></title>
 <link rel="stylesheet" type="text/css" href="/css/reset.css">
 <link rel="stylesheet" type="text/css" href="/css/pages.css">
-<link rel="stylesheet" type="text/css" href="/css/jquery-ui-1.10.4.custom.min.css">
-<script src="/js/jquery-1.10.2.js"></script>
-<script src="/js/jquery-ui-1.10.4.custom.min.js"></script>
-<script src="/js/jquery.i18n.properties-min-1.0.9.js"></script>
-<script src="/js/jquery.cookie.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/jquery/jquery-ui-1.10.4.custom.min.css">
+<script src="/js/jquery/jquery-1.10.2.js"></script>
+<script src="/js/jquery/jquery-ui-1.10.4.custom.min.js"></script>
+<script src="/js/jquery/jquery.i18n.properties-min-1.0.9.js"></script>
+<script src="/js/jquery/jquery.cookie.js"></script>
+<script src="/js/i18n.js"></script>
+<script src="/js/empresa/new.js"></script>
 </head>
 <body>
 	<div id="container">
@@ -114,67 +116,5 @@
 		<jsp:include page="../menu.jsp" />
 		<jsp:include page="../footer.jsp" />
 	</div>
-	<script type="text/javascript">
-	
-	$(document).ready(function(){
-		var cookie = $.cookie("org.springframework.web.servlet.i18n.CookieLocaleResolver.LOCALE");
-		var lang = cookie===undefined?'es':cookie;
-		jQuery.i18n.properties({
-	        name: 'messages', 
-	        path: '/messages/', 
-	        mode: 'both',
-	        language: lang
-	    });
-		
-		$('#newDireccion').click(function(){
-			$( "#direccionDialog" ).dialog( "open" );
-			$( ".ui-widget-header" ).addClass("dialog-class");
-			$( ".ui-button" ).addClass("dialog-class");
-			
-		});
-		//limpio el formulario y los mensajes de error
-		$('#direccionForm')[0].reset();
-		$("#direccionForm span").remove();
-		var direcciones = [];
-		$( "#direccionDialog" ).dialog({
-			title: jQuery.i18n.prop('direccion.nueva'),
-		    autoOpen: false,
-		    height: 450,
-		    width: 700,
-		    modal: true,
-		    buttons: [{
-		    	text:jQuery.i18n.prop('guardar'),			    	
-		    	click: function() {
-		    		var direccion = $('#direccionForm').serialize();
-		    		if($("#principal").is(':checked'))
-		    				direccion = direccion + "&principal=true";
-		    		$.post('/empresaReparto/direccion/add', direccion, function(response) {
-		    			if(response.respuesta=="OK"){
-			    			$('#addedDirecciones').append("<p>"+response.direccionAsString+"</p>");
-			    			direcciones.push(response.direccion);	
-			    			$('#direccionesJSON').val(JSON.stringify(direcciones));
-			    			$('#direccionForm')[0].reset();
-			    			$("#direccionForm span").remove();
-		    			}else{
-		    				$("#direccionForm span").remove();
-		    				for(var key in response.errores){
-		                    	var mensajeError="<span class=\"error\" id=\""+key+".errors\">"+response.errores[key]+"</span>";
-		                        $("[name^='"+key+"']").after(mensajeError);
-		    				}
-		    			}
-		    		});
-		    	}
-		    },{
-		    	text:jQuery.i18n.prop('volver'),	
-		    	click: function() {
-		        	$( this ).dialog( "close" );
-		    	}
-			}],
-	        close: function() {}
-		});	
-	});
-		
-	</script>
-	
 </body>
 </html>
