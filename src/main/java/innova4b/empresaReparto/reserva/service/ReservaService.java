@@ -23,7 +23,7 @@ public class ReservaService {
 
 	public void insert(Reserva reserva) throws CocheNotFreeForReservationException, LastDateNotFutureOfFirstDateException  {
 		
-		if (reserva.getFechaInicioPrevista().isBefore(reserva.getFechaDevolucionPrevista())) {
+		if (reserva.getFechaDevolucionPrevista().isBefore(reserva.getFechaInicioPrevista())) {
 			String errorMsg = "La fecha de devolucion prevista no puede ser inferior a la fecha de inicio prevista.";
 			logger.debug(errorMsg);
 			throw new LastDateNotFutureOfFirstDateException(errorMsg);			
