@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="/css/reset.css">
 <link rel="stylesheet" type="text/css" href="/css/pages.css">
 <link rel="stylesheet" type="text/css" href="/css/coche-list.css">
-<title><spring:message code="lista.coches" text="Lista de coches"/></title>
+<title><spring:message code="lista.cochesDisponibles" text="Lista de coches Disponibles"/></title>
 </head>
 <body>
 	<div id="container">
@@ -18,6 +18,7 @@
 				<div class="errorblock">${error}</div>
 			</c:if>
 			<jsp:include page="filtro.jsp" />
+			<p><spring:message code="lista.cochesDisponibles" text="Lista de coches Disponibles"/></p>
 			<table>
 				<tr>
 					<th><spring:message code="coche.modelo" text="Modelo"/></th>

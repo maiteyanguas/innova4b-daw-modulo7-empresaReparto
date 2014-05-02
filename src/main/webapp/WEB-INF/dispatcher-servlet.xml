@@ -28,7 +28,7 @@
 		<constructor-arg index="0" type="java.util.Map">
 	        <map key-type="java.lang.String" value-type="java.lang.String">
 	        	<entry key="datos" value="/empresaReparto/empresa/list"/>
-	            <entry key="reservar.coche" value="/empresaReparto/coche/listWithOutIncidencias"/>
+	            <entry key="reservar.coche" value="/empresaReparto/coche/listDisponibles"/>
 	            <entry key="devolver.coche" value="/empresaReparto/empresa/list"/> 
 	        </map>
     	</constructor-arg>
@@ -38,7 +38,7 @@
 		<constructor-arg index="0" type="java.util.Map">
 	        <map key-type="java.lang.String" value-type="java.lang.String">
 	        	<entry key="datos" value="/empresaReparto/empresa/list"/>
-	            <entry key="reservar.coche" value="/empresaReparto/coche/listWithOutIncidencias"/>
+	            <entry key="reservar.coche" value="/empresaReparto/coche/listDisponibles"/>
 	            <entry key="devolver.coche" value="/empresaReparto/empresa/list"/>  
 	        	<entry key="empleados" value="/empresaReparto/empleado/list"/>
 	            <entry key="empresas" value="/empresaReparto/empresa/list"/>

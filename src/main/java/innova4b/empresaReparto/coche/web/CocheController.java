@@ -1,10 +1,15 @@
 package innova4b.empresaReparto.coche.web;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import innova4b.empresaReparto.coche.repository.CocheDao;
+import innova4b.empresaReparto.coche.service.CocheService;
+import innova4b.empresaReparto.login.domain.Usuario;
 import innova4b.empresaReparto.reserva.domain.FiltroReserva;
 import innova4b.empresaReparto.coche.domain.Coche;
+import innova4b.empresaReparto.empleado.domain.Empleado;
+import innova4b.empresaReparto.empleado.repository.EmpleadoDao;
 import innova4b.empresaReparto.empresa.domain.Empresa;
 import innova4b.empresaReparto.empresa.repository.EmpresaDao;
 
@@ -22,31 +27,31 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class CocheController {
 	@Autowired
 	CocheDao cocheDao;
-	
 	@Autowired
 	EmpresaDao empresaDao;
+	@Autowired
+	CocheService cocheService;
+
 	
-	@RequestMapping(value = "/listWithOutIncidencias", method = RequestMethod.GET)
-	public void listWithOutIncidencias(ModelMap model) {
+	@RequestMapping(value = "/listDisponibles", method = RequestMethod.GET)
+	public void listDisponibles( HttpSession session, ModelMap model) {
 		if (!model.containsKey("filtro"))
 			model.addAttribute("filtro", new FiltroReserva());
-		
-		model.addAttribute("coches", cocheDao.listWithOutIncidencia());	
+		model.addAttribute("coches", cocheService.listDisponibles((Usuario) session.getAttribute("usuario")));				
 	}
 	
-	@RequestMapping(value = "/listWithOutIncidenciasFilter", method = RequestMethod.POST)
-	public String listWithOutIncidenciaFilter(@Valid FiltroReserva filtro, BindingResult result, RedirectAttributes redirect, ModelMap model) {
+	@RequestMapping(value = "/listDisponiblesFilter", method = RequestMethod.POST)
+	public String listDisponiblesFilter(@Valid FiltroReserva filtro, BindingResult result, RedirectAttributes redirect, ModelMap model) {
 		if(result.hasErrors()) {
 			redirect.addFlashAttribute("org.springframework.validation.BindingResult.filtro", result);
 			redirect.addFlashAttribute("filtro",filtro);
-			
-			return "redirect:/empresaReparto/coche/listWithOutIncidencias";
+			return "redirect:/empresaReparto/coche/listDisponibles";
 		}
 		
-		model.addAttribute("coches", cocheDao.listWithOutIncidenciaFilter(filtro.getFechaInicioPrevista(),filtro.getFechaDevolucionPrevista()));
+		model.addAttribute("coches", cocheDao.listDisponiblesBetweenDates(filtro.getFechaInicioPrevista(),filtro.getFechaDevolucionPrevista()));
 		model.addAttribute("filtro", filtro);
 		
-		return "coche/listWithOutIncidencias";
+		return "coche/listDisponibles";
 	}
 
 	@RequestMapping(value = "/listAll", method = RequestMethod.GET)

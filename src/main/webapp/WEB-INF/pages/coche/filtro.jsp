@@ -175,11 +175,7 @@
 	</script>
 	
 	<p><spring:message code="filtro.coches" /></p>
-			
-	<c:if test="${error!=null}">
-		<div class="errorblock">${error}</div>
-	</c:if>
-<form:form id="cocheFiltro" method="POST" modelAttribute="filtro" action="/empresaReparto/coche/listWithOutIncidenciasFilter">
+	<form:form id="cocheFiltro" method="POST" modelAttribute="filtro" action="/empresaReparto/coche/listDisponiblesFilter">
 		<table>
 				<tr>
 					<td><form:label path="fechaInicioPrevista"><spring:message code="filtro.fechaInicioPrevista" />:</form:label></td>
@@ -195,7 +191,7 @@
 				</tr>
 			</table>
 			<p>
-				<spring:message code="guardar" text="Guardar" var="guardar"/>
-				<input type="submit" value="${guardar}"/>
+				<spring:message code="filtrar" text="Filtrar" var="filtrar"/>
+				<input type="submit" value="${filtrar}"/>
 			</p>
 	</form:form>

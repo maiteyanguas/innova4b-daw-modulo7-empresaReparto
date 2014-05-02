@@ -210,7 +210,7 @@ $(document).ready(function(){
 				<p>
 					<spring:message code="guardar" text="Guardar" var="guardar" />
 					<input type="submit" value="${guardar}" /> <a class="button"
-						href="/empresaReparto/coche/listWithOutIncidencias"><spring:message
+						href="/empresaReparto/coche/listDisponibles"><spring:message
 							code="volver" text="Volver" /></a>
 				</p>
 			</form:form>

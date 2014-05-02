@@ -23,19 +23,20 @@ public class ReservaService {
 
 	public void insert(Reserva reserva) throws CocheNotFreeForReservationException, LastDateNotFutureOfFirstDateException  {
 		
-		if (reserva.getFechaDevolucionPrevista().compareTo(reserva.getFechaInicioPrevista()) <= 0) {
-			String errorMsg = "La fecha de devolución prevista no puede ser inferior a la fecha de inicio prevista.";
+		if (reserva.getFechaInicioPrevista().isBefore(reserva.getFechaDevolucionPrevista())) {
+			String errorMsg = "La fecha de devolucion prevista no puede ser inferior a la fecha de inicio prevista.";
 			logger.debug(errorMsg);
 			throw new LastDateNotFutureOfFirstDateException(errorMsg);			
 		}
 		else if (!reservaDao.isCarFreeBetweenDates(reserva)){
-			String errorMsg = "El coche con matrícula \""+reserva.getCoche().getMatricula()+"\" no está disponible en las fechas solicitadas.";
+			String errorMsg = "El coche con matricula \""+reserva.getCoche().getMatricula()+"\" no esta disponible en las fechas solicitadas.";
 			logger.debug(errorMsg);
 			throw new CocheNotFreeForReservationException(errorMsg);
 		}
 		else 
 		{
-//			int id = reservaDao.insert(reserva);
+			//TODO: Implementar la reserva
+			//int id = reservaDao.insert(reserva);
 		}
 		
 	}
