@@ -7,7 +7,6 @@
 <head>
 <link rel="stylesheet" type="text/css" href="/css/reset.css">
 <link rel="stylesheet" type="text/css" href="/css/pages.css">
-<link rel="stylesheet" type="text/css" href="/css/coche-list.css">
 <title><spring:message code="lista.cochesDisponibles" text="Lista de coches Disponibles"/></title>
 </head>
 <body>

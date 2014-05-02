@@ -33,7 +33,19 @@ div#content {
 }
 
 #content table {
-	padding-left: 5px
+	padding-left: 5px;
+	margin: 10px;
+	padding: 0px;
+	border-spacing: 0px;
+}
+
+#content table td, #content table th {
+	vertical-align: middle;
+	padding: 5px 10px;
+}
+
+#content table th {
+	background-color: #eeeeee;
 }
 
 div#navigation {
