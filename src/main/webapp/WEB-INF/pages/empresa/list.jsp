@@ -2,8 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
-
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="/css/reset.css">
@@ -32,7 +30,7 @@
 						<td>${empresa.nombre}</td>
 						<td>${empresa.cif}</td>
 						<td>${empresa.telefono}</td>
-						<td>${empresa.direccionPrincipalAsString}</td>
+						<td>${empresa.direccionPrincipal.direccionAsString}</td>
 						<td><a href="/empresaReparto/empresa/edit/${empresa.id}"><img alt="editar" src="/images/edit.png" width="20" height="20"></a></td>
 						<td><a href="/empresaReparto/empresa/delete/${empresa.id}"><img alt="borrar" src="/images/delete.jpeg" width="20" height="20"></a></td>
 					</tr>

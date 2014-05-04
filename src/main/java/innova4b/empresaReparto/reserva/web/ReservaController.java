@@ -52,22 +52,19 @@ public class ReservaController {
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addReserva(@Valid Reserva reserva, BindingResult result, RedirectAttributes redirect) {
-		System.out.println("TRACE:********************" + reserva.toString());
 		if (result.hasErrors()) {
-			System.out.println("TRACE:ERROR");
 			for (ObjectError error : result.getAllErrors()) {
-				System.out.println("errorName: " + error.getObjectName() + "errorMessage: " + error.getDefaultMessage() + "errorToString: " + error.toString());
+				//TODO: Mandar mensajes de error a la vista
 			}
 			return "reserva/new";
 		} try{
-			System.out.println("TRACE:Not error" + reserva.toString());
 			reservaService.insert(reserva);
 		} catch (CocheNotFreeForReservationException coNotFreeEx) {
 			redirect.addFlashAttribute("error", coNotFreeEx.getMessage());
 		} catch (LastDateNotFutureOfFirstDateException LastDatNotFutOfFirstEx) {
 			redirect.addFlashAttribute("error", LastDatNotFutOfFirstEx.getMessage());
 		}
-		return "redirect:/empresaReparto/coche/listWithOutIncidencias";
+		return "redirect:/empresaReparto/coche/listDisponibles";
 	}
 	
 	

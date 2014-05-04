@@ -8,6 +8,9 @@ import innova4b.empresaReparto.empresa.domain.Empresa;
 import innova4b.empresaReparto.empresa.repository.EmpresaDao;
 import innova4b.empresaReparto.exceptions.EmpresaWithCochesException;
 import innova4b.empresaReparto.exceptions.EmpresaWithEmpleadosException;
+import innova4b.empresaReparto.exceptions.JsonUtilException;
+import innova4b.empresaReparto.util.JsonUtil;
+import innova4b.empresaReparto.util.TypeReferenceDireccionList;
 
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.JsonParseException;
@@ -24,9 +27,17 @@ public class EmpresaService {
 	
 	@Autowired
 	EmpresaDao empresaDao;
+	
+	@Autowired
+	JsonUtil jsonUtil;
+
 
 	public void setEmpresaDao(EmpresaDao empresaDao) {
 		this.empresaDao = empresaDao;
+	}
+
+	public void setJsonUtil(JsonUtil jsonUtil) {
+		this.jsonUtil = jsonUtil;
 	}
 
 	public void delete(int id) throws EmpresaWithEmpleadosException, EmpresaWithCochesException {
@@ -42,32 +53,22 @@ public class EmpresaService {
 			empresaDao.delete(id);
 	}
 
-	public Empresa insert(Empresa empresa, String direccionesJSON) {
+	public Empresa buildEmpresa(Empresa empresa, String direccionesJSON) {
 		if (!direccionesJSON.isEmpty()) {
 			List<Direccion> direcciones = null;
-			ObjectMapper mapper = new ObjectMapper();
+			
 			try {
-				direcciones = mapper.readValue(direccionesJSON,
-						new TypeReference<List<Direccion>>() {
-						});
-			} catch (JsonParseException e) {
-				logger.error("eror al convertir el json de direcciones: "
-						+ direccionesJSON);
-			} catch (JsonMappingException e) {
-				e.printStackTrace();
-				logger.error("eror al convertir el json de direcciones: "
-						+ direccionesJSON);
-			} catch (IOException e) {
-				logger.error("eror al convertir el json de direcciones: "
-						+ direccionesJSON);
+				direcciones = (List<Direccion>) jsonUtil.fromJsonToList(direccionesJSON, TypeReferenceDireccionList.getInstance());
+			} catch (JsonUtilException e) {
+				logger.error("eror al convertir el json de direcciones: "+ direccionesJSON);
 			}
+					
 			if (direcciones!=null){
 				for (Direccion direccion:direcciones)
 					direccion.setEmpresa(empresa);
 				empresa.setDirecciones(direcciones);
 			}
 		}
-		empresaDao.insert(empresa);
 		return empresa;
 	}
 }
