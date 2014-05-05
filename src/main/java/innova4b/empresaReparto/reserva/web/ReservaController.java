@@ -74,7 +74,8 @@ public class ReservaController {
 		Empleado empleado = empleadoDao.get(usuario.getId());
 		List<Reserva> reservas = empleado.getReservas();
 		
-		model.addAttribute("reserva", reservas.get(0));
+		//model.addAttribute("reserva", reservas.get(0));
+		model.addAttribute("reserva", new Reserva());
 		
 		return "reserva/devolver";
 	}
