@@ -33,12 +33,43 @@ public class EmpleadoController {
 	
 	@Autowired
 	EmpleadoService empleadoService;
+	
+	private static final int NUMERO_EMPLEADOS_POR_LISTA=10;
+	private Long numeroEmpleados=(long) 0;
+	private int numeroPaginas=0;
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void list(ModelMap model) {
-		model.addAttribute("empleado", empleadoDao.list());	
+		
+		numeroEmpleados=empleadoDao.numberOfEmpleados();
+		List<Empleado> listaEmpleados=empleadoDao.listRange(0,NUMERO_EMPLEADOS_POR_LISTA);	
+		numeroPaginas=0;
+		if(listaEmpleados.size()>0){
+			numeroPaginas= numeroEmpleados.intValue()/NUMERO_EMPLEADOS_POR_LISTA;
+			if(numeroEmpleados.intValue()%NUMERO_EMPLEADOS_POR_LISTA >0){
+				numeroPaginas++;
+			}
+		}
+		model.addAttribute("numElementosMostrar",NUMERO_EMPLEADOS_POR_LISTA);
+		model.addAttribute("numberOfPages", numeroPaginas);	
+		model.addAttribute("responsePage", 0);	
+		model.addAttribute("empleado", listaEmpleados);	
 	}
+	@RequestMapping(value = "/list/{page}", method = RequestMethod.GET)
+	public void listRango(ModelMap model, @PathVariable("page") int page) {
+		
+		int posicionInicio=(page*NUMERO_EMPLEADOS_POR_LISTA)+1;
+		if(posicionInicio>numeroEmpleados){
+			posicionInicio=0;
+		}
+		List<Empleado> listaEmpleados=empleadoDao.listRange(posicionInicio,NUMERO_EMPLEADOS_POR_LISTA);	
+		model.addAttribute("numElementosMostrar",NUMERO_EMPLEADOS_POR_LISTA);
+		model.addAttribute("numberOfPages", numeroPaginas);	
+		model.addAttribute("responsePage", page);	
+		model.addAttribute("empleado", listaEmpleados);	
 
+	}
+	
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public void newEmpleado(ModelMap model) {
 	
