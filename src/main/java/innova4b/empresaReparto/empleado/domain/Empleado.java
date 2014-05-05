@@ -1,33 +1,41 @@
 package innova4b.empresaReparto.empleado.domain;
 
-import java.util.Date;
+import innova4b.empresaReparto.empresa.domain.Empresa;
+import innova4b.empresaReparto.reserva.domain.Reserva;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
+import java.util.List;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.joda.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import innova4b.empresaReparto.empresa.domain.Empresa;
-
 
 @Entity
 @Table(name="empleado")
 public class Empleado {
+	
+	private static final String JEFE_NULO_NOMBRE = "Ninguno";
+
+	public static final int JEFE_NULO_ID = -1;
+	
 	@Id
 	@GeneratedValue
 	private Integer id;
@@ -62,7 +70,12 @@ public class Empleado {
 	@Email
 	private String email;
 	
-	@ManyToOne(cascade={CascadeType.ALL})
+
+	@OneToMany(mappedBy="empleado", fetch=FetchType.EAGER)
+	@Cascade({CascadeType.ALL})
+	private List<Reserva> reservas;
+	
+	@ManyToOne(cascade={javax.persistence.CascadeType.ALL})
 	@JoinColumn(name="jefe")
 	private Empleado jefe;
 
@@ -164,5 +177,21 @@ public class Empleado {
 	public void setRol(String rol) {
 		this.rol = rol;
 	}
- 
+	@Override
+	public String toString() {
+		return "Empleado [id=" + id + ", empresa=" + empresa.getNombre() + ", usuario="
+				+ usuario + ", password=" + password + ", rol=" + rol
+				+ ", activo=" + activo + ", dni=" + dni + ", nombre=" + nombre
+				+ ", apellido1=" + apellido1 + ", apellido2=" + apellido2
+				+ ", fechaNacimiento=" + fechaNacimiento + ", telefono="
+				+ telefono + ", email=" + email + ", jefe=" + jefe + "]";
+	}
+	
+	public static Empleado buildJefeNulo(){
+		Empleado empleado = new Empleado();
+		empleado.setId(JEFE_NULO_ID);
+		empleado.setNombre(JEFE_NULO_NOMBRE);
+		return empleado;
+	}
+	
 }

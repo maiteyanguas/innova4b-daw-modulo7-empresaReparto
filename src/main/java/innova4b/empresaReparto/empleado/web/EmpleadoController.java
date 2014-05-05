@@ -30,6 +30,7 @@ public class EmpleadoController {
 	EmpleadoDao empleadoDao;
 	@Autowired
 	EmpresaDao empresaDao;
+	
 	@Autowired
 	EmpleadoService empleadoService;
 
@@ -43,12 +44,7 @@ public class EmpleadoController {
 	
 		if (!model.containsKey("empleado"))
 			model.addAttribute("empleado",new Empleado());
-		Empleado emp = new Empleado();
-		emp.setId(-1);
-		emp.setNombre("Ninguno");
-		List<Empleado> jefes = empleadoDao.listJefe();
-		jefes.add(0, emp);
-		model.addAttribute("jefes",jefes);
+		model.addAttribute("jefes", empleadoService.getJefes());
 		model.addAttribute("empresas", empresaDao.list());
 	}
 
@@ -56,33 +52,23 @@ public class EmpleadoController {
 	public String editEmpleado(ModelMap model, @PathVariable("id") int id) {
 		if (!model.containsKey("empleado"))
 			model.addAttribute("empleado", empleadoDao.get(id));
-		Empleado emp = new Empleado();
-		emp.setId(-1);
-		emp.setNombre("Ninguno");
-		List<Empleado> jefes = empleadoDao.listJefe();
-		jefes.add(0, emp); 
-		model.addAttribute("jefes",jefes);
+		model.addAttribute("jefes",empleadoService.getJefes());
 		model.addAttribute("empresas", empresaDao.list());
 		return "empleado/edit";
 	}
+	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String add(@Valid Empleado empleado, BindingResult result,RedirectAttributes redirect,@RequestParam int idEmpresa, @RequestParam int idJefe) {
-		Empresa emp = empresaDao.get(idEmpresa);
-		empleado.setEmpresa(emp);
-		if (idJefe!=-1) {
-			Empleado jefe= empleadoDao.get(idJefe);
-			empleado.setJefe(jefe);
-		}
+		Empleado builtEmpleado = empleadoService.buildEmpleado(empleado,idJefe,idEmpresa);
 		if (result.hasErrors()){
 			redirect.addFlashAttribute("org.springframework.validation.BindingResult.empleado", result);
-			redirect.addFlashAttribute("empleado",empleado);
+			redirect.addFlashAttribute("empleado",builtEmpleado);
 			return "redirect:/empresaReparto/empleado/new";
 		}
-		empleadoDao.insert(empleado);
+		empleadoDao.insert(builtEmpleado);
 		return "redirect:/empresaReparto/empleado/list";
 	}
 
-	
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String delete(@PathVariable("id") int id, RedirectAttributes redirect) {		
 		

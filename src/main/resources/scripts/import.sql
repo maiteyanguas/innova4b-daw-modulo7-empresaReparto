@@ -10,11 +10,11 @@ INSERT INTO `empresa` (`id`,`nombre`,`cif`,`telefono`,`email`,`fecha_inicio`) VA
 INSERT INTO `empresa` (`id`,`nombre`,`cif`,`telefono`,`email`,`fecha_inicio`) VALUES (4,'Azkar','Z2356824K',943554426,'soporte@azkar.com','2009-11-11');
 INSERT INTO `empresa` (`id`,`nombre`,`cif`,`telefono`,`email`,`fecha_inicio`) VALUES (5,'Rayo','M2351156H',943441416,'soporte@rayo.com','2009-10-01');
 
-INSERT INTO `direccion` (`id`,`calle`,`portal`,`piso`,`letra`,`otros`,`codigo_postal`,`municipio`,`empresa_id`,`principal`) VALUES (1,'San Francisco Javier',15,NULL,NULL,'Arga Eraikina',36301,'IruÃ±ea',1,true);
-INSERT INTO `direccion` (`id`,`calle`,`portal`,`piso`,`letra`,`otros`,`codigo_postal`,`municipio`,`empresa_id`,`principal`) VALUES (2,'Paseo ButrÃ³n',42,2,'D',NULL,20401,'Hondarribia',1,false);
-INSERT INTO `direccion` (`id`,`calle`,`portal`,`piso`,`letra`,`otros`,`codigo_postal`,`municipio`,`empresa_id`,`principal`) VALUES (3,'Paseo ButrÃ³n',42,2,'D',NULL,20401,'Hondarribia',2,true);
+INSERT INTO `direccion` (`id`,`calle`,`portal`,`piso`,`letra`,`otros`,`codigo_postal`,`municipio`,`empresa_id`,`principal`) VALUES (1,'San Francisco Javier',15,NULL,NULL,'Arga Eraikina',36301,'Iruñea',1,true);
+INSERT INTO `direccion` (`id`,`calle`,`portal`,`piso`,`letra`,`otros`,`codigo_postal`,`municipio`,`empresa_id`,`principal`) VALUES (2,'Paseo Butrón',42,2,'D',NULL,20401,'Hondarribia',1,false);
+INSERT INTO `direccion` (`id`,`calle`,`portal`,`piso`,`letra`,`otros`,`codigo_postal`,`municipio`,`empresa_id`,`principal`) VALUES (3,'Paseo Butrón',42,2,'D',NULL,20401,'Hondarribia',2,true);
 INSERT INTO `direccion` (`id`,`calle`,`portal`,`piso`,`letra`,`otros`,`codigo_postal`,`municipio`,`empresa_id`,`principal`) VALUES (4,'Lezo',5,3,'','',20301,'Leitza',2,false);
-INSERT INTO `direccion` (`id`,`calle`,`portal`,`piso`,`letra`,`otros`,`codigo_postal`,`municipio`,`empresa_id`,`principal`) VALUES (5,'Bustitzuri',5,5,'C','',36301,'IruÃ±ea',5,true);
+INSERT INTO `direccion` (`id`,`calle`,`portal`,`piso`,`letra`,`otros`,`codigo_postal`,`municipio`,`empresa_id`,`principal`) VALUES (5,'Bustitzuri',5,5,'C','',36301,'Iruñea',5,true);
 
 /*insert into empleado(`id`,usuario,password,rol, activo, dni, nombre, apellido1, apellido2, fechaNacimiento, telefono, email, jefe ,empresa_id) values (1,'admin','123456','a', 1, '999888998X', 'Master', 'And', 'lol', '2009-10-01', '943333333','huo@sadkf.com', null ,null);*/
 insert into empleado(id,usuario,password,rol, activo, dni, nombre, apellido1, apellido2, fechaNacimiento, telefono, email, jefe ,empresa_id) values (1,'admin','123456','a',  1, '99966699X', 'Master', 'And', 'Commander', '2009-10-01', '943333333','admin@sadkf.com', null ,null);
@@ -31,7 +31,7 @@ insert into empleado(id,usuario,password,rol, activo, dni, nombre, apellido1, ap
 insert into empleado(id,usuario,password,rol, activo, dni, nombre, apellido1, apellido2, fechaNacimiento, telefono, email, jefe, empresa_id) values (12,'iplaza','123456','u', 1, '99988812X', 'Ivan', 'plaza', 'lol', '2009-10-01', '943333333','iplaza@sadkf.com', null ,1);
 insert into empleado(id,usuario,password,rol, activo, dni, nombre, apellido1, apellido2, fechaNacimiento, telefono, email, jefe, empresa_id) values (13,'ssaenz','123456','u', 1, '99988845X', 'Sergio', 'saenz', 'lol', '2009-10-01', '943333333','ssaenz@sadkf.com', null ,2);
 insert into empleado(id,usuario,password,rol, activo, dni, nombre, apellido1, apellido2, fechaNacimiento, telefono, email, jefe, empresa_id) values (14,'aviteri','123456','u', 1, '99988867X', 'Ane', 'viteri', 'lol', '2009-10-01', '943333333','aviteri@sadkf.com', null ,3);
-insert into empleado(id,usuario,password,rol, activo, dni, nombre, apellido1, apellido2, fechaNacimiento, telefono, email, jefe, empresa_id) values (15,'izubia','123456','u', 1, '99988878X', 'IÃ±igo', 'zubia', 'lol', '2009-10-01', '943333333','izubia@sadkf.com', null ,4);
+insert into empleado(id,usuario,password,rol, activo, dni, nombre, apellido1, apellido2, fechaNacimiento, telefono, email, jefe, empresa_id) values (15,'izubia','123456','u', 1, '99988878X', 'Iñigo', 'zubia', 'lol', '2009-10-01', '943333333','izubia@sadkf.com', null ,4);
 insert into empleado(id,usuario,password,rol, activo, dni, nombre, apellido1, apellido2, fechaNacimiento, telefono, email, jefe, empresa_id) values (16,'mpalacios','123456','u', 1, '99988889X', 'Maria', 'palacios', 'lol', '2009-10-01', '943333333','mpalacios@sadkf.com', null ,4);
 
 insert into coche(id, combustible, kms, marca, matricula, modelo, empresa_id) values (1, 'gasoil', 12345, 'ford', '1234www', 'kuga', 1);
@@ -40,13 +40,7 @@ insert into coche(id, combustible, kms, marca, matricula, modelo, empresa_id) va
 insert into coche(id, combustible, kms, marca, matricula, modelo, empresa_id) values (4, 'gasoil', 12345, 'ford', '7835IYT', 'kuga',4);
 insert into coche(id, combustible, kms, marca, matricula, modelo, empresa_id) values (5, 'gasoil', 12345, 'ford', '3468TTY', 'kuga',4);
 
-insert into reserva (id, fecha_devolucion, fecha_devolucion_prevista, fecha_inicio, fecha_inicio_prevista, coche_id, empleado_id) values (1, "2014/2/1", "2014/2/5", "2014/2/1", "2014/2/5", 1, 3);
-insert into reserva (id, fecha_devolucion, fecha_devolucion_prevista, fecha_inicio, fecha_inicio_prevista, coche_id, empleado_id) values (2, "2014/2/2", "2014/2/6", "2014/2/2", "2014/2/6", 1, 2);
-insert into reserva (id, fecha_devolucion, fecha_devolucion_prevista, fecha_inicio, fecha_inicio_prevista, coche_id, empleado_id) values (3, "2014/4/20", "2014/4/30", null, null, 2, 2);
-
 insert into incidencia (id, descripcion, fechaCreacion, fechaResolucion, resuelta, coche_id, idUsuarioCreacion, idUsuarioResolucion, resolucion) values (1, 'Se ha pinchado la rueda', '2014-04-09', '2014-04-10', 1, 1, 1, 13, 'Se ha cambiado la rueda');
 insert into incidencia (id, descripcion, fechaCreacion, fechaResolucion, resuelta, coche_id, idUsuarioCreacion, idUsuarioResolucion, resolucion) values (2, 'Fallo del embrague', '2009-06-07', null, 0, 2, 1, 16, null);
 insert into incidencia (id, descripcion, fechaCreacion, fechaResolucion, resuelta, coche_id, idUsuarioCreacion, idUsuarioResolucion, resolucion) values (3, 'Rotura de lunas', '2004-04-09', '2005-04-10', 1, 2, 1, 7, 'Hemos ido a Carglass');
 insert into incidencia (id, descripcion, fechaCreacion, fechaResolucion, resuelta, coche_id, idUsuarioCreacion, idUsuarioResolucion, resolucion) values (4, 'Fallo de arranque', '2007-09-09', '2007-10-10', 1, 3, 1, 9, 'Cambio de bateria/bujias/aceite');
-
-

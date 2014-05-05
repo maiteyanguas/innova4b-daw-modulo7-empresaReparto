@@ -7,7 +7,7 @@
 <head>
 <link rel="stylesheet" type="text/css" href="/css/reset.css">
 <link rel="stylesheet" type="text/css" href="/css/pages.css">
-<title><spring:message code="lista.coches" text="Lista de coches"/></title>
+<title><spring:message code="lista.cochesDisponibles" text="Lista de coches Disponibles"/></title>
 </head>
 <body>
 	<div id="container">
@@ -16,6 +16,8 @@
 			<c:if test="${error!=null}">
 				<div class="errorblock">${error}</div>
 			</c:if>
+			<jsp:include page="filtro.jsp" />
+			<p><spring:message code="lista.cochesDisponibles" text="Lista de coches Disponibles"/></p>
 			<table>
 				<tr>
 					<th><spring:message code="coche.modelo" text="Modelo"/></th>
@@ -33,7 +35,7 @@
 						<td>${coche.matricula}</td>
 						<td>${coche.kms}</td>
 						<td>${coche.combustible}</td>
-						<td><a href="/empresaReparto/coche/select/${coche.id}"><img alt="seleccionar" src="/images/edit.png" width="20" height="20"></a></td>
+						<td><a href="/empresaReparto/reserva/new/${coche.id}"><img alt="seleccionar" src="/images/select.png" width="32" height="32"></a></td>
 					</tr>
 				</c:forEach>
 			</table>

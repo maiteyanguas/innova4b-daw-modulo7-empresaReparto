@@ -5,12 +5,19 @@ import innova4b.empresaReparto.empleado.domain.Empleado;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.annotations.Type;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.joda.time.LocalDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "reserva")
@@ -20,51 +27,76 @@ public class Reserva {
 	@GeneratedValue
 	private int id;
 
-	private Date fecha_inicio;
-	private Date fecha_devolucion;
-	private Date fecha_inicio_prevista;
-	private Date fecha_devolucion_prevista;
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
+	@Column(name="fecha_inicio")
+	private LocalDate fechaInicio;
+
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
+	@Column(name="fecha_devolucion")
+	private LocalDate fechaDevolucion;
+
+	@NotNull
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
+	@Column(name="fecha_inicio_prevista")
+	private LocalDate fechaInicioPrevista;
+
+	@NotNull
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
+	@Column(name="fecha_devolucion_prevista")
+	private LocalDate fechaDevolucionPrevista;
 	
 	@ManyToOne
-	@JoinColumn(name = "empleado_id", referencedColumnName = "id")
+	@JoinColumn(name="empleado_id", referencedColumnName="id")
 	private Empleado empleado;
 	
 	@ManyToOne
-	@JoinColumn(name = "coche_id", referencedColumnName = "id")
+	@JoinColumn(name="coche_id", referencedColumnName="id")
 	private Coche coche;
 	
 	public int getId() {
 		return id;
 	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}
 	
-	public Date getFecha_inicio() {
-		return fecha_inicio;
+	public LocalDate getFechaInicio() {
+		return fechaInicio;
 	}
-	public void setFecha_inicio(Date fecha_inicio) {
-		this.fecha_inicio = fecha_inicio;
+
+	public void setFechaInicio(LocalDate fechaInicio) {
+		this.fechaInicio = fechaInicio;
 	}
-	public Date getFecha_devolucion() {
-		return fecha_devolucion;
+
+	public LocalDate getFechaDevolucion() {
+		return fechaDevolucion;
 	}
-	public void setFecha_devolucion(Date fecha_devolucion) {
-		this.fecha_devolucion = fecha_devolucion;
+
+	public void setFechaDevolucion(LocalDate fechaDevolucion) {
+		this.fechaDevolucion = fechaDevolucion;
 	}
-	public Date getFecha_inicio_prevista() {
-		return fecha_inicio_prevista;
+
+	public LocalDate getFechaInicioPrevista() {
+		return fechaInicioPrevista;
 	}
-	public void setFecha_inicio_prevista(Date fecha_inicio_prevista) {
-		this.fecha_inicio_prevista = fecha_inicio_prevista;
+
+	public void setFechaInicioPrevista(LocalDate fechaInicioPrevista) {
+		this.fechaInicioPrevista = fechaInicioPrevista;
 	}
-	public Date getFecha_devolucion_prevista() {
-		return fecha_devolucion_prevista;
+
+	public LocalDate getFechaDevolucionPrevista() {
+		return fechaDevolucionPrevista;
 	}
-	public void setFecha_devolucion_prevista(Date fecha_devolucio_prevista) {
-		this.fecha_devolucion_prevista = fecha_devolucio_prevista;
+
+	public void setFechaDevolucionPrevista(LocalDate fechaDevolucionPrevista) {
+		this.fechaDevolucionPrevista = fechaDevolucionPrevista;
 	}
-	
+
 	public Empleado getEmpleado() {
 		return empleado;
 	}
@@ -80,5 +112,16 @@ public class Reserva {
 	public void setCoche(Coche coche) {
 		this.coche = coche;
 	}
+
+	@Override
+	public String toString() {
+		return "Reserva [id=" + id + ", fechaInicio=" + fechaInicio
+				+ ", fechaDevolucion=" + fechaDevolucion
+				+ ", fechaInicioPrevista=" + fechaInicioPrevista
+				+ ", fechaDevolucionPrevista=" + fechaDevolucionPrevista
+				+ ", empleado=" + empleado + ", coche=" + coche + "]";
+	}
+	
+	
 
 }

@@ -33,14 +33,8 @@
 						<td>${coche.matricula}</td>
 						<td>${coche.marca}</td>
 						<td>${coche.modelo}</td>
-						<c:set var="tieneIncidenciaSinResolver" value="false"></c:set>
-						<c:forEach items="${coche.incidencias}" var="incidencia">
-							<c:if test="${incidencia.resuelta == false}">
-								<c:set var="tieneIncidenciaSinResolver" value="true"></c:set>
-							</c:if>						
-						</c:forEach>
 						<c:choose>
-							<c:when test="${tieneIncidenciaSinResolver == true}">
+							<c:when test="${coche.incidenciasPendientes==true}">
 								<td align="center"><spring:message code="si" text="Sí"/></td>
 							</c:when>
 							<c:otherwise>
