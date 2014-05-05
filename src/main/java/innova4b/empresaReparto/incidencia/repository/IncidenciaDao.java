@@ -3,6 +3,7 @@ package innova4b.empresaReparto.incidencia.repository;
 
 import java.util.List;
 
+import innova4b.empresaReparto.empresa.domain.Empresa;
 import innova4b.empresaReparto.incidencia.domain.Incidencia;
 
 import org.hibernate.SessionFactory;
@@ -19,6 +20,9 @@ public class IncidenciaDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	public int insert (Incidencia incidencia) {
+		return (Integer) sessionFactory.getCurrentSession().save(incidencia);
+	}
 	public Incidencia getById(int idIncidencia) throws IndexOutOfBoundsException {
 		return (Incidencia)sessionFactory.getCurrentSession().createQuery("from Incidencia where id=?").setInteger(0, idIncidencia).list().get(0);
 

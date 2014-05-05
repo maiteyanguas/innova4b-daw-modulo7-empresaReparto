@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Past;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.Type;
 import org.joda.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -51,9 +52,30 @@ public class Incidencia {
 	private String resolucion;
 
 	@ManyToOne
-    @JoinColumn(name = "coche_id", referencedColumnName = "id")
-    private Coche coche;
+	@JoinColumn(name = "coche_id", referencedColumnName = "id")
+	private Coche coche;
 	
+	public Incidencia(){}
+	
+	public Incidencia(String descripcion, LocalDate fechaCreacion,
+			LocalDate fechaResolucion, Boolean resuelta, Coche coche,
+			Empleado empleadoCreacion, Empleado empleadoResolucion,
+			String resolucion) {
+		this.fechaCreacion = fechaCreacion;
+		this.fechaResolucion = fechaResolucion;
+		this.resuelta = resuelta;
+		this.descripcion = descripcion;
+		this.empleadoCreacion = empleadoCreacion;
+		this.empleadoResolucion = empleadoResolucion;
+		this.resolucion = resolucion;
+		this.coche = coche;
+	}
+
+	public Incidencia(String string, LocalDate fechaResolucion2,
+			LocalDate localDate, int i, int j, int k, int l, String string2) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -116,5 +138,11 @@ public class Incidencia {
 
 	public void setResolucion(String resolucion) {
 		this.resolucion = resolucion;
+	}
+
+	@JsonIgnore
+	public String getIncidenciaAsString() {
+		return this.fechaCreacion + " " + this.empleadoCreacion + ", "
+				+ this.resuelta;
 	}
 }
