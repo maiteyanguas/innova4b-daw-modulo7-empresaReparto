@@ -3,9 +3,6 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <head>
-<link rel="stylesheet" type="text/css" href="/css/jquery-ui-1.10.4.custom.min.css">
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
   <script>
   $(function() {
     $( "#datepicker" ).datepicker({ dateFormat: "yy-mm-dd" });
@@ -15,6 +12,13 @@
 <title><spring:message code="nuevo.empleado" text="Nuevo empleado"/></title>
 <link rel="stylesheet" type="text/css" href="/css/reset.css">
 <link rel="stylesheet" type="text/css" href="/css/pages.css">
+<link rel="stylesheet" type="text/css" href="/css/jquery/jquery-ui-1.10.4.custom.min.css">
+<script src="/js/jquery/jquery-1.10.2.js"></script>
+<script src="/js/jquery/jquery-ui-1.10.4.custom.min.js"></script>
+<script src="/js/jquery/jquery.i18n.properties-min-1.0.9.js"></script>
+<script src="/js/jquery/jquery.cookie.js"></script>
+<script src="/js/i18n.js"></script>
+<script src="/js/empleado/new.js"></script>
 </head>
 <body>
 	<div id="container">
