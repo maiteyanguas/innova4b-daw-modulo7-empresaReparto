@@ -29,7 +29,7 @@
 	        <map key-type="java.lang.String" value-type="java.lang.String">
 	        	<entry key="datos" value="/empresaReparto/empresa/list"/>
 	            <entry key="reservar.coche" value="/empresaReparto/coche/listDisponibles"/>
-	            <entry key="devolver.coche" value="/empresaReparto/empresa/list"/> 
+	            <entry key="devolver.coche" value="/empresaReparto/reserva/devolver"/> 
 	        </map>
     	</constructor-arg>
 	</bean>
