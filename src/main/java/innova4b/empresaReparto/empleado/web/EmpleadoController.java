@@ -37,7 +37,7 @@ public class EmpleadoController {
 	private static final int NUMERO_EMPLEADOS_POR_LISTA=10;
 	private Long numeroEmpleados=(long) 0;
 	private int numeroPaginas=0;
-
+	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void list(ModelMap model) {
 		
@@ -52,24 +52,25 @@ public class EmpleadoController {
 		}
 		model.addAttribute("numElementosMostrar",NUMERO_EMPLEADOS_POR_LISTA);
 		model.addAttribute("numberOfPages", numeroPaginas);	
-		model.addAttribute("responsePage", 0);	
+		model.addAttribute("responsePage", 1);	
 		model.addAttribute("empleado", listaEmpleados);	
 	}
-	@RequestMapping(value = "/list/{page}", method = RequestMethod.GET)
-	public void listRango(ModelMap model, @PathVariable("page") int page) {
-		
-		int posicionInicio=(page*NUMERO_EMPLEADOS_POR_LISTA)+1;
+
+	@RequestMapping(value = "/list/{id}", method = RequestMethod.GET)
+	public String listRango(ModelMap model, @PathVariable("id") int id) {
+		System.out.println("page-->"+id);
+		int posicionInicio=((id-1)*NUMERO_EMPLEADOS_POR_LISTA)+1;
 		if(posicionInicio>numeroEmpleados){
 			posicionInicio=0;
 		}
 		List<Empleado> listaEmpleados=empleadoDao.listRange(posicionInicio,NUMERO_EMPLEADOS_POR_LISTA);	
 		model.addAttribute("numElementosMostrar",NUMERO_EMPLEADOS_POR_LISTA);
 		model.addAttribute("numberOfPages", numeroPaginas);	
-		model.addAttribute("responsePage", page);	
+		model.addAttribute("responsePage", id);	
 		model.addAttribute("empleado", listaEmpleados);	
+		return "empleado/list";
 
-	}
-	
+	}	
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public void newEmpleado(ModelMap model) {
 	

@@ -27,7 +27,7 @@
 				$(function() {
 					$("#paginationdemo").paginate({
 						count 		: <c:out value="${numberOfPages}"/>,
-						start 		: <c:out value="${responsePage+1}"/>,
+						start 		: <c:out value="${responsePage}"/>,
 						display     : <c:out value="${numElementosMostrar}"/>,
 						border					: true,
 						border_color			: '#fff',
@@ -39,17 +39,17 @@
 						images					: true,
 						mouse					: 'press'
 					});
+					$('ul.jPag-pages li a').click( function(){
+						
+						var page =$(this).text();
+						alert('/empresaReparto/empleado/list/'+page);
+						window.location.replace('/empresaReparto/empleado/list/'+page);
+					});	
 				});
-				
-				$('ul.jPag-pages').on("click", function(){ alert("EE"); });
+			
 
-				$('div.paginationdemo ul.jPag-pages li').click( function(){
-					
-					var page =$(this).text();
-					alert('/empresaReparto/empleado/list/'+page);
-					window.location.replace('/empresaReparto/empleado/list/'+page);
-				});	
-		
+
+				
 			});	
 	</script>
 </head>
@@ -90,7 +90,7 @@
 				</c:forEach> 
 			</table>
 			<c:if test="${numberOfPages>0}">
-				<div id="paginationdemo" class="demo"></div>
+				<div id="paginationdemo"  class="demo">lll</div>
 			</c:if>
 			</div>
 		<jsp:include page="../menu.jsp" />
