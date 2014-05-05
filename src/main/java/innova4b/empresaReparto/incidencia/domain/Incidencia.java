@@ -66,12 +66,30 @@ public class Incidencia {
 		return fechaCreacion;
 	}
 
+	
+	public void setFechaCreacion(String fInicio) {
+		this.fechaCreacion = LocalDate.parse(fInicio,
+				org.joda.time.format.DateTimeFormat.forPattern("dd/MM/yyyy"));
+	}
+		
+	public String getFechaCreacionAsString() {
+		return fechaCreacion == null ? "" : fechaCreacion
+				.toString(org.joda.time.format.DateTimeFormat
+						.forPattern("dd/MM/yyyy"));
+	}
+
 	public void setFechaCreacion(LocalDate fechaCreacion) {
 		this.fechaCreacion = fechaCreacion;
 	}
 
 	public LocalDate getFechaResolucion() {
 		return fechaResolucion;
+	}
+	
+	public String getFechaResolucionAsString() {
+		return fechaResolucion == null ? "" : fechaResolucion
+				.toString(org.joda.time.format.DateTimeFormat
+						.forPattern("dd/MM/yyyy"));
 	}
 
 	public void setFechaResolucion(LocalDate fechaResolucion) {
@@ -116,5 +134,13 @@ public class Incidencia {
 
 	public void setResolucion(String resolucion) {
 		this.resolucion = resolucion;
+	}
+
+	public Coche getCoche() {
+		return coche;
+	}
+
+	public void setCoche(Coche coche) {
+		this.coche = coche;
 	}
 }
