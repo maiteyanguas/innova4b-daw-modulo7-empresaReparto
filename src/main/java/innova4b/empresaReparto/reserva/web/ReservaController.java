@@ -1,7 +1,5 @@
 package innova4b.empresaReparto.reserva.web;
 
-import java.util.Iterator;
-
 import innova4b.empresaReparto.coche.domain.Coche;
 import innova4b.empresaReparto.coche.repository.CocheDao;
 import innova4b.empresaReparto.empleado.domain.Empleado;
@@ -37,21 +35,24 @@ public class ReservaController {
 	CocheDao cocheDao;
 	@Autowired
 	ReservaService reservaService;
+	
+	private int idCoche;
 
 	@RequestMapping(value = "/new/{idCoche}", method = RequestMethod.GET)
-	public String newReserva(@PathVariable("idCoche") int idCoche, HttpSession session, ModelMap model) {		
-		Coche coche = cocheDao.getCocheById(idCoche);
+	public String newReserva(@PathVariable("idCoche") int idCoche, ModelMap model) {
+		this.idCoche = idCoche;
 		Reserva reserva = new Reserva();
-		reserva.setCoche(coche);
-		Usuario usuario = (Usuario) session.getAttribute("usuario");
-		Empleado empleado = empleadoDao.get(usuario.getId());
-		reserva.setEmpleado(empleado);
 		model.addAttribute("reserva", reserva);		
 		return "reserva/new";
 	}
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String addReserva(@Valid Reserva reserva, BindingResult result, RedirectAttributes redirect) {
+	public String addReserva(@Valid Reserva reserva, HttpSession session, BindingResult result, RedirectAttributes redirect) {
+		Coche coche = cocheDao.getCocheById(idCoche);
+		reserva.setCoche(coche);
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		Empleado empleado = empleadoDao.get(usuario.getId());
+		reserva.setEmpleado(empleado);
 		if (result.hasErrors()) {
 			for (ObjectError error : result.getAllErrors()) {
 				//TODO: Mandar mensajes de error a la vista

@@ -27,7 +27,6 @@
 				<spring:message code="nueva.reserva" />
 			</p>
 
-			<div><jsp:include page="maps.jsp" /></div>
 			<c:if test="${error!=null}">
 				<div class="errorblock">${error}</div>
 			</c:if>
