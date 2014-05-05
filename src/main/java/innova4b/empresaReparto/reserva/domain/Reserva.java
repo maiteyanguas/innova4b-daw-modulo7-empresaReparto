@@ -51,12 +51,10 @@ public class Reserva {
 	
 	@ManyToOne
 	@JoinColumn(name="empleado_id", referencedColumnName="id")
-//	@NotNull
 	private Empleado empleado;
 	
 	@ManyToOne
 	@JoinColumn(name="coche_id", referencedColumnName="id")
-//	@NotNull
 	private Coche coche;
 	
 	public int getId() {

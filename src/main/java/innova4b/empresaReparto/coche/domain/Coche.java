@@ -124,5 +124,22 @@ public class Coche {
 	public void setModelo(String modelo) {
 		this.modelo = modelo;
 	}
+	
+	public boolean getIncidenciasPendientes(){
+		boolean incidenciasPendienes = false;
+		if (tieneIncidencias()) {
+			for (Incidencia incidencia : incidencias){
+				if (!incidencia.getResuelta()) 
+					incidenciasPendienes=true;
+			}
+		}
+		return incidenciasPendienes;
+	}
+
+	private boolean tieneIncidencias() {
+		return null!=incidencias && incidencias.size()>=0;
+	}
+	
+	
 
 }

@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -30,6 +31,11 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name="empleado")
 public class Empleado {
+	
+	private static final String JEFE_NULO_NOMBRE = "Ninguno";
+
+	public static final int JEFE_NULO_ID = -1;
+	
 	@Id
 	@GeneratedValue
 	private Integer id;
@@ -179,6 +185,13 @@ public class Empleado {
 				+ ", apellido1=" + apellido1 + ", apellido2=" + apellido2
 				+ ", fechaNacimiento=" + fechaNacimiento + ", telefono="
 				+ telefono + ", email=" + email + ", jefe=" + jefe + "]";
+	}
+	
+	public static Empleado buildJefeNulo(){
+		Empleado empleado = new Empleado();
+		empleado.setId(JEFE_NULO_ID);
+		empleado.setNombre(JEFE_NULO_NOMBRE);
+		return empleado;
 	}
 	
 }
