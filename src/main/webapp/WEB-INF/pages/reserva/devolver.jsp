@@ -4,7 +4,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title><spring:message code="reserva.devolver" /></title>
+<title><spring:message code="nueva.empresa" text="Nueva empresa"/></title>
 <link rel="stylesheet" type="text/css" href="/css/reset.css">
 <link rel="stylesheet" type="text/css" href="/css/pages.css">
 <link rel="stylesheet" type="text/css" href="/css/jquery/jquery-ui-1.10.4.custom.min.css">
