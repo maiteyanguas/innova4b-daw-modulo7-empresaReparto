@@ -69,5 +69,9 @@ public class CocheDao {
 	public int insert (Coche coche) {
 		return (Integer) sessionFactory.getCurrentSession().save(coche);
 	}
+
+	public Object listWithIncidencias() {
+		return (List<Coche>)sessionFactory.getCurrentSession().createQuery("from Coche as c where c.id in (select distinct(i.coche.id) from Incidencia i where i.resuelta=0)").list();
+	}
 	
 }

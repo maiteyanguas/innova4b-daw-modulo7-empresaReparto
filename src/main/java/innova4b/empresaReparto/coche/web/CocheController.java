@@ -76,4 +76,20 @@ public class CocheController {
 		cocheDao.insert(coche);
 		return "redirect:/empresaReparto/coche/listAll";
 	}
+	
+//	@RequestMapping(value = "/listByFilter", method = RequestMethod.GET)
+//	public void listByFilter(ModelMap model, @RequestParam String eleccionCombo) {
+//		if (eleccionCombo.equals("incidenciasPendientes")){
+//			model.addAttribute("coches", cocheDao.listWithIncidencias());	
+//		}
+//	}
+	
+	@RequestMapping(value = "/listByFilter", method = RequestMethod.GET)
+	public String listByFilter(ModelMap model, @RequestParam String eleccionCombo) {
+		if (eleccionCombo.equals("incidenciasPendientes")){
+			model.addAttribute("coches", cocheDao.listWithIncidencias());	
+		}
+		return "coche/listAll";
+	}
+
 }
