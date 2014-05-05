@@ -1,6 +1,7 @@
 package innova4b.empresaReparto.reserva.web;
 
 import java.util.Iterator;
+import java.util.List;
 
 import innova4b.empresaReparto.coche.domain.Coche;
 import innova4b.empresaReparto.coche.repository.CocheDao;
@@ -67,5 +68,35 @@ public class ReservaController {
 		return "redirect:/empresaReparto/coche/listDisponibles";
 	}
 	
+	@RequestMapping(value = "/devolver", method = RequestMethod.GET)
+	public String devolverCoche(HttpSession session, ModelMap model) {		
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		Empleado empleado = empleadoDao.get(usuario.getId());
+		List<Reserva> reservas = empleado.getReservas();
+		
+		model.addAttribute("reserva", reservas.get(0));
+		
+		return "reserva/devolver";
+	}
+
+	@RequestMapping(value = "/finalizar", method = RequestMethod.POST)
+	public String endReserva(@Valid Reserva reserva, BindingResult result, RedirectAttributes redirect) {		
+		if (result.hasErrors()) {
+			return "reserva/devolver";
+		}
+				
+		return "redirect:/empresaReparto/reserva/devolver";
+		
+		/*
+		Coche coche = cocheDao.getCocheById(idCoche);
+		Reserva reserva = new Reserva();
+		reserva.setCoche(coche);
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		Empleado empleado = empleadoDao.get(usuario.getId());
+		reserva.setEmpleado(empleado);
+		model.addAttribute("reserva", reserva);		
+		return "reserva/new";
+		*/
+	}
 	
 }
