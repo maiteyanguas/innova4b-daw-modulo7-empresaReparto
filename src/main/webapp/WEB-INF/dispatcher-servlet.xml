@@ -13,8 +13,10 @@
         http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<context:component-scan base-package="innova4b.empresaReparto" />
-	<context:property-placeholder location="classpath:/database.properties"/>
+	<context:property-placeholder location="classpath:/database.properties, classpath:/mail.properties"/>
 	<mvc:annotation-driven/>
+	
+	<aop:aspectj-autoproxy />
 	
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -23,6 +25,21 @@
 	</bean>
 	
 	<bean id="objectMapper" class="org.codehaus.jackson.map.ObjectMapper"/>
+	
+	 <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="smtp.gmail.com"/>
+        <property name="port" value="25"/>
+        <property name="username" value="${mail.username}"/>
+        <property name="password" value="${mail.password}"/>
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.transport.protocol">smtp</prop>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.debug">false</prop>
+            </props>
+        </property>
+    </bean>
 	
 	<bean id="menuUsuario" class="java.util.HashMap">
 		<constructor-arg index="0" type="java.util.Map">
