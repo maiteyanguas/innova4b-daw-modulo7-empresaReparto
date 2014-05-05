@@ -41,7 +41,7 @@
 								<td align="center"><spring:message code="no" text="No"/></td>
 							</c:otherwise>
 						</c:choose>						
-						<td><a href="/empresaReparto/incidencia/list/${coche.id}"><img alt="listar" src="/images/edit.png" width="20" height="20"></a></td>
+						<td><a href="/empresaReparto/incidencia/list/${coche.id}"><spring:message code="ver.incidencias" text="Ver incidencias" /></a></td>
 					</tr>
 				</c:forEach>
 			</table>
