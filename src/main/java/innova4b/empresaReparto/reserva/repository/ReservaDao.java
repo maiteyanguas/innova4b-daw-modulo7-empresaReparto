@@ -2,8 +2,10 @@ package innova4b.empresaReparto.reserva.repository;
 
 import innova4b.empresaReparto.reserva.domain.Reserva;
 
+import java.util.Date;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +43,19 @@ public class ReservaDao {
 	public void update(Reserva reserva) {
 		sessionFactory.getCurrentSession().update(reserva);
 	}
-	
+	public boolean empleadoTieneUnCocheOcupado(long idEmpleado){
+		Query query=sessionFactory.getCurrentSession().createQuery("select count(*) from Reserva where empleado=:empleado and fechaInicio!=null and fechaDevolucion=null ");
+		
+		query.setLong("empleado", idEmpleado);
+		Long numElementos =(Long) query.uniqueResult();
+		if(numElementos>0){return false;}
+		return true;
+	}
+	public void eliminarResevasFuturasDelEmpleado(int id){
+		Date hoy=new Date();
+		Query query = sessionFactory.getCurrentSession().createQuery("delete Reserva where empleado=:empleado and fechaInicioPrevista>:fechaInicio");
+		query.setLong("empleado", id);
+		query.setDate("fechaInicio", hoy);
+		int result = query.executeUpdate();
+	}
 }
