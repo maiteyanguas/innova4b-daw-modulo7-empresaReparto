@@ -5,9 +5,13 @@ import innova4b.empresaReparto.reserva.domain.Reserva;
 
 import java.util.List;
 
+import java.util.Date;
+
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -16,6 +20,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
@@ -26,6 +32,8 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.joda.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import innova4b.empresaReparto.empresa.domain.Empresa;
 
 
 @Entity
@@ -60,7 +68,7 @@ public class Empleado {
 	@NotEmpty
 	private String apellido2;
 	@NotNull
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "yy-mm-dd")
     @Past
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
 	private LocalDate fechaNacimiento;
@@ -75,7 +83,7 @@ public class Empleado {
 	@Cascade({CascadeType.ALL})
 	private List<Reserva> reservas;
 	
-	@ManyToOne(cascade={javax.persistence.CascadeType.ALL})
+	@ManyToOne()
 	@JoinColumn(name="jefe")
 	private Empleado jefe;
 
@@ -131,10 +139,10 @@ public class Empleado {
 		return fechaNacimiento;
 	}	
 	public String getFechaInicioAsString(){
-		return fechaNacimiento==null?"":fechaNacimiento.toString(org.joda.time.format.DateTimeFormat.forPattern("dd/MM/yyyy"));
+		return fechaNacimiento==null?"":fechaNacimiento.toString(org.joda.time.format.DateTimeFormat.forPattern("yy-mm-dd"));
 	}
 	public void setFechaInicio(String fechaNacimiento) {
-		this.fechaNacimiento = LocalDate.parse(fechaNacimiento,org.joda.time.format.DateTimeFormat.forPattern("dd/MM/yyyy"));
+		this.fechaNacimiento = LocalDate.parse(fechaNacimiento,org.joda.time.format.DateTimeFormat.forPattern("yy-mm-dd"));
 	}
 	public void setFechaNacimiento(LocalDate fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
