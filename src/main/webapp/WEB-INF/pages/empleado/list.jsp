@@ -6,10 +6,52 @@
 <html>
 <head>
 <head>
-<link rel="stylesheet" type="text/css" href="/css/reset.css">
-<link rel="stylesheet" type="text/css" href="/css/pages.css">
 <title><spring:message code="lista.empleados" text="Lista de empleados"/></title>
 
+<link rel="stylesheet" type="text/css" href="/css/reset.css">
+<link rel="stylesheet" type="text/css" href="/css/pages.css">
+<link rel="stylesheet" type="text/css" href="/css/paginateStyle.css">
+
+<script src="/js/jquery/jquery-1.10.2.js"></script>
+<script src="/js/jquery/jquery-ui-1.10.4.custom.min.js"></script>
+<script src="/js/jquery/jquery.i18n.properties-min-1.0.9.js"></script>
+<script src="/js/jquery/jquery.cookie.js"></script>
+<script src="/js/i18n.js"></script>
+<script src="/js/jquery.paginate.js"></script>
+
+
+<script type="text/javascript">
+			
+			$(document).ready(function() {
+
+				$(function() {
+					$("#paginationdemo").paginate({
+						count 		: <c:out value="${numberOfPages}"/>,
+						start 		: <c:out value="${responsePage+1}"/>,
+						display     : <c:out value="${numElementosMostrar}"/>,
+						border					: true,
+						border_color			: '#fff',
+						text_color  			: '#fff',
+						background_color    	: 'black',	
+						border_hover_color		: '#ccc',
+						text_hover_color  		: '#000',
+						background_hover_color	: '#fff', 
+						images					: true,
+						mouse					: 'press'
+					});
+				});
+				
+				$('ul.jPag-pages').on("click", function(){ alert("EE"); });
+
+				$('div.paginationdemo ul.jPag-pages li').click( function(){
+					
+					var page =$(this).text();
+					alert('/empresaReparto/empleado/list/'+page);
+					window.location.replace('/empresaReparto/empleado/list/'+page);
+				});	
+		
+			});	
+	</script>
 </head>
 <body>
 	<div id="container">
@@ -47,6 +89,9 @@
 					</tr>
 				</c:forEach> 
 			</table>
+			<c:if test="${numberOfPages>0}">
+				<div id="paginationdemo" class="demo"></div>
+			</c:if>
 			</div>
 		<jsp:include page="../menu.jsp" />
 		<jsp:include page="../footer.jsp" />
