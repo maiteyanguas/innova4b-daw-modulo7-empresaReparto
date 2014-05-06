@@ -1,6 +1,5 @@
 package innova4b.empresaReparto.coche.web;
 
-import innova4b.empresaReparto.coche.autocompletar_marcas.MarcasCoches;
 import innova4b.empresaReparto.coche.domain.Coche;
 import innova4b.empresaReparto.coche.repository.CocheDao;
 import innova4b.empresaReparto.coche.service.CocheService;
@@ -18,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,8 +34,6 @@ public class CocheController {
 	@Autowired
 	CocheService cocheService;
 	
-	private static MarcasCoches marcasCoches = new MarcasCoches();
-
 	
 	@RequestMapping(value = "/listDisponibles", method = RequestMethod.GET)
 	public void listDisponibles( HttpSession session, ModelMap model) {
@@ -70,6 +68,17 @@ public class CocheController {
 		model.addAttribute("empresas", empresaDao.list());
 	}
 	
+	@RequestMapping(value ="/update", method = RequestMethod.POST)
+	public String update(ModelMap model,@Valid Coche coche, BindingResult result, @RequestParam int idEmpresa){
+		Empresa empresa = empresaDao.get(idEmpresa);
+		if (result.hasErrors()){
+			model.addAttribute("empresas", empresaDao.list());
+			return "coche/edit";}
+		coche.setEmpresa(empresa);
+		cocheDao.update(coche);
+		return "redirect:/empresaReparto/coche/listAll";
+	}
+	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String add(ModelMap model,@Valid Coche coche, BindingResult result, @RequestParam int idEmpresa) {
 		Empresa empresa = empresaDao.get(idEmpresa);
@@ -85,8 +94,15 @@ public class CocheController {
 	@ResponseBody
 	public List<String> getMarcasCoches(@RequestParam("term") String query){
 		
-		List<String> marcasEncontradas = marcasCoches.getMarcasEncontradas(query);
+		List<String> marcasEncontradas = cocheService.getMarcasEncontradas(query);
 		
 		return marcasEncontradas;
+	}
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+	public String editCoche(ModelMap model, @PathVariable("id") int id) {
+		if (!model.containsKey("coche"))
+			model.addAttribute("coche", cocheDao.getCocheById(id));
+		model.addAttribute("empresas", empresaDao.list());
+		return "coche/edit";
 	}
 }

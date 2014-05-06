@@ -20,6 +20,8 @@ public class CocheService {
 	EmpleadoDao empleadoDao;
 	@Autowired
 	CocheDao cocheDao;
+	@Autowired
+	ArrayList<String> marcas;
 	
 	public List<Coche> listDisponibles(Usuario usuario){
 		List<Coche> coches = new ArrayList<Coche>();
@@ -38,6 +40,20 @@ public class CocheService {
 			coches = cocheDao.listDisponiblesByEmpresaBetweenDates(fechaInicio, fechaDevolucion, empleadoDao.get(usuario.getId()).getEmpresa());
 		return coches;
 	}
-	
+
+	public List<String> getMarcasEncontradas(String query) {
+
+		query = query.toLowerCase();
+
+		List<String> marcas_encontradas = new ArrayList<String>();
+
+		for (String marca : marcas) {
+			if (marca.toLowerCase().startsWith(query)) {
+				marcas_encontradas.add(marca);
+			}
+		}
+
+		return marcas_encontradas;
+	}
 
 }
