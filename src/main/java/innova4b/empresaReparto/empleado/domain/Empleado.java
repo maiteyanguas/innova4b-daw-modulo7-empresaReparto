@@ -3,7 +3,12 @@ package innova4b.empresaReparto.empleado.domain;
 import innova4b.empresaReparto.empresa.domain.Empresa;
 import innova4b.empresaReparto.reserva.domain.Reserva;
 
+import java.text.Format;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
@@ -79,6 +84,7 @@ public class Empleado {
 	@JoinColumn(name="jefe")
 	private Empleado jefe;
 
+	private String fechaNacimientoAsString;
 	public Integer getId() {
 		return id;
 	}
@@ -130,6 +136,19 @@ public class Empleado {
 	public LocalDate getFechaNacimiento() {
 		return fechaNacimiento;
 	}	
+	
+	public String getFechaNacimientoAsString(){	
+	    Date date;
+	    String formattedDate = "";
+	    try {
+	        date = new SimpleDateFormat("yyyy-MM-dd",Locale.getDefault()).parse(fechaNacimiento.toString());
+	        formattedDate = new SimpleDateFormat("dd/MM/yyyy",Locale.getDefault()).format(date);
+	    } catch (ParseException e) {
+	        e.printStackTrace();
+	    }
+	    return formattedDate;
+	}
+	
 	public String getFechaInicioAsString(){
 		return fechaNacimiento==null?"":fechaNacimiento.toString(org.joda.time.format.DateTimeFormat.forPattern("dd/MM/yyyy"));
 	}
