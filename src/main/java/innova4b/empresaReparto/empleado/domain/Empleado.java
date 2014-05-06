@@ -156,7 +156,7 @@ public class Empleado {
 		this.activo = activo;
 	}
 	
-	public boolean isJefe(){
+	public boolean soyJefe(){
 		return  this.jefe == null;
 	}
 	public String getUsuario() {
