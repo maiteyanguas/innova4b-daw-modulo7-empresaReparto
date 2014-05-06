@@ -31,15 +31,24 @@ public class IncidenciaDao {
 		return (List<Incidencia>)sessionFactory.getCurrentSession().createQuery("from Incidencia where coche_id="+idCoche).list();
 
 	}  	
-	
-	public boolean empleadoEstaEnIncidenciasNoResueltas(long idEmpleado) throws IndexOutOfBoundsException {
-		Query query=sessionFactory.getCurrentSession().createQuery("select count(*) from Incidencia where resuelta=:resuelta and (idUsuarioCreacion=:persona or idUsuarioResolucion=:persona)");
-		query.setBoolean("resuelta", false);
-		query.setLong("idUsuarioCreacion", idEmpleado);
-		query.setLong("idUsuarioResolucion", idEmpleado);
-		Long numElementos =(Long) query.uniqueResult();
-		if(numElementos>0){return false;}
-		return true;
+
+	public void ponerEmpleadoCreacionNull(Empleado empleado) throws IndexOutOfBoundsException {
+		Query query=sessionFactory.getCurrentSession().createQuery("update Incidencia set empleadoCreacion = NULL where empleadoCreacion =:empleado");
+		query.setParameter("empleado", empleado);
+		query.executeUpdate();
 	}
-	
+	public void ponerEmpleadoResolucionNull(Empleado empleado) throws IndexOutOfBoundsException {
+		Query query=sessionFactory.getCurrentSession().createQuery("update Incidencia set empleadoResolucion = NULL where empleadoResolucion =:empleado");
+		query.setParameter("empleado", empleado);
+		query.executeUpdate();
+	}
+	public boolean empleadoEstaEnIncidenciasNoResueltas(Empleado empleado) throws IndexOutOfBoundsException {
+		Query query=sessionFactory.getCurrentSession().createQuery("select count(*) from Incidencia where resuelta=:resuelta and (empleadoCreacion=:empleado or empleadoResolucion=:empleado)");
+		query.setBoolean("resuelta", false);
+		query.setParameter("empleado", empleado);
+
+		Long numElementos =(Long) query.uniqueResult();
+		if(numElementos>0){return true;}
+		return false;
+	}	
 }
