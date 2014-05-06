@@ -176,9 +176,9 @@ public class Empleado {
 		this.activo = activo;
 	}
 	
-	public boolean isJefe(){
+	public boolean soyJefe(){
 		return  this.jefe == null;
-	}
+	} 
 	public String getUsuario() {
 		return usuario;
 	}
@@ -197,9 +197,9 @@ public class Empleado {
 	public void setRol(String rol) {
 		this.rol = rol;
 	}
-	@Override
+		@Override
 	public String toString() {
-		return "Empleado [id=" + id + ", empresa=" + empresa.getNombre() + ", usuario="
+		return "Empleado [id=" + id + ", empresa=" + empresa + ", usuario="
 				+ usuario + ", password=" + password + ", rol=" + rol
 				+ ", activo=" + activo + ", dni=" + dni + ", nombre=" + nombre
 				+ ", apellido1=" + apellido1 + ", apellido2=" + apellido2
