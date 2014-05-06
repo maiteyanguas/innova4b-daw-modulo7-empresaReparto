@@ -32,5 +32,13 @@ Configuración de Reload: manual
 Arrancar la aplicación en perfil desarrollo: mvn jetty:run
 Arrancar la aplicación en perfil prod: mvn jetty:run -P prod
 
-Hace falta crear la carpeta ~/logs en el home del usuario 
+Si el jetty finaliza mal, hay que "matar el proceso": 
+	- En una terminal ejecutar: netstat -ap | grep 9999
+	- matar el proceso que está en el puerto 9999
+
+Los logs se guardan en el directorio del proyecto. Hay 3 ficheros diferentes:
+	- hibernate.log: logueo de hibernate
+	- spring.log: logueo de clases de Spring
+	- empresaReparto.log: logueo de clases propias de la aplicación
+
 
