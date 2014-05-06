@@ -1,8 +1,8 @@
 var getCalendario = function(fechaInicio, dias, fechaFin){
 	fechaInicio.datepicker({
 		closeText : jQuery.i18n.prop('calendario.cerrar'),
-		prevText : jQuery.i18n.prop('calendario.<ant'),
-		nextText : jQuery.i18n.prop('calendario.sig>'),
+		prevText : jQuery.i18n.prop('calendario.ant'),
+		nextText : jQuery.i18n.prop('calendario.sig'),
 		currentText : jQuery.i18n.prop('calendario.hoy'),
 		dateFormat : 'dd/mm/yy',
 		minDate : 0,

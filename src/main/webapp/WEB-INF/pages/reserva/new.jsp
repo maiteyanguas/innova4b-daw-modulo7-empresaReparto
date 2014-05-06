@@ -22,10 +22,12 @@
 	<div id="container">
 		<jsp:include page="../header.jsp" />
 		<div id="content">
+		
 			<p>
 				<spring:message code="nueva.reserva" />
 			</p>
 
+			<div><jsp:include page="maps.jsp" /></div>
 			<c:if test="${error!=null}">
 				<div class="errorblock">${error}</div>
 			</c:if>
