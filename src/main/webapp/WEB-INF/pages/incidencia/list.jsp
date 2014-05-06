@@ -28,19 +28,26 @@
 				</tr>
 				<c:forEach items="${incidencias}" var="incidencia">
 					<tr>
-						<td>${incidencia.fechaCreacion}</td>
-						<td>${incidencia.resuelta}</td>
+						<td>${incidencia.fechaCreacionAsString}</td>
+						<c:choose>
+							<c:when test="${incidencia.resuelta==true}">
+								<td align="center"><spring:message code="si" text="Sí"/></td>
+							</c:when>
+							<c:otherwise>
+								<td align="center"><spring:message code="no" text="No"/></td>
+							</c:otherwise>
+						</c:choose>	
 						<td>${incidencia.descripcion}</td>
-						<td><a href="/empresaReparto/incidencia/show/${incidencia.id}"><img alt="mostrar" src="/images/ojo.png" width="20" height="20"></a></td>
+						<td><a href="/empresaReparto/incidencia/show/${incidencia.id}"><spring:message code="ver.incidencia" text="Ver incidencia" /></a></td>
 						<c:if test="${incidencia.resuelta==false}">
-
-						<td><a href="/empresaReparto/incidencia/solve/${incidencia.id}"><img alt="resolver" src="/images/Tick.svg" width="20" height="20"></a></td>
+							<td><a href="/empresaReparto/incidencia/solve/${incidencia.id}"><img alt="resolver" src="/images/Tick.svg" width="20" height="20"></a></td>
 						</c:if>
 						
 
 					</tr>
 				</c:forEach>
-			</table>			
+			</table>	
+				<a class="button" href="/empresaReparto/coche/listAll"><spring:message code="volver" text="Volver"/></a>			
 		</div>
 		<jsp:include page="../menu.jsp" />
 		<jsp:include page="../footer.jsp" />

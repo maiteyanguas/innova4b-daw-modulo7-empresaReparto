@@ -5,8 +5,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title><spring:message code="nuevo.coche" text="Nuevo coche"/></title>
+<link rel="stylesheet" type="text/css" href="/css/jquery/jquery-ui-1.10.4.custom.min.css">
 <link rel="stylesheet" type="text/css" href="/css/reset.css">
 <link rel="stylesheet" type="text/css" href="/css/pages.css">
+<script src="/js/jquery/jquery-1.10.2.js"></script>
+<script src="/js/jquery/jquery-ui-1.10.4.custom.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	
+	$( "#marca").autocomplete({
+		source: '${pageContext. request. contextPath}/empresaReparto/coche/getMarcasCoches'
+	});
+	
+})
+</script>
 </head>
 <body>
 	<div id="container">
@@ -46,7 +58,7 @@
 				</tr>
 				<tr>
 					<td><form:label path="marca"><spring:message code="coche.marca" text="Marca"/>:</form:label></td>
-					<td><form:input path="marca"></form:input>
+					<td><form:input path="marca" id="marca"></form:input>
 						<form:errors path="marca" cssClass="error"/>
 					</td>
 				</tr>
