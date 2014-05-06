@@ -42,7 +42,6 @@
 					$('ul.jPag-pages li a').click( function(){
 						
 						var page =$(this).text();
-						alert('/empresaReparto/empleado/list/'+page);
 						window.location.replace('/empresaReparto/empleado/list/'+page);
 					});	
 				});
@@ -90,7 +89,7 @@
 				</c:forEach> 
 			</table>
 			<c:if test="${numberOfPages>0}">
-				<div id="paginationdemo"  class="demo">lll</div>
+				<div id="paginationdemo"  class="demo"></div>
 			</c:if>
 			</div>
 		<jsp:include page="../menu.jsp" />
