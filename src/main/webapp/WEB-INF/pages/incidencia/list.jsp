@@ -40,7 +40,7 @@
 						<td>${incidencia.descripcion}</td>
 						<td><a href="/empresaReparto/incidencia/show/${incidencia.id}"><spring:message code="ver.incidencia" text="Ver incidencia" /></a></td>
 						<c:if test="${incidencia.resuelta==false}">
-							<td><a href="/empresaReparto/incidencia/solve/${incidencia.id}"><img alt="resolver" src="/images/Tick.svg" width="20" height="20"></a></td>
+							<td><a href="/empresaReparto/incidencia/edit/${incidencia.id}"><img alt="resolver" src="/images/Tick.svg" width="20" height="20"></a></td>
 						</c:if>
 						
 
