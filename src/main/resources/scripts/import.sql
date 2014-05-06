@@ -32,7 +32,6 @@ insert into empleado(id,usuario,password,rol, activo, dni, nombre, apellido1, ap
 insert into empleado(id,usuario,password,rol, activo, dni, nombre, apellido1, apellido2, fechaNacimiento, telefono, email, jefe, empresa_id) values (14,'aviteri','123456','u', 1, '99988867X', 'Ane', 'viteri', 'lol', '2009-10-01', '943333333','aviteri@sadkf.com', null ,3);
 insert into empleado(id,usuario,password,rol, activo, dni, nombre, apellido1, apellido2, fechaNacimiento, telefono, email, jefe, empresa_id) values (15,'izubia','123456','u', 1, '99988878X', 'I�igo', 'zubia', 'lol', '2009-10-01', '943333333','izubia@sadkf.com', null ,4);
 insert into empleado(id,usuario,password,rol, activo, dni, nombre, apellido1, apellido2, fechaNacimiento, telefono, email, jefe, empresa_id) values (16,'mpalacios','123456','u', 1, '99988889X', 'Maria', 'palacios', 'lol', '2009-10-01', '943333333','mpalacios@sadkf.com', null ,4);
-insert into empleado(id,usuario,password,rol, activo, dni, nombre, apellido1, apellido2, fechaNacimiento, telefono, email, jefe ,empresa_id) values (17,'admin2','123456','a', 1, '999888998X', 'Maite', 'Yanguas', 'Amatriain', '2009-10-01', '943333333','maite_yan@hotmail.com', null ,null);
 
 insert into coche(id, combustible, kms, marca, matricula, modelo, empresa_id) values (1, 'gasoil', 12345, 'ford', '1234www', 'kuga', 1);
 insert into coche(id, combustible, kms, marca, matricula, modelo, empresa_id) values (2, 'gasoil', 12345, 'ford', '6748ABC', 'kuga',2);

@@ -39,7 +39,7 @@ public class Empleado {
 	@Id
 	@GeneratedValue
 	private Integer id;
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="empresa_id", referencedColumnName="id")
 	private Empresa empresa;
 	
@@ -75,7 +75,7 @@ public class Empleado {
 	@Cascade({CascadeType.ALL})
 	private List<Reserva> reservas;
 	
-	@ManyToOne(cascade={javax.persistence.CascadeType.ALL})
+	@ManyToOne(cascade={javax.persistence.CascadeType.ALL}, fetch=FetchType.EAGER)
 	@JoinColumn(name="jefe")
 	private Empleado jefe;
 
@@ -151,12 +151,10 @@ public class Empleado {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 	public void setActivo(Integer activo) {
 		this.activo = activo;
 	}
-	
-	public boolean isJefe(){
+	public boolean soyJefe(){
 		return  this.jefe == null;
 	}
 	public String getUsuario() {
@@ -179,7 +177,7 @@ public class Empleado {
 	}
 	@Override
 	public String toString() {
-		return "Empleado [id=" + id + ", empresa=" + empresa.getNombre() + ", usuario="
+		return "Empleado [id=" + id + ", empresa=" /*+ empresa.getNombre() */+ ", usuario="
 				+ usuario + ", password=" + password + ", rol=" + rol
 				+ ", activo=" + activo + ", dni=" + dni + ", nombre=" + nombre
 				+ ", apellido1=" + apellido1 + ", apellido2=" + apellido2
