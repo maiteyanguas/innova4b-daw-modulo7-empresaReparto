@@ -2,6 +2,7 @@ package innova4b.empresaReparto.empleado.web;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import innova4b.empresaReparto.empleado.domain.Empleado;
@@ -11,6 +12,8 @@ import innova4b.empresaReparto.empresa.domain.Empresa;
 import innova4b.empresaReparto.empresa.repository.EmpresaDao;
 import innova4b.empresaReparto.exceptions.EmpresaWithCochesException;
 import innova4b.empresaReparto.exceptions.EmpresaWithEmpleadosException;
+import innova4b.empresaReparto.login.domain.Usuario;
+import innova4b.empresaReparto.reserva.domain.FiltroReserva;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -75,6 +78,13 @@ public class EmpleadoController {
 		empleadoService.delete(id);
 
 		return "redirect:/empresaReparto/empleado/list";
+	}
+	
+	
+	@RequestMapping(value = "/show", method = RequestMethod.GET)
+	public void listDisponibles( HttpSession session, ModelMap model) {
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		model.addAttribute("empleado", empleadoDao.get(usuario.getId()));
 	}
 
 }
