@@ -11,6 +11,7 @@ import innova4b.empresaReparto.empresa.domain.Empresa;
 import innova4b.empresaReparto.empresa.repository.EmpresaDao;
 import innova4b.empresaReparto.exceptions.EmpresaWithCochesException;
 import innova4b.empresaReparto.exceptions.EmpresaWithEmpleadosException;
+import innova4b.empresaReparto.util.ProgramExceptions;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -58,7 +59,6 @@ public class EmpleadoController {
 
 	@RequestMapping(value = "/list/{id}", method = RequestMethod.GET)
 	public String listRango(ModelMap model, @PathVariable("id") int id) {
-		System.out.println("page-->"+id);
 		int posicionInicio=((id-1)*NUMERO_EMPLEADOS_POR_LISTA)+1;
 		if(posicionInicio>numeroEmpleados){
 			posicionInicio=0;
@@ -103,9 +103,11 @@ public class EmpleadoController {
 
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String delete(@PathVariable("id") int id, RedirectAttributes redirect) {		
-		
-		empleadoService.delete(id);
-
+		try{
+			empleadoService.delete(id);
+		}catch(ProgramExceptions e){
+			
+		}
 		return "redirect:/empresaReparto/empleado/list";
 	}
 

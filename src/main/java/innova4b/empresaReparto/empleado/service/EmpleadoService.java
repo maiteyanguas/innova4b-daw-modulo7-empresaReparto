@@ -9,6 +9,7 @@ import innova4b.empresaReparto.empresa.domain.Empresa;
 import innova4b.empresaReparto.empresa.repository.EmpresaDao;
 import innova4b.empresaReparto.incidencia.repository.IncidenciaDao;
 import innova4b.empresaReparto.reserva.repository.ReservaDao;
+import innova4b.empresaReparto.util.ProgramExceptions;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -32,26 +33,32 @@ public class EmpleadoService {
 		this.empleadoDao = empleadoDao;
 	}
 
-	public void delete(int id){
+	public void delete(int id)throws ProgramExceptions{
 		Empleado empleado=empleadoDao.get(id);
 		
 		if(reservaDao.empleadoTieneUnCocheOcupado(id)){
+			System.out.println("1");
 			if(incidenciaDao.empleadoEstaEnIncidenciasNoResueltas(empleado)){
+				System.out.println("2");
 				incidenciaDao.ponerEmpleadoCreacionNull(empleado);
+				System.out.println("3");
 				incidenciaDao.ponerEmpleadoResolucionNull(empleado);
+				System.out.println("4");
 			}
+			System.out.println("5");
 			
-			/*
-			if(reservaDao.empleadoTieneUnCocheOcupado(id)){
-				//No puede borrarse;
-			}
-			reservaDao.eliminarResevasFuturasDelEmpleado(id);
-			*/
 			if (empleadoDao.get(id).isJefe())
 				empleadoDao.actualizarSubalternos(id);
+			
 			empleadoDao.delete(id);
+			System.out.println("6");
+			reservaDao.eliminarResevasFuturasDelEmpleado(id);
+
+			System.out.println("7");
 		}else{
 			System.out.println("No sepuede borrar coche ocupado");
+			throw new ProgramExceptions("No sepuede borrar coche ocupado");
+			
 		}
 	}
 	
