@@ -24,7 +24,7 @@ public class CocheDaoIntegrationTest {
 
 	@Test
 	public void listDisponibles_devuelve_todos_los_coches_sin_incidencias_pendientes() {
-		assertEquals(4, cocheDao.listDisponibles().size());
+		assertEquals(5, cocheDao.listDisponibles().size());
 	}
 
 }
