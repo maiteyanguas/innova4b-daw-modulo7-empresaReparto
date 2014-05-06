@@ -34,20 +34,25 @@ public class EmpleadoService {
 
 	public void delete(int id){
 		Empleado empleado=empleadoDao.get(id);
-		if(incidenciaDao.empleadoEstaEnIncidenciasNoResueltas(empleado)){
-			incidenciaDao.ponerEmpleadoCreacionNull(empleado);
-			incidenciaDao.ponerEmpleadoResolucionNull(empleado);
-		}
 		
-		/*
 		if(reservaDao.empleadoTieneUnCocheOcupado(id)){
-			//No puede borrarse;
+			if(incidenciaDao.empleadoEstaEnIncidenciasNoResueltas(empleado)){
+				incidenciaDao.ponerEmpleadoCreacionNull(empleado);
+				incidenciaDao.ponerEmpleadoResolucionNull(empleado);
+			}
+			
+			/*
+			if(reservaDao.empleadoTieneUnCocheOcupado(id)){
+				//No puede borrarse;
+			}
+			reservaDao.eliminarResevasFuturasDelEmpleado(id);
+			*/
+			if (empleadoDao.get(id).isJefe())
+				empleadoDao.actualizarSubalternos(id);
+			empleadoDao.delete(id);
+		}else{
+			System.out.println("No sepuede borrar coche ocupado");
 		}
-		reservaDao.eliminarResevasFuturasDelEmpleado(id);
-		*/
-		if (empleadoDao.get(id).isJefe())
-			empleadoDao.actualizarSubalternos(id);
-		empleadoDao.delete(id);
 	}
 	
 	public List<Empleado> getJefes(){
