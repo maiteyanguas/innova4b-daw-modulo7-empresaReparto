@@ -71,11 +71,6 @@ public class Incidencia {
 		this.coche = coche;
 	}
 
-	public Incidencia(String string, LocalDate fechaResolucion2,
-			LocalDate localDate, int i, int j, int k, int l, String string2) {
-		// TODO Auto-generated constructor stub
-	}
-
 	public int getId() {
 		return id;
 	}

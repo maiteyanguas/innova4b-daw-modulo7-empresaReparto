@@ -1,6 +1,5 @@
 package innova4b.empresaReparto.incidencia.web;
 
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
