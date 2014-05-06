@@ -74,29 +74,27 @@ public class ReservaController {
 		Empleado empleado = empleadoDao.get(usuario.getId());
 		List<Reserva> reservas = empleado.getReservas();
 		
-		model.addAttribute("reserva", reservas.get(0));
+		String returnURL = "reserva/devolver";
 		
-		return "reserva/devolver";
+		if (reservas.size() > 0) {
+			model.addAttribute("reserva", reservas.get(0));	
+		} else {
+			returnURL = "reserva/devolverCocheSinReserva";
+		}
+				
+		return returnURL;
 	}
 
 	@RequestMapping(value = "/finalizar", method = RequestMethod.POST)
 	public String endReserva(@Valid Reserva reserva, BindingResult result, RedirectAttributes redirect) {		
 		if (result.hasErrors()) {
+			redirect.addFlashAttribute("errors", result.getAllErrors());
 			return "reserva/devolver";
 		}
 				
-		return "redirect:/empresaReparto/reserva/devolver";
+		reservaDao.update(reserva);
 		
-		/*
-		Coche coche = cocheDao.getCocheById(idCoche);
-		Reserva reserva = new Reserva();
-		reserva.setCoche(coche);
-		Usuario usuario = (Usuario) session.getAttribute("usuario");
-		Empleado empleado = empleadoDao.get(usuario.getId());
-		reserva.setEmpleado(empleado);
-		model.addAttribute("reserva", reserva);		
-		return "reserva/new";
-		*/
+		return "redirect:/empresaReparto/coche/listDisponibles";
 	}
 	
 }
