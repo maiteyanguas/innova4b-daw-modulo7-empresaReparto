@@ -1,7 +1,6 @@
 package innova4b.empresaReparto.incidencia.service;
 
 import java.util.List;
-
 import innova4b.empresaReparto.exceptions.JsonUtilException;
 import innova4b.empresaReparto.incidencia.domain.Incidencia;
 import innova4b.empresaReparto.incidencia.repository.IncidenciaDao;
@@ -9,8 +8,6 @@ import innova4b.empresaReparto.reserva.domain.Reserva;
 import innova4b.empresaReparto.reserva.repository.ReservaDao;
 import innova4b.empresaReparto.util.JsonUtil;
 import innova4b.empresaReparto.util.TypeReferenceDireccionList;
-
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

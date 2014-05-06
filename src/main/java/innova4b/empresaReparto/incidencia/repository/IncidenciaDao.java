@@ -1,10 +1,7 @@
 package innova4b.empresaReparto.incidencia.repository;
 
 import java.util.List;
-
-import innova4b.empresaReparto.empresa.domain.Empresa;
 import innova4b.empresaReparto.incidencia.domain.Incidencia;
-
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

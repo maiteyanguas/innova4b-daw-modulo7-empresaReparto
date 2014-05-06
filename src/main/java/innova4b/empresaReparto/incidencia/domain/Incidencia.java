@@ -2,7 +2,6 @@ package innova4b.empresaReparto.incidencia.domain;
 
 import innova4b.empresaReparto.coche.domain.Coche;
 import innova4b.empresaReparto.empleado.domain.Empleado;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
