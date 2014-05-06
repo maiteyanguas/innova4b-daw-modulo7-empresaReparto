@@ -5,6 +5,7 @@ import innova4b.empresaReparto.empresa.domain.Empresa;
 
 import java.util.List;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,5 +70,12 @@ public class CocheDao {
 	public int insert (Coche coche) {
 		return (Integer) sessionFactory.getCurrentSession().save(coche);
 	}
+	
+	public void delete (Coche coche) {
+		Session session = sessionFactory.getCurrentSession();
+		sessionFactory.getCurrentSession().delete(session.get(Coche.class, coche.getId()));
+	}
+	
+	
 	
 }

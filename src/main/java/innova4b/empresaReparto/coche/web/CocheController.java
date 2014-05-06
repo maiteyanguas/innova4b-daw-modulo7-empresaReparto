@@ -81,6 +81,13 @@ public class CocheController {
 		return "redirect:/empresaReparto/coche/listAll";
 	}
 	
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public String delete(ModelMap model, @Valid Coche coche, BindingResult result) {
+		
+		cocheDao.delete(coche);
+		return "redirect:/empresaReparto/coche/listAll";
+	}
+	
 	@RequestMapping(value = "/getMarcasCoches", method = RequestMethod.GET)
 	@ResponseBody
 	public List<String> getMarcasCoches(@RequestParam("term") String query){
