@@ -1,11 +1,13 @@
 package innova4b.empresaReparto.empresa.web;
 
+import innova4b.empresaReparto.empresa.domain.Direccion;
 import innova4b.empresaReparto.empresa.domain.Empresa;
 import innova4b.empresaReparto.empresa.repository.EmpresaDao;
 import innova4b.empresaReparto.empresa.service.EmpresaService;
 import innova4b.empresaReparto.exceptions.EmpresaWithCochesException;
 import innova4b.empresaReparto.exceptions.EmpresaWithEmpleadosException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -15,9 +17,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @RequestMapping("/empresa")
@@ -36,7 +40,10 @@ public class EmpresaController {
 	
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public void newEmpresa(ModelMap model) {
-		model.addAttribute("empresa",new Empresa());
+		if (!model.containsKey("empresa"))
+			model.addAttribute("empresa",new Empresa());
+		if (!model.containsKey("direccion"))
+			model.addAttribute("direccion",new Direccion());
 	}
 	
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
@@ -47,10 +54,15 @@ public class EmpresaController {
 	}
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String add(@Valid Empresa empresa, BindingResult result) {
-		if (result.hasErrors())
-			return "empresa/new";
-		empresaDao.insert(empresa);
+	public String add(@Valid Empresa empresa, BindingResult result, @RequestParam String direccionesJSON, RedirectAttributes redirect) {
+		if (result.hasErrors()){
+			redirect.addFlashAttribute("org.springframework.validation.BindingResult.empresa", result);
+			redirect.addFlashAttribute("empresa",empresa);
+			return "redirect:/empresaReparto/empresa/new";
+		}
+		
+		Empresa builtEmpresa = empresaService.buildEmpresa(empresa,direccionesJSON);
+		empresaDao.insert(builtEmpresa);
 		return "redirect:/empresaReparto/empresa/list";
 	}
 	

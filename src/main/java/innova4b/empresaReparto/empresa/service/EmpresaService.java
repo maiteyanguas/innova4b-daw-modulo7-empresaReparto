@@ -1,12 +1,24 @@
 package innova4b.empresaReparto.empresa.service;
 
-import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import java.io.IOException;
+import java.util.List;
 
+import innova4b.empresaReparto.empresa.domain.Direccion;
+import innova4b.empresaReparto.empresa.domain.Empresa;
 import innova4b.empresaReparto.empresa.repository.EmpresaDao;
 import innova4b.empresaReparto.exceptions.EmpresaWithCochesException;
 import innova4b.empresaReparto.exceptions.EmpresaWithEmpleadosException;
+import innova4b.empresaReparto.exceptions.JsonUtilException;
+import innova4b.empresaReparto.util.JsonUtil;
+import innova4b.empresaReparto.util.TypeReferenceDireccionList;
+
+import org.apache.log4j.Logger;
+import org.codehaus.jackson.JsonParseException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.type.TypeReference;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 @Component
 public class EmpresaService {
@@ -15,9 +27,17 @@ public class EmpresaService {
 	
 	@Autowired
 	EmpresaDao empresaDao;
+	
+	@Autowired
+	JsonUtil jsonUtil;
+
 
 	public void setEmpresaDao(EmpresaDao empresaDao) {
 		this.empresaDao = empresaDao;
+	}
+
+	public void setJsonUtil(JsonUtil jsonUtil) {
+		this.jsonUtil = jsonUtil;
 	}
 
 	public void delete(int id) throws EmpresaWithEmpleadosException, EmpresaWithCochesException {
@@ -32,7 +52,23 @@ public class EmpresaService {
 		else	
 			empresaDao.delete(id);
 	}
-	
-	
 
+	public Empresa buildEmpresa(Empresa empresa, String direccionesJSON) {
+		if (!direccionesJSON.isEmpty()) {
+			List<Direccion> direcciones = null;
+			
+			try {
+				direcciones = (List<Direccion>) jsonUtil.fromJsonToList(direccionesJSON, TypeReferenceDireccionList.getInstance());
+			} catch (JsonUtilException e) {
+				logger.error("eror al convertir el json de direcciones: "+ direccionesJSON);
+			}
+					
+			if (direcciones!=null){
+				for (Direccion direccion:direcciones)
+					direccion.setEmpresa(empresa);
+				empresa.setDirecciones(direcciones);
+			}
+		}
+		return empresa;
+	}
 }
