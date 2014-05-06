@@ -17,7 +17,7 @@ public class MarcasCoches {
 				+ " Mini, Nissan, Peugeot, Renault, Seat, Skoda, Toyota,"
 				+ " Volkswaven, Volvo";
 
-		marcas = new ArrayList<>();
+		marcas = new ArrayList<String>();
 
 		StringTokenizer st = new StringTokenizer(data, ",");
 
