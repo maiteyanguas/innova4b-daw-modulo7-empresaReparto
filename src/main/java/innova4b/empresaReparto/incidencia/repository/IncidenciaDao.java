@@ -27,10 +27,9 @@ public class IncidenciaDao {
 	} 
 	
 	public List<Incidencia> list(int idCoche) throws IndexOutOfBoundsException {
-		 
 		return (List<Incidencia>)sessionFactory.getCurrentSession().createQuery("from Incidencia where coche_id="+idCoche).list();
 
-	}  	
+	} 
 
 	public void ponerEmpleadoCreacionNull(Empleado empleado) throws IndexOutOfBoundsException {
 		Query query=sessionFactory.getCurrentSession().createQuery("update Incidencia set empleadoCreacion = NULL where empleadoCreacion =:empleado");

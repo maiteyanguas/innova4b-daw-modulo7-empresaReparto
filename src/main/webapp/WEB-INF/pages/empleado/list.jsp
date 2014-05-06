@@ -79,7 +79,7 @@
 						<td>${empleado.apellido1}</td>
 						<td>${empleado.apellido2}</td> 
 					 	<td>${empleado.empresa.nombre}</td> 
-						<td>${empleado.fechaNacimiento}</td>
+						<td>${empleado.fechaNacimientoAsString}</td>
 						<td>${empleado.email}</td>
 						<td>${empleado.telefono}</td> 		
 						<td><a href="/empresaReparto/empleado/edit/${empleado.id}"><img alt="editar" src="/images/edit.png" width="20" height="20"></a></td>
