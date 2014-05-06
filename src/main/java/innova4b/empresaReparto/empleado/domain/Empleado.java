@@ -21,6 +21,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
@@ -34,7 +35,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
-@Table(name="empleado")
+@Table(name="empleado",uniqueConstraints = {@UniqueConstraint(columnNames={"usuario"})})
 public class Empleado {
 	
 	private static final String JEFE_NULO_NOMBRE = "Ninguno";
