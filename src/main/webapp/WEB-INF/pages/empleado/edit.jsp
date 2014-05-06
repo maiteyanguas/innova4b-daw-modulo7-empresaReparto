@@ -25,10 +25,9 @@
 						<form:errors path="usuario" cssClass="error"/>
 					</td>
 				</tr>
-				<tr>
+				<tr>				
 					<td><form:label path="password"><spring:message code="password" text="Contraseña"/>:</form:label></td>
-					  	<td><form:input path="password"></form:input> 
-						<!--  <td><form:password path="password"></form:password>  -->
+					<td><input id="password" type="password" value="${empleado.password}" name="password" />
 						<form:errors path="password" cssClass="error"/>
 					</td>
 				</tr>
@@ -100,18 +99,17 @@
 
 				<tr>
 					<td><form:label path="jefe"><spring:message code="empleado.jefe" text="Jefe"/>:</form:label></td>
-					<td>
-						<select name="idJefe">
-					<c:forEach var="jefe" items="${jefes}">
-						<c:choose>
-		                	<c:when test="${jefe.id==empleado.jefe.id}">
-		                         <option value="${jefe.id}" selected>${jefe.nombre}</option>
-		                    </c:when>
-		                    <c:otherwise>
-		                         <option value="${jefe.id}" >${jefe.nombre}</option>
-		                    </c:otherwise>
-	                    </c:choose>		
-					</c:forEach>
+					<td><select name="idJefe">
+							<c:forEach var="jefe" items="${jefes}">
+								<c:choose>
+				                	<c:when test="${jefe.id==empleado.jefe.id}">
+				                         <option value="${jefe.id}" selected>${jefe.nombre}</option>
+				                    </c:when>
+				                    <c:otherwise>
+				                         <option value="${jefe.id}" >${jefe.nombre}</option>
+				                    </c:otherwise>
+			                    </c:choose>		
+							</c:forEach>
 					    </select>
 						<form:errors path="jefe" cssClass="error"/>
 					</td>

@@ -77,11 +77,9 @@ public class EmpleadoController {
 		if (result.hasErrors()){
 			redirect.addFlashAttribute("org.springframework.validation.BindingResult.empleado", result);
 			redirect.addFlashAttribute("empleado",builtEmpleado);
-			System.out.println("Dentro de update if ***");
 			return "redirect:/empresaReparto/empleado/edit/"+empleado.getId();
 		}
 		empleadoDao.update(builtEmpleado);
-		System.out.println("antes de redireccionar******");
 		return "redirect:/empresaReparto/empleado/list";
 	}
 	
