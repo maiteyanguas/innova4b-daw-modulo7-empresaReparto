@@ -2,7 +2,6 @@ package innova4b.empresaReparto.empleado.web;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import innova4b.empresaReparto.empleado.domain.Empleado;
@@ -12,8 +11,6 @@ import innova4b.empresaReparto.empresa.domain.Empresa;
 import innova4b.empresaReparto.empresa.repository.EmpresaDao;
 import innova4b.empresaReparto.exceptions.EmpresaWithCochesException;
 import innova4b.empresaReparto.exceptions.EmpresaWithEmpleadosException;
-import innova4b.empresaReparto.login.domain.Usuario;
-import innova4b.empresaReparto.reserva.domain.FiltroReserva;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -55,10 +52,11 @@ public class EmpleadoController {
 	public String editEmpleado(ModelMap model, @PathVariable("id") int id) {
 		if (!model.containsKey("empleado"))
 			model.addAttribute("empleado", empleadoDao.get(id));
-		model.addAttribute("jefes",empleadoService.getJefes());
 		model.addAttribute("empresas", empresaDao.list());
+		model.addAttribute("jefes",empleadoService.getJefes());
 		return "empleado/edit";
 	}
+	
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String add(@Valid Empleado empleado, BindingResult result,RedirectAttributes redirect,@RequestParam int idEmpresa, @RequestParam int idJefe) {
@@ -72,6 +70,18 @@ public class EmpleadoController {
 		return "redirect:/empresaReparto/empleado/list";
 	}
 
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String update(@Valid Empleado empleado, BindingResult result, RedirectAttributes redirect, @RequestParam int idEmpresa, @RequestParam int idJefe) {
+		Empleado builtEmpleado = empleadoService.buildEmpleado(empleado,idJefe,idEmpresa);
+		if (result.hasErrors()){
+			redirect.addFlashAttribute("org.springframework.validation.BindingResult.empleado", result);
+			redirect.addFlashAttribute("empleado",builtEmpleado);
+			return "redirect:/empresaReparto/empleado/edit/"+empleado.getId();
+		}
+		empleadoDao.update(builtEmpleado);
+		return "redirect:/empresaReparto/empleado/list";
+	}
+	
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String delete(@PathVariable("id") int id, RedirectAttributes redirect) {		
 		
