@@ -8,6 +8,23 @@
 <link rel="stylesheet" type="text/css" href="/css/reset.css">
 <link rel="stylesheet" type="text/css" href="/css/pages.css">
 <title><spring:message code="lista.coches" text="Lista de coches"/></title>
+	<script type="text/javascript">
+		function mostrarOpciones(elemento) {
+			if(elemento.value=="empresa") {
+			    document.getElementById("idEmpresa").style.display = "inline";
+			    document.getElementById("eleccionEmpresa").style.display = "inline";
+				document.getElementById("matricula").style.display = "none";
+			}else if (elemento.value=="matricula"){
+				document.getElementById("idEmpresa").style.display = "none";
+				document.getElementById("eleccionEmpresa").style.display = "none";	
+				document.getElementById("matricula").style.display = "inline";
+			} else {
+				document.getElementById("idEmpresa").style.display = "none";
+				document.getElementById("eleccionEmpresa").style.display = "none";			
+				document.getElementById("matricula").style.display = "none";
+			}
+		}
+	</script>
 </head>
 <body>
 	<div id="container">
@@ -15,20 +32,40 @@
 			<div id="content">
 			<p><a class="link" href="/empresaReparto/coche/new"><spring:message code="nuevo.coche" text="Nuevo coche"/></a></p>
 			<p>
-				<form method="GET" action="/empresaReparto/coche/listByFilter">
+				<form method="POST" action="/empresaReparto/coche/listByFilter" name="form">
 					<table>
 						<tr>
                 			<td><spring:message code="filtro.filtrar" text="Filtrar por"/>:</td>
 			            </tr>
 			            <tr>
 			                <td>
-			                	<select name="eleccionCombo">
-			                		<option value="incidenciasPendientes"><spring:message code="filtro.incidencia" text="Incidencias Pendientes"/></option>
+			                	<select id="eleccionCombo" name="eleccionCombo" onchange="mostrarOpciones(this)">
+			                		<option value="verTodos"><spring:message code="filtro.verTodos" text="Ver Todos"/></option>
+			                	    <option value="incidenciasPendientes"><spring:message code="filtro.incidencia" text="Incidencias Pendientes"/></option>
 			                		<option value="empresa"><spring:message code="filtro.empresa" text="Empresa"/></option>
 			                		<option value="matricula"><spring:message code="filtro.matricula" text="Matrícula"/></option>
 			                	</select>
+
 			                </td>
-			                <td><input type="text" name="textoFiltro"></td>
+			                <td>
+			                	<select id="idEmpresa" name="idEmpresa" style="display:none">
+									<c:forEach items="${empresas}" var="emp">
+											<option value="${emp.id}">${emp.nombre}</option>
+									</c:forEach>
+								</select>
+								<select id="matricula" name="matricula" style="display:none">
+									<c:forEach items="${listaMatriculasCoches}" var="coche">
+											<option value="${coche.matricula}">${coche.matricula}</option>
+									</c:forEach>
+								</select>
+							</td>
+							<td>
+								<span id="eleccionEmpresa" style="display:none">
+									<input type="radio" id="eleccionEmpresa" name="eleccionEmpresa" value="todos" checked="checked">Todos los Coches</br>								
+									<input type="radio" id="eleccionEmpresa" name="eleccionEmpresa" value="conIncidencia">Con incidencia</br>
+									<input type="radio" id="eleccionEmpresa" name="eleccionEmpresa" value="sinIncidencia">Sin incidencia
+								</span>
+							</td>
 			                <td>				
 			                	<spring:message code="filtrar" text="Filtrar" var="filtrar"/>
 								<input type="submit" value="${filtrar}"/>
