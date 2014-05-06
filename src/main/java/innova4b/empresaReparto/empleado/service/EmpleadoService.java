@@ -33,13 +33,18 @@ public class EmpleadoService {
 	}
 
 	public void delete(int id){
-		if(incidenciaDao.empleadoEstaEnIncidenciasNoResueltas(id)){
-			//No puede borrarse;
+		Empleado empleado=empleadoDao.get(id);
+		if(incidenciaDao.empleadoEstaEnIncidenciasNoResueltas(empleado)){
+			incidenciaDao.ponerEmpleadoCreacionNull(empleado);
+			incidenciaDao.ponerEmpleadoResolucionNull(empleado);
 		}
+		
+		/*
 		if(reservaDao.empleadoTieneUnCocheOcupado(id)){
 			//No puede borrarse;
 		}
 		reservaDao.eliminarResevasFuturasDelEmpleado(id);
+		*/
 		if (empleadoDao.get(id).isJefe())
 			empleadoDao.actualizarSubalternos(id);
 		empleadoDao.delete(id);
