@@ -15,7 +15,7 @@
 		<div id="content">
 			<p>
 				<spring:message code="datos" text="Mis Datos" />
-				<a href="/empresaReparto/empleado/edit/${empleado.id}"><img alt="editar" src="/images/edit.png" width="20" height="20"></a>
+				<a href="/empresaReparto/empleado/editUser/${empleado.id}"><img alt="editar" src="/images/edit.png" width="20" height="20"></a>
 			</p>
 
 			<table>
