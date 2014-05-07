@@ -5,7 +5,7 @@
 <a id="showRouteDetailsBt" class="button" href="#">Mostrar detalles de ruta</a>
 <div id="gmapDirectionsPanelWrapper">
 	<div id="directions-panel"></div>
-</div>
+</div> 
 <input id="pac-inputOrigin" class="controls" type="text" placeholder="Origen">
 <input id="pac-inputDestiny" class="controls" type="text" placeholder="Destino">
 <hr>
