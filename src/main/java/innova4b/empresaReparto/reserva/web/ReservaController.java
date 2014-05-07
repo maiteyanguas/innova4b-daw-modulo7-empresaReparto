@@ -98,7 +98,7 @@ public class ReservaController {
 				model.addAttribute("incidencia",new Incidencia());
 			
 			Map<Integer,String> valuesSiNo = new HashMap<Integer,String>();
-			valuesSiNo.put(1, "Si");
+			valuesSiNo.put(1, "Si­");
 			valuesSiNo.put(0, "No");
 			
 			model.addAttribute("valuesSiNo", valuesSiNo);
