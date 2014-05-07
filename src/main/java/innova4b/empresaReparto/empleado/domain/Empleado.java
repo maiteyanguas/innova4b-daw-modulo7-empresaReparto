@@ -33,9 +33,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.joda.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
-
 @Entity
-@Table(name="empleado")
+@Table(name="empleado",uniqueConstraints = {@UniqueConstraint(columnNames={"usuario"})})
 public class Empleado {
 	
 	private static final String JEFE_NULO_NOMBRE = "Ninguno";
