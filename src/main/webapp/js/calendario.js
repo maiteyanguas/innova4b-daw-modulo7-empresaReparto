@@ -1,11 +1,11 @@
-var getCalendario = function(fechaInicio, dias, fechaFin){
+var getCalendario = function(fechaInicio, dias, anterior, fechaFin){
 	fechaInicio.datepicker({
 		closeText : jQuery.i18n.prop('calendario.cerrar'),
 		prevText : jQuery.i18n.prop('calendario.<ant'),
 		nextText : jQuery.i18n.prop('calendario.sig>'),
 		currentText : jQuery.i18n.prop('calendario.hoy'),
 		dateFormat : 'dd/mm/yy',
-		minDate : 0,
+		minDate : anterior,
 		maxDate: dias,
 		monthNames : [ jQuery.i18n.prop('calendario.enero'),
 				jQuery.i18n.prop('calendario.febrero'),
