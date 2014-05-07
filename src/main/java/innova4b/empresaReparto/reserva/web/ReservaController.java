@@ -88,12 +88,15 @@ public class ReservaController {
 	public String devolverCoche(HttpSession session, ModelMap model) {		
 		Usuario usuario = (Usuario) session.getAttribute("usuario");
 		Empleado empleado = empleadoDao.get(usuario.getId());
-		List<Reserva> reservas = empleado.getReservas();
 		
 		String returnURL = "reserva/devolver";
 		
-		if (reservaDao.getReservasSinDevolucion(new Long(empleado.getId())).size() > 0) {
-			model.addAttribute("reserva", reservas.get(0));
+		List<Reserva> reservas = reservaDao.getReservasSinDevolucion(new Long(empleado.getId()));
+		
+		if (reservas.size() > 0) {
+			Reserva reserva = reservas.get(0);
+			reserva.setKmIniciales(reserva.getCoche().getKms());
+			model.addAttribute("reserva", reserva);
 			if (!model.containsKey("incidencia"))
 				model.addAttribute("incidencia",new Incidencia());
 			
@@ -122,11 +125,14 @@ public class ReservaController {
 		reserva.setEmpleado(empleado);
 		reserva.setFechaDevolucion(new LocalDate());
 		Coche coche = cocheDao.getCocheById(cocheId);
+		coche.setKms(reserva.getKmFinales());
 		reserva.setCoche(coche);
 						
 		reservaDao.update(reserva);
-		
+				
 		incidenciaService.buildIncidencias(incidenciasJSON, empleado, coche);
+		
+		cocheDao.update(coche);
 		
 		return "redirect:/empresaReparto/reserva/finalizar-message";
 	}
