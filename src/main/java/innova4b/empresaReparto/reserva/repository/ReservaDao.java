@@ -51,6 +51,7 @@ public class ReservaDao {
 		
 		query.setLong("empleado", idEmpleado);
 		Long numElementos =(Long) query.uniqueResult();
+	System.out.println("*************numElementos:"+numElementos);
 		if(numElementos>0){return true;}
 		return false;
 	}
