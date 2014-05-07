@@ -147,11 +147,14 @@ public class EmpleadoController {
 	}
 	
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-	public String delete(@PathVariable("id") int id, RedirectAttributes redirect) {		
+	public String delete(@PathVariable("id") int id,ModelMap model,RedirectAttributes redirect) {		
 		try{
+			model.addAttribute("error","jjjj");
 			empleadoService.delete(id);
+			//model.addAttribute("error","");
 		}catch(ProgramExceptions e){
-			
+			model.addAttribute("error", "El usuario ya est&aacute; en uso.");
+					
 		}
 		return "redirect:/empresaReparto/empleado/list";
 	}

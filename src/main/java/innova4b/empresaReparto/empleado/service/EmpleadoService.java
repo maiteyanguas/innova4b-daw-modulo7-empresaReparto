@@ -34,22 +34,30 @@ public class EmpleadoService {
 	}
 
 	public void delete(int id) throws ProgramExceptions{
-		Empleado empleado=empleadoDao.get(id);
-		if(incidenciaDao.empleadoEstaEnIncidenciasNoResueltas(empleado)){
-			incidenciaDao.ponerEmpleadoCreacionNull(empleado);
-			incidenciaDao.ponerEmpleadoResolucionNull(empleado);
+		System.out.println("1");
+		if(!reservaDao.empleadoTieneUnCocheOcupado(id)){
+			Empleado empleado=empleadoDao.get(id);
+			System.out.println("2");
+			if(incidenciaDao.empleadoEstaEnIncidenciasNoResueltas(empleado)){
+				incidenciaDao.ponerEmpleadoCreacionNull(empleado);
+				incidenciaDao.ponerEmpleadoResolucionNull(empleado);
+			}
+			System.out.println("3");
+			
+			reservaDao.eliminarResevasFuturasDelEmpleado(id);
+			System.out.println("4");
+			reservaDao.ponerNullEmpleadoEnReservas(id);
+			System.out.println("5");
+			if (empleado.soyJefe())
+				empleadoDao.actualizarSubalternos(id);
+			System.out.println("6");
+			System.out.println("6-->"+empleadoDao.get(id));
+			if(empleadoDao.get(id)!=null)
+				empleadoDao.delete(id);
+			System.out.println("7");
+		}else{
+			throw new ProgramExceptions("El Empleado no se ha podido eliminar porque tiene un coche ocupado.");
 		}
-		
-		/*
-		if(reservaDao.empleadoTieneUnCocheOcupado(id)){
-			//No puede borrarse;
-		}
-		reservaDao.eliminarResevasFuturasDelEmpleado(id);
-		*/
-
-		if (empleadoDao.get(id).soyJefe())
-			empleadoDao.actualizarSubalternos(id);
-		empleadoDao.delete(id);
 	}
 	
 	public List<Empleado> getJefes(){
