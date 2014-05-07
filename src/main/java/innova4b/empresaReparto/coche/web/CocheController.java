@@ -59,6 +59,7 @@ public class CocheController {
 		if (!model.containsAttribute("coches")){
 			model.addAttribute("coches", cocheDao.listAll());	
 		}
+		System.out.println("cargando empresa y matriculas");
 		model.addAttribute("empresas", empresaDao.list());
 		model.addAttribute("listaMatriculasCoches", cocheDao.listAll());
 	}
@@ -95,7 +96,7 @@ public class CocheController {
 			}
 		}else if (eleccionCombo.equals("matricula")){
 			model.addAttribute("coches", cocheDao.listWithMatricula(matricula));
-		}		
-		return "coche/listAll";
+		}
+		return "redirect:/empresaReparto/coche/listAll";
 	}
 }
