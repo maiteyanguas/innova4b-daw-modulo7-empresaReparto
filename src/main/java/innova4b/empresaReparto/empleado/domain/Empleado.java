@@ -81,7 +81,7 @@ public class Empleado {
 	@Cascade({CascadeType.ALL})
 	private List<Reserva> reservas;
 	
-	@ManyToOne(cascade={javax.persistence.CascadeType.ALL})
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="jefe")
 	private Empleado jefe;
 
@@ -171,11 +171,10 @@ public class Empleado {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 	public void setActivo(Integer activo) {
 		this.activo = activo;
 	}
-	
+
 	public boolean soyJefe(){
 		return  this.jefe == null;
 	}
