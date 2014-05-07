@@ -9,6 +9,7 @@ import innova4b.empresaReparto.empresa.domain.Empresa;
 import innova4b.empresaReparto.empresa.repository.EmpresaDao;
 import innova4b.empresaReparto.incidencia.repository.IncidenciaDao;
 import innova4b.empresaReparto.reserva.repository.ReservaDao;
+import innova4b.empresaReparto.util.ProgramExceptions;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -32,7 +33,7 @@ public class EmpleadoService {
 		this.empleadoDao = empleadoDao;
 	}
 
-	public void delete(int id){
+	public void delete(int id) throws ProgramExceptions{
 		Empleado empleado=empleadoDao.get(id);
 		if(incidenciaDao.empleadoEstaEnIncidenciasNoResueltas(empleado)){
 			incidenciaDao.ponerEmpleadoCreacionNull(empleado);
