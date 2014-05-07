@@ -20,6 +20,8 @@ public class CocheService {
 	EmpleadoDao empleadoDao;
 	@Autowired
 	CocheDao cocheDao;
+	@Autowired
+	ArrayList<String> marcas;
 	
 	public List<Coche> listDisponibles(Usuario usuario){
 		List<Coche> coches = new ArrayList<Coche>();
@@ -39,5 +41,45 @@ public class CocheService {
 		return coches;
 	}
 	
+	public List<Coche> getCochesFiltrados(String eleccionCombo,int idEmpresa, String eleccionEmpresa, String matricula) {
+		List<Coche>  coches = new ArrayList<Coche>();
+		if (eleccionCombo.equals("incidenciasPendientes")){
+			coches = (List<Coche>) cocheDao.listWithIncidencias();
+		} else if (eleccionCombo.equals("empresa")){
+			coches = getCochesFiltradosPorEmpresa(idEmpresa, eleccionEmpresa, coches);
+		}else if (eleccionCombo.equals("matricula")){
+			coches=(List<Coche>) cocheDao.listWithMatricula(matricula);
+		}else{
+			coches = (List<Coche>) cocheDao.listAll();
+		}
+		return coches;
+	}
+
+	private List<Coche> getCochesFiltradosPorEmpresa(int idEmpresa, String eleccionEmpresa, List<Coche> coches) {
+		if (eleccionEmpresa.equals("todos")){
+			coches = (List<Coche>) cocheDao.listWithEmpresa(idEmpresa);	
+		}else if(eleccionEmpresa.equals("conIncidencia")){
+			coches=(List<Coche>) cocheDao.listWithEmpresaConIncidencias(idEmpresa);	
+		}else if(eleccionEmpresa.equals("sinIncidencia")){
+			coches=(List<Coche>) cocheDao.listWithEmpresaSinIncidencias(idEmpresa);
+		}
+		return coches;
+}
+
+	public List<String> getMarcasEncontradas(String query) {
+
+		query = query.toLowerCase();
+
+		List<String> marcas_encontradas = new ArrayList<String>();
+
+		for (String marca : marcas) {
+			if (marca.toLowerCase().startsWith(query)) {
+				marcas_encontradas.add(marca);
+			}
+		}
+
+		return marcas_encontradas;
+
+	}
 
 }

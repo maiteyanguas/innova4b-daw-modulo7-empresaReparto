@@ -39,7 +39,7 @@ public class Coche {
 	@JoinColumn(name = "empresa_id", referencedColumnName = "id")
 	private Empresa empresa;
 	@NotNull
-	@NumberFormat(style = Style.NUMBER)
+	@NumberFormat(style = Style.NUMBER) 
 	@Max(999999)
 	private Integer kms;
 	@NotEmpty

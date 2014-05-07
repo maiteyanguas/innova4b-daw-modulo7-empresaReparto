@@ -13,8 +13,10 @@
         http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<context:component-scan base-package="innova4b.empresaReparto" />
-	<context:property-placeholder location="classpath:/database.properties"/>
+	<context:property-placeholder location="classpath:/database.properties, classpath:/mail.properties"/>
 	<mvc:annotation-driven/>
+	
+	<aop:aspectj-autoproxy />
 	
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -24,6 +26,21 @@
 	
 	<bean id="objectMapper" class="org.codehaus.jackson.map.ObjectMapper"/>
 	
+	 <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="smtp.gmail.com"/>
+        <property name="port" value="25"/>
+        <property name="username" value="${mail.username}"/>
+        <property name="password" value="${mail.password}"/>
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.transport.protocol">smtp</prop>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.debug">false</prop>
+            </props>
+        </property>
+    </bean>
+	
 	<bean id="menuUsuario" class="java.util.HashMap">
 		<constructor-arg index="0" type="java.util.Map">
 	        <map key-type="java.lang.String" value-type="java.lang.String">
@@ -32,6 +49,40 @@
 	            <entry key="devolver.coche" value="/empresaReparto/reserva/devolver"/> 
 	        </map>
     	</constructor-arg>
+	</bean>
+	
+	<bean id="marcas" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<value>Audi</value>
+				<value>BMW</value>
+				<value>Chevrolet</value>
+				<value>Chrysler</value>
+				<value>Citroen</value>
+				<value>Dacia</value>
+				<value>Fiat</value>
+				<value>Ford</value>
+				<value>Honda</value>
+				<value>Hyundai</value>
+				<value>Jaguar</value>
+				<value>Jeep</value>
+				<value>Kia</value>
+				<value>Lancia</value>
+				<value>Land Rover</value>
+				<value>Mazda</value>
+				<value>Mercedes-Benz</value>
+				<value>Mini</value>
+				<value>Nissan</value>
+				<value>Opel</value>
+				<value>Peugeot</value>
+				<value>Renault</value>
+				<value>Seat</value>
+				<value>Skoda</value>
+				<value>Toyota</value>
+				<value>Volkswagen</value>
+				<value>Volvo</value>
+			</list>
+		</constructor-arg>
 	</bean>
 	
 	<bean id="menuAdministrador" class="java.util.HashMap">
