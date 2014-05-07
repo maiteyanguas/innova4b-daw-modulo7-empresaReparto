@@ -25,13 +25,11 @@ public class Incidencia {
 	private int id;
 
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	@Past
 	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
 	@Column(name = "fechaCreacion")
 	private LocalDate fechaCreacion;
 
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	@Past
 	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
 	@Column(name = "fechaResolucion")
 	private LocalDate fechaResolucion;
@@ -73,7 +71,7 @@ public class Incidencia {
 	public int getId() {
 		return id;
 	}
-
+	
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -134,9 +132,16 @@ public class Incidencia {
 		this.resolucion = resolucion;
 	}
 
+	public Coche getCoche() {
+		return coche;
+	}
+
+	public void setCoche(Coche coche) {
+		this.coche = coche;
+	}
+
 	@JsonIgnore
 	public String getIncidenciaAsString() {
-		return this.fechaCreacion + " " + this.empleadoCreacion + ", "
-				+ this.resuelta;
+		return fechaCreacion + " , Resuelta: " + resuelta;
 	}
 }

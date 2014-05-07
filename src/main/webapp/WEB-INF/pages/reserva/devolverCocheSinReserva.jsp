@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	NO SE PUEDE DEVOLVER UN COCHE SIN RESERVA PREVIA
+	<p>NO SE PUEDE DEVOLVER UN COCHE SIN RESERVA PREVIA</p>
+	<a href="/empresaReparto/coche/listDisponibles">Volver</a>
 </body>
 </html>

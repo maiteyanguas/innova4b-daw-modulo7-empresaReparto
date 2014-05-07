@@ -1,16 +1,21 @@
 package innova4b.empresaReparto.reserva.web;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import innova4b.empresaReparto.coche.domain.Coche;
 import innova4b.empresaReparto.coche.repository.CocheDao;
 import innova4b.empresaReparto.empleado.domain.Empleado;
 import innova4b.empresaReparto.empleado.repository.EmpleadoDao;
 import innova4b.empresaReparto.empresa.domain.Direccion;
+import innova4b.empresaReparto.empresa.domain.Empresa;
 import innova4b.empresaReparto.exceptions.CocheNotFreeForReservationException;
 import innova4b.empresaReparto.exceptions.LastDateNotFutureOfFirstDateException;
 import innova4b.empresaReparto.incidencia.domain.Incidencia;
+import innova4b.empresaReparto.incidencia.repository.IncidenciaDao;
+import innova4b.empresaReparto.incidencia.service.IncidenciaService;
 import innova4b.empresaReparto.login.domain.Usuario;
 import innova4b.empresaReparto.reserva.domain.Reserva;
 import innova4b.empresaReparto.reserva.repository.ReservaDao;
@@ -41,7 +46,11 @@ public class ReservaController {
 	@Autowired
 	CocheDao cocheDao;
 	@Autowired
+	IncidenciaDao incidenciaDao;
+	@Autowired
 	ReservaService reservaService;
+	@Autowired
+	IncidenciaService incidenciaService;
 
 	@RequestMapping(value = "/new/{idCoche}", method = RequestMethod.GET)
 	public String newReserva(@PathVariable("idCoche") int idCoche, HttpSession session, ModelMap model) {		
@@ -84,6 +93,12 @@ public class ReservaController {
 			model.addAttribute("reserva", reservas.get(0));
 			if (!model.containsKey("incidencia"))
 				model.addAttribute("incidencia",new Incidencia());
+			
+			Map<Integer,String> valuesSiNo = new HashMap<Integer,String>();
+			valuesSiNo.put(1, "Sí");
+			valuesSiNo.put(0, "No");
+			
+			model.addAttribute("valuesSiNo", valuesSiNo);
 		} else {
 			returnURL = "reserva/devolverCocheSinReserva";
 		}
@@ -92,7 +107,7 @@ public class ReservaController {
 	}
 
 	@RequestMapping(value = "/finalizar", method = RequestMethod.POST)
-	public String endReserva(@Valid Reserva reserva, BindingResult result, RedirectAttributes redirect, HttpSession session, @RequestParam int cocheId) {				
+	public String endReserva(@Valid Reserva reserva, BindingResult result, RedirectAttributes redirect, HttpSession session, @RequestParam int cocheId, @RequestParam String incidenciasJSON) {				
 		if (result.hasErrors()) {
 			redirect.addFlashAttribute("errors", result.getAllErrors());
 			return "redirect:/empresaReparto/reserva/devolver";
@@ -103,9 +118,12 @@ public class ReservaController {
 		
 		reserva.setEmpleado(empleado);
 		reserva.setFechaDevolucion(new LocalDate());
-		reserva.setCoche(cocheDao.getCocheById(cocheId));
+		Coche coche = cocheDao.getCocheById(cocheId);
+		reserva.setCoche(coche);
 						
 		reservaDao.update(reserva);
+		
+		incidenciaService.buildIncidencias(incidenciasJSON, empleado, coche);
 		
 		return "redirect:/empresaReparto/reserva/finalizar-message";
 	}
