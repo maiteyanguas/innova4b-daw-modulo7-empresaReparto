@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
@@ -92,12 +93,14 @@ public class Empleado {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	@JsonIgnore
 	public Empleado getJefe() {
 		return jefe;
 	}
 	public void setJefe(Empleado jefe) {
 		this.jefe = jefe;
 	}
+	@JsonIgnore
 	public Empresa getEmpresa() {
 		return empresa;
 	}
@@ -107,6 +110,7 @@ public class Empleado {
 	public int getActivo() {
 		return activo;
 	}
+	@JsonIgnore
 	public void setActivo(int activo) {
 		this.activo = activo;
 	}
@@ -176,6 +180,7 @@ public class Empleado {
 		this.activo = activo;
 	}
 	
+	@JsonIgnore
 	public boolean soyJefe(){
 		return  this.jefe == null;
 	}
@@ -196,6 +201,10 @@ public class Empleado {
 	}
 	public void setRol(String rol) {
 		this.rol = rol;
+	}
+	
+	public List<Reserva> getReservas() {
+		return reservas;
 	}
 	@Override
 	public String toString() {
