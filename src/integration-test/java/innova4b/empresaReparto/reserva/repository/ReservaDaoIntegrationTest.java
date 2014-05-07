@@ -33,7 +33,7 @@ public class ReservaDaoIntegrationTest {
 
 	@Test
 	public void insert_una_reserva_en_BD(){
-		int kmIniciales = 150;
+		Integer kmIniciales = 150;
 		reserva = new Reserva(kmIniciales,0,null,null,new LocalDate("2014-04-09"),new LocalDate("2014-04-15"),null,null);
 		int id = reservaDao.insert(reserva);
 		reserva = reservaDao.get(id);
