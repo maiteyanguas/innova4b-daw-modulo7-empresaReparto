@@ -6,18 +6,24 @@ import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import innova4b.empresaReparto.empleado.domain.Empleado;
+import innova4b.empresaReparto.empleado.repository.EmpleadoDao;
 import innova4b.empresaReparto.empresa.domain.Direccion;
 import innova4b.empresaReparto.incidencia.domain.Incidencia;
 import innova4b.empresaReparto.incidencia.repository.IncidenciaDao;
+import innova4b.empresaReparto.login.domain.Usuario;
 
+import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,6 +36,9 @@ public class IncidenciaController {
 
 	@Autowired
 	IncidenciaDao incidenciaDao;
+
+	@Autowired
+	EmpleadoDao empleadoDao;
 	
 	@RequestMapping(value = "/show/{id}", method = RequestMethod.GET)
 	public String show(ModelMap model,@PathVariable("id") int idIncidencia) {
@@ -94,7 +103,7 @@ public class IncidenciaController {
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> add(HttpServletRequest request, @Valid Incidencia incidencia, BindingResult result) {
+	public Map<String, Object> add(HttpServletRequest request, @Valid Incidencia incidencia, BindingResult result, HttpSession session) {
 		Map<String,Object> response = new HashMap<String, Object>();	
 		if (result.hasErrors()){
 			Locale locale = localResolver.resolveLocale(request);
@@ -102,6 +111,11 @@ public class IncidenciaController {
 			response.put("errores", getErrorMessages(result,locale));
 		}else{
 			response.put("respuesta", "OK");
+			
+			//Usuario usuario = (Usuario) session.getAttribute("usuario");
+			//Empleado empleado = empleadoDao.get(usuario.getId());
+			//incidencia.setEmpleadoCreacion(empleado);
+			incidencia.setFechaCreacion(new LocalDate());
 			response.put("incidencia",incidencia);
 			response.put("incidenciaAsString", incidencia.getIncidenciaAsString());
 		}

@@ -19,17 +19,17 @@ $(document).ready(function(){
 	    buttons: [{
 	    	text:jQuery.i18n.prop('guardar'),			    	
 	    	click: function() {
-	    		var direccion = $('#incidenciaForm').serialize();
+	    		var incidencia = $('#incidenciaForm').serialize();
 	    		
-	    		$.post('/empresaReparto/direccion/add', direccion, function(response) {
+	    		$.post('/empresaReparto/incidencia/add', incidencia, function(response) {
 	    			if(response.respuesta=="OK"){
-		    			$('#addedDirecciones').append("<p>"+response.direccionAsString+"</p>");
-		    			direcciones.push(response.direccion);	
-		    			$('#direccionesJSON').val(JSON.stringify(direcciones));
-		    			$('#direccionForm')[0].reset();
-		    			$("#direccionForm span").remove();
+		    			$('#addedIncidencias').append("<p>"+response.incidenciaAsString+"</p>");
+		    			incidencias.push(response.incidencia);	
+		    			$('#incidenciasJSON').val(JSON.stringify(incidencias));
+		    			$('#incidenciaForm')[0].reset();
+		    			$("#incidenciaForm span").remove();
 	    			}else{
-	    				$("#direccionForm span").remove();
+	    				$("#incidenciaForm span").remove();
 	    				for(var key in response.errores){
 	                    	var mensajeError="<span class=\"error\" id=\""+key+".errors\">"+response.errores[key]+"</span>";
 	                        $("[name^='"+key+"']").after(mensajeError);
