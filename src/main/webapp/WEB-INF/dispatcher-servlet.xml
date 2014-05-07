@@ -44,7 +44,7 @@
 	<bean id="menuUsuario" class="java.util.HashMap">
 		<constructor-arg index="0" type="java.util.Map">
 	        <map key-type="java.lang.String" value-type="java.lang.String">
-	        	<entry key="datos" value="/empresaReparto/empresa/list"/>
+	        	<entry key="datos" value="/empresaReparto/empleado/show"/>
 	            <entry key="reservar.coche" value="/empresaReparto/coche/listDisponibles"/>
 	            <entry key="devolver.coche" value="/empresaReparto/empresa/list"/> 
 	        </map>
@@ -54,7 +54,7 @@
 	<bean id="menuAdministrador" class="java.util.HashMap">
 		<constructor-arg index="0" type="java.util.Map">
 	        <map key-type="java.lang.String" value-type="java.lang.String">
-	        	<entry key="datos" value="/empresaReparto/empresa/list"/>
+	        	<entry key="datos" value="/empresaReparto/empleado/show"/>
 	            <entry key="reservar.coche" value="/empresaReparto/coche/listDisponibles"/>
 	            <entry key="devolver.coche" value="/empresaReparto/empresa/list"/>  
 	        	<entry key="empleados" value="/empresaReparto/empleado/list"/>

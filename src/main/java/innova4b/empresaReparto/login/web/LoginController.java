@@ -42,11 +42,14 @@ public class LoginController {
 		try {
 			Usuario user = loginService.getUsuario(usuario.getUsuario(),usuario.getPassword());
 			session.setAttribute("usuario", user);
-			if (user.isAdministrador())
+			if (user.isAdministrador()) {
 				session.setAttribute("menu", menuAdministrador);
-			else
+				return "redirect:/empresaReparto/empresa/list";
+			}
+			else {
 				session.setAttribute("menu", menuUsuario);
-			return "redirect:/empresaReparto/empresa/list";
+				return "redirect:/empresaReparto/empleado/show";
+			}
 		} catch (IncorrectPasswordException ipe) {
 			redirect.addFlashAttribute("error", ipe.getMessage());
 		} catch (UserNotFoundException une) {
