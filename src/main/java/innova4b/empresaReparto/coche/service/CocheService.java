@@ -39,5 +39,29 @@ public class CocheService {
 		return coches;
 	}
 	
+	public List<Coche> getCochesFiltrados(String eleccionCombo,int idEmpresa, String eleccionEmpresa, String matricula) {
+		List<Coche>  coches = new ArrayList<Coche>();
+		if (eleccionCombo.equals("incidenciasPendientes")){
+			coches = (List<Coche>) cocheDao.listWithIncidencias();
+		} else if (eleccionCombo.equals("empresa")){
+			coches = getCochesFiltradosPorEmpresa(idEmpresa, eleccionEmpresa, coches);
+		}else if (eleccionCombo.equals("matricula")){
+			coches=(List<Coche>) cocheDao.listWithMatricula(matricula);
+		}else{
+			coches = (List<Coche>) cocheDao.listAll();
+		}
+		return coches;
+	}
+
+	private List<Coche> getCochesFiltradosPorEmpresa(int idEmpresa, String eleccionEmpresa, List<Coche> coches) {
+		if (eleccionEmpresa.equals("todos")){
+			coches = (List<Coche>) cocheDao.listWithEmpresa(idEmpresa);	
+		}else if(eleccionEmpresa.equals("conIncidencia")){
+			coches=(List<Coche>) cocheDao.listWithEmpresaConIncidencias(idEmpresa);	
+		}else if(eleccionEmpresa.equals("sinIncidencia")){
+			coches=(List<Coche>) cocheDao.listWithEmpresaSinIncidencias(idEmpresa);
+		}
+		return coches;
+	}
 
 }

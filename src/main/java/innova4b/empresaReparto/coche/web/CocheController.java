@@ -1,5 +1,8 @@
 package innova4b.empresaReparto.coche.web;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -56,10 +59,7 @@ public class CocheController {
 
 	@RequestMapping(value = "/listAll", method = RequestMethod.GET)
 	public void listAll(ModelMap model) {
-		if (!model.containsAttribute("coches")){
-			model.addAttribute("coches", cocheDao.listAll());	
-		}
-		System.out.println("cargando empresa y matriculas");
+		model.addAttribute("coches", cocheDao.listAll());	
 		model.addAttribute("empresas", empresaDao.list());
 		model.addAttribute("listaMatriculasCoches", cocheDao.listAll());
 	}
@@ -84,19 +84,11 @@ public class CocheController {
 	
 	@RequestMapping(value = "/listByFilter", method = RequestMethod.POST)
 	public String listByFilter(ModelMap model, @RequestParam String eleccionCombo, @RequestParam int idEmpresa, @RequestParam String eleccionEmpresa, @RequestParam String matricula) {
-		if (eleccionCombo.equals("incidenciasPendientes")){
-			model.addAttribute("coches", cocheDao.listWithIncidencias());
-		}else if (eleccionCombo.equals("empresa")){
-			if (eleccionEmpresa.equals("todos")){
-				model.addAttribute("coches", cocheDao.listWithEmpresa(idEmpresa));	
-			}else if(eleccionEmpresa.equals("conIncidencia")){
-				model.addAttribute("coches", cocheDao.listWithEmpresaConIncidencias(idEmpresa));	
-			}else if(eleccionEmpresa.equals("sinIncidencia")){
-				model.addAttribute("coches", cocheDao.listWithEmpresaSinIncidencias(idEmpresa));
-			}
-		}else if (eleccionCombo.equals("matricula")){
-			model.addAttribute("coches", cocheDao.listWithMatricula(matricula));
-		}
-		return "redirect:/empresaReparto/coche/listAll";
+		model.addAttribute("coches", cocheDao.listAll());	
+		model.addAttribute("empresas", empresaDao.list());
+		model.addAttribute("listaMatriculasCoches", cocheDao.listAll());
+		
+		model.addAttribute("coches", cocheService.getCochesFiltrados(eleccionCombo, idEmpresa, eleccionEmpresa,matricula));
+		return "coche/listAll";
 	}
 }
