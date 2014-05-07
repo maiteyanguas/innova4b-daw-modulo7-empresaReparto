@@ -36,6 +36,9 @@ insert into empleado(id,usuario,password,rol, activo, dni, nombre, apellido1, ap
 
 insert into coche(id, combustible, kms, marca, matricula, modelo, empresa_id) values (1, 'gasoil', 12345, 'ford', '1234www', 'kuga', 1);
 insert into coche(id, combustible, kms, marca, matricula, modelo, empresa_id) values (2, 'gasoil', 12345, 'ford', '6748ABC', 'kuga',2);
+insert into coche(id, combustible, kms, marca, matricula, modelo, empresa_id) values (5, 'gasoil', 12345, 'ford', '4468TTY', 'kuga',2);
+insert into coche(id, combustible, kms, marca, matricula, modelo, empresa_id) values (5, 'gasoil', 12345, 'ford', '8468TTY', 'kuga',2);
+insert into coche(id, combustible, kms, marca, matricula, modelo, empresa_id) values (5, 'gasoil', 12345, 'ford', '2468TTY', 'kuga',2);
 insert into coche(id, combustible, kms, marca, matricula, modelo, empresa_id) values (3, 'gasoil', 12345, 'ford', '6683KJU', 'kuga',3);
 insert into coche(id, combustible, kms, marca, matricula, modelo, empresa_id) values (4, 'gasoil', 12345, 'ford', '7835IYT', 'kuga',4);
 insert into coche(id, combustible, kms, marca, matricula, modelo, empresa_id) values (5, 'gasoil', 12345, 'ford', '3468TTY', 'kuga',4);
