@@ -45,7 +45,7 @@ public class ReservaDao {
 	}
 	public List<Reserva> getReservasSinDevolucion(Long id) {
 		return (List<Reserva>) sessionFactory.getCurrentSession().createQuery("FROM Reserva as r WHERE r.fechaDevolucion IS NULL").list();
-	}
+	} 
 	public boolean empleadoTieneUnCocheOcupado(long idEmpleado){
 		Query query=sessionFactory.getCurrentSession().createQuery("select count(*) from Reserva where empleado=:empleado and fechaInicio!=null and fechaDevolucion=null ");
 		

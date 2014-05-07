@@ -78,7 +78,7 @@ public class Empleado {
 	@ManyToOne(cascade={javax.persistence.CascadeType.ALL})
 	@JoinColumn(name="jefe")
 	private Empleado jefe;
-
+ 
 	public Integer getId() {
 		return id;
 	}
