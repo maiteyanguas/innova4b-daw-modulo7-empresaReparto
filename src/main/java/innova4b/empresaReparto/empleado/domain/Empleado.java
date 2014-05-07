@@ -147,7 +147,7 @@ public class Empleado {
 	    } catch (ParseException e) {
 	        e.printStackTrace();
 	    }
-	    return formattedDate;
+	    return formattedDate; 
 	}
 	
 	public String getFechaInicioAsString(){
