@@ -35,7 +35,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
-@Table(name="empleado",uniqueConstraints = {@UniqueConstraint(columnNames={"usuario"})})
+@Table(name="empleado")
 public class Empleado {
 	
 	private static final String JEFE_NULO_NOMBRE = "Ninguno";
@@ -197,9 +197,13 @@ public class Empleado {
 	public void setRol(String rol) {
 		this.rol = rol;
 	}
+	
+	public List<Reserva> getReservas() {
+		return reservas;
+	}
 	@Override
 	public String toString() {
-		return "Empleado [id=" + id + ", empresa=" + empresa.getNombre() + ", usuario="
+		return "Empleado [id=" + id + ", empresa=" + empresa + ", usuario="
 				+ usuario + ", password=" + password + ", rol=" + rol
 				+ ", activo=" + activo + ", dni=" + dni + ", nombre=" + nombre
 				+ ", apellido1=" + apellido1 + ", apellido2=" + apellido2
