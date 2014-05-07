@@ -69,5 +69,25 @@ public class CocheDao {
 	public int insert (Coche coche) {
 		return (Integer) sessionFactory.getCurrentSession().save(coche);
 	}
+
+	public Object listWithIncidencias() {
+		return (List<Coche>)sessionFactory.getCurrentSession().createQuery("from Coche as c where c.id in (select distinct(i.coche.id) from Incidencia i where i.resuelta=0)").list();
+	}
+
+	public Object listWithEmpresa(int idEmpresa) {
+		return (List<Coche>)sessionFactory.getCurrentSession().createQuery("from Coche as c where c.empresa.id=" + idEmpresa).list();
+	}
+
+	public Object listWithMatricula(String matricula) {
+		return (List<Coche>)sessionFactory.getCurrentSession().createQuery("from Coche as c where c.matricula='" + matricula +"'").list();
+	}
+
+	public Object listWithEmpresaConIncidencias(int idEmpresa) {
+		return (List<Coche>)sessionFactory.getCurrentSession().createQuery("from Coche as c where c.empresa.id=" + idEmpresa +" and c.id in (select distinct(i.coche.id) from Incidencia i where i.resuelta=0)").list();
+	}
+
+	public Object listWithEmpresaSinIncidencias(int idEmpresa) {
+		return (List<Coche>)sessionFactory.getCurrentSession().createQuery("from Coche as c where c.empresa.id=" + idEmpresa +" and c.id not in (select distinct(i.coche.id) from Incidencia i where i.resuelta=0)").list();
+	}
 	
 }
