@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title><spring:message code="editar.empleado" text="Editar empleado"/></title>
@@ -25,9 +24,10 @@
 						<form:errors path="usuario" cssClass="error"/>
 					</td>
 				</tr>
-				<tr>				
+				<tr>
 					<td><form:label path="password"><spring:message code="password" text="Contraseña"/>:</form:label></td>
-					<td><input id="password" type="password" value="${empleado.password}" name="password" />
+					<td><form:input path="password"></form:input>
+					<!-- <td><form:password path="password"></form:password> -->
 						<form:errors path="password" cssClass="error"/>
 					</td>
 				</tr>
@@ -78,42 +78,27 @@
 				</tr>
 				<tr> 
 					<td id="titulo_seccion" colspan= "2"><spring:message code="nuevo.datosEmpresariales" text="Datos Empresariales"/></td>
-				</tr>	
+				</tr>
 				<tr>
-					<td><form:label path="empresa"><spring:message code="empleado.empresa" text="Empresa"/>:</form:label></td>  
+					<td><form:label path="empresa"><spring:message code="empleado.empresa" text="Empresa"/>:</form:label></td>
 					<td><select name="idEmpresa">
-							<c:forEach var="emp" items="${empresas}">							
-								<c:choose>
-		                            <c:when test="${emp.id==empleado.empresa.id}">
-		                                <option value="${emp.id}" selected>${emp.nombre}</option>
-		                            </c:when>
-		                            <c:otherwise>
-		                                <option value="${emp.id}" >${emp.nombre}</option>
-		                            </c:otherwise>
-	                            </c:choose>		
-							</c:forEach>
+					<c:forEach var="emp" items="${empresas}">
+							<option value="${emp.id}" >${emp.nombre}</option>
+					</c:forEach>
 					    </select>
 						<form:errors path="empresa" cssClass="error"/>
 					</td>
 				</tr>
-
 				<tr>
 					<td><form:label path="jefe"><spring:message code="empleado.jefe" text="Jefe"/>:</form:label></td>
-					<td><select name="idJefe">
-							<c:forEach var="jefe" items="${jefes}">
-								<c:choose>
-				                	<c:when test="${jefe.id==empleado.jefe.id}">
-				                         <option value="${jefe.id}" selected>${jefe.nombre}</option>
-				                    </c:when>
-				                    <c:otherwise>
-				                         <option value="${jefe.id}" >${jefe.nombre}</option>
-				                    </c:otherwise>
-			                    </c:choose>		
-							</c:forEach>
+					<td><select name="jefe">
+					<c:forEach var="jefe" items="${jefes}">
+							<option value="${jefe.id}" >${jefe.nombre}</option>
+					</c:forEach>
 					    </select>
 						<form:errors path="jefe" cssClass="error"/>
 					</td>
-				</tr> 
+				</tr>
 			</table>
 			<p>
 				<spring:message code="guardar" text="Guardar" var="guardar"/>

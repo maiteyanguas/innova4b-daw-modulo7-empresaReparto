@@ -7,6 +7,8 @@ import innova4b.empresaReparto.empleado.domain.Empleado;
 import innova4b.empresaReparto.empleado.repository.EmpleadoDao;
 import innova4b.empresaReparto.empresa.domain.Empresa;
 import innova4b.empresaReparto.empresa.repository.EmpresaDao;
+import innova4b.empresaReparto.incidencia.repository.IncidenciaDao;
+import innova4b.empresaReparto.reserva.repository.ReservaDao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -20,11 +22,30 @@ public class EmpleadoService {
 	@Autowired
 	EmpresaDao empresaDao;
 	
+	@Autowired
+	IncidenciaDao incidenciaDao;
+	
+	@Autowired
+	ReservaDao reservaDao;
+	
 	public void setEmpleadoDao(EmpleadoDao empleadoDao) {
 		this.empleadoDao = empleadoDao;
 	}
 
 	public void delete(int id){
+		Empleado empleado=empleadoDao.get(id);
+		if(incidenciaDao.empleadoEstaEnIncidenciasNoResueltas(empleado)){
+			incidenciaDao.ponerEmpleadoCreacionNull(empleado);
+			incidenciaDao.ponerEmpleadoResolucionNull(empleado);
+		}
+		
+		/*
+		if(reservaDao.empleadoTieneUnCocheOcupado(id)){
+			//No puede borrarse;
+		}
+		reservaDao.eliminarResevasFuturasDelEmpleado(id);
+		*/
+
 		if (empleadoDao.get(id).soyJefe())
 			empleadoDao.actualizarSubalternos(id);
 		empleadoDao.delete(id);

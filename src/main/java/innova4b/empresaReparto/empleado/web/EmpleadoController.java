@@ -35,12 +35,44 @@ public class EmpleadoController {
 	
 	@Autowired
 	EmpleadoService empleadoService;
-
+	
+	private static final int NUMERO_EMPLEADOS_POR_LISTA=10;
+	private Long numeroEmpleados=(long) 0;
+	private int numeroPaginas=0;
+	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void list(ModelMap model) {
-		model.addAttribute("empleado", empleadoDao.list());	
+		
+		numeroEmpleados=empleadoDao.numberOfEmpleados();
+		List<Empleado> listaEmpleados=empleadoDao.listRange(0,NUMERO_EMPLEADOS_POR_LISTA);	
+		numeroPaginas=0;
+		if(listaEmpleados.size()>0){
+			numeroPaginas= numeroEmpleados.intValue()/NUMERO_EMPLEADOS_POR_LISTA;
+			if(numeroEmpleados.intValue()%NUMERO_EMPLEADOS_POR_LISTA >0){
+				numeroPaginas++;
+			}
+		}
+		model.addAttribute("numElementosMostrar",NUMERO_EMPLEADOS_POR_LISTA);
+		model.addAttribute("numberOfPages", numeroPaginas);	
+		model.addAttribute("responsePage", 1);	
+		model.addAttribute("empleado", listaEmpleados);	
 	}
 
+	@RequestMapping(value = "/list/{id}", method = RequestMethod.GET)
+	public String listRango(ModelMap model, @PathVariable("id") int id) {
+		System.out.println("page-->"+id);
+		int posicionInicio=((id-1)*NUMERO_EMPLEADOS_POR_LISTA)+1;
+		if(posicionInicio>numeroEmpleados){
+			posicionInicio=0;
+		}
+		List<Empleado> listaEmpleados=empleadoDao.listRange(posicionInicio,NUMERO_EMPLEADOS_POR_LISTA);	
+		model.addAttribute("numElementosMostrar",NUMERO_EMPLEADOS_POR_LISTA);
+		model.addAttribute("numberOfPages", numeroPaginas);	
+		model.addAttribute("responsePage", id);	
+		model.addAttribute("empleado", listaEmpleados);	
+		return "empleado/list";
+
+	}	
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public void newEmpleado(ModelMap model) {
 	
@@ -48,24 +80,21 @@ public class EmpleadoController {
 			model.addAttribute("empleado",new Empleado());
 		model.addAttribute("jefes", empleadoService.getJefes());
 		model.addAttribute("empresas", empresaDao.list());
-		
 	}
 
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public String editEmpleado(ModelMap model, @PathVariable("id") int id) {
 		if (!model.containsKey("empleado"))
 			model.addAttribute("empleado", empleadoDao.get(id));
-		model.addAttribute("empresas", empresaDao.list());
 		model.addAttribute("jefes",empleadoService.getJefes());
+		model.addAttribute("empresas", empresaDao.list());
 		return "empleado/edit";
 	}
-	
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String add(@Valid Empleado empleado, BindingResult result,RedirectAttributes redirect,@RequestParam int idEmpresa, @RequestParam int idJefe) {
 		Empleado builtEmpleado = empleadoService.buildEmpleado(empleado,idJefe,idEmpresa);
 		if (result.hasErrors()){
-		
 			redirect.addFlashAttribute("org.springframework.validation.BindingResult.empleado", result);
 			redirect.addFlashAttribute("empleado",builtEmpleado);
 			return "redirect:/empresaReparto/empleado/new";
@@ -93,7 +122,7 @@ public class EmpleadoController {
 		empleadoDao.update(builtEmpleado);
 		return "redirect:/empresaReparto/empleado/list";
 	}
-	
+
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String delete(@PathVariable("id") int id, RedirectAttributes redirect) {		
 		
@@ -101,4 +130,5 @@ public class EmpleadoController {
 
 		return "redirect:/empresaReparto/empleado/list";
 	}
+
 }
