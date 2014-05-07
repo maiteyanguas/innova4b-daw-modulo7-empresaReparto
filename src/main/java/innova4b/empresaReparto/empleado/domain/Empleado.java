@@ -39,9 +39,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Empleado {
 	
 	private static final String JEFE_NULO_NOMBRE = "Ninguno";
-
 	public static final int JEFE_NULO_ID = -1;
-	
+
 	@Id
 	@GeneratedValue
 	private Integer id;
@@ -213,5 +212,4 @@ public class Empleado {
 		empleado.setNombre(JEFE_NULO_NOMBRE);
 		return empleado;
 	}
-	
 }

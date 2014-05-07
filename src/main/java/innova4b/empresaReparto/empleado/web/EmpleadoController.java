@@ -40,11 +40,14 @@ public class EmpleadoController {
 	private Long numeroEmpleados=(long) 0;
 	private int numeroPaginas=0;
 	
+	private String empresaString = "%";
+	private String apellido1 = "%";
+	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void list(ModelMap model) {
 		
 		numeroEmpleados=empleadoDao.numberOfEmpleados();
-		List<Empleado> listaEmpleados=empleadoDao.listRange(0,NUMERO_EMPLEADOS_POR_LISTA);	
+		List<Empleado> listaEmpleados=empleadoDao.listRange(0,NUMERO_EMPLEADOS_POR_LISTA,apellido1,empresaString);	
 		numeroPaginas=0;
 		if(listaEmpleados.size()>0){
 			numeroPaginas= numeroEmpleados.intValue()/NUMERO_EMPLEADOS_POR_LISTA;
@@ -52,6 +55,8 @@ public class EmpleadoController {
 				numeroPaginas++;
 			}
 		}
+		model.addAttribute("empleadoFiltro",new Empleado());
+		model.addAttribute("empresas", empresaDao.getEmpresas());
 		model.addAttribute("numElementosMostrar",NUMERO_EMPLEADOS_POR_LISTA);
 		model.addAttribute("numberOfPages", numeroPaginas);	
 		model.addAttribute("responsePage", 1);	
@@ -65,14 +70,34 @@ public class EmpleadoController {
 		if(posicionInicio>numeroEmpleados){
 			posicionInicio=0;
 		}
-		List<Empleado> listaEmpleados=empleadoDao.listRange(posicionInicio,NUMERO_EMPLEADOS_POR_LISTA);	
+		List<Empleado> listaEmpleados=empleadoDao.listRange(posicionInicio,NUMERO_EMPLEADOS_POR_LISTA,apellido1,empresaString);	
+		numeroPaginas=0;
+		if(listaEmpleados.size()>0){
+			numeroPaginas= numeroEmpleados.intValue()/NUMERO_EMPLEADOS_POR_LISTA;
+			if(numeroEmpleados.intValue()%NUMERO_EMPLEADOS_POR_LISTA >0){
+				numeroPaginas++;
+			}
+		}
+		model.addAttribute("empleadoFiltro",new Empleado());
+		model.addAttribute("empresas", empresaDao.getEmpresas());
 		model.addAttribute("numElementosMostrar",NUMERO_EMPLEADOS_POR_LISTA);
 		model.addAttribute("numberOfPages", numeroPaginas);	
 		model.addAttribute("responsePage", id);	
 		model.addAttribute("empleado", listaEmpleados);	
 		return "empleado/list";
-
 	}	
+	
+	@RequestMapping(value = "/listaEmpleadoFiltro", method = RequestMethod.POST)
+	public String listaEmpleadoFiltro(@Valid Empleado empleado, BindingResult result,RedirectAttributes redirect,@RequestParam int idEmpresa) {
+		apellido1 = empleado.getApellido1();
+
+		if (idEmpresa!=Empresa.EMPRESA_NULO_ID) empresaString = String.valueOf(idEmpresa);
+		else empresaString = "%";
+		if (apellido1.isEmpty()) apellido1 ="%";
+
+		return "redirect:/empresaReparto/empleado/list";
+	}	
+	
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public void newEmpleado(ModelMap model) {
 	
