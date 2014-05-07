@@ -71,16 +71,15 @@ public class EmpleadoController {
 			return "redirect:/empresaReparto/empleado/new";
 		}
 		try {
-			Usuario usuario = empleadoDao.getByUsuario(empleado.getUsuario());
-		} catch(NullPointerException e) {
 			empleadoDao.insert(builtEmpleado);
 			return "redirect:/empresaReparto/empleado/list";
+		} catch(Exception e) {
+			result.rejectValue("usuario", "error.empleado", "El usuario ya est&aacute; en uso.");
+			redirect.addFlashAttribute("org.springframework.validation.BindingResult.empleado", result);
+			redirect.addFlashAttribute("empleado",builtEmpleado);
+			return "redirect:/empresaReparto/empleado/new";
 		}
-		result.rejectValue("usuario", "error.empleado", "El usuario ya est� en uso.");
-
-		redirect.addFlashAttribute("org.springframework.validation.BindingResult.empleado", result);
-		redirect.addFlashAttribute("empleado",builtEmpleado);
-		return "redirect:/empresaReparto/empleado/new";
+		
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
