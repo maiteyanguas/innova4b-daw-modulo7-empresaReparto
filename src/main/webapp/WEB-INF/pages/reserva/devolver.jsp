@@ -64,24 +64,14 @@
 			<div id="incidenciaDialog">
 			<form:form id="incidenciaForm" method="POST" modelAttribute="incidencia"  action="/empresaReparto/incidencia/add">
 				<table>
-					<!-- 
-					<tr>
-						<td><form:label path="fechaCreacion"><spring:message code="incidencia.fecha" text="Fecha de la Incidencia"/>:</form:label></td>
-						<td><form:input path="fechaCreacion"></form:input></td>
-					</tr>
-					
-					<tr>
-						<td><form:label path="empleadoCreacion"><spring:message code="incidencia.usuario" text="Usuario"/>:</form:label></td>
-						<td><form:input path="empleadoCreacion"></form:input></td>
-					</tr>
-					 -->
+					<form:hidden path="fechaCreacion" />
 					<tr>
 						<td><form:label path="descripcion"><spring:message code="incidencia.descripcion" text="Descripcion"/>:</form:label></td>
 						<td><form:input path="descripcion"></form:input></td>
 					</tr>
 					<tr>
 						<td><form:label path="resuelta"><spring:message code="incidencia.resuelta" text="¿Está resuelta?"/>:</form:label></td>
-						<td><form:input path="resuelta"></form:input></td>
+						<td><form:select path="resuelta" items="${valuesSiNo}" /></td>
 					</tr>
 				</table>
 			</form:form>		

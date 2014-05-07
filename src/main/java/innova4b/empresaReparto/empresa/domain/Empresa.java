@@ -16,6 +16,7 @@ import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
 import org.apache.log4j.Logger;
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.Type;
@@ -116,12 +117,14 @@ public class Empresa {
 				.toString(org.joda.time.format.DateTimeFormat
 						.forPattern("dd/MM/yyyy"));
 	}
-
+	
+	@JsonIgnore
 	public void setFechaInicio(String fInicio) {
 		this.fechaInicio = LocalDate.parse(fInicio,
 				org.joda.time.format.DateTimeFormat.forPattern("dd/MM/yyyy"));
 	}
 
+	@JsonIgnore
 	public void setFechaInicio(LocalDate fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}

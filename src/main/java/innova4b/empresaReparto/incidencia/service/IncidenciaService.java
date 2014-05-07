@@ -1,13 +1,16 @@
 package innova4b.empresaReparto.incidencia.service;
 
 import java.util.List;
+
+import innova4b.empresaReparto.coche.domain.Coche;
+import innova4b.empresaReparto.empleado.domain.Empleado;
 import innova4b.empresaReparto.exceptions.JsonUtilException;
 import innova4b.empresaReparto.incidencia.domain.Incidencia;
 import innova4b.empresaReparto.incidencia.repository.IncidenciaDao;
-import innova4b.empresaReparto.reserva.domain.Reserva;
 import innova4b.empresaReparto.reserva.repository.ReservaDao;
 import innova4b.empresaReparto.util.JsonUtil;
-import innova4b.empresaReparto.util.TypeReferenceDireccionList;
+import innova4b.empresaReparto.util.TypeReferenceIncidenciaList;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -26,21 +29,23 @@ public class IncidenciaService {
 	@Autowired
 	JsonUtil jsonUtil;
 	
-	public Reserva buildReserva(Reserva reserva, String incidenciasJSON) {
+	public void buildIncidencias(String incidenciasJSON, Empleado empleadoCreacion, Coche coche) {
 		if (!incidenciasJSON.isEmpty()) {
 			List<Incidencia> incidencias = null;
 			
 			try {
-				incidencias = (List<Incidencia>) jsonUtil.fromJsonToList(incidenciasJSON, TypeReferenceDireccionList.getInstance());
+				incidencias = (List<Incidencia>) jsonUtil.fromJsonToList(incidenciasJSON, TypeReferenceIncidenciaList.getInstance());
 			} catch (JsonUtilException e) {
-				logger.error("error al convertir el json de incidencias: "+ incidenciasJSON);
+				logger.error(e.getMessage() + ". Error al convertir el json de incidencias: "+ incidenciasJSON);
 			}
-					
-			if (incidencias!=null){
-				for (Incidencia incidencia:incidencias)
+								
+			if (incidencias!=null && incidencias.size() > 0){
+				for (Incidencia incidencia : incidencias) {
+					incidencia.setEmpleadoCreacion(empleadoCreacion);
+					incidencia.setCoche(coche);
 					incidenciaDao.insert(incidencia);
+				}
 			}
 		}
-		return reserva;
 	}
 }
