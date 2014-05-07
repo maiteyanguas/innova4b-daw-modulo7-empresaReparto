@@ -177,6 +177,10 @@ public class Empleado {
 	public void setRol(String rol) {
 		this.rol = rol;
 	}
+	
+	public List<Reserva> getReservas() {
+		return reservas;
+	}
 	@Override
 	public String toString() {
 		return "Empleado [id=" + id + ", empresa=" + empresa.getNombre() + ", usuario="
