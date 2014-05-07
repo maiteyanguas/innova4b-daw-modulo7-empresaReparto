@@ -53,11 +53,10 @@ public class Coche {
 	private String modelo;
 	
 	@OneToMany(mappedBy="coche", fetch=FetchType.EAGER)
-	@Cascade({CascadeType.ALL})
 	private List<Reserva> reservas;
 	
 	@OneToMany(mappedBy="coche", fetch=FetchType.EAGER)
-	@Cascade({CascadeType.ALL})
+	@Cascade({CascadeType.DELETE})
 	private List<Incidencia> incidencias;
 
 	public List<Incidencia> getIncidencias() {

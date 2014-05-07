@@ -90,5 +90,9 @@ public class CocheDao {
 	public int insert (Coche coche) {
 		return (Integer) sessionFactory.getCurrentSession().save(coche);
 	}
+
+	public void update(Coche coche) {
+		sessionFactory.getCurrentSession().update(coche);
+	}
 	
 }
