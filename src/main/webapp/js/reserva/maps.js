@@ -33,11 +33,11 @@ function loadGmapServiceCaller() {
 function initializeGmap() {
 	directionsService = new google.maps.DirectionsService();
 	// This is the default start point (not really selected in the search box, but it is used for center the map on some point)
-	var initCoordsChicago = new google.maps.LatLng(41.850033, -87.6500523);
+	var initCoords = new google.maps.LatLng(43.297681, -2.003825,557);
 	
 	var mapOptions = {
 	    zoom: 7,
-	    center: initCoordsChicago,
+	    center: initCoords,
 		zoomControl: true,
 	    zoomControlOptions: {
 	      style: google.maps.ZoomControlStyle.SMALL
@@ -48,13 +48,13 @@ function initializeGmap() {
 	g_map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 	
 	markerOrigin = new google.maps.Marker({
-		position: initCoordsChicago,
+		position: initCoords,
 		map: g_map
 	});
 
 	var defaultBounds = new google.maps.LatLngBounds(
-		initCoordsChicago,
-		initCoordsChicago
+			initCoords,
+			initCoords
 	);
 	g_map.fitBounds(defaultBounds);
 	
