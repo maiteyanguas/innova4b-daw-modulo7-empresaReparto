@@ -68,6 +68,7 @@ public class CocheController {
 		model.addAttribute("empresas", empresaDao.list());
 	}
 	
+	
 	@RequestMapping(value ="/update", method = RequestMethod.POST)
 	public String update(ModelMap model,@Valid Coche coche, BindingResult result, @RequestParam int idEmpresa){
 		Empresa empresa = empresaDao.get(idEmpresa);
@@ -75,6 +76,7 @@ public class CocheController {
 			model.addAttribute("empresas", empresaDao.list());
 			return "coche/edit";}
 		coche.setEmpresa(empresa);
+		System.out.println(coche.getId());
 		cocheDao.update(coche);
 		return "redirect:/empresaReparto/coche/listAll";
 	}
@@ -102,7 +104,9 @@ public class CocheController {
 	public String editCoche(ModelMap model, @PathVariable("id") int id) {
 		if (!model.containsKey("coche"))
 			model.addAttribute("coche", cocheDao.getCocheById(id));
-		model.addAttribute("empresas", empresaDao.list());
+			Empresa empresa = cocheDao.getCocheById(id).getEmpresa();
+			model.addAttribute("empresa",empresa);
+			model.addAttribute("empresas", empresaDao.list());
 		return "coche/edit";
 	}
 }

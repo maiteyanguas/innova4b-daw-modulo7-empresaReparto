@@ -72,7 +72,7 @@ public class CocheDao {
 	}
 
 	public void update(Coche coche) {
-		sessionFactory.getCurrentSession().merge(coche);
+		sessionFactory.getCurrentSession().update(coche);
 	}
 	
 }
