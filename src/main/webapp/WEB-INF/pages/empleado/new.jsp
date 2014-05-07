@@ -3,6 +3,14 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <head>
+<link rel="stylesheet" type="text/css" href="/css/jquery/jquery-ui-1.10.4.custom.min.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker({ dateFormat: "dd/mm/yy" }); /* "yy-mm-dd" */
+  });
+  </script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title><spring:message code="nuevo.empleado" text="Nuevo empleado"/></title>
 <link rel="stylesheet" type="text/css" href="/css/reset.css">
@@ -61,7 +69,7 @@
 				</tr>
 				<tr>
 					<td><form:label path="fechaNacimiento"><spring:message code="empleado.fechaNacimiento" text="Fecha Nacimiento"/>:</form:label></td>
-					<td><form:input path="fechaNacimiento"></form:input> DD/MM/YYYY
+					<td><form:input type="text" id="datepicker" path="fechaNacimiento"></form:input>
 						<form:errors path="fechaNacimiento" cssClass="error"/>
 					</td>
 				</tr>
@@ -83,9 +91,9 @@
 				<tr>
 					<td><form:label path="empresa"><spring:message code="empleado.empresa" text="Empresa"/>:</form:label></td>
 					<td><select name="idEmpresa">
-					<c:forEach var="emp" items="${empresas}">
-							<option value="${emp.id}" >${emp.nombre}</option>
-					</c:forEach>
+							<c:forEach var="emp" items="${empresas}">
+									<option value="${emp.id}" >${emp.nombre}</option>
+							</c:forEach>
 					    </select>
 						<form:errors path="empresa" cssClass="error"/>
 					</td>

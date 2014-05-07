@@ -25,7 +25,7 @@ public class EmpleadoService {
 	}
 
 	public void delete(int id){
-		if (empleadoDao.get(id).isJefe())
+		if (empleadoDao.get(id).soyJefe())
 			empleadoDao.actualizarSubalternos(id);
 		empleadoDao.delete(id);
 	}
