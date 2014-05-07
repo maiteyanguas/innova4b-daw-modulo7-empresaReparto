@@ -43,7 +43,7 @@ public class EmpleadoController {
 	private int numeroPaginas=0;
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public void list(ModelMap model) {
+	public void list(ModelMap model,RedirectAttributes redirect){
 		
 		numeroEmpleados=empleadoDao.numberOfEmpleados();
 		List<Empleado> listaEmpleados=empleadoDao.listRange(0,NUMERO_EMPLEADOS_POR_LISTA);	
@@ -149,11 +149,10 @@ public class EmpleadoController {
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String delete(@PathVariable("id") int id,ModelMap model,RedirectAttributes redirect) {		
 		try{
-			model.addAttribute("error","jjjj");
+			
 			empleadoService.delete(id);
-			//model.addAttribute("error","");
 		}catch(ProgramExceptions e){
-			model.addAttribute("error", "El usuario ya est&aacute; en uso.");
+			redirect.addFlashAttribute("error",e.getMessage());
 					
 		}
 		return "redirect:/empresaReparto/empleado/list";

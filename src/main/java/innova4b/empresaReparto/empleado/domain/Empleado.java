@@ -78,7 +78,6 @@ public class Empleado {
 	
 
 	@OneToMany(mappedBy="empleado", fetch=FetchType.EAGER)
-	@Cascade({CascadeType.ALL})
 	private List<Reserva> reservas;
 	
 	@ManyToOne(fetch=FetchType.EAGER)

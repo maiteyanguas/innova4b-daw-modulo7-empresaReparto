@@ -52,8 +52,10 @@ public class EmpleadoService {
 				empleadoDao.actualizarSubalternos(id);
 			System.out.println("6");
 			System.out.println("6-->"+empleadoDao.get(id));
-			if(empleadoDao.get(id)!=null)
+			if(empleadoDao.get(id)!=null){
+				empleadoDao.eliminarRelacionJefe(id);
 				empleadoDao.delete(id);
+			}
 			System.out.println("7");
 		}else{
 			throw new ProgramExceptions("El Empleado no se ha podido eliminar porque tiene un coche ocupado.");
