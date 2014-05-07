@@ -6,6 +6,8 @@ import innova4b.empresaReparto.empresa.domain.Empresa;
 
 import java.util.List;
 
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.joda.time.LocalDate;
@@ -94,5 +96,24 @@ public class CocheDao {
 	public void update(Coche coche) {
 		sessionFactory.getCurrentSession().update(coche);
 	}
+	
+	public void delete (Coche coche) {
+		Session session = sessionFactory.getCurrentSession();
+		sessionFactory.getCurrentSession().delete(session.get(Coche.class, coche.getId()));
+	}
+	
+	public boolean hasPendingReservations(Coche coche) {
+		LocalDate now = new LocalDate();
+		
+		String hql = ("FROM Reserva as r " + 
+				"WHERE r.coche = :coche AND (r.fechaDevolucion is null OR r.fechaDevolucion > :now)");
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setParameter("coche", coche);
+		query.setParameter("now", now);
+		int size = query.list().size();
+		
+		return (size != 0);
+	}
+	
 	
 }
