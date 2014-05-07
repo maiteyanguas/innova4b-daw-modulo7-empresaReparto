@@ -61,9 +61,9 @@
 							</td>
 							<td>
 								<span id="eleccionEmpresa" style="display:none">
-									<input type="radio" id="eleccionEmpresa" name="eleccionEmpresa" value="todos" checked="checked">Todos los Coches</br>								
-									<input type="radio" id="eleccionEmpresa" name="eleccionEmpresa" value="conIncidencia">Con incidencia</br>
-									<input type="radio" id="eleccionEmpresa" name="eleccionEmpresa" value="sinIncidencia">Sin incidencia
+									<input type="radio" id="eleccionEmpresa" name="eleccionEmpresa" value="todos" checked="checked"><spring:message code="filtro.todosLosCoches" text="Todos los Coches"/></br>								
+									<input type="radio" id="eleccionEmpresa" name="eleccionEmpresa" value="conIncidencia"><spring:message code="filtro.incidencia" text="Incidencias Pendientes"/></br>
+									<input type="radio" id="eleccionEmpresa" name="eleccionEmpresa" value="sinIncidencia"><spring:message code="filtro.sinIncidencia" text="Sin Incidencias"/>
 								</span>
 							</td>
 			                <td>				

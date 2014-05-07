@@ -56,7 +56,9 @@ public class CocheController {
 
 	@RequestMapping(value = "/listAll", method = RequestMethod.GET)
 	public void listAll(ModelMap model) {
-		model.addAttribute("coches", cocheDao.listAll());	
+		if (!model.containsAttribute("coches")){
+			model.addAttribute("coches", cocheDao.listAll());	
+		}
 		model.addAttribute("empresas", empresaDao.list());
 		model.addAttribute("listaMatriculasCoches", cocheDao.listAll());
 	}
@@ -80,8 +82,7 @@ public class CocheController {
 	}
 	
 	@RequestMapping(value = "/listByFilter", method = RequestMethod.POST)
-	public void listByFilter(ModelMap model, @RequestParam String eleccionCombo, @RequestParam int idEmpresa, @RequestParam String eleccionEmpresa, @RequestParam String matricula) {
-		
+	public String listByFilter(ModelMap model, @RequestParam String eleccionCombo, @RequestParam int idEmpresa, @RequestParam String eleccionEmpresa, @RequestParam String matricula) {
 		if (eleccionCombo.equals("incidenciasPendientes")){
 			model.addAttribute("coches", cocheDao.listWithIncidencias());
 		}else if (eleccionCombo.equals("empresa")){
@@ -94,10 +95,7 @@ public class CocheController {
 			}
 		}else if (eleccionCombo.equals("matricula")){
 			model.addAttribute("coches", cocheDao.listWithMatricula(matricula));
-		}else{
-			model.addAttribute("coches", cocheDao.listAll());	
-		}
-		model.addAttribute("empresas", empresaDao.list());
-		model.addAttribute("listaMatriculasCoches", cocheDao.listAll());		
+		}		
+		return "coche/listAll";
 	}
 }
