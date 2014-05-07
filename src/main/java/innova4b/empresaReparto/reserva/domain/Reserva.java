@@ -62,6 +62,24 @@ public class Reserva {
 	@JoinColumn(name="coche_id", referencedColumnName="id")
 	private Coche coche;
 	
+	public Reserva() {
+	}
+	
+	public Reserva(int kmIniciales, int kmFinales,
+			LocalDate fechaInicio, LocalDate fechaDevolucion,
+			LocalDate fechaInicioPrevista, LocalDate fechaDevolucionPrevista,
+			Empleado empleado, Coche coche) {
+		this.id = id;
+		this.kmIniciales = kmIniciales;
+		this.kmFinales = kmFinales;
+		this.fechaInicio = fechaInicio;
+		this.fechaDevolucion = fechaDevolucion;
+		this.fechaInicioPrevista = fechaInicioPrevista;
+		this.fechaDevolucionPrevista = fechaDevolucionPrevista;
+		this.empleado = empleado;
+		this.coche = coche;
+	}
+	
 	public int getId() {
 		return id;
 	}

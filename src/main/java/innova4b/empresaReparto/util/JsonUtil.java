@@ -25,11 +25,11 @@ public class JsonUtil {
 		try {
 			return objectMapper.readValue(json, typeReference);
 		} catch (JsonParseException e) {
-			throw new JsonUtilException(e.getMessage());
+			throw new JsonUtilException("Parse: " + e.getMessage());
 		} catch (JsonMappingException e) {
-			throw new JsonUtilException(e.getMessage());
+			throw new JsonUtilException("Mapping: " + e.getMessage());
 		} catch (IOException e) {
-			throw new JsonUtilException(e.getMessage());
+			throw new JsonUtilException("IO: " + e.getMessage());
 		}
 	}
 	
