@@ -28,15 +28,14 @@ public class ReservaService {
 			logger.debug(errorMsg);
 			throw new LastDateNotFutureOfFirstDateException(errorMsg);			
 		}
-		else if (!reservaDao.isCarFreeBetweenDates(reserva)){
+		else if (reservaDao.cocheHasReservas(reserva.getCoche()) && !reservaDao.isCarFreeBetweenDates(reserva)){
 			String errorMsg = "El coche con matricula \""+reserva.getCoche().getMatricula()+"\" no esta disponible en las fechas solicitadas.";
 			logger.debug(errorMsg);
 			throw new CocheNotFreeForReservationException(errorMsg);
 		}
 		else 
 		{
-			//TODO: Implementar la reserva
-			//int id = reservaDao.insert(reserva);
+			reservaDao.insert(reserva);
 		}
 		
 	}
