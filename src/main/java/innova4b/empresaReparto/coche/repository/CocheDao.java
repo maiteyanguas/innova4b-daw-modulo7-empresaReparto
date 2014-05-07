@@ -22,17 +22,18 @@ public class CocheDao {
 		return (List<Coche>)sessionFactory.getCurrentSession().createQuery("from Coche as c where c.id not in (select distinct(i.coche.id) from Incidencia i where i.resuelta=0)").list();
 	} 
 	
-	//TODO: Implementar la busqueda: coches de la empresa sin incidencias pendientes
 	public List<Coche> listDisponiblesByEmpresa(Empresa empresa) {
-		return null;
+		return (List<Coche>)sessionFactory.getCurrentSession().createQuery("from Coche as c where c.empresa.id = :idEmpresa AND c.id not in (select distinct(i.coche.id) from Incidencia i where i.resuelta=0)").setParameter("idEmpresa", empresa.getId()).list();
 	}
 	
-	//TODO: Implementar bien la busqueda: coches sin incidencias pendientes y sin reserva en esas fechas
 	public List<Coche> listDisponiblesBetweenDates(LocalDate fechaInicio, LocalDate fechaDevolucion) {
 		String hql = 	" Select c " +
 						"FROM Coche as c " +
 						"LEFT JOIN c.reservas as r " + 
-						"WHERE size(c.incidencias)=0 " +
+						"WHERE  c.id not in " +
+								"(select distinct(i.coche.id) " +
+								"from Incidencia i " +
+								"where i.resuelta=0)" +
 						"AND ( " +
 							"size(c.reservas) = 0 " +
 							"OR " +
@@ -52,7 +53,27 @@ public class CocheDao {
 
 	//TODO: Implementar la busqueda: coches de la empresa sin incidencias pendientes y sin reserva en esas fechas
 	public List<Coche> listDisponiblesByEmpresaBetweenDates(LocalDate fechaInicio, LocalDate fechaDevolucion, Empresa empresa) {
-		return null;
+		String hql = 	" Select c " +
+				"FROM Coche as c " +
+				"LEFT JOIN c.reservas as r " + 
+				"WHERE c.empresa.id = :idEmpresa " +
+				"AND c.id not in " +
+					"(select distinct(i.coche.id) " +
+					"from Incidencia i " +
+					"where i.resuelta=0)" +
+				"AND (size(c.reservas) = 0 " +
+					"OR (r.fechaInicioPrevista not between :fechaInicio and :fechaDevolucion " +
+						"AND r.fechaDevolucionPrevista not between :fechaInicio and :fechaDevolucion " +
+						"AND :fechaInicio not between r.fechaInicioPrevista and r.fechaDevolucionPrevista " +
+						"AND :fechaDevolucion not between r.fechaInicioPrevista and r.fechaDevolucionPrevista " +
+					") " +
+				")";		
+
+		return (List<Coche>) sessionFactory.getCurrentSession().createQuery(hql)
+				.setParameter("fechaInicio", fechaInicio)
+				.setParameter("fechaDevolucion", fechaDevolucion)
+				.setParameter("idEmpresa", empresa.getId())
+				.list();	
 	}
 	
 	public List<Coche> listAll() {

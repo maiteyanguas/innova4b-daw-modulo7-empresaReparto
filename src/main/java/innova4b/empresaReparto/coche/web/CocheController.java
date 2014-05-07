@@ -41,14 +41,14 @@ public class CocheController {
 	}
 	
 	@RequestMapping(value = "/listDisponiblesFilter", method = RequestMethod.POST)
-	public String listDisponiblesFilter(@Valid FiltroReserva filtro, BindingResult result, RedirectAttributes redirect, ModelMap model) {
+	public String listDisponiblesFilter(@Valid FiltroReserva filtro, BindingResult result, RedirectAttributes redirect, ModelMap model, HttpSession session) {
 		if(result.hasErrors()) {
 			redirect.addFlashAttribute("org.springframework.validation.BindingResult.filtro", result);
 			redirect.addFlashAttribute("filtro",filtro);
 			return "redirect:/empresaReparto/coche/listDisponibles";
 		}
 		
-		model.addAttribute("coches", cocheDao.listDisponiblesBetweenDates(filtro.getFechaInicioPrevista(),filtro.getFechaDevolucionPrevista()));
+		model.addAttribute("coches", cocheService.listDisponiblesBetweenDates(filtro.getFechaInicioPrevista(),filtro.getFechaDevolucionPrevista(), (Usuario) session.getAttribute("usuario")));
 		model.addAttribute("filtro", filtro);
 		
 		return "coche/listDisponibles";

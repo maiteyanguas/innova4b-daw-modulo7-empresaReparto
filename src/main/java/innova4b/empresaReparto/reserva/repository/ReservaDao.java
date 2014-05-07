@@ -1,5 +1,6 @@
 package innova4b.empresaReparto.reserva.repository;
 
+import innova4b.empresaReparto.coche.domain.Coche;
 import innova4b.empresaReparto.reserva.domain.Reserva;
 
 import java.util.List;
@@ -31,7 +32,11 @@ public class ReservaDao {
 	}
 
 	public boolean isCarFreeBetweenDates(Reserva reserva) {
-		return sessionFactory.getCurrentSession().createQuery("FROM Reserva WHERE coche = "+reserva.getCoche()+" AND fechaInicioPrevista >= "+reserva.getFechaInicio()+" AND fechaDevolucionPrevista <= "+reserva.getFechaDevolucionPrevista()+"").list().size()>0;
+		return sessionFactory.getCurrentSession().createQuery("FROM Reserva as r WHERE r.coche.id = :idCoche AND r.fechaInicioPrevista >= "+reserva.getFechaInicioPrevista()+" AND r.fechaDevolucionPrevista <= "+reserva.getFechaDevolucionPrevista()).setParameter("idCoche", reserva.getCoche().getId()).list().size()>0;
+	}
+	
+	public boolean cocheHasReservas(Coche coche) {
+		return sessionFactory.getCurrentSession().createQuery("FROM Reserva as r WHERE r.coche.id=:idCoche").setParameter(":idCoche", coche.getId()).list().size()>0;
 	}
 	
 	public Reserva get(int id) {
