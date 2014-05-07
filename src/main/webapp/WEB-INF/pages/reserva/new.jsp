@@ -17,7 +17,7 @@
 <script src="/js/i18n.js"></script>
 <script src="/js/calendario.js"></script>
 <script src="/js/reserva/new.js"></script>
-</head>
+</head> 
 <body>
 	<div id="container">
 		<jsp:include page="../header.jsp" />
@@ -26,7 +26,8 @@
 			<p>
 				<spring:message code="nueva.reserva" />
 			</p>
-
+ 
+			<div><jsp:include page="maps.jsp" /></div>
 			<c:if test="${error!=null}">
 				<div class="errorblock">${error}</div>
 			</c:if>
