@@ -75,7 +75,7 @@ public class Empleado {
 	@Cascade({CascadeType.ALL})
 	private List<Reserva> reservas;
 	
-	@ManyToOne(cascade={javax.persistence.CascadeType.ALL}, fetch=FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="jefe")
 	private Empleado jefe;
 
