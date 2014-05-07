@@ -1,9 +1,11 @@
 package innova4b.empresaReparto.reserva.repository;
 
+import innova4b.empresaReparto.coche.domain.Coche;
 import innova4b.empresaReparto.reserva.domain.Reserva;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +42,17 @@ public class ReservaDao {
 
 	public void update(Reserva reserva) {
 		sessionFactory.getCurrentSession().update(reserva);
+	}
+	
+	public void deleteCoche(Coche coche){
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("FROM Reserva WHERE coche.id ="+ coche.getId());
+		List<Reserva> reservas = query.list();
+		
+		for(Reserva reserva : reservas){
+			reserva.setCoche(null);			
+		}
+		
 	}
 	
 }

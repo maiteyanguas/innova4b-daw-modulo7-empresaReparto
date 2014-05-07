@@ -84,7 +84,10 @@ public class CocheController {
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public String delete(ModelMap model, @Valid Coche coche, BindingResult result) {
 		
-		cocheDao.delete(coche);
+		if (!cocheDao.hasPendingReservations(coche)){
+			cocheService.deleteCoche(coche);
+		}
+		
 		return "redirect:/empresaReparto/coche/listAll";
 	}
 	

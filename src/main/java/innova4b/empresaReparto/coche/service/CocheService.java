@@ -7,6 +7,7 @@ import innova4b.empresaReparto.coche.domain.Coche;
 import innova4b.empresaReparto.coche.repository.CocheDao;
 import innova4b.empresaReparto.empleado.repository.EmpleadoDao;
 import innova4b.empresaReparto.login.domain.Usuario;
+import innova4b.empresaReparto.reserva.repository.ReservaDao;
 
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,8 @@ public class CocheService {
 	EmpleadoDao empleadoDao;
 	@Autowired
 	CocheDao cocheDao;
+	@Autowired
+	ReservaDao reservaDao;
 	
 	public List<Coche> listDisponibles(Usuario usuario){
 		List<Coche> coches = new ArrayList<Coche>();
@@ -39,5 +42,9 @@ public class CocheService {
 		return coches;
 	}
 	
+	public void deleteCoche(Coche coche){
+		reservaDao.deleteCoche(coche);
+		cocheDao.delete(coche);
+	}
 
 }
