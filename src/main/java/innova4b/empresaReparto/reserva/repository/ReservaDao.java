@@ -32,7 +32,7 @@ public class ReservaDao {
 	}
 
 	public boolean isCarFreeBetweenDates(Reserva reserva) {
-		return sessionFactory.getCurrentSession().createQuery("FROM Reserva as r WHERE r.coche = :coche AND r.fechaInicioPrevista >= "+reserva.getFechaInicioPrevista()+" AND r.fechaDevolucionPrevista <= "+reserva.getFechaDevolucionPrevista()+"").setParameter("coche", reserva.getCoche()).list().size()>0;
+		return sessionFactory.getCurrentSession().createQuery("FROM Reserva as r WHERE r.coche.id = :idCoche AND r.fechaInicioPrevista >= "+reserva.getFechaInicioPrevista()+" AND r.fechaDevolucionPrevista <= "+reserva.getFechaDevolucionPrevista()).setParameter("idCoche", reserva.getCoche().getId()).list().size()>0;
 	}
 	
 	public boolean cocheHasReservas(Coche coche) {
