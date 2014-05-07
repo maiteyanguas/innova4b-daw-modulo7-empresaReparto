@@ -21,7 +21,7 @@
 				</tr>
 				<tr>
 					<td><form:label path="usuario"><spring:message code="usuario" text="Usuario"/>:</form:label></td>
-					<td><form:input path="usuario"></form:input>
+					<td><form:input path="usuario" disabled="true"></form:input>
 						<form:errors path="usuario" cssClass="error"/>
 					</td>
 				</tr>
