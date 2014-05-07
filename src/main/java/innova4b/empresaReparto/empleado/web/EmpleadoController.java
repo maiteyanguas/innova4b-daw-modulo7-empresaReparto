@@ -11,11 +11,13 @@ import innova4b.empresaReparto.empresa.domain.Empresa;
 import innova4b.empresaReparto.empresa.repository.EmpresaDao;
 import innova4b.empresaReparto.exceptions.EmpresaWithCochesException;
 import innova4b.empresaReparto.exceptions.EmpresaWithEmpleadosException;
+import innova4b.empresaReparto.login.domain.Usuario;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -97,7 +99,27 @@ public class EmpleadoController {
 			redirect.addFlashAttribute("empleado",builtEmpleado);
 			return "redirect:/empresaReparto/empleado/new";
 		}
-		empleadoDao.insert(builtEmpleado);
+		try {
+			empleadoDao.insert(builtEmpleado);
+			return "redirect:/empresaReparto/empleado/list";
+		} catch(Exception e) {
+			result.rejectValue("usuario", "error.empleado", "El usuario ya est&aacute; en uso.");
+			redirect.addFlashAttribute("org.springframework.validation.BindingResult.empleado", result);
+			redirect.addFlashAttribute("empleado",builtEmpleado);
+			return "redirect:/empresaReparto/empleado/new";
+		}
+		
+	}
+
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String update(@Valid Empleado empleado, BindingResult result, RedirectAttributes redirect, @RequestParam int idEmpresa, @RequestParam int idJefe) {
+		Empleado builtEmpleado = empleadoService.buildEmpleado(empleado,idJefe,idEmpresa);
+		if (result.hasErrors()){
+			redirect.addFlashAttribute("org.springframework.validation.BindingResult.empleado", result);
+			redirect.addFlashAttribute("empleado",builtEmpleado);
+			return "redirect:/empresaReparto/empleado/edit/"+empleado.getId();
+		}
+		empleadoDao.update(builtEmpleado);
 		return "redirect:/empresaReparto/empleado/list";
 	}
 
