@@ -20,37 +20,42 @@
 <script src="/js/jquery.paginate.js"></script>
 
 
-<script type="text/javascript">
-			
-			$(document).ready(function() {
-
-				$(function() {
-					$("#paginationdemo").paginate({
-						count 		: <c:out value="${numberOfPages}"/>,
-						start 		: <c:out value="${responsePage}"/>,
-						display     : <c:out value="${numElementosMostrar}"/>,
-						border					: true,
-						border_color			: '#fff',
-						text_color  			: '#fff',
-						background_color    	: 'black',	
-						border_hover_color		: '#ccc',
-						text_hover_color  		: '#000',
-						background_hover_color	: '#fff', 
-						images					: true,
-						mouse					: 'press'
-					});
-					$('ul.jPag-pages li a').click( function(){
-						
-						var page =$(this).text();
-						window.location.replace('/empresaReparto/empleado/list/'+page);
-					});	
-				});
-			
-
-
+<script type="text/javascript">			
+	$(document).ready(function() {
+		$(function() {
+			$("#paginationdemo").paginate({
+				count 		: <c:out value="${numberOfPages}"/>,
+				start 		: <c:out value="${responsePage}"/>,
+				display     : <c:out value="${numElementosMostrar}"/>,
+				border					: true,
+				border_color			: '#fff',
+				text_color  			: '#fff',
+				background_color    	: 'black',	
+				border_hover_color		: '#ccc',
+				text_hover_color  		: '#000',
+				background_hover_color	: '#fff', 
+				images					: true,
+				mouse					: 'press'
+			});
+			$('ul.jPag-pages li a').click( function(){
 				
+				var page =$(this).text();
+				window.location.replace('/empresaReparto/empleado/list/'+page);
 			});	
-	</script>
+			$('a.jPag-first').click( function(){
+				
+				var page =$(this).text();
+				window.location.replace('/empresaReparto/empleado/list/1');
+			});	
+			$('a.jPag-last').click( function(){
+				
+				var page =$(this).text();
+				window.location.replace('/empresaReparto/empleado/list/'+<c:out value="${numberOfPages}"/>);
+			});	
+		});		
+		
+	});
+</script>
 </head>
 <body>
 	<div id="container">

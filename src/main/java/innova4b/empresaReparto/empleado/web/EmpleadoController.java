@@ -59,7 +59,10 @@ public class EmpleadoController {
 
 	@RequestMapping(value = "/list/{id}", method = RequestMethod.GET)
 	public String listRango(ModelMap model, @PathVariable("id") int id) {
-		int posicionInicio=((id-1)*NUMERO_EMPLEADOS_POR_LISTA)+1;
+		int posicionInicio=0;
+		if(id>1){
+			posicionInicio=((id-1)*NUMERO_EMPLEADOS_POR_LISTA)+1;
+		}
 		if(posicionInicio>numeroEmpleados){
 			posicionInicio=0;
 		}
