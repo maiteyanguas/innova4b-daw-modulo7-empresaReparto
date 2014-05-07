@@ -1,11 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title><spring:message code="editar.empleado" text="Editar empleado"/></title>
+<link rel="stylesheet" type="text/css" href="/css/jquery/jquery-ui-1.10.4.custom.min.css">
 <link rel="stylesheet" type="text/css" href="/css/reset.css">
 <link rel="stylesheet" type="text/css" href="/css/pages.css">
+<script src="/js/jquery/jquery-1.10.2.js"></script>
+<script src="/js/jquery/jquery-ui-1.10.4.custom.min.js"></script>
+<script src="/js/jquery/jquery.i18n.properties-min-1.0.9.js"></script>
+<script src="/js/jquery/jquery.cookie.js"></script>
+<script src="/js/i18n.js"></script>
+<script src="/js/calendario.js"></script>
+<script src="/js/empleado/new.js"></script>
 </head>
 <body>
 	<div id="container">
@@ -60,7 +69,7 @@
 				</tr>
 					<tr>
 					<td><form:label path="fechaNacimiento"><spring:message code="empleado.fechaNacimiento" text="Fecha Nacimiento"/>:</form:label></td>
-					<td><form:input path="fechaNacimiento"></form:input>
+					<td><form:input id="fechaNacimiento" path="fechaNacimiento"></form:input>
 						<form:errors path="fechaNacimiento" cssClass="error"/>
 					</td>
 				</tr>
