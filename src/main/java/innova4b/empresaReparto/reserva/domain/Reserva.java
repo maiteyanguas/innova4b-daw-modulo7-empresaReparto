@@ -3,8 +3,6 @@ package innova4b.empresaReparto.reserva.domain;
 import innova4b.empresaReparto.coche.domain.Coche;
 import innova4b.empresaReparto.empleado.domain.Empleado;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,6 +24,9 @@ public class Reserva {
 	@Id
 	@GeneratedValue
 	private int id;
+	
+	private int kmIniciales;
+	private int kmFinales;
 
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
@@ -111,6 +112,22 @@ public class Reserva {
 	
 	public void setCoche(Coche coche) {
 		this.coche = coche;
+	}
+	
+	public int getKmIniciales() {
+		return kmIniciales;
+	}
+
+	public void setKmIniciales(int kmIniciales) {
+		this.kmIniciales = kmIniciales;
+	}
+
+	public int getKmFinales() {
+		return kmFinales;
+	}
+
+	public void setKmFinales(int kmFinales) {
+		this.kmFinales = kmFinales;
 	}
 
 	@Override

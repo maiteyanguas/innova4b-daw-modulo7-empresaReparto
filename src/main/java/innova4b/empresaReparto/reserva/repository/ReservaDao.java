@@ -41,5 +41,9 @@ public class ReservaDao {
 	public void update(Reserva reserva) {
 		sessionFactory.getCurrentSession().update(reserva);
 	}
+
+	public List<Reserva> getReservasSinDevolucion(Long id) {
+		return (List<Reserva>) sessionFactory.getCurrentSession().createQuery("FROM Reserva as r WHERE r.fechaDevolucion IS NULL").list();
+	}
 	
 }
