@@ -36,7 +36,7 @@ public class ReservaDao {
 	}
 	
 	public boolean cocheHasReservas(Coche coche) {
-		return sessionFactory.getCurrentSession().createQuery("FROM Reserva as r WHERE r.coche.id=:idCoche").setParameter(":idCoche", coche.getId()).list().size()>0;
+		return sessionFactory.getCurrentSession().createQuery("FROM Reserva as r WHERE r.coche.id = :idCoche").setParameter("idCoche", coche.getId()).list().size()>0;
 	}
 	
 	public Reserva get(int id) {

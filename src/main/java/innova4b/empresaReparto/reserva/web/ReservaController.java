@@ -63,12 +63,12 @@ public class ReservaController {
 	}
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String addReserva(@Valid Reserva reserva, BindingResult result, RedirectAttributes redirect) {
+	public String addReserva(@Valid Reserva reserva, HttpSession session, BindingResult result, RedirectAttributes redirect) {
 		Coche coche = cocheDao.getCocheById(idCoche);
 		reserva.setCoche(coche);
-//		Usuario usuario = (Usuario) session.getAttribute("usuario");
-//		Empleado empleado = empleadoDao.get(usuario.getId());
-//		reserva.setEmpleado(empleado);
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		Empleado empleado = empleadoDao.get(usuario.getId());
+		reserva.setEmpleado(empleado);
 		if (result.hasErrors()) {
 			for (ObjectError error : result.getAllErrors()) {
 				System.out.println(error.toString());
@@ -98,7 +98,7 @@ public class ReservaController {
 				model.addAttribute("incidencia",new Incidencia());
 			
 			Map<Integer,String> valuesSiNo = new HashMap<Integer,String>();
-			valuesSiNo.put(1, "Sí");
+			valuesSiNo.put(1, "Si");
 			valuesSiNo.put(0, "No");
 			
 			model.addAttribute("valuesSiNo", valuesSiNo);
