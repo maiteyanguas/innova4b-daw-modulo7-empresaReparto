@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 
 import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -25,7 +26,10 @@ public class Reserva {
 	@GeneratedValue
 	private int id;
 	
+	@Null
 	private int kmIniciales;
+
+	@Null
 	private int kmFinales;
 
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
