@@ -6,6 +6,7 @@ import java.util.List;
 import innova4b.empresaReparto.coche.domain.Coche;
 import innova4b.empresaReparto.coche.repository.CocheDao;
 import innova4b.empresaReparto.empleado.repository.EmpleadoDao;
+import innova4b.empresaReparto.empresa.repository.EmpresaDao;
 import innova4b.empresaReparto.login.domain.Usuario;
 import innova4b.empresaReparto.reserva.repository.ReservaDao;
 
@@ -17,6 +18,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class CocheService {
 	
+	 static final String FILTRO_COCHES_SIN_INCIDENCIA_POR_EMPRESA = "sinIncidencia";
+	 static final String FILTRO_COCHES_CON_INCIDENCIA_POR_EMPRESA = "conIncidencia";
+	 static final String FILTRO_TODOS_COCHES_POR_EMPRESA = "todos";
+	 static final String FILTRO_INCIDENCIAS_PENDIENTES = "incidenciasPendientes";
+	 static final String FILTRO_MATRICULA = "matricula";
+	 static final String FILTRO_EMPRESA = "empresa";
+	
 	@Autowired
 	EmpleadoDao empleadoDao;
 	@Autowired
@@ -25,6 +33,10 @@ public class CocheService {
 	ArrayList<String> marcas;
 	@Autowired
 	ReservaDao reservaDao;
+	
+	public void setCocheDao(CocheDao cocheDao) {
+		this.cocheDao = cocheDao;
+	}
 	
 	public List<Coche> listDisponibles(Usuario usuario){
 		List<Coche> coches = new ArrayList<Coche>();
@@ -46,11 +58,11 @@ public class CocheService {
 	
 	public List<Coche> getCochesFiltrados(String eleccionCombo,int idEmpresa, String eleccionEmpresa, String matricula) {
 		List<Coche>  coches = new ArrayList<Coche>();
-		if (eleccionCombo.equals("incidenciasPendientes")){
+		if (eleccionCombo.equals(FILTRO_INCIDENCIAS_PENDIENTES)){
 			coches = (List<Coche>) cocheDao.listWithIncidencias();
-		} else if (eleccionCombo.equals("empresa")){
+		} else if (eleccionCombo.equals(FILTRO_EMPRESA)){
 			coches = getCochesFiltradosPorEmpresa(idEmpresa, eleccionEmpresa, coches);
-		}else if (eleccionCombo.equals("matricula")){
+		}else if (eleccionCombo.equals(FILTRO_MATRICULA)){
 			coches=(List<Coche>) cocheDao.listWithMatricula(matricula);
 		}else{
 			coches = (List<Coche>) cocheDao.listAll();
@@ -59,11 +71,11 @@ public class CocheService {
 	}
 
 	private List<Coche> getCochesFiltradosPorEmpresa(int idEmpresa, String eleccionEmpresa, List<Coche> coches) {
-		if (eleccionEmpresa.equals("todos")){
+		if (eleccionEmpresa.equals(FILTRO_TODOS_COCHES_POR_EMPRESA)){
 			coches = (List<Coche>) cocheDao.listWithEmpresa(idEmpresa);	
-		}else if(eleccionEmpresa.equals("conIncidencia")){
+		}else if(eleccionEmpresa.equals(FILTRO_COCHES_CON_INCIDENCIA_POR_EMPRESA)){
 			coches=(List<Coche>) cocheDao.listWithEmpresaConIncidencias(idEmpresa);	
-		}else if(eleccionEmpresa.equals("sinIncidencia")){
+		}else if(eleccionEmpresa.equals(FILTRO_COCHES_SIN_INCIDENCIA_POR_EMPRESA)){
 			coches=(List<Coche>) cocheDao.listWithEmpresaSinIncidencias(idEmpresa);
 		}
 		return coches;
