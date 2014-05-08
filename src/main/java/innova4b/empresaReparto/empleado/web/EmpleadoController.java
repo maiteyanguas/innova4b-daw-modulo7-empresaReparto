@@ -147,7 +147,7 @@ public class EmpleadoController {
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String update(@Valid Empleado empleado, BindingResult result, RedirectAttributes redirect, @RequestParam int idEmpresa, @RequestParam int idJefe) {
+	public String update( HttpSession session, @Valid Empleado empleado, BindingResult result, RedirectAttributes redirect, @RequestParam int idEmpresa, @RequestParam int idJefe) {
 		Empleado builtEmpleado = empleadoService.buildEmpleado(empleado,idJefe,idEmpresa);
 		if (result.hasErrors()){
 			redirect.addFlashAttribute("org.springframework.validation.BindingResult.empleado", result);
@@ -155,6 +155,9 @@ public class EmpleadoController {
 			return "redirect:/empresaReparto/empleado/edit/"+empleado.getId();
 		}
 		try {
+			Usuario user = (Usuario)session.getAttribute("usuario");
+			if(user.isAdministrador())
+				builtEmpleado.setRol("a");
 			empleadoDao.update(builtEmpleado);
 			return "redirect:/empresaReparto/empleado/list";
 			} catch(Exception e) {
@@ -166,12 +169,15 @@ public class EmpleadoController {
 	}
 	
 	@RequestMapping(value = "/updateUser", method = RequestMethod.POST)
-	public String updateUser(@Valid Empleado empleado, BindingResult result, RedirectAttributes redirect) {
+	public String updateUser( HttpSession session, @Valid Empleado empleado, BindingResult result, RedirectAttributes redirect) {
 		if (result.hasErrors()){
 			redirect.addFlashAttribute("org.springframework.validation.BindingResult.empleado", result);
 			redirect.addFlashAttribute("empleado",empleado);
 			return "redirect:/empresaReparto/empleado/editUser/"+empleado.getId();
 		}
+		Usuario user = (Usuario)session.getAttribute("usuario");
+		if(user.isAdministrador())
+			empleado.setRol("a");
 		empleadoDao.update(empleado);
 		return "redirect:/empresaReparto/empleado/show";
 	}
