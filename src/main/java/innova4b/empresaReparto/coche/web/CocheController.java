@@ -78,7 +78,7 @@ public class CocheController {
 			model.addAttribute("empresas", empresaDao.list());
 			return "coche/edit";}
 		coche.setEmpresa(empresa);
-		System.out.println(coche.getId());
+
 		cocheDao.update(coche);
 		return "redirect:/empresaReparto/coche/listAll";
 	}
@@ -94,16 +94,31 @@ public class CocheController {
 		return "redirect:/empresaReparto/coche/listAll";
 	}
 	
+
 	@RequestMapping(value = "/listByFilter", method = RequestMethod.POST)
 	public String listByFilter(ModelMap model, @RequestParam String eleccionCombo, @RequestParam int idEmpresa, @RequestParam String eleccionEmpresa, @RequestParam String matricula) {
 		model.addAttribute("coches", cocheDao.listAll());	
 		model.addAttribute("empresas", empresaDao.list());
 		model.addAttribute("listaMatriculasCoches", cocheDao.listAll());
-		
-
 		model.addAttribute("coches", cocheService.getCochesFiltrados(eleccionCombo, idEmpresa, eleccionEmpresa,matricula));
 		return "coche/listAll";
 	}
+
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	public String delete(ModelMap model, @PathVariable("id") int id) {
+		Coche coche = cocheDao.getCocheById(id);
+		if (!cocheDao.hasPendingReservations(coche)){
+			cocheService.deleteCoche(coche);
+		} else {
+			model.addAttribute("error_borrado", true);
+			model.addAttribute("coches", cocheDao.listAll());	
+			model.addAttribute("empresas", empresaDao.list());
+			model.addAttribute("listaMatriculasCoches", cocheDao.listAll());
+			return "coche/listAll";
+		}
+		return "redirect:/empresaReparto/coche/listAll";
+	}
+	
 	@RequestMapping(value = "/getMarcasCoches", method = RequestMethod.GET)
 	@ResponseBody
 	public List<String> getMarcasCoches(@RequestParam("term") String query){
@@ -116,9 +131,9 @@ public class CocheController {
 	public String editCoche(ModelMap model, @PathVariable("id") int id) {
 		if (!model.containsKey("coche"))
 			model.addAttribute("coche", cocheDao.getCocheById(id));
-			Empresa empresa = cocheDao.getCocheById(id).getEmpresa();
-			model.addAttribute("empresa",empresa);
-			model.addAttribute("empresas", empresaDao.list());
+		Empresa empresa = cocheDao.getCocheById(id).getEmpresa();
+		model.addAttribute("empresa",empresa);
+		model.addAttribute("empresas", empresaDao.list());
 		return "coche/edit";
 	}
 }
