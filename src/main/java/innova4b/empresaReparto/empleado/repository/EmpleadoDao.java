@@ -58,7 +58,7 @@ public class EmpleadoDao {
 		sessionFactory.getCurrentSession().createQuery("update Empleado set jefe = NULL where id ="+id).executeUpdate();
 	}
 	public List<Empleado> listJefe() {
-		return (List<Empleado>) sessionFactory.getCurrentSession().createQuery("from Empleado where jefe = NULL").list();
+		return (List<Empleado>) sessionFactory.getCurrentSession().createQuery("from Empleado where jefe = NULL and rol = 'u'").list();
 	}
 	public List<Empleado> listRange(int origen,int numElementos) {
 		Query query=sessionFactory.getCurrentSession().createQuery("from Empleado e order by e.apellido1 asc, e.apellido2 asc");
