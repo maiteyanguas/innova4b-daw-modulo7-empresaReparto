@@ -34,7 +34,11 @@ public class ReservaDao {
 	}
 
 	public boolean isCarFreeBetweenDates(Reserva reserva) {
-		return sessionFactory.getCurrentSession().createQuery("FROM Reserva WHERE coche = "+reserva.getCoche()+" AND fechaInicioPrevista >= "+reserva.getFechaInicio()+" AND fechaDevolucionPrevista <= "+reserva.getFechaDevolucionPrevista()+"").list().size()>0;
+		return sessionFactory.getCurrentSession().createQuery("FROM Reserva as r WHERE r.coche.id = :idCoche AND r.fechaInicioPrevista >= "+reserva.getFechaInicioPrevista()+" AND r.fechaDevolucionPrevista <= "+reserva.getFechaDevolucionPrevista()).setParameter("idCoche", reserva.getCoche().getId()).list().size()>0;
+	}
+	
+	public boolean cocheHasReservas(Coche coche) {
+		return sessionFactory.getCurrentSession().createQuery("FROM Reserva as r WHERE r.coche.id = :idCoche").setParameter("idCoche", coche.getId()).list().size()>0;
 	}
 	
 	public Reserva get(int id) {
@@ -44,6 +48,12 @@ public class ReservaDao {
 	public void update(Reserva reserva) {
 		sessionFactory.getCurrentSession().update(reserva);
 	}
+
+
+	public List<Reserva> getReservasSinDevolucion(Long id) {
+		return (List<Reserva>) sessionFactory.getCurrentSession().createQuery("FROM Reserva as r WHERE r.fechaDevolucion IS NULL").list();
+	}
+	
 
 	public boolean empleadoTieneUnCocheOcupado(long idEmpleado){
 		Query query=sessionFactory.getCurrentSession().createQuery("select count(*) from Reserva where empleado=:empleado and fechaInicio!=null and fechaDevolucion=null ");
