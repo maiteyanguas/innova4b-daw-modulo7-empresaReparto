@@ -32,7 +32,7 @@
 				</tr>
 				<tr>
 					<td><spring:message code="empleado.fechaNacimiento" text="Fecha Nacimiento" />:</td>
-					<td>${empleado.fechaNacimiento}</td>
+					<td>${empleado.fechaNacimientoAsString}</td>
 				</tr>
 				<tr>
 					<td><spring:message code="empleado.telefono" text="Teléfono" />:</td>
