@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -19,38 +21,44 @@
 <script src="/js/i18n.js"></script>
 <script src="/js/jquery.paginate.js"></script>
 
+<script src="/js/empleado/filtro.js"></script>
 
-<script type="text/javascript">
-			
-			$(document).ready(function() {
-
-				$(function() {
-					$("#paginationdemo").paginate({
-						count 		: <c:out value="${numberOfPages}"/>,
-						start 		: <c:out value="${responsePage}"/>,
-						display     : <c:out value="${numElementosMostrar}"/>,
-						border					: true,
-						border_color			: '#fff',
-						text_color  			: '#fff',
-						background_color    	: 'black',	
-						border_hover_color		: '#ccc',
-						text_hover_color  		: '#000',
-						background_hover_color	: '#fff', 
-						images					: true,
-						mouse					: 'press'
-					});
-					$('ul.jPag-pages li a').click( function(){
-						
-						var page =$(this).text();
-						window.location.replace('/empresaReparto/empleado/list/'+page);
-					});	
-				});
-			
-
-
+<script type="text/javascript">			
+	$(document).ready(function() {
+		$(function() {
+			$("#paginationdemo").paginate({
+				count 		: <c:out value="${numberOfPages}"/>,
+				start 		: <c:out value="${responsePage}"/>,
+				display     : <c:out value="${numElementosMostrar}"/>,
+				border					: true,
+				border_color			: '#fff',
+				text_color  			: '#fff',
+				background_color    	: 'black',	
+				border_hover_color		: '#ccc',
+				text_hover_color  		: '#000',
+				background_hover_color	: '#fff', 
+				images					: true,
+				mouse					: 'press'
+			});
+			$('ul.jPag-pages li a').click( function(){
 				
+				var page =$(this).text();
+				window.location.replace('/empresaReparto/empleado/list/'+page);
 			});	
-	</script>
+			$('a.jPag-first').click( function(){
+				
+				var page =$(this).text();
+				window.location.replace('/empresaReparto/empleado/list/1');
+			});	
+			$('a.jPag-last').click( function(){
+				
+				var page =$(this).text();
+				window.location.replace('/empresaReparto/empleado/list/'+<c:out value="${numberOfPages}"/>);
+			});	
+		});		
+		
+	});
+</script>
 </head>
 <body>
 	<div id="container">
@@ -60,6 +68,7 @@
 			<c:if test="${error!=null}">
 				<div class="errorblock">${error}</div>
 			</c:if> 
+			<jsp:include page="filtro.jsp" />
 			<table>
 				<tr>
 					<th><spring:message code="empleado.nombre" text="Nombre"/></th>
@@ -83,12 +92,12 @@
 						<td>${empleado.email}</td>
 						<td>${empleado.telefono}</td> 		
 						<td><a href="/empresaReparto/empleado/edit/${empleado.id}"><img alt="editar" src="/images/edit.png" width="20" height="20"></a></td>
-						<td><a href="/empresaReparto/empleado/delete/${empleado.id}"><img alt="borrar" src="/images/delete.jpeg" width="20" height="20"></a></td>
+						<td><a href="/empresaReparto/empleado/delete/${empleado.id}" onclick="return confirm('¿Estás seguro de querer borrar este empleado?')"><img alt="borrar" src="/images/delete.jpeg" width="20" height="20"></a></td>
 					
 					</tr>
 				</c:forEach> 
 			</table>
-			<c:if test="${numberOfPages>0}">
+			<c:if test="${numberOfPages>1}">
 				<div id="paginationdemo"  class="demo"></div>
 			</c:if>
 			</div>
