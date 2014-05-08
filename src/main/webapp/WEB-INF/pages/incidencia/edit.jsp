@@ -23,7 +23,7 @@
 				<tr>
 					<form:hidden path="fechaCreacion"/>
 					<td><spring:message code="incidencia.fechaCreacion" text="Fecha de creación" />:</td>
-			  		<td>${incidencia.fechaCreacion}</td>					
+			  		<td>${incidencia.fechaCreacionAsString}</td>					
 				</tr>
 				<tr>
 					
