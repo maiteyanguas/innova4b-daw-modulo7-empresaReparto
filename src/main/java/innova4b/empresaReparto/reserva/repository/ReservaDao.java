@@ -49,8 +49,8 @@ public class ReservaDao {
 		sessionFactory.getCurrentSession().update(reserva);
 	}
 
-	public List<Reserva> getReservasSinDevolucion(Long id) {
-		return (List<Reserva>) sessionFactory.getCurrentSession().createQuery("FROM Reserva as r WHERE r.fechaDevolucion IS NULL").list();
+	public List<Reserva> getReservasSinDevolucion(Integer id) {
+		return (List<Reserva>) sessionFactory.getCurrentSession().createQuery("FROM Reserva as r WHERE r.empleado.id = :id AND r.fechaDevolucion IS NULL").setParameter("id", id).list();
 	}
 	
 	public boolean empleadoTieneUnCocheOcupado(long idEmpleado){
