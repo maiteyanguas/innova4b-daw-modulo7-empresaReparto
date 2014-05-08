@@ -89,25 +89,40 @@
 					<td id="titulo_seccion" colspan= "2"><spring:message code="nuevo.datosEmpresariales" text="Datos Empresariales"/></td>
 				</tr>
 				<tr>
-					<td><form:label path="empresa"><spring:message code="empleado.empresa" text="Empresa"/>:</form:label></td>
-					<td><select name="idEmpresa">
-					<c:forEach var="emp" items="${empresas}">
-							<option value="${emp.id}" >${emp.nombre}</option>
-					</c:forEach>
-					    </select>
-						<form:errors path="empresa" cssClass="error"/>
-					</td>
-				</tr>
-				<tr>
-					<td><form:label path="jefe"><spring:message code="empleado.jefe" text="Jefe"/>:</form:label></td>
-					<td><select name="idJefe">
-					<c:forEach var="jefe" items="${jefes}">
-							<option value="${jefe.id}" >${jefe.nombre}</option>
-					</c:forEach>
-					    </select>
-						<form:errors path="jefe" cssClass="error"/>
-					</td>
-				</tr>
+                    <td><form:label path="empresa"><spring:message code="empleado.empresa" text="Empresa"/>:</form:label></td> 
+                    <td><select name="idEmpresa">
+                            <c:forEach var="emp" items="${empresas}">                           
+                                <c:choose>
+                                    <c:when test="${emp.id==empleado.empresa.id}">
+                                        <option value="${emp.id}" selected>${emp.nombre}</option>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <option value="${emp.id}" >${emp.nombre}</option>
+                                    </c:otherwise>
+                                </c:choose>       
+                            </c:forEach>
+                        </select>
+                        <form:errors path="empresa" cssClass="error"/>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><form:label path="jefe"><spring:message code="empleado.jefe" text="Jefe"/>:</form:label></td>
+                    <td><select name="idJefe">
+                            <c:forEach var="jefe" items="${jefes}">
+                                <c:choose>
+                                    <c:when test="${jefe.id==empleado.jefe.id}">
+                                         <option value="${jefe.id}" selected>${jefe.nombre}</option>
+                                    </c:when>
+                                    <c:otherwise>
+                                         <option value="${jefe.id}" >${jefe.nombre}</option>
+                                    </c:otherwise>
+                                </c:choose>       
+                            </c:forEach>
+                        </select>
+                        <form:errors path="jefe" cssClass="error"/>
+                    </td>
+                </tr>
 			</table>
 			<p>
 				<spring:message code="guardar" text="Guardar" var="guardar"/>
