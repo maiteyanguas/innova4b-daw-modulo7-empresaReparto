@@ -1,6 +1,8 @@
 
 package innova4b.empresaReparto.empresa.domain;
 
+import innova4b.empresaReparto.empleado.domain.Empleado;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +29,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name = "empresa")
 public class Empresa {
-
+	
+	private static final String EMPRESA_NULO_NOMBRE = "Ninguna";
+	public static final int EMPRESA_NULO_ID = -1;
+	
 	private static final Logger logger = Logger.getLogger(Empresa.class);
 
 	@Id
@@ -160,5 +165,10 @@ public class Empresa {
 				+ direcciones + "]";
 	}
 	
-	
+	public static Empresa buildEmpresaNulo(){
+		Empresa empresa = new Empresa();
+		empresa.setId(EMPRESA_NULO_ID);
+		empresa.setNombre(EMPRESA_NULO_NOMBRE);
+		return empresa;
+	}
 }

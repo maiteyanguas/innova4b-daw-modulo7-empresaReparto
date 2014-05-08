@@ -60,8 +60,8 @@ public class EmpleadoDao {
 	public List<Empleado> listJefe() {
 		return (List<Empleado>) sessionFactory.getCurrentSession().createQuery("from Empleado where jefe = NULL and rol = 'u'").list();
 	}
-	public List<Empleado> listRange(int origen,int numElementos) {
-		Query query=sessionFactory.getCurrentSession().createQuery("from Empleado e order by e.apellido1 asc, e.apellido2 asc");
+	public List<Empleado> listRange(int origen,int numElementos, String apellido1, String empresa) {
+		Query query=sessionFactory.getCurrentSession().createQuery("from Empleado e where e.apellido1 like '"+apellido1+"%' and e.empresa.id like '"+empresa+"' order by e.apellido1 asc, e.apellido2 asc");
 		query.setFirstResult(origen);
 		query.setMaxResults(numElementos);
 		return (List<Empleado>) query.list();

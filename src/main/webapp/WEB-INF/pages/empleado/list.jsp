@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -19,6 +21,7 @@
 <script src="/js/i18n.js"></script>
 <script src="/js/jquery.paginate.js"></script>
 
+<script src="/js/empleado/filtro.js"></script>
 
 <script type="text/javascript">			
 	$(document).ready(function() {
@@ -65,6 +68,7 @@
 			<c:if test="${error!=null}">
 				<div class="errorblock">${error}</div>
 			</c:if> 
+			<jsp:include page="filtro.jsp" />
 			<table>
 				<tr>
 					<th><spring:message code="empleado.nombre" text="Nombre"/></th>
