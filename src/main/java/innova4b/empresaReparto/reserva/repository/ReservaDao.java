@@ -53,6 +53,7 @@ public class ReservaDao {
 		return (List<Reserva>) sessionFactory.getCurrentSession().createQuery("FROM Reserva as r WHERE r.empleado.id = :id AND r.fechaDevolucion IS NULL").setParameter("id", id).list();
 	}
 	
+
 	public boolean empleadoTieneUnCocheOcupado(long idEmpleado){
 		Query query=sessionFactory.getCurrentSession().createQuery("select count(*) from Reserva where empleado=:empleado and fechaInicio!=null and fechaDevolucion=null ");
 		
@@ -68,4 +69,18 @@ public class ReservaDao {
 		query.setDate("fechaInicio", hoy);
 		int result = query.executeUpdate();
 	}
+
+	
+	public void deleteCoche(Coche coche){
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("FROM Reserva WHERE coche.id ="+ coche.getId());
+		List<Reserva> reservas = query.list();
+		
+		for(Reserva reserva : reservas){
+			reserva.setCoche(null);			
+		}
+		
+	}
+	
+
 }

@@ -24,6 +24,7 @@
 				document.getElementById("matricula").style.display = "none";
 			}
 		}
+		
 	</script>
 </head>
 <body>
@@ -78,6 +79,9 @@
 			<c:if test="${error!=null}">
 				<div class="errorblock">${error}</div>
 			</c:if>
+			<c:if test="${error_borrado==true }">
+				<script>alert("El coche tiene reservas pendientes")</script>
+			</c:if>
 			<table>
 				<tr>
 					<th><spring:message code="coche.empresa" text="Empresa"/></th>
@@ -104,6 +108,7 @@
 						</c:choose>						
 						<td><a href="/empresaReparto/incidencia/list/${coche.id}"><spring:message code="ver.incidencias" text="Ver incidencias" /></a></td>
 						<td><a href="/empresaReparto/coche/edit/${coche.id}"><spring:message code="editar.coche" text="Editar coche"/></a></td>
+						<td><a href="/empresaReparto/coche/delete/${coche.id}"><spring:message code="borrar.coche" text="Borrar coche"/></a></td>
 					</tr>
 				</c:forEach>
 			</table>
