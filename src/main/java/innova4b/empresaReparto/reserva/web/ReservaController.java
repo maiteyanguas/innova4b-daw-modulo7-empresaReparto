@@ -2,6 +2,7 @@ package innova4b.empresaReparto.reserva.web;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import innova4b.empresaReparto.coche.domain.Coche;
@@ -25,6 +26,7 @@ import javax.validation.Valid;
 
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -34,6 +36,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.mysql.jdbc.Messages;
 
 @RequestMapping("/reserva")
 @Controller
@@ -49,7 +53,10 @@ public class ReservaController {
 	@Autowired
 	ReservaService reservaService;
 	@Autowired
-	IncidenciaService incidenciaService;	
+	IncidenciaService incidenciaService;
+
+	@Autowired
+    private MessageSource messageSource;
 
 	private int idCoche;
 
@@ -85,7 +92,7 @@ public class ReservaController {
 	}
 	
 	@RequestMapping(value = "/devolver", method = RequestMethod.GET)
-	public String devolverCoche(HttpSession session, ModelMap model) {		
+	public String devolverCoche(HttpSession session, ModelMap model, Locale locale) {		
 		Usuario usuario = (Usuario) session.getAttribute("usuario");
 		Empleado empleado = empleadoDao.get(usuario.getId());
 		
@@ -101,8 +108,8 @@ public class ReservaController {
 				model.addAttribute("incidencia",new Incidencia());
 			
 			Map<Integer,String> valuesSiNo = new HashMap<Integer,String>();
-			valuesSiNo.put(1, "Si­");
-			valuesSiNo.put(0, "No");
+			valuesSiNo.put(1, messageSource.getMessage("si", new Object [] {}, locale));
+			valuesSiNo.put(0, messageSource.getMessage("no", new Object [] {}, locale));
 			
 			model.addAttribute("valuesSiNo", valuesSiNo);
 		} else {
