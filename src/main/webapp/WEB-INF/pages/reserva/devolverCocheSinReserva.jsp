@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title><spring:message code="coche.sinReserva" text="NO SE PUEDE DEVOLVER UN COCHE SIN RESERVA PREVIA"/></title>
 </head>
 <body>
-	<p>NO SE PUEDE DEVOLVER UN COCHE SIN RESERVA PREVIA</p>
-	<a href="/empresaReparto/coche/listDisponibles">Volver</a>
+	<p><spring:message code="coche.sinReserva" text="NO SE PUEDE DEVOLVER UN COCHE SIN RESERVA PREVIA"/>
+	<a href="/empresaReparto/coche/listDisponibles"><spring:message code="volver" text="Volver"/></a>
 </body>
 </html>

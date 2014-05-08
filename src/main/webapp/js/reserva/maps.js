@@ -42,7 +42,7 @@ function initializeGmap() {
 	    zoomControlOptions: {
 	      style: google.maps.ZoomControlStyle.SMALL
 	    },
-	    mapTypeId: google.maps.MapTypeId.ROADMAP
+	    mapTypeId: google.maps.MapTypeId.HYBRID
 	};
 	
 	g_map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
