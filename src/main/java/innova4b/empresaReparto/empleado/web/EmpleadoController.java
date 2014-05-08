@@ -40,11 +40,15 @@ public class EmpleadoController {
 	private Long numeroEmpleados=(long) 0;
 	private int numeroPaginas=0;
 	
-	private String empresaString = "%";
-	private String apellido1 = "%";
+	//private String empresaString = "%";
+	//private String apellido1 = "%";
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public void list(ModelMap model) {
+	public void list(ModelMap model,@RequestParam(value = "apellido1", defaultValue = "", required = false) String apellido1, @RequestParam(value = "idEmpresa", defaultValue = "-1", required = false) Long idEmpresa) {
+		
+		String empresaString = "%";
+		if (idEmpresa!=Empresa.EMPRESA_NULO_ID) empresaString = String.valueOf(idEmpresa);
+		else empresaString = "%";
 		
 		numeroEmpleados=empleadoDao.numberOfEmpleados();
 		List<Empleado> listaEmpleados=empleadoDao.listRange(0,NUMERO_EMPLEADOS_POR_LISTA,apellido1,empresaString);	
@@ -55,6 +59,8 @@ public class EmpleadoController {
 				numeroPaginas++;
 			}
 		}
+		model.addAttribute("apellido1", apellido1);
+		model.addAttribute("idEmpresa",idEmpresa);
 		model.addAttribute("empleadoFiltro",new Empleado());
 		model.addAttribute("empresas", empresaDao.getEmpresas());
 		model.addAttribute("numElementosMostrar",NUMERO_EMPLEADOS_POR_LISTA);
@@ -64,8 +70,11 @@ public class EmpleadoController {
 	}
 
 	@RequestMapping(value = "/list/{id}", method = RequestMethod.GET)
-	public String listRango(ModelMap model, @PathVariable("id") int id) {
-		System.out.println("page-->"+id);
+	public String listRango(ModelMap model, @PathVariable("id") int id, @RequestParam(value = "apellido1", defaultValue = "", required = false) String apellido1, @RequestParam(value = "idEmpresa", defaultValue = "-1", required = false) Long idEmpresa) {
+		String empresaString = "%";
+		if (idEmpresa!=Empresa.EMPRESA_NULO_ID) empresaString = String.valueOf(idEmpresa);
+		else empresaString = "%";
+		
 		int posicionInicio=((id-1)*NUMERO_EMPLEADOS_POR_LISTA)+1;
 		if(posicionInicio>numeroEmpleados){
 			posicionInicio=0;
@@ -78,6 +87,8 @@ public class EmpleadoController {
 				numeroPaginas++;
 			}
 		}
+		model.addAttribute("apellido1", apellido1);
+		model.addAttribute("idEmpresa",idEmpresa);
 		model.addAttribute("empleadoFiltro",new Empleado());
 		model.addAttribute("empresas", empresaDao.getEmpresas());
 		model.addAttribute("numElementosMostrar",NUMERO_EMPLEADOS_POR_LISTA);
@@ -86,18 +97,7 @@ public class EmpleadoController {
 		model.addAttribute("empleado", listaEmpleados);	
 		return "empleado/list";
 	}	
-	
-	@RequestMapping(value = "/listaEmpleadoFiltro", method = RequestMethod.POST)
-	public String listaEmpleadoFiltro(@Valid Empleado empleado, BindingResult result,RedirectAttributes redirect,@RequestParam int idEmpresa) {
-		apellido1 = empleado.getApellido1();
 
-		if (idEmpresa!=Empresa.EMPRESA_NULO_ID) empresaString = String.valueOf(idEmpresa);
-		else empresaString = "%";
-		if (apellido1.isEmpty()) apellido1 ="%";
-
-		return "redirect:/empresaReparto/empleado/list";
-	}	
-	
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public void newEmpleado(ModelMap model) {
 	
