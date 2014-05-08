@@ -131,8 +131,15 @@ public class EmpleadoController {
 			redirect.addFlashAttribute("empleado",builtEmpleado);
 			return "redirect:/empresaReparto/empleado/edit/"+empleado.getId();
 		}
-		empleadoDao.update(builtEmpleado);
-		return "redirect:/empresaReparto/empleado/list";
+		try {
+			empleadoDao.update(builtEmpleado);
+			return "redirect:/empresaReparto/empleado/list";
+			} catch(Exception e) {
+				result.rejectValue("usuario", "error.empleado", "El usuario ya est&aacute; en uso.");
+				redirect.addFlashAttribute("org.springframework.validation.BindingResult.empleado", result);
+				redirect.addFlashAttribute("empleado",builtEmpleado);
+				return "redirect:/empresaReparto/empleado/edit/"+empleado.getId();
+			}		
 	}
 	
 	@RequestMapping(value = "/updateUser", method = RequestMethod.POST)

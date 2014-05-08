@@ -100,7 +100,7 @@
 				</tr>
 				<tr>
 					<td><form:label path="jefe"><spring:message code="empleado.jefe" text="Jefe"/>:</form:label></td>
-					<td><select name="jefe">
+					<td><select name="idJefe">
 					<c:forEach var="jefe" items="${jefes}">
 							<option value="${jefe.id}" >${jefe.nombre}</option>
 					</c:forEach>
