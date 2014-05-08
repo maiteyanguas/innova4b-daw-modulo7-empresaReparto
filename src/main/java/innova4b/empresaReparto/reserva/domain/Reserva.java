@@ -3,8 +3,6 @@ package innova4b.empresaReparto.reserva.domain;
 import innova4b.empresaReparto.coche.domain.Coche;
 import innova4b.empresaReparto.empleado.domain.Empleado;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,8 +12,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.Type;
-import org.hibernate.validator.constraints.NotEmpty;
 import org.joda.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -26,6 +25,9 @@ public class Reserva {
 	@Id
 	@GeneratedValue
 	private int id;
+	
+	private Integer kmIniciales;
+	private Integer kmFinales;
 
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
@@ -57,7 +59,23 @@ public class Reserva {
 	@JoinColumn(name="coche_id", referencedColumnName="id")
 	private Coche coche;
 	
+	public Reserva() {
+	}
 	
+	public Reserva(int kmIniciales, int kmFinales,
+			LocalDate fechaInicio, LocalDate fechaDevolucion,
+			LocalDate fechaInicioPrevista, LocalDate fechaDevolucionPrevista,
+			Empleado empleado, Coche coche) {
+		this.id = id;
+		this.kmIniciales = kmIniciales;
+		this.kmFinales = kmFinales;
+		this.fechaInicio = fechaInicio;
+		this.fechaDevolucion = fechaDevolucion;
+		this.fechaInicioPrevista = fechaInicioPrevista;
+		this.fechaDevolucionPrevista = fechaDevolucionPrevista;
+		this.empleado = empleado;
+		this.coche = coche;
+	}
 	
 	public int getId() {
 		return id;
@@ -113,6 +131,22 @@ public class Reserva {
 	
 	public void setCoche(Coche coche) {
 		this.coche = coche;
+	}
+
+	public Integer getKmFinales() {
+		return kmFinales;
+	}
+
+	public void setKmFinales(Integer kmFinales) {
+		this.kmFinales = kmFinales;
+	}
+
+	public Integer getKmIniciales() {
+		return kmIniciales;
+	}
+
+	public void setKmIniciales(Integer kmIniciales) {
+		this.kmIniciales = kmIniciales;
 	}
 
 	@Override

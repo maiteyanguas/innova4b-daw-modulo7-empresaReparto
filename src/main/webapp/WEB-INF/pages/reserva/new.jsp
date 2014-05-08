@@ -9,7 +9,8 @@
 <title><spring:message code="nueva.reserva" text="Nueva reserva" /></title>
 <link rel="stylesheet" type="text/css" href="/css/reset.css">
 <link rel="stylesheet" type="text/css" href="/css/pages.css">
-<link rel="stylesheet" type="text/css" href="/css/jquery/jquery-ui-1.10.4.custom.min.css">
+<link rel="stylesheet" type="text/css"
+	href="/css/jquery/jquery-ui-1.10.4.custom.min.css">
 <script src="/js/jquery/jquery-1.10.2.js"></script>
 <script src="/js/jquery/jquery-ui-1.10.4.custom.min.js"></script>
 <script src="/js/jquery/jquery.i18n.properties-min-1.0.9.js"></script>
@@ -22,6 +23,7 @@
 	<div id="container">
 		<jsp:include page="../header.jsp" />
 		<div id="content">
+
 			<p>
 				<spring:message code="nueva.reserva" />
 			</p>
@@ -55,6 +57,8 @@
 							code="volver" text="Volver" /></a>
 				</p>
 			</form:form>
+
+			<div><jsp:include page="maps.jsp" /></div>
 		</div>
 		<jsp:include page="../menu.jsp" />
 		<jsp:include page="../footer.jsp" />

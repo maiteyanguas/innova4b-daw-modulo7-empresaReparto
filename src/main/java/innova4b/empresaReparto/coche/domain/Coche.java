@@ -39,7 +39,7 @@ public class Coche {
 	@JoinColumn(name = "empresa_id", referencedColumnName = "id")
 	private Empresa empresa;
 	@NotNull
-	@NumberFormat(style = Style.NUMBER)
+	@NumberFormat(style = Style.NUMBER) 
 	@Max(999999)
 	private Integer kms;
 	@NotEmpty
@@ -53,11 +53,10 @@ public class Coche {
 	private String modelo;
 	
 	@OneToMany(mappedBy="coche", fetch=FetchType.EAGER)
-	@Cascade({CascadeType.ALL})
 	private List<Reserva> reservas;
 	
 	@OneToMany(mappedBy="coche", fetch=FetchType.EAGER)
-	@Cascade({CascadeType.ALL})
+	@Cascade({CascadeType.DELETE})
 	private List<Incidencia> incidencias;
 
 	public List<Incidencia> getIncidencias() {

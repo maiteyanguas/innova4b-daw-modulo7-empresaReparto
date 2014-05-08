@@ -1,10 +1,14 @@
 package innova4b.empresaReparto.coche.repository;
 
 import innova4b.empresaReparto.coche.domain.Coche;
+import innova4b.empresaReparto.empleado.domain.Empleado;
 import innova4b.empresaReparto.empresa.domain.Empresa;
 
 import java.util.List;
 
+
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,17 +26,18 @@ public class CocheDao {
 		return (List<Coche>)sessionFactory.getCurrentSession().createQuery("from Coche as c where c.id not in (select distinct(i.coche.id) from Incidencia i where i.resuelta=0)").list();
 	} 
 	
-	//TODO: Implementar la busqueda: coches de la empresa sin incidencias pendientes
 	public List<Coche> listDisponiblesByEmpresa(Empresa empresa) {
-		return null;
+		return (List<Coche>)sessionFactory.getCurrentSession().createQuery("from Coche as c where c.empresa.id = :idEmpresa AND c.id not in (select distinct(i.coche.id) from Incidencia i where i.resuelta=0)").setParameter("idEmpresa", empresa.getId()).list();
 	}
 	
-	//TODO: Implementar bien la busqueda: coches sin incidencias pendientes y sin reserva en esas fechas
 	public List<Coche> listDisponiblesBetweenDates(LocalDate fechaInicio, LocalDate fechaDevolucion) {
 		String hql = 	" Select c " +
 						"FROM Coche as c " +
 						"LEFT JOIN c.reservas as r " + 
-						"WHERE size(c.incidencias)=0 " +
+						"WHERE  c.id not in " +
+								"(select distinct(i.coche.id) " +
+								"from Incidencia i " +
+								"where i.resuelta=0)" +
 						"AND ( " +
 							"size(c.reservas) = 0 " +
 							"OR " +
@@ -52,7 +57,27 @@ public class CocheDao {
 
 	//TODO: Implementar la busqueda: coches de la empresa sin incidencias pendientes y sin reserva en esas fechas
 	public List<Coche> listDisponiblesByEmpresaBetweenDates(LocalDate fechaInicio, LocalDate fechaDevolucion, Empresa empresa) {
-		return null;
+		String hql = 	" Select c " +
+				"FROM Coche as c " +
+				"LEFT JOIN c.reservas as r " + 
+				"WHERE c.empresa.id = :idEmpresa " +
+				"AND c.id not in " +
+					"(select distinct(i.coche.id) " +
+					"from Incidencia i " +
+					"where i.resuelta=0)" +
+				"AND (size(c.reservas) = 0 " +
+					"OR (r.fechaInicioPrevista not between :fechaInicio and :fechaDevolucion " +
+						"AND r.fechaDevolucionPrevista not between :fechaInicio and :fechaDevolucion " +
+						"AND :fechaInicio not between r.fechaInicioPrevista and r.fechaDevolucionPrevista " +
+						"AND :fechaDevolucion not between r.fechaInicioPrevista and r.fechaDevolucionPrevista " +
+					") " +
+				")";		
+
+		return (List<Coche>) sessionFactory.getCurrentSession().createQuery(hql)
+				.setParameter("fechaInicio", fechaInicio)
+				.setParameter("fechaDevolucion", fechaDevolucion)
+				.setParameter("idEmpresa", empresa.getId())
+				.list();	
 	}
 	
 	public List<Coche> listAll() {
@@ -65,9 +90,51 @@ public class CocheDao {
 		return c;
 	}
 
-	
 	public int insert (Coche coche) {
 		return (Integer) sessionFactory.getCurrentSession().save(coche);
 	}
+
+	public Object listWithIncidencias() {
+		return (List<Coche>)sessionFactory.getCurrentSession().createQuery("from Coche as c where c.id in (select distinct(i.coche.id) from Incidencia i where i.resuelta=0)").list();
+	}
+
+	public Object listWithEmpresa(int idEmpresa) {
+		return (List<Coche>)sessionFactory.getCurrentSession().createQuery("from Coche as c where c.empresa.id=" + idEmpresa).list();
+	}
+
+	public Object listWithMatricula(String matricula) {
+		return (List<Coche>)sessionFactory.getCurrentSession().createQuery("from Coche as c where c.matricula='" + matricula +"'").list();
+	}
+
+	public Object listWithEmpresaConIncidencias(int idEmpresa) {
+		return (List<Coche>)sessionFactory.getCurrentSession().createQuery("from Coche as c where c.empresa.id=" + idEmpresa +" and c.id in (select distinct(i.coche.id) from Incidencia i where i.resuelta=0)").list();
+	}
+
+	public Object listWithEmpresaSinIncidencias(int idEmpresa) {
+		return (List<Coche>)sessionFactory.getCurrentSession().createQuery("from Coche as c where c.empresa.id=" + idEmpresa +" and c.id not in (select distinct(i.coche.id) from Incidencia i where i.resuelta=0)").list();
+	}
+
+	public void update(Coche coche) {
+		sessionFactory.getCurrentSession().update(coche);
+	}
+	
+	public void delete (Coche coche) {
+		Session session = sessionFactory.getCurrentSession();
+		sessionFactory.getCurrentSession().delete(session.get(Coche.class, coche.getId()));
+	}
+	
+	public boolean hasPendingReservations(Coche coche) {
+		LocalDate now = new LocalDate();
+		
+		String hql = ("FROM Reserva as r " + 
+				"WHERE r.coche = :coche AND (r.fechaDevolucion is null OR r.fechaDevolucion > :now)");
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setParameter("coche", coche);
+		query.setParameter("now", now);
+		int size = query.list().size();
+		
+		return (size != 0);
+	}
+	
 	
 }

@@ -1,5 +1,6 @@
 package innova4b.empresaReparto.reserva.repository;
 
+import innova4b.empresaReparto.coche.domain.Coche;
 import innova4b.empresaReparto.reserva.domain.Reserva;
 
 import java.util.Date;
@@ -33,7 +34,17 @@ public class ReservaDao {
 	}
 
 	public boolean isCarFreeBetweenDates(Reserva reserva) {
-		return sessionFactory.getCurrentSession().createQuery("FROM Reserva WHERE coche = "+reserva.getCoche()+" AND fechaInicioPrevista >= "+reserva.getFechaInicio()+" AND fechaDevolucionPrevista <= "+reserva.getFechaDevolucionPrevista()+"").list().size()>0;
+		return sessionFactory.getCurrentSession()
+				.createQuery("FROM Reserva as r WHERE r.coche.id = :idCoche AND r.fechaInicioPrevista >= :fechaInicio AND r.fechaDevolucionPrevista <= :fechaDevolucion")
+				.setParameter("idCoche", reserva.getCoche().getId())
+				.setParameter("fechaInicio", reserva.getFechaInicioPrevista())
+				.setParameter("fechaDevolucion", reserva.getFechaDevolucionPrevista())
+				.list()
+				.size() > 0;
+	}
+	
+	public boolean cocheHasReservas(Coche coche) {
+		return sessionFactory.getCurrentSession().createQuery("FROM Reserva as r WHERE r.coche.id = :idCoche").setParameter("idCoche", coche.getId()).list().size()>0;
 	}
 	
 	public Reserva get(int id) {
@@ -43,9 +54,12 @@ public class ReservaDao {
 	public void update(Reserva reserva) {
 		sessionFactory.getCurrentSession().update(reserva);
 	}
-	public List<Reserva> getReservasSinDevolucion(Long id) {
-		return (List<Reserva>) sessionFactory.getCurrentSession().createQuery("FROM Reserva as r WHERE r.fechaDevolucion IS NULL").list();
-	} 
+
+	public List<Reserva> getReservasSinDevolucion(Integer id) {
+		return (List<Reserva>) sessionFactory.getCurrentSession().createQuery("FROM Reserva as r WHERE r.empleado.id = :id AND r.fechaDevolucion IS NULL").setParameter("id", id).list();
+	}
+	
+
 	public boolean empleadoTieneUnCocheOcupado(long idEmpleado){
 		Query query=sessionFactory.getCurrentSession().createQuery("select count(*) from Reserva where empleado=:empleado and fechaInicio!=null and fechaDevolucion=null ");
 		
@@ -66,5 +80,16 @@ public class ReservaDao {
 		Query query=sessionFactory.getCurrentSession().createQuery("update Reserva set empleado=NULL  where empleado=:empleado");
 		query.setLong("empleado", idEmpleado);
 		query.executeUpdate();
-	}	
+	}
+	
+	public void deleteCoche(Coche coche){
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("FROM Reserva WHERE coche.id ="+ coche.getId());
+		List<Reserva> reservas = query.list();
+		
+		for(Reserva reserva : reservas){
+			reserva.setCoche(null);			
+		}
+		
+	}
 }

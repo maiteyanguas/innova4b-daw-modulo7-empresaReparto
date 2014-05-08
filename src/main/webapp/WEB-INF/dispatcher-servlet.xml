@@ -46,9 +46,43 @@
 	        <map key-type="java.lang.String" value-type="java.lang.String">
 	        	<entry key="datos" value="/empresaReparto/empleado/show"/>
 	            <entry key="reservar.coche" value="/empresaReparto/coche/listDisponibles"/>
-	            <entry key="devolver.coche" value="/empresaReparto/empresa/list"/> 
+	            <entry key="devolver.coche" value="/empresaReparto/reserva/devolver"/> 
 	        </map>
     	</constructor-arg>
+	</bean>
+	
+	<bean id="marcas" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<value>Audi</value>
+				<value>BMW</value>
+				<value>Chevrolet</value>
+				<value>Chrysler</value>
+				<value>Citroen</value>
+				<value>Dacia</value>
+				<value>Fiat</value>
+				<value>Ford</value>
+				<value>Honda</value>
+				<value>Hyundai</value>
+				<value>Jaguar</value>
+				<value>Jeep</value>
+				<value>Kia</value>
+				<value>Lancia</value>
+				<value>Land Rover</value>
+				<value>Mazda</value>
+				<value>Mercedes-Benz</value>
+				<value>Mini</value>
+				<value>Nissan</value>
+				<value>Opel</value>
+				<value>Peugeot</value>
+				<value>Renault</value>
+				<value>Seat</value>
+				<value>Skoda</value>
+				<value>Toyota</value>
+				<value>Volkswagen</value>
+				<value>Volvo</value>
+			</list>
+		</constructor-arg>
 	</bean>
 	
 	<bean id="menuAdministrador" class="java.util.HashMap">
@@ -56,7 +90,7 @@
 	        <map key-type="java.lang.String" value-type="java.lang.String">
 	        	<entry key="datos" value="/empresaReparto/empleado/show"/>
 	            <entry key="reservar.coche" value="/empresaReparto/coche/listDisponibles"/>
-	            <entry key="devolver.coche" value="/empresaReparto/empresa/list"/>  
+	            <entry key="devolver.coche" value="/empresaReparto/reserva/devolver"/>  
 	        	<entry key="empleados" value="/empresaReparto/empleado/list"/>
 	            <entry key="empresas" value="/empresaReparto/empresa/list"/>
 	            <entry key="coches" value="/empresaReparto/coche/listAll"/>
