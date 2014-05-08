@@ -91,7 +91,7 @@ public class ReservaController {
 		
 		String returnURL = "reserva/devolver";
 		
-		List<Reserva> reservas = reservaDao.getReservasSinDevolucion(new Long(empleado.getId()));
+		List<Reserva> reservas = reservaDao.getReservasSinDevolucion(empleado.getId());
 		
 		if (reservas.size() > 0) {
 			Reserva reserva = reservas.get(0);
