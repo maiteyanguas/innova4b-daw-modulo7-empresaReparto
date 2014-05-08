@@ -34,7 +34,13 @@ public class ReservaDao {
 	}
 
 	public boolean isCarFreeBetweenDates(Reserva reserva) {
-		return sessionFactory.getCurrentSession().createQuery("FROM Reserva as r WHERE r.coche.id = :idCoche AND r.fechaInicioPrevista >= "+reserva.getFechaInicioPrevista()+" AND r.fechaDevolucionPrevista <= "+reserva.getFechaDevolucionPrevista()).setParameter("idCoche", reserva.getCoche().getId()).list().size()>0;
+		return sessionFactory.getCurrentSession()
+				.createQuery("FROM Reserva as r WHERE r.coche.id = :idCoche AND r.fechaInicioPrevista >= :fechaInicio AND r.fechaDevolucionPrevista <= :fechaDevolucion")
+				.setParameter("idCoche", reserva.getCoche().getId())
+				.setParameter("fechaInicio", reserva.getFechaInicioPrevista())
+				.setParameter("fechaDevolucion", reserva.getFechaDevolucionPrevista())
+				.list()
+				.size() > 0;
 	}
 	
 	public boolean cocheHasReservas(Coche coche) {
@@ -49,9 +55,8 @@ public class ReservaDao {
 		sessionFactory.getCurrentSession().update(reserva);
 	}
 
-
-	public List<Reserva> getReservasSinDevolucion(Long id) {
-		return (List<Reserva>) sessionFactory.getCurrentSession().createQuery("FROM Reserva as r WHERE r.fechaDevolucion IS NULL").list();
+	public List<Reserva> getReservasSinDevolucion(Integer id) {
+		return (List<Reserva>) sessionFactory.getCurrentSession().createQuery("FROM Reserva as r WHERE r.empleado.id = :id AND r.fechaDevolucion IS NULL").setParameter("id", id).list();
 	}
 	
 
