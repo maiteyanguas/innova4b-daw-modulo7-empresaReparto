@@ -30,23 +30,23 @@ public class IncidenciaDao {
 		return (List<Incidencia>)sessionFactory.getCurrentSession().createQuery("from Incidencia where coche_id="+idCoche).list();
 
 	} 
+	
 	public void ponerEmpleadoCreacionNull(Empleado empleado) throws IndexOutOfBoundsException {
 		Query query=sessionFactory.getCurrentSession().createQuery("update Incidencia set empleadoCreacion = NULL where empleadoCreacion =:empleado");
 		query.setParameter("empleado", empleado);
 		query.executeUpdate();
 	}
+	
 	public void ponerEmpleadoResolucionNull(Empleado empleado) throws IndexOutOfBoundsException {
 		Query query=sessionFactory.getCurrentSession().createQuery("update Incidencia set empleadoResolucion = NULL where empleadoResolucion =:empleado");
 		query.setParameter("empleado", empleado);
 		query.executeUpdate();
 	}
-	public boolean empleadoEstaEnIncidenciasNoResueltas(Empleado empleado) throws IndexOutOfBoundsException {
-		Query query=sessionFactory.getCurrentSession().createQuery("select count(*) from Incidencia where resuelta=:resuelta and (empleadoCreacion=:empleado or empleadoResolucion=:empleado)");
-		query.setBoolean("resuelta", false);
+	
+	public boolean empleadoWithIncidencias(Empleado empleado) throws IndexOutOfBoundsException {
+		Query query=sessionFactory.getCurrentSession().createQuery("select count(*) from Incidencia where (empleadoCreacion=:empleado or empleadoResolucion=:empleado)");
 		query.setParameter("empleado", empleado);
 
-		Long numElementos =(Long) query.uniqueResult();
-		if(numElementos>0){return true;}
-		return false;
-	}	
+		return (Long)query.uniqueResult()>0;
+	}
 }

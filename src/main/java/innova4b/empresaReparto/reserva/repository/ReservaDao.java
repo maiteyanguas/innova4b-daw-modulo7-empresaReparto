@@ -51,8 +51,9 @@ public class ReservaDao {
 		
 		query.setLong("empleado", idEmpleado);
 		Long numElementos =(Long) query.uniqueResult();
-		if(numElementos>0){return false;}
-		return true;
+	System.out.println("*************numElementos:"+numElementos);
+		if(numElementos>0){return true;}
+		return false;
 	}
 	public void eliminarResevasFuturasDelEmpleado(int id){
 		Date hoy=new Date();
@@ -61,4 +62,10 @@ public class ReservaDao {
 		query.setDate("fechaInicio", hoy);
 		int result = query.executeUpdate();
 	}
+
+	public void ponerNullEmpleadoEnReservas(long idEmpleado){
+		Query query=sessionFactory.getCurrentSession().createQuery("update Reserva set empleado=NULL  where empleado=:empleado");
+		query.setLong("empleado", idEmpleado);
+		query.executeUpdate();
+	}	
 }

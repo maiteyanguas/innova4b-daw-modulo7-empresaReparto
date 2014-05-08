@@ -44,6 +44,7 @@ public class Empleado {
 	@Id
 	@GeneratedValue
 	private Integer id;
+
 	@ManyToOne
 	@JoinColumn(name="empresa_id", referencedColumnName="id")
 	private Empresa empresa;
@@ -77,14 +78,32 @@ public class Empleado {
 	
 
 	@OneToMany(mappedBy="empleado", fetch=FetchType.EAGER)
-	@Cascade({CascadeType.ALL})
 	private List<Reserva> reservas;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="jefe")
 	private Empleado jefe;
 
-	private String fechaNacimientoAsString;
+	public Empleado(String usuario, String password, String rol,
+			Integer activo, String dni, String nombre, String apellido1,
+			String apellido2, LocalDate fechaNacimiento, String telefono,
+			String email) {
+		this.usuario = usuario;
+		this.password = password;
+		this.rol = rol;
+		this.activo = activo;
+		this.dni = dni;
+		this.nombre = nombre;
+		this.apellido1 = apellido1;
+		this.apellido2 = apellido2;
+		this.fechaNacimiento = fechaNacimiento;
+		this.telefono = telefono;
+		this.email = email;
+	}
+
+	public Empleado() {}
+	
+	
 	public Integer getId() {
 		return id;
 	}

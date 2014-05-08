@@ -45,7 +45,7 @@ insert into incidencia (id, descripcion, fechaCreacion, fechaResolucion, resuelt
 insert into incidencia (id, descripcion, fechaCreacion, fechaResolucion, resuelta, coche_id, idUsuarioCreacion, idUsuarioResolucion, resolucion) values (3, 'Rotura de lunas', '2004-04-09', '2005-04-10', 1, 2, 1, 7, 'Hemos ido a Carglass');
 insert into incidencia (id, descripcion, fechaCreacion, fechaResolucion, resuelta, coche_id, idUsuarioCreacion, idUsuarioResolucion, resolucion) values (4, 'Fallo de arranque', '2007-09-09', '2007-10-10', 1, 3, 1, 9, 'Cambio de bateria/bujias/aceite');
 
-insert into reserva (id, fecha_devolucion, fecha_devolucion_prevista, fecha_inicio, fecha_inicio_prevista, kmFinales, kmIniciales, coche_id, empleado_id) values (1, NULL, '2014-05-15', '2014-05-07', '2014-05-07', 0, 1200, 1, 5);
-insert into reserva (id, fecha_devolucion, fecha_devolucion_prevista, fecha_inicio, fecha_inicio_prevista, kmFinales, kmIniciales, coche_id, empleado_id) values (2, '2014-05-07', '2014-05-15', '2014-05-07', '2014-05-07', 0, 1200, 1, 7);
-insert into reserva (id, fecha_devolucion, fecha_devolucion_prevista, fecha_inicio, fecha_inicio_prevista, kmFinales, kmIniciales, coche_id, empleado_id) values (3, NULL, '2014-08-15', NULL, '2014-08-15', 0, 1200, 1, 7);
-insert into reserva (id, fecha_devolucion, fecha_devolucion_prevista, fecha_inicio, fecha_inicio_prevista, kmFinales, kmIniciales, coche_id, empleado_id) values (4, NULL, '2014-08-15', NULL, '2014-06-15', 0, 1200, 1, 7);
+insert into reserva (id, fecha_devolucion, fecha_devolucion_prevista, fecha_inicio, fecha_inicio_prevista,coche_id, empleado_id) values (1, NULL, '2014-05-15', '2014-05-07', '2014-05-07', 1, 5);
+insert into reserva (id, fecha_devolucion, fecha_devolucion_prevista, fecha_inicio, fecha_inicio_prevista,coche_id, empleado_id) values (2, '2014-05-07', '2014-05-15', '2014-05-07', '2014-05-07', 1, 7);
+insert into reserva (id, fecha_devolucion, fecha_devolucion_prevista, fecha_inicio, fecha_inicio_prevista,coche_id, empleado_id) values (3, NULL, '2014-08-15', NULL, '2014-08-15',1, 7);
+insert into reserva (id, fecha_devolucion, fecha_devolucion_prevista, fecha_inicio, fecha_inicio_prevista,coche_id, empleado_id) values (4, NULL, '2014-08-15', NULL, '2014-06-15', 1, 7);
