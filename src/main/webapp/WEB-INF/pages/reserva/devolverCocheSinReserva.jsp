@@ -11,4 +11,4 @@
 	<p><spring:message code="coche.sinReserva" text="NO SE PUEDE DEVOLVER UN COCHE SIN RESERVA PREVIA"/></p>
 	<a href="/empresaReparto/coche/listDisponibles"><spring:message code="volver" text="Volver"/></a>
 </body>
-</html>
+</html> 
