@@ -1,5 +1,6 @@
 package innova4b.empresaReparto.empresa.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import innova4b.empresaReparto.empresa.domain.Empresa;
@@ -47,5 +48,12 @@ public class EmpresaDao {
 		sessionFactory.getCurrentSession().update(empresa);
 	}
 	
+	
+	public List<Empresa> getEmpresas(){
+		List<Empresa> empresas = new ArrayList<Empresa>();
+		empresas.add(Empresa.buildEmpresaNulo());
+		empresas.addAll(list());
+		return empresas;
+	}
 
 }
