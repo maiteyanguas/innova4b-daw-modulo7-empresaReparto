@@ -1,5 +1,11 @@
 package innova4b.empresaReparto.incidencia.web;
 
+import innova4b.empresaReparto.empleado.domain.Empleado;
+import innova4b.empresaReparto.empleado.repository.EmpleadoDao;
+import innova4b.empresaReparto.incidencia.domain.Incidencia;
+import innova4b.empresaReparto.incidencia.repository.IncidenciaDao;
+import innova4b.empresaReparto.login.domain.Usuario;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -9,15 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import innova4b.empresaReparto.empleado.domain.Empleado;
-import innova4b.empresaReparto.empleado.repository.EmpleadoDao;
-import innova4b.empresaReparto.empresa.domain.Direccion;
-import innova4b.empresaReparto.empresa.domain.Empresa;
-import innova4b.empresaReparto.empresa.repository.EmpresaDao;
-import innova4b.empresaReparto.incidencia.domain.Incidencia;
-import innova4b.empresaReparto.incidencia.repository.IncidenciaDao;
-import innova4b.empresaReparto.login.domain.Usuario;
-
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -25,15 +22,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @RequestMapping("/incidencia")
@@ -45,9 +38,6 @@ public class IncidenciaController {
 	
 	@Autowired
 	IncidenciaDao incidenciaDao;
-
-	@Autowired
-	EmpleadoDao empleadoDao;
 	
 	@RequestMapping(value = "/show/{id}", method = RequestMethod.GET)
 	public String show(ModelMap model,@PathVariable("id") int idIncidencia) {
