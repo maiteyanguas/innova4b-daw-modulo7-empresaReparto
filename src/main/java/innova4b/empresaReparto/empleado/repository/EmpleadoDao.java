@@ -66,8 +66,8 @@ public class EmpleadoDao {
 		query.setMaxResults(numElementos);
 		return (List<Empleado>) query.list();
 	}
-	public Long numberOfEmpleados(){
-		Query query=sessionFactory.getCurrentSession().createQuery("select count(*) from Empleado");
+	public Long numberOfEmpleados(String apellido1, String empresa){
+		Query query=sessionFactory.getCurrentSession().createQuery("select count(*) from Empleado e where e.apellido1 like '"+apellido1+"%' and e.empresa.id like '"+empresa+"'");
 		return (Long) query.uniqueResult();
 
 	}
