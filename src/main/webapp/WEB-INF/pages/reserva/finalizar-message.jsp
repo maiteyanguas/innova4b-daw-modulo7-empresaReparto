@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title><spring:message code="coche.devuelto" text="HAS DEVUELTO EL COCHE"/></title>
 </head>
 <body>
 	<p><spring:message code="coche.devuelto" text="HAS DEVUELTO EL COCHE"/></p>
