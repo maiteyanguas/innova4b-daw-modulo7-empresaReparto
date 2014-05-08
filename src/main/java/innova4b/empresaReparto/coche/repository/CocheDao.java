@@ -1,10 +1,12 @@
 package innova4b.empresaReparto.coche.repository;
 
 import innova4b.empresaReparto.coche.domain.Coche;
+import innova4b.empresaReparto.empleado.domain.Empleado;
 import innova4b.empresaReparto.empresa.domain.Empresa;
 
 import java.util.List;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,9 +88,28 @@ public class CocheDao {
 		return c;
 	}
 
-	
 	public int insert (Coche coche) {
 		return (Integer) sessionFactory.getCurrentSession().save(coche);
+	}
+
+	public Object listWithIncidencias() {
+		return (List<Coche>)sessionFactory.getCurrentSession().createQuery("from Coche as c where c.id in (select distinct(i.coche.id) from Incidencia i where i.resuelta=0)").list();
+	}
+
+	public Object listWithEmpresa(int idEmpresa) {
+		return (List<Coche>)sessionFactory.getCurrentSession().createQuery("from Coche as c where c.empresa.id=" + idEmpresa).list();
+	}
+
+	public Object listWithMatricula(String matricula) {
+		return (List<Coche>)sessionFactory.getCurrentSession().createQuery("from Coche as c where c.matricula='" + matricula +"'").list();
+	}
+
+	public Object listWithEmpresaConIncidencias(int idEmpresa) {
+		return (List<Coche>)sessionFactory.getCurrentSession().createQuery("from Coche as c where c.empresa.id=" + idEmpresa +" and c.id in (select distinct(i.coche.id) from Incidencia i where i.resuelta=0)").list();
+	}
+
+	public Object listWithEmpresaSinIncidencias(int idEmpresa) {
+		return (List<Coche>)sessionFactory.getCurrentSession().createQuery("from Coche as c where c.empresa.id=" + idEmpresa +" and c.id not in (select distinct(i.coche.id) from Incidencia i where i.resuelta=0)").list();
 	}
 
 	public void update(Coche coche) {

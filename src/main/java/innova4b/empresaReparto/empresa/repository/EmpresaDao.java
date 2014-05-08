@@ -25,9 +25,10 @@ public class EmpresaDao {
 		return (Integer) sessionFactory.getCurrentSession().save(empresa);
 	}
 
-	public void delete(int id) {
+	public int delete(int id) {
 		Session session = sessionFactory.getCurrentSession();
 		sessionFactory.getCurrentSession().delete(session.get(Empresa.class,id));
+		return id;
 	}
 
 	public boolean hasEmpleados(int id) {

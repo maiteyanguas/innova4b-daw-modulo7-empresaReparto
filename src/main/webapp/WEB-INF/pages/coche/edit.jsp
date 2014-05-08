@@ -24,17 +24,24 @@ $(document).ready(function() {
 	<div id="container">
 		<jsp:include page="../header.jsp" />
 		<div id="content">
-			<p><spring:message code="nuevo.coche" text="Nuevo coche"/></p>
+			<p><spring:message code="editar.coche" text="Editar coche"/></p>
 			
-			<form:form method="post" modelAttribute="coche" action="/empresaReparto/coche/add">
+			<form:form method="post" modelAttribute="coche" action="/empresaReparto/coche/update">
+			<form:hidden path="id"/>
 			<table>
 				<tr>
 					<td><form:label path="empresa"><spring:message code="coche.empresa" text="Empresa"/>:</form:label></td>
 					<td>
-					<select id="idEmpresa" name="idEmpresa">
+					<select id="idEmpresa" name="idEmpresa" >
 						<c:forEach items="${empresas}" var="emp">
-							
-								<option value="${emp.id}">${emp.nombre}</option>
+						<c:choose>
+						<c:when test="${empresa.id == emp.id}">
+							<option value="${emp.id}" selected="selected">${emp.nombre}</option>
+						</c:when>
+						<c:otherwise>
+							<option value="${emp.id}">${emp.nombre}</option>
+						</c:otherwise>
+						</c:choose>		
 										
 						</c:forEach>
 					</select>
@@ -43,34 +50,34 @@ $(document).ready(function() {
 				</tr>
 				<tr>
 					<td><form:label path="kms"><spring:message code="coche.kms" text="Kilometros"/>:</form:label></td>
-					<td><form:input path="kms" maxlength="9"></form:input>
+					<td><form:input path="kms" maxlength="9" value="${coche.kms}"></form:input>
 						<form:errors path="kms" cssClass="error"/>
 					</td>
 				</tr>
 				<tr>
 					<td><form:label path="combustible"><spring:message code="coche.combustible" text="Combustible"/>:</form:label></td>
 					<td>
-					<form:select name="combustible" path="combustible">
+					<form:select name="combustible" path="combustible" selected="${coche.combustible}">
 					  <form:option value="gasolina"><spring:message code="combustible.gasolina" text="Gasolina"/></form:option>
-					  <form:option value="Diesel"><spring:message code="combustible.diesel" text="Diesel"/></form:option>
+					  <form:option value="diesel"><spring:message code="combustible.diesel" text="Diesel"/></form:option>
 					</form:select> 
 					</td>
 				</tr>
 				<tr>
 					<td><form:label path="marca"><spring:message code="coche.marca" text="Marca"/>:</form:label></td>
-					<td><form:input path="marca" id="marca"></form:input>
+					<td><form:input path="marca" id="marca" value="${coche.marca}"></form:input>
 						<form:errors path="marca" cssClass="error"/>
 					</td>
 				</tr>
 				<tr>
 					<td><form:label path="modelo"><spring:message code="coche.modelo" text="Modelo"/>:</form:label></td>
-					<td><form:input path="modelo"></form:input>
+					<td><form:input path="modelo" value="${coche.modelo}"></form:input>
 						<form:errors path="modelo" cssClass="error"/>
 					</td>
 				</tr>
 				<tr>
 					<td><form:label path="matricula"><spring:message code="coche.matricula" text="Matricula"/>:</form:label></td>
-					<td><form:input path="matricula"></form:input>
+					<td><form:input path="matricula" value="${coche.matricula}"></form:input>
 						<form:errors path="matricula" cssClass="error"/>
 					</td>
 				</tr>
