@@ -97,7 +97,7 @@
 					</tr>
 				</c:forEach> 
 			</table>
-			<c:if test="${numberOfPages>0}">
+			<c:if test="${numberOfPages>1}">
 				<div id="paginationdemo"  class="demo"></div>
 			</c:if>
 			</div>

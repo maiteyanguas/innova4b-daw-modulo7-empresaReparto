@@ -52,7 +52,7 @@ public class EmpleadoController {
 		if (idEmpresa!=Empresa.EMPRESA_NULO_ID) empresaString = String.valueOf(idEmpresa);
 		else empresaString = "%";
 		
-		numeroEmpleados=empleadoDao.numberOfEmpleados();
+		numeroEmpleados=empleadoDao.numberOfEmpleados(apellido1,empresaString);
 		List<Empleado> listaEmpleados=empleadoDao.listRange(0,NUMERO_EMPLEADOS_POR_LISTA,apellido1,empresaString);	
 		numeroPaginas=0;
 		if(listaEmpleados.size()>0){
