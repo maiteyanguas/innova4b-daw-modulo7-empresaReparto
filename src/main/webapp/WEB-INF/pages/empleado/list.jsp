@@ -92,7 +92,7 @@
 						<td>${empleado.email}</td>
 						<td>${empleado.telefono}</td> 		
 						<td><a href="/empresaReparto/empleado/edit/${empleado.id}"><img alt="editar" src="/images/edit.png" width="20" height="20"></a></td>
-						<td><a href="/empresaReparto/empleado/delete/${empleado.id}"><img alt="borrar" src="/images/delete.jpeg" width="20" height="20"></a></td>
+						<td><a href="/empresaReparto/empleado/delete/${empleado.id}" onclick="return confirm('¿Estás seguro de querer borrar este empleado?')"><img alt="borrar" src="/images/delete.jpeg" width="20" height="20"></a></td>
 					
 					</tr>
 				</c:forEach> 
