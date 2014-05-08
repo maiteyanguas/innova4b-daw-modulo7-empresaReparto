@@ -5,27 +5,12 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="/css/jquery/jquery-ui-1.10.4.custom.min.css">
+<script src="/js/jquery/jquery-1.10.2.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/reset.css">
 <link rel="stylesheet" type="text/css" href="/css/pages.css">
 <title><spring:message code="lista.coches" text="Lista de coches"/></title>
-	<script type="text/javascript">
-		function mostrarOpciones(elemento) {
-			if(elemento.value=="empresa") {
-			    document.getElementById("idEmpresa").style.display = "inline";
-			    document.getElementById("eleccionEmpresa").style.display = "inline";
-				document.getElementById("matricula").style.display = "none";
-			}else if (elemento.value=="matricula"){
-				document.getElementById("idEmpresa").style.display = "none";
-				document.getElementById("eleccionEmpresa").style.display = "none";	
-				document.getElementById("matricula").style.display = "inline";
-			} else {
-				document.getElementById("idEmpresa").style.display = "none";
-				document.getElementById("eleccionEmpresa").style.display = "none";			
-				document.getElementById("matricula").style.display = "none";
-			}
-		}
-		
-	</script>
+<script  type="text/javascript" src="/js/coche/filtro_coche.js"></script>
 </head>
 <body>
 	<div id="container">
@@ -40,7 +25,7 @@
 			            </tr>
 			            <tr>
 			                <td>
-			                	<select id="eleccionCombo" name="eleccionCombo" onchange="mostrarOpciones(this)">
+			                	<select id="eleccionCombo" name="eleccionCombo" onchange="mostrarOpciones()">
 			                		<option value="verTodos"><spring:message code="filtro.verTodos" text="Ver Todos"/></option>
 			                	    <option value="incidenciasPendientes"><spring:message code="filtro.incidencia" text="Incidencias Pendientes"/></option>
 			                		<option value="empresa"><spring:message code="filtro.empresa" text="Empresa"/></option>
@@ -62,9 +47,9 @@
 							</td>
 							<td>
 								<span id="eleccionEmpresa" style="display:none">
-									<input type="radio" id="eleccionEmpresa" name="eleccionEmpresa" value="todos" checked="checked"><spring:message code="filtro.todosLosCoches" text="Todos los Coches"/></br>								
-									<input type="radio" id="eleccionEmpresa" name="eleccionEmpresa" value="conIncidencia"><spring:message code="filtro.incidencia" text="Incidencias Pendientes"/></br>
-									<input type="radio" id="eleccionEmpresa" name="eleccionEmpresa" value="sinIncidencia"><spring:message code="filtro.sinIncidencia" text="Sin Incidencias"/>
+									<input type="radio" name="eleccionEmpresa" value="todos" checked="checked"><spring:message code="filtro.todosLosCoches" text="Todos los Coches"/></br>								
+									<input type="radio" name="eleccionEmpresa" value="conIncidencia"><spring:message code="filtro.incidencia" text="Incidencias Pendientes"/></br>
+									<input type="radio" name="eleccionEmpresa" value="sinIncidencia"><spring:message code="filtro.sinIncidencia" text="Sin Incidencias"/>
 								</span>
 							</td>
 			                <td>				
@@ -79,8 +64,11 @@
 			<c:if test="${error!=null}">
 				<div class="errorblock">${error}</div>
 			</c:if>
-			<c:if test="${error_borrado==true }">
-				<script>alert("El coche tiene reservas pendientes")</script>
+			<c:if test="${error_borrado==true}">
+				<div class="errorblock">
+					<spring:message code="coche.error_reserva"
+						text="El coche tiene reservas pendientes"></spring:message>
+				</div>
 			</c:if>
 			<table>
 				<tr>
@@ -106,9 +94,10 @@
 								<td align="center"><spring:message code="no" text="No"/></td>
 							</c:otherwise>
 						</c:choose>						
+						<td><a href="/empresaReparto/coche/edit/${coche.id}"><img alt="editar" src="/images/edit.png" width="20" height="20"></a></td>
+						<td><a href="/empresaReparto/coche/delete/${coche.id}"><img alt="borrar" src="/images/delete.jpeg" width="20" height="20"></a></td>
 						<td><a href="/empresaReparto/incidencia/list/${coche.id}"><spring:message code="ver.incidencias" text="Ver incidencias" /></a></td>
-						<td><a href="/empresaReparto/coche/edit/${coche.id}"><spring:message code="editar.coche" text="Editar coche"/></a></td>
-						<td><a href="/empresaReparto/coche/delete/${coche.id}"><spring:message code="borrar.coche" text="Borrar coche"/></a></td>
+
 					</tr>
 				</c:forEach>
 			</table>
