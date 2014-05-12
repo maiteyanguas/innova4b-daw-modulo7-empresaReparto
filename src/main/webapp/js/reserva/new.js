@@ -1,5 +1,5 @@
 $(document).ready(function() {
 	getI18nReady();
-	getCalendario($("#fechaInicioPrevista"), 30, $('#fechaDevolucionPrevista'));
-	getCalendario($("#fechaDevolucionPrevista"), 30);
+	getCalendario($("#fechaInicioPrevista"), 30, 0, $('#fechaDevolucionPrevista'));
+	getCalendario($("#fechaDevolucionPrevista"), 30, 0);
 });

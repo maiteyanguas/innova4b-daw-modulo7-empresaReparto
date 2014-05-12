@@ -34,18 +34,17 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.joda.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
-
 @Entity
 @Table(name="empleado",uniqueConstraints = {@UniqueConstraint(columnNames={"usuario"})})
 public class Empleado {
 	
 	private static final String JEFE_NULO_NOMBRE = "Ninguno";
-
 	public static final int JEFE_NULO_ID = -1;
-	
+
 	@Id
 	@GeneratedValue
 	private Integer id;
+
 	@ManyToOne
 	@JoinColumn(name="empresa_id", referencedColumnName="id")
 	private Empresa empresa;
@@ -76,17 +75,36 @@ public class Empleado {
 	@NotEmpty
 	@Email
 	private String email;
-	
+
+	private String fechaNacimientoAsString;
 
 	@OneToMany(mappedBy="empleado", fetch=FetchType.EAGER)
-	@Cascade({CascadeType.ALL})
 	private List<Reserva> reservas;
 	
-	@ManyToOne(cascade={javax.persistence.CascadeType.ALL})
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="jefe")
 	private Empleado jefe;
 
-	private String fechaNacimientoAsString;
+	public Empleado(String usuario, String password, String rol,
+			Integer activo, String dni, String nombre, String apellido1,
+			String apellido2, LocalDate fechaNacimiento, String telefono,
+			String email) {
+		this.usuario = usuario;
+		this.password = password;
+		this.rol = rol;
+		this.activo = activo;
+		this.dni = dni;
+		this.nombre = nombre;
+		this.apellido1 = apellido1;
+		this.apellido2 = apellido2;
+		this.fechaNacimiento = fechaNacimiento;
+		this.telefono = telefono;
+		this.email = email;
+	}
+
+	public Empleado() {}
+	
+	
 	public Integer getId() {
 		return id;
 	}
@@ -175,7 +193,6 @@ public class Empleado {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 	public void setActivo(Integer activo) {
 		this.activo = activo;
 	}
@@ -208,7 +225,7 @@ public class Empleado {
 	}
 	@Override
 	public String toString() {
-		return "Empleado [id=" + id + ", empresa=" + empresa.getNombre() + ", usuario="
+		return "Empleado [id=" + id + ", empresa=" + empresa + ", usuario="
 				+ usuario + ", password=" + password + ", rol=" + rol
 				+ ", activo=" + activo + ", dni=" + dni + ", nombre=" + nombre
 				+ ", apellido1=" + apellido1 + ", apellido2=" + apellido2
@@ -222,5 +239,4 @@ public class Empleado {
 		empleado.setNombre(JEFE_NULO_NOMBRE);
 		return empleado;
 	}
-	
 }
